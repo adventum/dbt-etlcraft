@@ -2,7 +2,7 @@
 {% set etlcraft_defaults_dict %}
 sourcetypes:
   alytics:
-    fields_included:
+    included_fields:
     - test_field
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
