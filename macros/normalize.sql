@@ -21,8 +21,21 @@
     {%- endif -%}
 
     {%- set json_keys = fromjson(run_query('SELECT ' ~ json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0])  -%}    
+    
+    {%- set default_included_fields = [] -%}
+    {%- set default_excluded_fields = [] -%}
+    {%- if defaults_dict['sourcetypes'][source_type] is defined -%}
+        {%- set default_included_fields = defaults_dict.get('sourcetypes', {}).get(source_type, {}).get('included_fields', []) -%}
+        {%- set default_excluded_fields = defaults_dict.get('sourcetypes', {}).get(source_type, {}).get('excluded_fields', []) -%}
+        {%- if defaults_dict.get('sourcetypes', {}).get(source_type, {}).get('streams', {})[stream_name] is defined -%}
+            {%- set default_included_fields = default_included_fields + defaults_dict.get('sourcetypes', {}).get(source_type, {}).get('streams', {}),get(stream_name, {}).get('included_fields', []) -%}
+            {%- set default_excluded_fields = default_excluded_fields + defaults_dict.get('sourcetypes', {}).get(source_type, {}).get('streams', {}).get(stream_name, {}).get('excluded_fields', []) -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- set column_list = set(json_keys).union(set(included_fields)).union(set(default_included_fields)).difference(set(excluded_fields)).difference(set(default_excluded_fields)) -%}
     {%- set column_list = [] -%}
-    {%- for key in json_keys -%}
+    {%- for key in column_list -%}
         {%- do column_list.append(json_extract_string('_airbyte_data', key) ~ " AS " ~ normalize_name(key)) -%}
     {%- endfor -%}
     SELECT
