@@ -1,6 +1,7 @@
-{%- macro normalize(source_table=none, included_fields=[], excluded_fields=[], defaults_dict=etlcraft_defaults()) -%}
+{%- macro normalize(source_table=none, included_fields=[], excluded_fields=[], 
+    defaults_dict=etlcraft_defaults(), override_target_model_name=None) -%}
 {%- if execute -%}
-    {%- set model_name_parts = this.name.split('_') -%}
+    {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
     {%- if model_name_parts|length < 5 or model_name_parts[0] != 'normalize' -%}
         {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "normalize_{sourcetype}_{templatename}_{streamname}(__auto)?", where suffix is "auto" is optional') }}
     {%- endif -%}
@@ -26,14 +27,14 @@
     {%- set default_excluded_fields = [] -%}
     {%- set default_included_fields = get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'included_fields'], []) -%}
     {%- set default_excluded_fields = get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'excluded_fields'], []) -%}        
-    {%- set default_included_fields = default_included_fields + get_from_default_dict(['sourcetypes', source_type, 'streams', stream_name, 'included_fields'], []) -%}
-    {%- set default_excluded_fields = default_excluded_fields + get_from_default_dict(['sourcetypes', source_type, 'streams', stream_name, 'excluded_fields'], []) -%}
-    
-    {%- set column_list = set(json_keys).union(set(included_fields)).union(set(default_included_fields)).difference(set(excluded_fields)).difference(set(default_excluded_fields)) -%}
+    {%- set default_included_fields = default_included_fields + get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'streams', stream_name, 'included_fields'], []) -%}
+    {%- set default_excluded_fields = default_excluded_fields + get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'streams', stream_name, 'excluded_fields'], []) -%}    
+    {%- set column_set = set(json_keys).union(set(included_fields)).union(set(default_included_fields)).difference(set(excluded_fields)).difference(set(default_excluded_fields)) -%}
     {%- set column_list = [] -%}
-    {%- for key in column_list -%}
+    {%- for key in column_set -%}
         {%- do column_list.append(json_extract_string('_airbyte_data', key) ~ " AS " ~ normalize_name(key)) -%}
     {%- endfor -%}
+
     SELECT
         _dbt_source_relation AS _table_name,        
         _airbyte_emited_at AS _emited_at,

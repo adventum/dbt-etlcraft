@@ -1,7 +1,7 @@
 {% macro etlcraft_defaults() %}
 {% set etlcraft_defaults_dict %}
 sourcetypes:
-  alytics:
+  example:
     included_fields:
     - test_field
 {% endset %}
