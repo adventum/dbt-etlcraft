@@ -5,8 +5,9 @@ The `normalize` macro is designed to normalize tables that are downloaded by Air
 1. `included_fields` (default: empty list)
 2. `excluded_fields` (default: empty list)
 3. `defaults_dict` (default: result of `etlcraft_defaults()` macro)
-4. `source_table` (default: none)
-5. `override_target_model_name` (default: none)
+4. `schema_pattern` (default: `this.schema`)
+5. `source_table` (default: none)
+6. `override_target_model_name` (default: none)
 
 ## Macro behavior
 
@@ -14,7 +15,7 @@ The behavior of the `normalize` macro depends on the name of the model. The mode
 
 To facilitate testing, an argument called `override_target_model_name` is provided. When this argument is used, the macro behaves as if it were in a model with a name equal to the value of `override_target_model_name`.
 
-If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_pattern(schema_pattern, table_pattern)))` to get all the relevant tables if. `schema_pattern` is the name of the current schema and `table_pattern` is as above.
+If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_pattern(schema_pattern, table_pattern)))` to get all the relevant tables where `table_pattern` is as above.
 
 These tables contain columns `_airbyte_ab_id`, `_airbyte_data` and `_airbyte_emited_at`. `_airbyte_data` is a JSON field that contains the data to be normalized. The macro looks at the first line of the first column and detects the list of keys in the JSON field.
 

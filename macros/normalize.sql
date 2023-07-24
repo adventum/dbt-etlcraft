@@ -1,5 +1,5 @@
-{%- macro normalize(source_table=none, included_fields=[], excluded_fields=[], 
-    defaults_dict=etlcraft_defaults(), override_target_model_name=None) -%}
+{%- macro normalize(included_fields=[], excluded_fields=[], 
+    defaults_dict=etlcraft_defaults(), schema_pattern=this.schema, source_table=none, override_target_model_name=None) -%}
 {%- if execute -%}
     {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
     {%- if model_name_parts|length < 5 or model_name_parts[0] != 'normalize' -%}
@@ -9,7 +9,6 @@
     {%- set template_name = model_name_parts[3] -%}
     {%- set stream_name_parts = model_name_parts[4:-2] if model_name_parts[-1] == 'auto' else model_name_parts[4:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
-    {%- set schema_pattern = this.schema -%}
     {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_%_' ~ template_name ~ '_' ~ stream_name -%}
 
     {%- if source_table is none -%}
