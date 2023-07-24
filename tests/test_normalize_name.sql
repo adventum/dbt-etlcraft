@@ -1,5 +1,5 @@
-{% set inputs = ["Space Name", "Прривет, Мир!"] %}
-{% set expected_outputs = ["Space_Name", "Prrivet_Mir"] %}
+{% set inputs = ["Space Name", "Прривет, Мир!", "Start 12"] %}
+{% set expected_outputs = ["Space_Name", "Prrivet_Mir", "Start_12"] %}
 
 SELECT
 {% for input, expected_output in zip(inputs, expected_outputs) -%}

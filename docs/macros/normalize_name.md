@@ -4,7 +4,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 
 1. Replace spaces with underscores.
 2. Transliterate any Cyrillic letters to their Latin equivalents.
-3. Remove any other characters.
+3. Remove non-alphanumeric symbols.
 
 
 ## Usage

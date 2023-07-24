@@ -1,6 +1,6 @@
 {% macro normalize_name(name) %}
     {% set vars = namespace(normalized_name=name) %}
-    {% set vars.normalized_name = modules.re.sub('[^A-ZА-Яa-zа-я_\\s]', '', vars.normalized_name) %}
+    {% set vars.normalized_name = modules.re.sub('[^0-9A-ZА-Яa-zа-я_\\s]', '', vars.normalized_name) %}
     {% set vars.normalized_name = modules.re.sub('\\s', '_', vars.normalized_name) %}
     {% set transliteration_map = {
         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
