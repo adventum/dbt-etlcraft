@@ -20,9 +20,8 @@
         {%- endif -%}
         {%- set source_table = dbt_utils.union_relations(relations) -%}    
     {%- endif -%}
-
-    {%- set json_keys = fromjson(run_query('SELECT ' ~ json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0])  -%}    
     
+    {%- set json_keys = fromjson(run_query('SELECT ' ~ json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0])  -%}    
     {%- set default_included_fields = [] -%}
     {%- set default_excluded_fields = [] -%}
     {%- set default_included_fields = get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'included_fields'], []) -%}
