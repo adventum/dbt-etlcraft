@@ -14,7 +14,7 @@ Suppose you have a table `orders` with a JSON column `metadata` and you want to 
 ```sql
 SELECT
   order_id,
-  {{ json_extract_string('metadata', 'customer_id') }} as customer_id,
+  {{ etlcraft.json_extract_string('metadata', 'customer_id') }} as customer_id,
   order_date
 FROM
   orders

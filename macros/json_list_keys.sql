@@ -7,5 +7,5 @@
 {%- endmacro %}
 
 {% macro json_list_keys(field_name) -%}
-    {{ adapter.dispatch('json_list_keys')(field_name) }}
+    {{ adapter.dispatch('json_list_keys', 'etlcraft')(field_name) }}
 {%- endmacro %}

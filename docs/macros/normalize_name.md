@@ -10,7 +10,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 ## Usage
 
 ```sql
-{{ normalize_name(name) }}
+{{ etlcraft.normalize_name(name) }}
 ```
 ## Arguments
 + `name` (string): The name to be normalized.
@@ -18,7 +18,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 ## Example
 ```sql
 -- Normalize a column name
-{{ normalize_name('My Column Name') }}
+{{ etlcraft.normalize_name('My Column Name') }}
 ```
 ## Output
 ```sql

@@ -15,8 +15,14 @@
     {%- if datetime_field == {} -%}
         {%- set datetime_columns = [] -%}
         {%- set columns = adapter.get_columns_in_relation(relation) -%}
-        {%- for column in columns -%}
-            {%- if column.column.lower().endswith('date') or column.column.lower().endswith('datetime') or column.data_type.lower().endswith('date') or column.data_type.lower().endswith('datetime') -%}
+        {%- for column in columns -%}            
+            {%- if  column.name not in ['_emited_at', '_normalized_at'] and (
+              column.column.lower().endswith('date') 
+              or column.column.lower().endswith('datetime')
+              or column.column.lower().endswith('timestamp') 
+              or column.data_type.lower().endswith('date') 
+              or column.data_type.lower().endswith('datetime')
+              or column.data_type.lower().endswith('timestamp')) -%}
                 {%- do datetime_columns.append(column.column) -%}
             {%- endif -%}
         {%- endfor -%}

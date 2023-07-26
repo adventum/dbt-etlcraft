@@ -44,29 +44,29 @@ Given the following dictionary:
 This example will return `'red'`:
 
 ```dbt
-{% set result = get_from_default_dict(['fruit', 'color'], my_dict) %}
+{% set result = etlcraft.get_from_default_dict(['fruit', 'color'], my_dict) %}
 ```
 
 This example will return `'Labrador'`:
 
 ```dbt
-{% set result = get_from_default_dict(['animal', 'details', 'breed'], my_dict) %}
+{% set result = etlcraft.get_from_default_dict(['animal', 'details', 'breed'], my_dict) %}
 ```
 
 This example will return `'Washington'`:
 
 ```dbt
-{% set result = get_from_default_dict(['fruit', 'details', 'origin'], my_dict) %}
+{% set result = etlcraft.get_from_default_dict(['fruit', 'details', 'origin'], my_dict) %}
 ```
 
 This example will return `'dog'`:
 
 ```dbt
-{% set result = get_from_default_dict(['animal', 'type'], my_dict) %}
+{% set result = etlcraft.get_from_default_dict(['animal', 'type'], my_dict) %}
 ```
 
 This example will return an empty string (since there is no `'taste'` key under `'fruit'`):
 
 ```dbt
-{% set result = get_from_default_dict(['fruit', 'taste'], my_dict) %}
+{% set result = etlcraft.get_from_default_dict(['fruit', 'taste'], my_dict) %}
 ```

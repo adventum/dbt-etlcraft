@@ -6,7 +6,7 @@ The `get_column_count_in_subquery` macro takes a subquery (as a string) as an ar
 
 ```sql
 {% set subquery = "SELECT col1, col2 FROM my_table" %}
-SELECT get_column_count_in_subquery(subquery) AS cnt
+SELECT etlcraft.get_column_count_in_subquery(subquery) AS cnt
 ```
 
 In the above example, if my_table has columns `col1` and `col2`, then `column_count` will be set to `2`.

@@ -13,7 +13,7 @@ Suppose you have a table `orders` with a JSON column `metadata` and you want to 
 ```sql
 SELECT
   order_id,
-  {{ json_list_keys('metadata') }} as json_keys,
+  {{ etlcraft.json_list_keys('metadata') }} as json_keys,
   order_date
 FROM
   orders
