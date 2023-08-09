@@ -1,10 +1,10 @@
 {% macro find_incremental_datetime_field(relation, defaults_dict=etlcraft_defaults(), override_column_list=None) %}
     {%- set model_name_parts = relation.split('_') -%}
-    {%- if model_name_parts|length < (6 if model_name_parts[-1] == 'auto' else 4) or model_name_parts[0] != 'normalize' -%}
-        {{ exceptions.raise_compiler_error('Relation name "' ~ relation ~ '" does not follow the expected pattern: "{stagename}_{sourcetype}_{templatename}_{streamname}(__auto)?", where suffix "__auto" is optional') }}
+    {%- if model_name_parts|length <  4 or model_name_parts[0] != 'normalize' -%}
+        {{ exceptions.raise_compiler_error('Relation name "' ~ relation ~ '" does not follow the expected pattern: "{stagename}_{sourcetype}_{templatename}_{streamname}"') }}
     {%- endif -%}
     {%- set source_type = model_name_parts[1] -%}
-    {%- set stream_name_parts = model_name_parts[3:-1] if model_name_parts[-1] == 'auto' else model_name_parts[3:] -%}
+    {%- set stream_name_parts = model_name_parts[3:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
     
     {%- set datetime_field = get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'streams', stream_name, 'incremental_datetime_field']) -%}

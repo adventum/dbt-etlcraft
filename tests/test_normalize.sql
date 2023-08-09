@@ -19,7 +19,7 @@ sourcetypes:
         - test field 6
 {% endset %}
 {% set normalized_query = normalize(source_table=source_query, 
-override_target_model_name='normalize_alytics_11222_testtemplate_project_goals__auto') %}
+override_target_model_name='normalize_alytics_11222_testtemplate_project_goals') %}
 
 SELECT 'Invalid row count' 
 WHERE (SELECT COUNT(*) FROM ({{ normalized_query }})) != 2
@@ -29,15 +29,15 @@ WHERE {{ get_column_count_in_subquery(normalized_query) }} != 2 + 3
 
 UNION ALL SELECT 'Invalid column count - excluded fields'
 WHERE {{ get_column_count_in_subquery(normalize(source_table=source_query,
-    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals__auto', 
+    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals', 
     excluded_fields=['x', 'z'])) }} != 2 + 3 - 1
 
 UNION ALL SELECT 'Invalid column count - included fields'
 WHERE {{ get_column_count_in_subquery(normalize(source_table=source_query,
-    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals__auto', 
+    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals', 
     included_fields=['x', 'z'])) }} != 2 + 3 + 1
 
 UNION ALL SELECT 'Invalid column count - defaults dict'
 WHERE {{ get_column_count_in_subquery(normalize(source_table=source_query,
-    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals__auto', 
+    override_target_model_name='normalize_alytics_11222_testtemplate_project_goals', 
     defaults_dict=fromyaml(my_dict))) }} != 2 + 3 + 6 - 1   

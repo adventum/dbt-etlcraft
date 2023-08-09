@@ -3,11 +3,11 @@
 {%- if execute -%}
     {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
     {%- if model_name_parts|length < 5 or model_name_parts[0] != 'normalize' -%}
-        {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "normalize_{sourcetype}_{templatename}_{streamname}(__auto)?", where suffix is "auto" is optional') }}
+        {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "normalize_{sourcetype}_{templatename}_{streamname}"') }}
     {%- endif -%}
     {%- set source_type = model_name_parts[1] -%}
     {%- set template_name = model_name_parts[3] -%}
-    {%- set stream_name_parts = model_name_parts[4:-2] if model_name_parts[-1] == 'auto' else model_name_parts[4:] -%}
+    {%- set stream_name_parts = model_name_parts[4:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
     {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_%_' ~ template_name ~ '_' ~ stream_name -%}
 
