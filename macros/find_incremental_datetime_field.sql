@@ -16,7 +16,7 @@
         {%- set datetime_columns = [] -%}
         {%- set columns = adapter.get_columns_in_relation(relation) if not override_column_list else override_column_list -%}
         {%- for column in columns -%}           
-            {%- if  column.name not in ['_emited_at', '_normalized_at'] and (
+            {%- if  column.name not in ['_emitted_at', '_normalized_at'] and (
               column.name.lower().endswith('date') 
               or column.name.lower().endswith('datetime')
               or column.name.lower().endswith('timestamp') 

@@ -11,13 +11,13 @@ The `normalize` macro is designed to normalize tables that are downloaded by Air
 
 ## Macro behavior
 
-The behavior of the `normalize` macro depends on the name of the model. The model name must follow the pattern `normalize_{sourcetypename}_{templatename}_{streamname}`. The macro extracts `sourcetypename`, `templatename`, and `streamname`, and creates a union of the tables `_airbyte_{sourcetypename}_%_{templatename}_{streamname}`. 
+The behavior of the `normalize` macro depends on the name of the model. The model name must follow the pattern `normalize_{sourcetypename}_{templatename}_{streamname}`. The macro extracts `sourcetypename`, `templatename`, and `streamname`, and creates a union of the tables `_airbyte_{sourcetypename}_{templatename}_%_{streamname}`. 
 
 To facilitate testing, an argument called `override_target_model_name` is provided. When this argument is used, the macro behaves as if it were in a model with a name equal to the value of `override_target_model_name`.
 
 If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_pattern(schema_pattern, table_pattern)))` to get all the relevant tables where `table_pattern` is as above.
 
-These tables contain columns `_airbyte_ab_id`, `_airbyte_data` and `_airbyte_emited_at`. `_airbyte_data` is a JSON field that contains the data to be normalized. The macro looks at the first line of the first column and detects the list of keys in the JSON field.
+These tables contain columns `_airbyte_ab_id`, `_airbyte_data` and `_airbyte_emitted_at`. `_airbyte_data` is a JSON field that contains the data to be normalized. The macro looks at the first line of the first column and detects the list of keys in the JSON field.
 
 Then the macro iterates over that list and for each key, adds a line to a column list of the SELECT query to be returned. The generated line uses the macro `json_extract_string(_airbyte_emitted_at, {key_name})` to get the corresponding key from the JSON field. It also contains an AS expression, that names the column as the `{key_name}`, but after transformation with the macro `normalize_name(key_name)` that removes spaces, transliterates Cyrillic symbols, etc.
 

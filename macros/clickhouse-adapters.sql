@@ -40,8 +40,7 @@
     {%- endif -%}
 {% endmacro %}
 
-{% macro default__get_relations_by_pattern(schema_pattern, table_pattern, exclude='', database=target.database) %}
-
+{% macro clickhouse__get_relations_by_pattern(schema_pattern, table_pattern, exclude='', database=target.database) %}
     {%- call statement('get_tables', fetch_result=True) %}
 
       {{ dbt_utils.get_tables_by_pattern_sql(schema_pattern, table_pattern, exclude, database) }}

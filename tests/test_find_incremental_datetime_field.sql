@@ -1,13 +1,13 @@
 {% set table_name = "normalize_testsourcetypename_testtemplatename_teststreamname" %}
 {% set column_list1 = [api.Column.create('id', 'UInt32'), api.Column.create('name', 'String'),
     api.Column.create('created_at', 'DateTime'), 
-    api.Column.create('_emited_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
+    api.Column.create('_emitted_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
 {% set column_list2 = [api.Column.create('id', 'UInt32'), api.Column.create('name', 'String'), 
     api.Column.create('created_at', 'DateTime'), api.Column.create('updated_at', 'DateTime'),
-    api.Column.create('_emited_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
+    api.Column.create('_emitted_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
 {% set column_list3 = [api.Column.create('id', 'UInt32'), api.Column.create('name', 'String'), 
     api.Column.create('MyDatetime', 'String'),
-    api.Column.create('_emited_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
+    api.Column.create('_emitted_at', 'DateTime'), api.Column.create('_normalized_at', 'DateTime')] %}
 
 SELECT
 'Error: Incorrect datetime field identified without dict by type'
