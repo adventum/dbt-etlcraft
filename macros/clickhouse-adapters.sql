@@ -27,7 +27,7 @@
         {%- set tbl_relations = [] -%}
         {%- for row in table_list['table'] -%}
             {%- set tbl_relation = api.Relation.create(
-                database=None,
+                database=none,
                 schema=row.table_schema,
                 identifier=row.table_name,
                 type=row.table_type
@@ -53,7 +53,7 @@
         {%- set tbl_relations = [] -%}
         {%- for row in table_list['table'] -%}
             {%- set tbl_relation = api.Relation.create(
-                database=None,
+                database=none,
                 schema=row.table_schema,
                 identifier=row.table_name,
                 type=row.table_type
