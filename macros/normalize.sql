@@ -51,8 +51,8 @@
 
     SELECT
         {{ column_list | join(', \n') }},
-        _dbt_source_relation AS __table_name,        
-        _airbyte_emitted_at AS __emitted_at,
+        toLowCardinality(_dbt_source_relation) AS __table_name,        
+        toDateTime(substring(_airbyte_emitted_at, 1, 19)) AS __emitted_at,
         NOW() as __normalized_at
     FROM {{ source_table }}
 {%- endif -%}
