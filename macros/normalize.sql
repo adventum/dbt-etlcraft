@@ -52,7 +52,7 @@
     SELECT
         {{ column_list | join(', \n') }},
         toLowCardinality(_dbt_source_relation) AS __table_name,        
-        toDateTime64(_airbyte_emitted_at) AS __emitted_at,
+        parseDateTime32BestEffort(_airbyte_emitted_at) AS __emitted_at,
         NOW() as __normalized_at
     FROM {{ source_table }}
 {%- endif -%}
