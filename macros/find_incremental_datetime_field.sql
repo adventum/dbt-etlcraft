@@ -18,14 +18,15 @@
         {%- for column in column_list -%}            
             {%- if  column.lower().endswith('date') 
               or column.lower().endswith('datetime')
-              or column.lower().endswith('timestamp') -%}
+              or column.lower().endswith('timestamp')
+              or column.lower().endswith('_time') -%}
                 {%- do datetime_columns.append(column) -%}
             {%- endif -%}
         {%- endfor -%}
         {%- if datetime_columns|length == 0 and not do_not_throw -%}
-            {{ exceptions.raise_compiler_error('No columns with names ending in "date" or "datetime" were found in the relation "' ~ relation.identifier ~ '". Please ensure that your source data contains such a column for incremental processing.') }}
+            {{ exceptions.raise_compiler_error('No columns with names ending in "date", "datetime", "timestamp", "_time" were found in the relation "' ~ relation ~ '". Please ensure that your source data contains such a column for incremental processing.') }}
         {%- elif datetime_columns|length > 1 and not do_not_throw -%}
-            {{ exceptions.raise_compiler_error('Multiple columns with names  ending in "date" or "datetime" were found in the relation "' ~ relation.identifier ~ '". Please ensure that only one such column is present for incremental processing, or specify the correct one in the defaults dictionary.') }}
+            {{ exceptions.raise_compiler_error('Multiple columns with names  ending in "date", "datetime", "timestamp", "_time" were found in the relation "' ~ relation ~ '". Please ensure that only one such column is present for incremental processing, or specify the correct one in the defaults dictionary.') }}
         {%- else -%}
             {%- set datetime_field = datetime_columns[0] -%}
         {%- endif -%}
