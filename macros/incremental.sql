@@ -9,7 +9,7 @@
 
 {# Derive the normalized relation's name from the incremental model's name #}
 {% set model_name_parts = model_name.split('_') %}
-{% set normalized_relation_name = 'normalize_' + model_name_parts[1] + '_' + model_name_parts[2] + '_' + model_name_parts[3] %}
+{% set normalized_relation_name = 'normalize_' + model_name_parts[1] + '_' + model_name_parts[2] + '_' + '_'.join(model_name_parts[3:]) %}
 
 {# Determine the incremental datetime field (IDF) if not provided #}
 {% if disable_incremental %}
