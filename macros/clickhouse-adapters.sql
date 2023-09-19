@@ -1,12 +1,19 @@
-{% macro clickhouse__get_tables_by_pattern_sql(schema_pattern, table_pattern, exclude='', database=target.database) %}
+{% macro get_relations_by_re(schema_pattern, table_pattern, database=target.database) -%}
+  {{ return(adapter.dispatch('get_relations_by_re', 'etlcraft')(schema_pattern, table_pattern, database)) }}
+{%- endmacro %}
+
+{% macro get_tables_by_re_sql(schema_pattern, table_pattern, database=target.database) -%}
+  {{ adapter.dispatch('get_tables_by_re_sql', 'etlcraft')(schema_pattern, table_pattern, database) }}
+{%- endmacro %}
+
+{% macro clickhouse__get_tables_by_re_sql(schema_pattern, table_pattern, database=target.database) %}
         select distinct
             table_schema as {{ adapter.quote("table_schema") }},
             table_name as {{ adapter.quote("table_name") }},
             {{ dbt_utils.get_table_types_sql() }}
         from information_schema.tables
-        where table_schema ilike '{{ schema_pattern }}'
-        and table_name ilike '{{ table_pattern }}'
-        and table_name not ilike '{{ exclude }}'
+        where match(table_schema, '{{ schema_pattern }}')
+        and match(table_name, '{{ table_pattern }}')        
 {% endmacro %}
 
 {% macro clickhouse__get_table_types_sql() %}
@@ -36,19 +43,18 @@
         {%- endfor -%}
         {{ return(tbl_relations) }}
     {%- else -%}
-        {{ return([]) }}
+        {{ return(none) }}
     {%- endif -%}
 {% endmacro %}
 
-{% macro clickhouse__get_relations_by_pattern(schema_pattern, table_pattern, exclude='', database=target.database) %}
+{% macro clickhouse__get_relations_by_re(schema_pattern, table_pattern, database=target.database) %}
     {%- call statement('get_tables', fetch_result=True) %}
 
-      {{ dbt_utils.get_tables_by_pattern_sql(schema_pattern, table_pattern, exclude, database) }}
+      {{ etlcraft.get_tables_by_re_sql(schema_pattern, table_pattern, database) }}
 
     {%- endcall -%}
 
     {%- set table_list = load_result('get_tables') -%}
-
     {%- if table_list and table_list['table'] -%}
         {%- set tbl_relations = [] -%}
         {%- for row in table_list['table'] -%}
@@ -60,10 +66,8 @@
             ) -%}
             {%- do tbl_relations.append(tbl_relation) -%}
         {%- endfor -%}
-
         {{ return(tbl_relations) }}
     {%- else -%}
-        {{ return([]) }}
+        {{ return(none) }}
     {%- endif -%}
-
 {% endmacro %}

@@ -15,7 +15,7 @@ The behavior of the `normalize` macro depends on the name of the model. The mode
 
 To facilitate testing, an argument called `override_target_model_name` is provided. When this argument is used, the macro behaves as if it were in a model with a name equal to the value of `override_target_model_name`.
 
-If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_pattern(schema_pattern, table_pattern)))` to get all the relevant tables where `table_pattern` is as above.
+If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_re(schema_pattern, table_pattern)))` to get all the relevant tables where `table_pattern` is as above.
 
 These tables contain columns `_airbyte_ab_id`, `_airbyte_data` and `_airbyte_emitted_at`. `_airbyte_data` is a JSON field that contains the data to be normalized. The macro looks at the first line of the first column and detects the list of keys in the JSON field.
 

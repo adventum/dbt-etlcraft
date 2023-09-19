@@ -10,15 +10,15 @@
     {%- set template_name = model_name_parts[2] -%}
     {%- set stream_name_parts = model_name_parts[3:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
-    {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_' ~ template_name ~ '_%_' ~ stream_name -%}
+    {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_' ~ template_name ~ '_.*_' ~ stream_name -%}
 
     {%- if source_table is none -%}
-        {%- set relations = dbt_utils.get_relations_by_pattern(schema_pattern=target.schema, 
-                                                              table_pattern=table_pattern) -%}
-        {%- if relations|length < 1 -%}
+        {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
+                                                              table_pattern=table_pattern) -%}                
+        {%- if not relations -%}
             {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". Please ensure that your source data follows the expected structure.') }}
         {%- endif -%}
-        {%- set source_table = dbt_utils.union_relations(relations) -%}    
+        {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}    
     {%- endif -%}
     
     {%- set json_keys = fromjson(run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0])  -%}    
