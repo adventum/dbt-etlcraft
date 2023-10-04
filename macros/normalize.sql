@@ -10,7 +10,7 @@
     {%- set template_name = model_name_parts[2] -%}
     {%- set stream_name_parts = model_name_parts[3:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
-    {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_' ~ template_name ~ '_.*_' ~ stream_name -%}
+    {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name -%}
 
     {%- if source_table is none -%}
         {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
