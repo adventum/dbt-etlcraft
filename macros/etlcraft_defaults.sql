@@ -6,6 +6,11 @@ sourcetypes:
     - test_field
   appsflyer:
     incremental_datetime_field: event_time
+    streams:
+      installs:
+        incremental_datetime_field: install_time
+      post_attribution_installs:
+        incremental_datetime_field: install_time
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
 {% endmacro %}
