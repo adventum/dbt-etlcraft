@@ -10,7 +10,7 @@ sourcetypes:
       installs:
         incremental_datetime_field: install_time
       post_attribution_installs:
-        incremental_datetime_field: install_time
+        incremental_datetime_field: install_time 
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
 {% endmacro %}
