@@ -18,7 +18,7 @@
     FROM {{ ref(source_table) }}
 {% if templates is not none or account is not none %}
     WHERE 
-    {% if templates is none and account is none %}
+    {% if templates is not none and account is not none %}
         ({{ etlcraft.like_query_cycle(templates,defaults_field) }})
         AND
         ({{ etlcraft.like_query_cycle(account,defaults_field) }})
