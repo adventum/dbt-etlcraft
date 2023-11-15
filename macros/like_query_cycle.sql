@@ -7,6 +7,5 @@
         {% else %}
             {{ value }} like '%_{{ element }}_%' 
         {% endif %}
-    {% endfor 
-    %}
+    {% endfor %}
 {% endmacro %}
