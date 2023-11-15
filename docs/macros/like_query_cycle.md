@@ -1,3 +1,34 @@
+This macro likequerycycle allows you to create SQL queries using the LIKE operator to search for substrings in the specified value.
+
+## Syntax
+
+```sql
+{% macro likequerycycle(list, value) %}
+    {% for element in list %}
+        {% if not loop.last %}
+            {{ value }} like '%{{ element }}%' OR
+        {% elif loop.first %}
+             {{ value }} like '%{{ element }}%'
+        {% else %}
+            {{ value }} like '%{{ element }}%'
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+```
+
+## Parameters
+- `list`: List of values to search for
+- `value`: Value in which the substring search will be performed
+## Example usage
+
+```sql
+{{ likequerycycle('apple', 'banana', 'cherry', 'fruit') }}
+```
+
+Result:
+fruit like '%apple%' OR fruit like '%banana%' OR fruit like '%cherry%'
+
+Please note that this documentation is preliminary and may be supplemented or changed in the future.
 
 **Перевод**
  
