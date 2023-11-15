@@ -4,10 +4,10 @@ The dataset macro is used to create an SQL query that retrieves data from the ma
 
 ### Parameters
 
-- table_prefixes (optional): A string or list of table prefixes to filter the data by.
+- `table_prefixes` (optional): A string or list of table prefixes to filter the data by.
 
 ### Usage example
-
+```sql
 {% macro dataset( table_prefixes = none) %}
 {{
     config(
@@ -23,6 +23,7 @@ The dataset macro is used to create an SQL query that retrieves data from the ma
         ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
     {% endif %}
 {% endmacro %}
+```
 
 This macro creates an SQL query that retrieves all columns from the master table. If table prefixes are specified in the table_prefixes parameter, the data will be filtered by these prefixes.
 

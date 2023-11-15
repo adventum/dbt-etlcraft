@@ -1,8 +1,12 @@
 ## Documentation for the check_table_exists macro
+
+```python
 {% macro check_table_exists(source_table = 'master',database = 'marts') -%}
   {{ adapter.dispatch('check_table_exists', 'etlcraft')(source_table,database) }}
 {%- endmacro %}
+```
 
+```python
 {% macro clickhouse__check_table_exists(source_table,database) -%}
     {% set sql_statement %}
         SELECT 1 FROM system.tables WHERE database = '{{database}}' AND name = '{{source_table}}'
@@ -18,17 +22,20 @@
         {{ return(0) }}
     {% endif %}
 {%- endmacro %}
+```
 
 This check_table_exists macro allows you to check the existence of a table in a database. By default, it takes two arguments: source_table (table name) and database (database name).
 
 ### Example usage
 
+```python
 {% set table_exists = check_table_exists('my_table', 'my_database') %}
 {% if table_exists %}
     The table exists.
 {% else %}
     The table does not exist.
 {% endif %}
+```
 
 ### Macro parameters
 
