@@ -1,7 +1,6 @@
-{% macro join_mobileinstall(source_types, streams, templates, params = none) %}
+{% macro join_mobileinstall(streams, templates, params = none) %}
 
 SELECT 
-    x.__datetime AS install_time
     ,x.*EXCEPT(__emitted_at, __normalized_at)
 {% if "post_attribution_installs" in streams %} 
     ,y.appsflyer_id = x.appsflyer_id as is_fraud

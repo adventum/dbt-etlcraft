@@ -1,8 +1,6 @@
-{% macro join_mobileevents(source_types, streams, templates, params = none) %}
+{% macro join_mobileevents(streams, templates, params = none) %}
 
 SELECT 
-
-    x.__datetime AS event_time
     ,x.*EXCEPT(__emitted_at, __normalized_at)
 {% if "post_attribution_in_app_events" in streams %} 
     ,y.appsflyer_id = x.appsflyer_id as is_fraud
