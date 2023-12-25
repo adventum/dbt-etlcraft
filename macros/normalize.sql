@@ -11,7 +11,6 @@
     {%- set stream_name_parts = model_name_parts[3:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
     {%- set table_pattern = '_airbyte_raw_' ~ source_type ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name -%}
-
     {%- if source_table is none -%}
         {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
                                                               table_pattern=table_pattern) -%}                
@@ -20,8 +19,21 @@
         {%- endif -%}
         {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}    
     {%- endif -%}
-    
-    {%- set json_keys = fromjson(run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0])  -%}    
+    {% if run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0]|length > 0 %}
+        {%- set json_keys = fromjson(run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' LIMIT 1').columns[0].values()[0]) -%}
+    {% else %}    
+        {% set query %}
+        SELECT 
+            column_name
+        FROM information_schema.columns 
+        WHERE 
+            table_catalog = '{{this.schema}}'
+            and table_name = 'incremental_{{source_type}}_{{template_name}}_{{stream_name}}'
+            and not match(column_name,'^__*')
+        ORDER BY ordinal_position
+        {% endset %}
+        {%- set json_keys = run_query(query).columns[0].values() -%}
+    {%- endif -%} 
     {% if incremental_datetime_field is none %}
         {% set incremental_datetime_field = etlcraft.find_incremental_datetime_field(json_keys, override_target_model_name or this.name, defaults_dict=defaults_dict) or '' %}
     {% endif %}
