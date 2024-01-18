@@ -1,9 +1,15 @@
-{% macro get_min_max_date(stage,sourcetype_name,template_name) %}
+{% macro get_min_max_date(stage,sourcetype_name,template_name,override_target_model_name=none) %}
+
+{% set override_target_model_name = override_target_model_name %}
 
 {% set table_list_query %}
     SELECT 
         table 
+    {% if override_target_model_name is none %}
     FROM system.columns 
+    {% else %}
+     FROM ({{override_target_model_name}})
+    {% endif %}
     WHERE 
         database ='{{this.schema}}' AND 
         table LIKE '{{stage}}_{{sourcetype_name}}_{{template_name}}%' AND 
@@ -26,7 +32,12 @@ FROM (
         max(toDate(__datetime)) as max_date, 
         min(toDate(__datetime)) as min_date,
         {{should_full_refresh()}} as should_full_refresh
+    {% if override_target_model_name is none %}
     FROM {{this.schema}}.{{table}}
+    {% else %}
+     FROM ({{override_target_model_name}})
+    {% endif %}
+    
     WHERE toDate(__datetime) > '1972-01-01'
     {% if not loop.last %}
         UNION ALL
