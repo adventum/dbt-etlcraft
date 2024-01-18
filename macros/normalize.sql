@@ -20,7 +20,7 @@
         {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}    
     {%- endif -%}
     {% if run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ '  LIMIT 1').columns[0]|length > 0 %}
-        {%- set json_keys = fromjson(run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' JSONLength(JSONExtractRaw(_airbyte_data)) desc LIMIT 1').columns[0].values()[0]) -%}
+        {%- set json_keys = fromjson(run_query('SELECT ' ~ etlcraft.json_list_keys('_airbyte_data') ~ ' FROM ' ~ source_table ~ ' ORDER BY JSONLength(JSONExtractRaw(_airbyte_data)) desc LIMIT 1').columns[0].values()[0]) -%}
     {% else %}    
         {% set query %}
         SELECT 
