@@ -107,7 +107,7 @@
     SELECT
         {{ column_list | join(', \n') }},
         toLowCardinality(_dbt_source_relation) AS __table_name,  
-        {#- варианты парсинга дат:  parseDateTimeBestEffort, toDateTime32, toDateTimeOrDefault, toDate(splitByWhitespace(dt)[1]) -#}
+        {#- варианты парсинга дат:  parseDateTimeBestEffort,toDateTime32,toDateTimeOrDefault,toDate(splitByWhitespace(dt)[1]) -#}
         toDateTime32(substring(_airbyte_emitted_at, 1, 19)) AS __emitted_at, 
         NOW() as __normalized_at
     FROM {{ source_table }}
