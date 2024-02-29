@@ -1,4 +1,4 @@
-{% macro get_relations_dict(stage,sourcetype_name,template_name,override_target_model_name=none) %}
+{% macro get_relations_dict(stage,sourcetype_name,pipeline_name,template_name,stream_name=none,override_target_model_name=none) %}
 
 {% set get_relations_query %}
     SELECT 
@@ -9,7 +9,11 @@
     {% else %}
     FROM ({{override_target_model_name}})
     {% endif %}
-    WHERE database = '{{this.shema}}' AND table LIKE '{{stage}}_{{sourcetype_name}}_{{template_name}}%'
+    {% if stream_name is none %}
+    WHERE database = '{{this.shema}}' AND table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_{{template_name}}%'
+    {% else %}
+    WHERE database = '{{this.shema}}' AND table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_{{template_name}}_{{stream_name}}%'
+    {% endif %}
     GROUP BY table
 
 {% endset %}

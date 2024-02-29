@@ -1,4 +1,4 @@
-{% macro get_min_max_date(stage,sourcetype_name,template_name,override_target_model_name=none) %}
+{% macro get_min_max_date(stage,sourcetype_name,pipeline_name,template_name,stream_name=none,override_target_model_name=none) %}
 
 {% set override_target_model_name = override_target_model_name %}
 
@@ -10,10 +10,18 @@
     {% else %}
      FROM ({{override_target_model_name}})
     {% endif %}
+    {% if stream_name is none %}
     WHERE 
         database ='{{this.schema}}' AND 
-        table LIKE '{{stage}}_{{sourcetype_name}}_{{template_name}}%' AND 
-        name='__datetime'
+        table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_{{template_name}}%' AND 
+        name='__date'
+    {% else %}
+    WHERE 
+        database ='{{this.schema}}' AND 
+        table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_{{template_name}}_{{stream_name}}%' AND 
+        name='__date'
+    {% endif %}
+
 {% endset %}
 
 {% set results = run_query(table_list_query) %}
@@ -29,8 +37,8 @@ FROM (
 {% for table in results_list %}
     SELECT 
         '{{table}}' as table_name,
-        max(toDate(__datetime)) as max_date, 
-        min(toDate(__datetime)) as min_date,
+        max(toDate(__date)) as max_date, 
+        min(toDate(__date)) as min_date,
         {{should_full_refresh()}} as should_full_refresh
     {% if override_target_model_name is none %}
     FROM {{this.schema}}.{{table}}
@@ -38,7 +46,7 @@ FROM (
      FROM ({{override_target_model_name}})
     {% endif %}
     
-    WHERE toDate(__datetime) > '1972-01-01'
+    WHERE toDate(__date) > '1972-01-01'
     {% if not loop.last %}
         UNION ALL
     {% endif %}

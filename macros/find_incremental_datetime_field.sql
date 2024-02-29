@@ -1,16 +1,17 @@
 {% macro find_incremental_datetime_field(column_list, relation, defaults_dict=etlcraft.etlcraft_defaults(), do_not_throw=False) %}        
     {%- set model_name_parts = relation.split('_') -%}
     {%- if model_name_parts|length <  4 or model_name_parts[0] != 'normalize' -%}
-        {{ exceptions.raise_compiler_error('Relation identifier "' ~ relation.identifier ~ '" does not follow the expected pattern: "{normalize}_{sourcetype}_{templatename}_{streamname}"') }}
+        {{ exceptions.raise_compiler_error('Relation identifier "' ~ relation.identifier ~ '" does not follow the expected pattern: "{normalize}_{sourcetype_name}_{pipeline_name}_{template_name}_{stream_name}"') }}
     {%- endif -%}
-    {%- set source_type = model_name_parts[1] -%}
-    {%- set template_name = model_name_parts[2] -%}
-    {%- set stream_name_parts = model_name_parts[3:] -%}
+    {%- set sourcetype_name = model_name_parts[1] -%}
+    {%- set pipeline_name = model_name_parts[2] -%}
+    {%- set template_name = model_name_parts[3] -%}
+    {%- set stream_name_parts = model_name_parts[4:] -%}
     {%- set stream_name = '_'.join(stream_name_parts) -%}
         
-    {%- set datetime_field = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'streams', stream_name, 'incremental_datetime_field']) -%}
+    {%- set datetime_field = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'streams', stream_name, 'incremental_datetime_field']) -%}
     {%- if datetime_field == {} -%}
-        {%- set datetime_field = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', source_type, 'incremental_datetime_field']) -%}
+        {%- set datetime_field = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'incremental_datetime_field']) -%}
     {%- endif -%}
     
     {%- if datetime_field == {} -%}

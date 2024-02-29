@@ -3,7 +3,7 @@
 {{        
     config(
         materialized='table',
-        order_by='toDate(__datetime)'
+        order_by='toDate(__date)'
         )   
      }}
 
