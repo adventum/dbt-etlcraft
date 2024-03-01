@@ -10,7 +10,8 @@
     ) -%}
 
 SELECT
-    toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, -- было appSessionDateTime
+    toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
+    toDateTime(session_start_datetime) AS event_datetime, 
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     --session_id AS appSessionId, --таких данных сейчас нет

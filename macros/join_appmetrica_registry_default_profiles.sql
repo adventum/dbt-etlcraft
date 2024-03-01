@@ -1,4 +1,4 @@
-{%- macro join_appmetrica_events_default_profiles(
+{%- macro join_appmetrica_registry_default_profiles(
     sourcetype_name,
     pipeline_name,
     template_name,
@@ -16,6 +16,6 @@ SELECT
     city_code AS cityCode,
     __emitted_at
     
-FROM {{ ref('incremental_appmetrica_events_default_profiles') }}
+FROM {{ ref('incremental_appmetrica_registry_default_profiles') }}
 
 {% endmacro %}
