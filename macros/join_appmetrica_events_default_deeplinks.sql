@@ -10,7 +10,8 @@
     ) -%}
 
 SELECT
-    toDateTime(__date) AS __date, -- было deeplinkDateTime
+    toDateTime(__date) AS __date, 
+    toDateTime(event_datetime) AS event_datetime,
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     appmetrica_device_id AS appmetricaDeviceId,

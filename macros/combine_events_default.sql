@@ -7,9 +7,64 @@
     params
     ) -%}
 
-SELECT  * FROM {{ ref('join_appmetrica_events_default_events') }}
+SELECT  
+__date,
+event_datetime,
+accountName,
+__table_name,
+appmetricaDeviceId,
+mobileAdsId,
+crmUserId,
+transactionId,
+promoCode,
+osName,
+cityName,
+addToCartSessions,
+cartViewSessions,
+checkoutSessions,
+webSalesSessions,
+sales,
+amountSales,
+registrationCardSessions,
+registrationButtonClick,
+linkingCardToPhoneNumberSessions,
+registrationCashbackSessions,
+instantDiscountActivationSessions,
+couponActivationSessions,
+participationInLotterySessions,
+screenView,
+__emitted_at
+FROM {{ ref('join_appmetrica_events_default_events') }}
 UNION ALL
-SELECT  * FROM {{ ref('join_appmetrica_events_default_screen_view') }}
+
+SELECT  
+__date,
+event_datetime,
+accountName,
+__table_name,
+appmetricaDeviceId,
+mobileAdsId,
+crmUserId,
+transactionId,
+promoCode,
+osName,
+cityName,
+addToCartSessions,
+cartViewSessions,
+checkoutSessions,
+webSalesSessions,
+sales,
+amountSales,
+registrationCardSessions,
+registrationButtonClick,
+linkingCardToPhoneNumberSessions,
+registrationCashbackSessions,
+instantDiscountActivationSessions,
+couponActivationSessions,
+participationInLotterySessions,
+screenView,
+__emitted_at
+FROM {{ ref('join_appmetrica_events_default_screen_view') }}
 
 
 {% endmacro %}

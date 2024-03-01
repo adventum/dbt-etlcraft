@@ -35,31 +35,8 @@
 
 {#- если не писать варианты, то делать так 
 
-    SELECT 
-    __date,
-    toLowCardinality(reportType) AS reportType,  
-    toLowCardinality(accountName) AS accountName,
-    toLowCardinality(__table_name) AS __table_name,
-    toLowCardinality(adSourceDirty) AS adSourceDirty,
-    productName,
-    adCampaignName,
-    adGroupName,
-    adId,
-    adPhraseId,
-    utmSource,
-    utmMedium,
-    utmCampaign,
-    utmTerm,
-    utmContent,
-    utmHash,
-    adTitle1,
-    adTitle2,
-    adText,
-    adPhraseName,
-    adCost,
-    impressions,
-    clicks,
-    __emitted_at
+    SELECT * EXCEPT(__table_name),
+    toLowCardinality(__table_name) AS __table_name
     FROM {{ source_table }} -#}
     
 
@@ -70,4 +47,3 @@
 
 {%- endif -%}
 {% endmacro %}
-

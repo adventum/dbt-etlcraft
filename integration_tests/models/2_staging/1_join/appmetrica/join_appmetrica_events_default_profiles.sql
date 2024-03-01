@@ -1,1 +1,0 @@
-{{ etlcraft.join(disable_incremental=true, override_target_model_name='join_appmetrica_events_default', stream_name='profiles') }}

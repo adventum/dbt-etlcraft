@@ -10,7 +10,8 @@
     ) -%}
 
 SELECT
-    toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, --было eventDateTime
+    toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, 
+    toDateTime(event_datetime) AS event_datetime, 
     accountName,
     toLowCardinality(__table_name) AS __table_name,
     appmetricaDeviceId,

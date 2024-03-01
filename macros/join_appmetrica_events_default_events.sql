@@ -24,13 +24,15 @@ SELECT
     os_name AS osName,
     profile_id AS crmUserId,
     JSONExtractString(event_json, 'coupon') AS promoCode,    
-    toDateTime(__date) AS __date, -- было eventDateTime
+    toDate(__date) AS __date, 
+    toDateTime(event_datetime) AS event_datetime, 
     0 AS screen_view
 FROM {{ ref('incremental_appmetrica_events_default_events') }}
 )
 , join_appmetrica_events_prepare AS (
 SELECT 
     __date,
+    event_datetime,
     toLowCardinality(accountName) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     appmetricaDeviceId,
