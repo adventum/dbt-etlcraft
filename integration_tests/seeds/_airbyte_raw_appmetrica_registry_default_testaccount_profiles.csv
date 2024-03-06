@@ -1,0 +1,4 @@
+"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"0000342d-10e9-4c96-ba78-1dba4b892ddf","{""profile_id"":""111"",""appmetrica_device_id"":""1234567890111"",""mp_card_number"":""12345111"",""city_code"":""moscow"",""__productName"":"""",""__clientName"":""""}","2024-03-04 02:59:59.812 +0000"
+"00009408-80f6-44c4-a8fb-01e6306e3eaf","{""profile_id"":""222"",""appmetrica_device_id"":""1234567890222"",""mp_card_number"":""12345222"",""city_code"":""saint petersburg"",""__productName"":"""",""__clientName"":""""}","2024-03-04 03:00:11.222 +0000"
+"00011921-14ce-421c-8e90-5c5c3ca0fb86","{""profile_id"":""333"",""appmetrica_device_id"":""1234567890333"",""mp_card_number"":""12345333"",""city_code"":""moscow"",""__productName"":"""",""__clientName"":""""}","2024-03-04 02:56:51.620 +0000"
