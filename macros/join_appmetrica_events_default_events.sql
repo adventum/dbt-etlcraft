@@ -32,9 +32,9 @@ FROM {{ ref('incremental_appmetrica_events_default_events') }}
 , join_appmetrica_events_prepare AS (
 SELECT 
     __date,
+    toLowCardinality(__table_name) AS __table_name,
     event_datetime,
     toLowCardinality(accountName) AS accountName,
-    toLowCardinality(__table_name) AS __table_name,
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId,    

@@ -11,9 +11,9 @@
 
 SELECT
     toDateTime(__date) AS __date, 
+    toLowCardinality(__table_name) AS __table_name,
     toDateTime(event_datetime) AS event_datetime,
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
-    toLowCardinality(__table_name) AS __table_name,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
