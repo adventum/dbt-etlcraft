@@ -11,9 +11,9 @@
 
 SELECT
     toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, 
+    toLowCardinality(__table_name) AS __table_name,
     toDateTime(event_datetime) AS event_datetime, 
     accountName,
-    toLowCardinality(__table_name) AS __table_name,
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId,    
