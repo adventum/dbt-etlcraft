@@ -1,13 +1,19 @@
-{%- macro join_appmetrica_events_default_install(
+{%- macro join_appmetrica_events_install(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
     date_to,
     params
     ) -%}
+
+{%- set sourcetype_name = 'appmetrica' -%}
+{%- set pipeline_name = 'events' -%}
+{%- set stream_name = 'install' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
 
 SELECT
     toDateTime(__date) AS __date, 
@@ -31,7 +37,7 @@ SELECT
     is_reinstallation = 'false' AS installApp,
     1 AS installs,
     __emitted_at
-
-FROM {{ ref('incremental_appmetrica_events_default_install') }}
+    {#-toLowCardinality({{ link_hash('AppInstallStat', metadata) }}) AS __link #}
+FROM {{ source_table }}
 
 {% endmacro %}

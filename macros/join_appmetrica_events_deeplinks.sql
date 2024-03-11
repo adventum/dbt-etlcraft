@@ -1,13 +1,20 @@
-{%- macro join_appmetrica_events_default_deeplinks(
+{%- macro join_appmetrica_events_deeplinks(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
     date_to,
     params
     ) -%}
+
+
+{%- set sourcetype_name = 'appmetrica' -%}
+{%- set pipeline_name = 'events' -%}
+{%- set stream_name = 'deeplinks' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}    
 
 SELECT
     toDateTime(__date) AS __date, 
@@ -27,6 +34,7 @@ SELECT
     extract(deeplink_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     {{ etlcraft.get_utmhash('__', ['utmCampaign', 'utmContent']) }} AS utmHash,
     __emitted_at
-FROM {{ ref('incremental_appmetrica_events_default_deeplinks') }}
+    {#- toLowCardinality({{ link_hash('AppDeeplinkStat', metadata) }}) AS __link #}
+FROM {{ source_table }}
 
 {% endmacro %}

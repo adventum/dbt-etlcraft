@@ -1,7 +1,6 @@
-{%- macro join_ym_events_default(
+{%- macro join_ym_events(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
@@ -9,8 +8,14 @@
     params
     ) -%}
 
+{%- set sourcetype_name = 'ym' -%}
+{%- set pipeline_name = 'events' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+'  -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
+
 WITH events AS (
-SELECT * FROM {{ ref('incremental_ym_events_default_yandex_metrika_stream') }}
+SELECT * FROM {{ source_table }}
 {%- if date_from and  date_to %} 
 WHERE toDate(__date) BETWEEN '{{date_from}}' AND '{{date_to}}'
 {%- endif -%}
@@ -52,6 +57,8 @@ SELECT
     if(countSubstrings(ymsgoalsID, '232977647')>0,1,0) AS participationInLotterySessions,
     toUInt32(ymspageViews) AS pageViews,
     __emitted_at
+    {#-toLowCardinality({{ link_hash('VisitStat', metadata) }}) AS __link #}
+
 FROM events
 
 
