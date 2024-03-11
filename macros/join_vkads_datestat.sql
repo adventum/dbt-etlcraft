@@ -1,7 +1,6 @@
-{%- macro join_vkads_datestat_default(
+{%- macro join_vkads_datestat(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
@@ -9,15 +8,29 @@
     params
     ) -%}
 
+
+{%- set sourcetype_name = 'vkads' -%}
+{%- set pipeline_name = 'datestat' -%}
+
+{%- set stream_name_ad_plans_statistics = 'ad_plans_statistics' -%}
+{%- set table_pattern_ad_plans_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_ad_plans_statistics ~ '$' -%}
+{%- set relations_ad_plans_statistics = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans_statistics) -%}   
+{%- set source_table_ad_plans_statistics = '(' ~ dbt_utils.union_relations(relations_ad_plans_statistics) ~ ')' -%} 
+
+{%- set stream_name_ad_plans = 'ad_plans' -%}
+{%- set table_pattern_ad_plans = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
+{%- set relations_ad_plans = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans) -%}   
+{%- set source_table_ad_plans = '(' ~ dbt_utils.union_relations(relations_ad_plans) ~ ')' -%}
+
 WITH ad_plans_statistics AS (
-SELECT * FROM {{ ref('incremental_vkads_datestat_default_ad_plans_statistics') }}
+SELECT * FROM {{ source_table_ad_plans_statistics }}
 {%- if date_from and  date_to %} 
 WHERE toDate(__date) between '{{date_from}}' and '{{date_to}}'
 {%- endif -%}
 ),
 
 ad_plans AS (
-SELECT * FROM {{ ref('incremental_vkads_datestat_default_ad_plans') }}
+SELECT * FROM {{ source_table_ad_plans }}
 )
 
 SELECT

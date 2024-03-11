@@ -1,13 +1,19 @@
-{%- macro join_appmetrica_events_default_sessions_starts(
+{%- macro join_appmetrica_events_sessions_starts(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
     date_to,
     params
     ) -%}
+
+{%- set sourcetype_name = 'appmetrica' -%}
+{%- set pipeline_name = 'events' -%}
+{%- set stream_name = 'sessions_starts' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
 
 SELECT
     toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
@@ -23,7 +29,7 @@ SELECT
     city AS cityName,
     1 AS sessions,
     __emitted_at
-    
-FROM {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
+    {#-toLowCardinality({{ link_hash('AppSessionStat', metadata) }}) AS __link #}
+FROM {{ source_table }}
 
 {% endmacro %}

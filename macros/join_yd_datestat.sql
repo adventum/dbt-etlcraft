@@ -1,7 +1,6 @@
-{%- macro join_yd_datestat_default(
+{%- macro join_yd_datestat(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
@@ -9,8 +8,14 @@
     params
     ) -%}
 
+{%- set sourcetype_name = 'yd' -%}
+{%- set pipeline_name = 'datestat' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+'  -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
+
 WITH cmps AS (
-SELECT * FROM {{ ref('incremental_yd_datestat_default_custom_report') }}
+SELECT * FROM {{ source_table }}
 {%- if date_from and  date_to %} 
 WHERE toDate(__date) BETWEEN '{{date_from}}' AND '{{date_to}}'
 {%- endif -%}

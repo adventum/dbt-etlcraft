@@ -1,13 +1,19 @@
-{%- macro join_appmetrica_events_default_events(
+{%- macro join_appmetrica_events_events(
     sourcetype_name,
     pipeline_name,
-    template_name,
     stream_name,
     relations_dict,
     date_from,
     date_to,
     params
     ) -%}
+
+{%- set sourcetype_name = 'appmetrica' -%}
+{%- set pipeline_name = 'events' -%}
+{%- set stream_name = 'events' -%}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}  
 
 WITH union_events AS (
 SELECT
@@ -27,7 +33,7 @@ SELECT
     toDate(__date) AS __date, 
     toDateTime(event_datetime) AS event_datetime, 
     0 AS screen_view
-FROM {{ ref('incremental_appmetrica_events_default_events') }}
+FROM {{ source_table }}
 )
 , join_appmetrica_events_prepare AS (
 SELECT 
@@ -59,6 +65,7 @@ SELECT
     eventName = 'select_content' AND  JSONExtractString(eventJson, 'item_category') = 'TakePartButton' AS participationInLotterySessions,
     0 AS screenView,
     __emitted_at,
+    {#-toLowCardinality({{ link_hash('AppEventStat', metadata) }}) AS __link,-#}
     JSONExtractString(eventJson, 'item_category') AS __itemCategory, 
     JSONExtractString(eventJson, 'item_name') AS __itemName,
     row_number() over() AS __rn,
