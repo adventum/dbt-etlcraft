@@ -65,7 +65,7 @@ SELECT
     eventName = 'select_content' AND  JSONExtractString(eventJson, 'item_category') = 'TakePartButton' AS participationInLotterySessions,
     0 AS screenView,
     __emitted_at,
-    {#-toLowCardinality({{ link_hash('AppEventStat', metadata) }}) AS __link,-#}
+    toLowCardinality('AppEventStat') AS __link,
     JSONExtractString(eventJson, 'item_category') AS __itemCategory, 
     JSONExtractString(eventJson, 'item_name') AS __itemName,
     row_number() over() AS __rn,

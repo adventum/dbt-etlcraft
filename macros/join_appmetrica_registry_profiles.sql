@@ -20,8 +20,8 @@ SELECT
     profile_id AS crmUserId,
     mp_card_number AS mpCardNumber,
     city_code AS cityCode,
-    __emitted_at
-    {#-toLowCardinality({{ link_hash('AppProfileMatching', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('AppProfileMatching') AS __link 
 FROM {{ source_table }}
 
 {% endmacro %}

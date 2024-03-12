@@ -33,8 +33,8 @@ SELECT
     extract(deeplink_url_parameters, 'utm_term=([^&]*)') AS utmTerm,
     extract(deeplink_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     {{ etlcraft.get_utmhash('__', ['utmCampaign', 'utmContent']) }} AS utmHash,
-    __emitted_at
-    {#- toLowCardinality({{ link_hash('AppDeeplinkStat', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('AppDeeplinkStat') AS __link
 FROM {{ source_table }}
 
 {% endmacro %}
