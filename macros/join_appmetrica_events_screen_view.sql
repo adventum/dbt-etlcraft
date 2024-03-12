@@ -41,8 +41,8 @@ SELECT
     0 AS couponActivationSessions,
     0 AS participationInLotterySessions,
     screen_view AS screenView,
-    __emitted_at
-    {#-toLowCardinality({{ link_hash('AppEventStat', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('AppEventStat') AS __link 
 FROM {{ source_table }}
 
 {% endmacro %}

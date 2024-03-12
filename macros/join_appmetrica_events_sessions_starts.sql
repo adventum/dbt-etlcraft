@@ -28,8 +28,8 @@ SELECT
     os_name AS osName,
     city AS cityName,
     1 AS sessions,
-    __emitted_at
-    {#-toLowCardinality({{ link_hash('AppSessionStat', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('AppSessionStat') AS __link
 FROM {{ source_table }}
 
 {% endmacro %}

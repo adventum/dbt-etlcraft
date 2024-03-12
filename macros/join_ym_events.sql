@@ -56,8 +56,8 @@ SELECT
     if(countSubstrings(ymsgoalsID, '232977580')>0,1,0) AS couponActivationSessions, 
     if(countSubstrings(ymsgoalsID, '232977647')>0,1,0) AS participationInLotterySessions,
     toUInt32(ymspageViews) AS pageViews,
-    __emitted_at
-    {#-toLowCardinality({{ link_hash('VisitStat', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('VisitStat') AS __link 
 
 FROM events
 

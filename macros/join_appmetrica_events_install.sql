@@ -36,8 +36,8 @@ SELECT
     {{ etlcraft.get_utmhash('__', ['utmContent', 'utmCampaign']) }} AS utmHash,
     is_reinstallation = 'false' AS installApp,
     1 AS installs,
-    __emitted_at
-    {#-toLowCardinality({{ link_hash('AppInstallStat', metadata) }}) AS __link #}
+    __emitted_at,
+    toLowCardinality('AppInstallStat') AS __link 
 FROM {{ source_table }}
 
 {% endmacro %}

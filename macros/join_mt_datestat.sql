@@ -66,7 +66,8 @@ SELECT
     toFloat64(JSONExtractString(banners_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(banners_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(banners_statistics.base, 'clicks')) AS clicks,
-    banners_statistics.__emitted_at AS __emitted_at
+    banners_statistics.__emitted_at AS __emitted_at,
+    toLowCardinality('AdCostStat') AS __link 
 FROM banners_statistics
 JOIN banners ON banners_statistics.banner_id = banners.id 
 JOIN campaigns ON banners.campaign_id = campaigns.id

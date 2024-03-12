@@ -45,7 +45,8 @@ SELECT
     (toFloat64(Cost)/1000000)*1.2 AS adCost,
     toInt32(Impressions) AS impressions,
     toInt32(Clicks) AS clicks,
-    __emitted_at
+    __emitted_at,
+    toLowCardinality('AdCostStat') AS __link 
 FROM cmps
 
 
