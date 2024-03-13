@@ -32,17 +32,17 @@
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ dbt_utils.union_relations(relations, source_column_name=none) ~ ')' -%}
 
-{#- если не писать варианты, то делать так - сейчас мы используем не этот вариант
+{#- если не писать варианты, то делать так - сейчас мы используем этот вариант -#}
 
-    SELECT * EXCEPT(__table_name),
-    toLowCardinality(__table_name) AS __table_name
-    FROM {{ source_table }} -#}
+SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
+FROM {{ source_table }} 
     
 
-{#- если писать варианты, то делать так - используем этот вариант-#}
+{#- если писать варианты, то делать так - сейчас не используем этот вариант
 {% set macro_name =  'combine_'~ pipeline_name  %}
 
-{{ etlcraft[macro_name](pipeline_name,relations_dict,date_from,date_to,params)}}
+{{ etlcraft[macro_name](pipeline_name,relations_dict,date_from,date_to,params)}} -#}
 
 {%- endif -%}
 {% endmacro %}
+

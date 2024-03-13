@@ -2,3 +2,4 @@ target/
 dbt_packages/
 logs/
 analyses/test.sql
+integration_tests/seeds/
