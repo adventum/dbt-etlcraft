@@ -6,6 +6,7 @@ WHERE event_name = 'screen_view')
 
 SELECT
     toDate(__date) AS __date,
+    toDateTime(event_datetime) AS event_datetime,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     '3101143' AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
@@ -19,6 +20,7 @@ SELECT
 FROM events_are_screen_view
 GROUP BY 
     __date,
+    event_datetime,
     mobileAdsId,
     accountName,
     appmetricaDeviceId,

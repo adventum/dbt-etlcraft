@@ -29,7 +29,7 @@ SELECT
     city AS cityName,
     1 AS sessions,
     __emitted_at,
-    toLowCardinality('AppSessionStat') AS __link
+    toLowCardinality('AppSessionStat') AS __link 
 FROM {{ source_table }}
 
 {% endmacro %}

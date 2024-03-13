@@ -37,7 +37,7 @@ SELECT
     is_reinstallation = 'false' AS installApp,
     1 AS installs,
     __emitted_at,
-    toLowCardinality('AppInstallStat') AS __link 
+    toLowCardinality('AppInstallStat') AS __link
 FROM {{ source_table }}
 
 {% endmacro %}
