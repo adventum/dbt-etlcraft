@@ -30,7 +30,12 @@
 {%- endif -%}
 
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
-{%- set source_table = '(' ~ dbt_utils.union_relations(relations, source_column_name=none) ~ ')' -%}
+
+{#- было вот так, через макрос dbt_utils.union_relations - но из-за null были ошибки "Cannot convert NULL to a non-nullable type"
+{%- set source_table = '(' ~ dbt_utils.union_relations(relations, source_column_name=none) ~ ')' -%} -#}
+
+{#- стало вот так, через кастомный макрос, чтобы null заменить на '' или 0  -#}
+{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations, source_column_name=none) ~ ')' -%}
 
 {#- если не писать варианты, то делать так - сейчас мы используем этот вариант -#}
 
@@ -40,9 +45,9 @@ FROM {{ source_table }}
 
 {#- если писать варианты, то делать так - сейчас не используем этот вариант
 {% set macro_name =  'combine_'~ pipeline_name  %}
-
 {{ etlcraft[macro_name](pipeline_name,relations_dict,date_from,date_to,params)}} -#}
 
 {%- endif -%}
 {% endmacro %}
+
 
