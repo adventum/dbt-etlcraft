@@ -32,14 +32,6 @@
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
 
-{#- узнаём список присутствующих в таблице линков, задав запрос -#}
-{%- set query -%}
-        SELECT DISTINCT __link
-        FROM {{ source_table }} 
-{%- endset -%}
-{#- и из этого запроса берём список -#}
-{%- set links_list = run_query(query).columns[0].values() -%}
-
 {{ config(
     materialized='incremental',
     order_by=('__date', '__table_name'),
@@ -50,15 +42,34 @@
 
 {% set metadata = fromyaml(etlcraft.metadata()) %}
 
+{#- задаём список всех линков -#}
+{% set links = metadata['links'] %}
+{% set links_list = [] %}
+{#- отбираем те линки, у которых значение pipeline совпадает с именем pipeline модели - т.е отбираем нужные -#}
+{% for link_name in links  %}
+    {% set link_pipeline = links[link_name].get('pipeline') %}
+    {% if link_pipeline == pipeline_name %}
+        {% do links_list.append(link_name) %}
+    {%- endif -%} 
+{%- endfor -%}
+
+{#-
+Этот запрос
+SELECT  {{ links_list }}
+для hash_datestat выводит ['AdCostStat']
+для hash_events выводит ['AppInstallStat', 'AppEventStat', 'AppSessionStat', 'AppDeeplinkStat', 'VisitStat', 'AppProfileMatching']
+-#}
+
+{#- основной запрос -#} 
 SELECT 
     *, 
        {% for link in links_list %}
-        {{ etlcraft.link_hash(link, metadata) }},
+        {{ etlcraft.link_hash(link, metadata) }},  {# добавляем хэши для отобранных линков #}
     {% endfor %}
-    {{ etlcraft.entity_hash('UtmHash', metadata) }}  
+    {{ etlcraft.entity_hash('UtmHash', metadata) }}  {# здесь можно добавить больше сущностей #}
 
 FROM {{ source_table }} 
-WHERE {{ link ~ 'Hash' != ''}}
+WHERE {{ link ~ 'Hash' != ''}}  {# не уверена доконца, что так работает + ниже черновик для бОльшего кол-ва сущностей #}
 {#-  
 {% for link in links_list %}
         {% if not loop.last %}
@@ -69,7 +80,6 @@ WHERE {{ link ~ 'Hash' != ''}}
              {{ link ~ 'Hash' != '' }}
       {% endfor %}
 -#}
-
 
 {%- endif -%}
 {% endmacro %}
