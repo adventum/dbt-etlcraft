@@ -27,7 +27,6 @@ SELECT
     __table_name,  
     ymsvisitID As visitId,
     ymsclientID AS clientId,
-{#- assumeNotNull(coalesce(nullIf(trim(BOTH '\'' FROM arrayElement(ymsparsedParamsKey2, indexOf(ymsparsedParamsKey1, '\'mp_card_number\''))), 'null'), '')) as mpCardNumber, -#}
     extract(ymspurchaseCoupon, '\'([^\'\[\],]+)') AS promoCode,   
     'web' AS osName,
     ymsregionCity AS cityName,
