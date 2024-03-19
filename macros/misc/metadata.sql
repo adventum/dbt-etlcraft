@@ -75,7 +75,7 @@ links:
   AdCostStat:
     pipeline: datestat
     keys:
-    - name: adCostDate 
+    - name: __date 
     - name: reportType
     entities:
     - Account
@@ -96,6 +96,7 @@ links:
     - AdSource
     - UtmParams
   AppInstallStat:
+    pipeline: events
     keys:
     - name: installDateTime
     entities:
@@ -109,6 +110,7 @@ links:
     - UtmParams 
     - UtmHash
   AppEventStat:
+    pipeline: events
     keys:
     - name: eventDateTime
     entities:
@@ -121,6 +123,7 @@ links:
     - OsName
     - City
   AppSessionStat:
+    pipeline: events
     keys:
     - name: appSessionDateTime
     entities:
@@ -132,6 +135,7 @@ links:
     - OsName
     - City
   AppDeeplinkStat:
+    pipeline: events
     keys:
     - name: deeplinkDateTime
     entities:
@@ -145,13 +149,13 @@ links:
     - UtmParams  
     - UtmHash
   VisitStat:
+    pipeline: events
     keys:
     - name: visitDateTime
     entities:
     - Account 
     - Visit
     - YmClient
-    - MpCardNumber -- ?
     - PromoCode
     - OsName
     - City
@@ -160,10 +164,10 @@ links:
     - UtmParams  
     - UtmHash
   AppProfileMatching:
+    pipeline: events
     entities:
     - AppMetricaDeviceId
     - CrmUser
-    - MpCardNumber -- ?
     - CityCode
 glue_models:
   full_link_visit_stat:
@@ -171,7 +175,6 @@ glue_models:
     cols:
     - VisitStatHash
     - YmClientHash
-    - MpCardNumberHash
   full_link_app_event_stat:
     datetime_field: eventDateTime
     cols:
@@ -200,6 +203,5 @@ glue_models:
     datetime_field: toDateTime(0)
     cols:
     - AppProfileMatchingHash
-    - MpCardNumberHash
     - AppMetricaDeviceIdHash
 {%- endmacro -%}
