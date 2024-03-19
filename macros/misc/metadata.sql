@@ -69,7 +69,7 @@ entities:
     - name: transactionId
   AppSession:
     keys:
-    - name: appSessionId
+    {# - name: appSessionId #}
     - name: installationDeviceId
 links: 
   AdCostStat:
@@ -98,7 +98,7 @@ links:
   AppInstallStat:
     pipeline: events
     keys:
-    - name: installDateTime
+    - name: event_datetime
     entities:
     - Account
     - AppMetricaDevice
@@ -112,7 +112,7 @@ links:
   AppEventStat:
     pipeline: events
     keys:
-    - name: eventDateTime
+    - name: event_datetime
     entities:
     - Account
     - AppMetricaDevice
@@ -125,7 +125,7 @@ links:
   AppSessionStat:
     pipeline: events
     keys:
-    - name: appSessionDateTime
+    - name: event_datetime
     entities:
     - Account
     - AppSession
@@ -137,7 +137,7 @@ links:
   AppDeeplinkStat:
     pipeline: events
     keys:
-    - name: deeplinkDateTime
+    - name: event_datetime
     entities:
     - Account
     - AppMetricaDevice
@@ -151,7 +151,7 @@ links:
   VisitStat:
     pipeline: events
     keys:
-    - name: visitDateTime
+    - name: event_datetime
     entities:
     - Account 
     - Visit
@@ -171,24 +171,24 @@ links:
     - CityCode
 glue_models:
   full_link_visit_stat:
-    datetime_field: visitDateTime
+    datetime_field: event_datetime
     cols:
     - VisitStatHash
     - YmClientHash
   full_link_app_event_stat:
-    datetime_field: eventDateTime
+    datetime_field: event_datetime
     cols:
     - AppEventStatHash
     - CrmUserHash 
     - AppMetricaDeviceIdHash
   full_link_app_install_stat:
-    datetime_field: installDateTime
+    datetime_field: event_datetime
     cols:
     - AppInstallStatHash
     - CrmUserHash
     - AppMetricaDeviceIdHash
   full_link_app_session_stat:
-    datetime_field: appSessionDateTime
+    datetime_field: event_datetime
     cols:
     - AppSessionStatHash
     - CrmUserHash
