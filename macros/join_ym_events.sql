@@ -22,6 +22,12 @@ WHERE toDate(__date) BETWEEN '{{date_from}}' AND '{{date_to}}'
 {%- endif -%}
 )
 
+{# pre_ AS (
+SELECT * REPLACE (SELECT splitByChar(',', trim(BOTH '[]' FROM JSONExtractString(_airbyte_data, 'ym:s:parsedParamsKey1'))) as parsedParamsKey1,
+    splitByChar(',', trim(BOTH '[]' FROM JSONExtractString(_airbyte_data, 'ym:s:parsedParamsKey2'))) as parsedParamsKey2 FROM {{ normalize_ym_events_default_yandex_metrika_stream }}
+FROM events 
+) #}
+
 SELECT  
     __date, 
     __table_name,  
@@ -30,7 +36,8 @@ SELECT
     extract(ymspurchaseCoupon, '\'([^\'\[\],]+)') AS promoCode,   
     'web' AS osName,
     ymsregionCity AS cityName,
- {#- trim(BOTH '\'' FROM arrayElement(ymsparsedParamsKey2, indexOf(ymsparsedParamsKey1, '\'city_code\''))) AS cityCode,  -#}
+{#    trim(BOTH '\'' FROM arrayElement(ymsparsedParamsKey2, indexOf(ymsparsedParamsKey1, '\'city_code\''))) AS cityCode, #}
+    lower(ymsregionCity) AS cityCode,
     assumeNotNull(coalesce({{ etlcraft.get_adsourcedirty('ymsUTMSource', 'ymsUTMMedium') }}, 
     multiIf(ymslastTrafficSource = 'ad', {{ etlcraft.get_adsourcedirty('ymslastAdvEngine', 'ymslastTrafficSource') }},  
     ymslastTrafficSource = 'organic', {{ etlcraft.get_adsourcedirty('ymslastSearchEngine', 'ymslastTrafficSource') }},  
@@ -48,7 +55,7 @@ SELECT
     if(countSubstrings(ymsgoalsID, '131126557')>0,1,0) AS checkoutSessions, 
     if(countSubstrings(ymsgoalsID, '131127241')>0,1,0) AS webSalesSessions, 
     countSubstrings(ymsgoalsID, '131127241') AS sales, 
-{#- assumeNotNull(coalesce(arraySum(ymspurchaseRevenue), 0)) AS amountSales,  -#}
+{#  assumeNotNull(coalesce(arraySum(ymspurchaseRevenue), 0)) AS amountSales,   #}
     if(countSubstrings(ymsgoalsID, '199402504')>0,1,0) AS registrationCardSessions,
     if(countSubstrings(ymsgoalsID, '199402597')>0,1,0) AS linkingCardToPhoneNumberSessions, 
     if(countSubstrings(ymsgoalsID, '226410025')>0,1,0) AS registrationLendingPromotionsSessions, 
