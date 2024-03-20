@@ -81,5 +81,7 @@ WHERE {{ link ~ 'Hash' != ''}}  {# не уверена доконца, что т
       {% endfor %}
 -#}
 
+-- SETTINGS short_circuit_function_evaluation=force_enable
+
 {%- endif -%}
 {% endmacro %}
