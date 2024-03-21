@@ -40,48 +40,113 @@
     on_schema_change='fail'
 ) }}
 
-{% set metadata = fromyaml(etlcraft.metadata()) %}
+{%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
 {#- задаём список всех линков -#}
-{% set links = metadata['links'] %}
-{% set links_list = [] %}
-{#- отбираем те линки, у которых значение pipeline совпадает с именем pipeline модели - т.е отбираем нужные -#}
-{% for link_name in links  %}
-    {% set link_pipeline = links[link_name].get('pipeline') %}
-    {% if link_pipeline == pipeline_name %}
-        {% do links_list.append(link_name) %}
+{%- set links = metadata['links'] -%}
+{#- задаём списки, куда будем отбирать линки и сущности -#}
+{%- set links_list = [] -%}
+{%- set entities_list = [] -%}
+{#- отбираем нужные линки и их сущности -#}
+{%- for link_name in links  -%}
+    {%- set link_pipeline = links[link_name].get('pipeline') -%}
+    {%- set entities = links[link_name].get('entities') -%}
+    {%- if link_pipeline == pipeline_name -%}
+        {%- do links_list.append(link_name) -%}
+        {%- for entity in entities -%}
+            {%- do entities_list.append(entity) -%}
+        {%- endfor -%}
     {%- endif -%} 
 {%- endfor -%}
 
-{#-
+{#- проверяем результат по линкам
 Этот запрос
-SELECT  {{ links_list }}
+SELECT  {{ links_list }}  
 для hash_datestat выводит ['AdCostStat']
 для hash_events выводит ['AppInstallStat', 'AppEventStat', 'AppSessionStat', 'AppDeeplinkStat', 'VisitStat', 'AppProfileMatching']
 -#}
 
+{#- делаем полученный список сущностей уникальным -#}
+{%- set unique_entities_list = entities_list|unique|list -%}
+
+{#- проверяем результат по сущностям
+Этот запрос
+SELECT {{ unique_entities_list }}
+для hash_datestat выводит  ['Account', 'AdSource', 'AdCampaign', 'AdGroup', 'Ad', 'AdPhrase', 'UtmParams', 'UtmHash']
+для hash_events выводит ['Account', 'AppMetricaDevice', 'MobileAdsId', 'CrmUser', 'OsName', 'City', 'AdSource', 'UtmParams', 'UtmHash', 'Transaction', 'PromoCode', 'AppSession', 'Visit', 'YmClient', 'AppMetricaDeviceId']
+-#}
+
+{#- условие либо glue=yes, либо сущность из registries -#}
+
+{#- находим сущности с glue=yes -#}
+{#- задаём список всех сущностей метадаты -#}
+{%- set metadata_entities = metadata['entities'] -%}
+{#- задаём список для сущностей, у которых найдём glue='yes' -#}
+{%- set metadata_entities_list = [] -%}
+{#- отбираем нужные сущности -#}
+{%- for entity_name in metadata_entities  -%}
+    {%- set entity_glue = metadata_entities[entity_name].get('glue') -%}
+    {%- if entity_glue -%}  {# по факту читается как True, поэтому пишем просто if #}
+        {%- do metadata_entities_list.append(entity_name) -%}
+    {%- endif -%} 
+{%- endfor -%}
+
+{#- проверяем результат по glue='yes'
+Этот запрос
+SELECT {{ metadata_entities_list }}
+для hash_datestat и hash_events выводит  ['YmClient', 'CrmUser', 'AppMetricaDevice']
+-#}
+
+{#- находим сущности из раздела registries -#}
+{% set registries = metadata['registries'] %}
+{% set registries_list = [] %} {# сущности из раздела registries - здесь -#}
+{% for registry_name in registries  %}
+    {% do registries_list.append(registry_name) %}
+{%- endfor -%}
+
+{#- проверяем результат по сущностям из раздела registries 
+Этот запрос
+SELECT {{ registries_list }}
+для hash_datestat и hash_events выводит  ['AppMetricaDeviceId']
+-#}
+
+{#- из уникального списка сущностей отбираем те, которые 
+    либо есть в списке сущностей glue='yes', либо есть в разделе registries -#}
+{%- set final_entities_list = [] -%}
+{%- for unique_entity in unique_entities_list  -%}
+    {%- if unique_entity in metadata_entities_list or unique_entity in registries_list -%}
+        {%- do final_entities_list.append(unique_entity) -%}
+    {%- endif -%}
+{%- endfor -%}
+
+{#- проверяем результат по финальному списку сущностей 
+Этот запрос
+SELECT {{ final_entities_list }}
+для hash_datestat выводит []
+для hash_events выводит ['AppMetricaDevice', 'CrmUser', 'YmClient', 'AppMetricaDeviceId']
+-#}
+
 {#- основной запрос -#} 
+
 SELECT 
     *, 
-       {% for link in links_list %}
-        {{ etlcraft.link_hash(link, metadata) }},  {# добавляем хэши для отобранных линков #}
+    {% for link in links_list %}
+        {# добавляем хэши для отобранных линков #}
+        {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
     {% endfor %}
-    {{ etlcraft.entity_hash('UtmHash', metadata) }}  {# здесь можно добавить больше сущностей #}
+    {%- if final_entities_list -%},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
+    {% for entity in final_entities_list %}
+        {# добавляем хэши для отобранных сущностей #}
+        {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
+    {% endfor %}
 
 FROM {{ source_table }} 
-WHERE {{ link ~ 'Hash' != ''}}  {# не уверена доконца, что так работает + ниже черновик для бОльшего кол-ва сущностей #}
-{#-  
+WHERE 
 {% for link in links_list %}
-        {% if not loop.last %}
-            {{ link ~ 'Hash' != ''}}
-            {{ AND }}
-        {% endif %}
-        {% else %}
-             {{ link ~ 'Hash' != '' }}
-      {% endfor %}
--#}
+    {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
+{% endfor %}
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 
-{%- endif -%}
+{% endif %}
 {% endmacro %}
