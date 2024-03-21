@@ -18,7 +18,7 @@
 SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     profile_id AS crmUserId,
-    city_code AS cityCode,
+    city AS cityName,
     __emitted_at,
     toLowCardinality('AppProfileMatching') AS __link 
 FROM {{ source_table }}

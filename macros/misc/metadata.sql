@@ -45,9 +45,6 @@ entities:
   City:
     keys:
     - name: cityName
-  CityCode:
-    keys:
-    - name: cityCode
   AppMetricaDevice:
     glue: yes
     keys:
@@ -159,7 +156,6 @@ links:
     - PromoCode
     - OsName
     - City
-    - CityCode 
     - AdSource
     - UtmParams  
     - UtmHash
@@ -168,7 +164,10 @@ links:
     entities:
     - AppMetricaDeviceId
     - CrmUser
-    - CityCode
+    - City
+registries:
+  AppMetricaDeviceId:
+    - incremental_appmetrica_registry_default_profiles
 glue_models:
   full_link_visit_stat:
     datetime_field: event_datetime
