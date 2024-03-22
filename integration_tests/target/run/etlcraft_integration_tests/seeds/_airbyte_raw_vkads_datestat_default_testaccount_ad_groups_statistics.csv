@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_vkads_datestat_default_testaccount_ad_groups_statistics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

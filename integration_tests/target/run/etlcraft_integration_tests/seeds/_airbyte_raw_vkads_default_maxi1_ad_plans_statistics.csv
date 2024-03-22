@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_vkads_default_maxi1_ad_plans_statistics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

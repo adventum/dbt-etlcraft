@@ -1,0 +1,24 @@
+
+    
+    
+    
+    create table test._airbyte_raw_appmetrica_events_maxi_3101143__viewitemevents 
+   ("_airbyte_ab_id" String,"_airbyte_data" String,"_airbyte_emitted_at" String)
+    
+  engine = MergeTree()
+    
+      order by (tuple())
+    
+  ;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
