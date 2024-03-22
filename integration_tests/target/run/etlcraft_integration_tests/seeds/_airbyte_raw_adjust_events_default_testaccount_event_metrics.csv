@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_adjust_events_default_testaccount_event_metrics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

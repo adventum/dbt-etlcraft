@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_mt_88c0d6cb5eagencyclient_banners;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

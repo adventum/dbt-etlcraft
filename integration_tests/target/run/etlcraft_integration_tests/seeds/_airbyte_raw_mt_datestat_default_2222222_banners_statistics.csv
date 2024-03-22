@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_mt_datestat_default_2222222_banners_statistics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
