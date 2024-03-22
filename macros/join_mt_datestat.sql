@@ -1,7 +1,6 @@
 {%- macro join_mt_datestat(
     sourcetype_name,
     pipeline_name,
-    stream_name,
     relations_dict,
     date_from,
     date_to,

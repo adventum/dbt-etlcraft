@@ -1,7 +1,6 @@
-{%- macro join_appmetrica_registry_profiles(
+{%- macro join_appmetrica_registry(
     sourcetype_name,
     pipeline_name,
-    stream_name,
     relations_dict,
     date_from,
     date_to,
