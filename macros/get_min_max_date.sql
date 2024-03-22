@@ -1,4 +1,4 @@
-{% macro get_min_max_date(stage,sourcetype_name,pipeline_name,stream_name=none,override_target_model_name=none) %}
+{% macro get_min_max_date(stage,sourcetype_name,pipeline_name,override_target_model_name=none) %}
 
 {% set override_target_model_name = override_target_model_name %}
 
@@ -10,18 +10,10 @@
     {% else %}
      FROM ({{override_target_model_name}})
     {% endif %}
-    {% if stream_name is none %}
     WHERE 
         database ='{{this.schema}}' AND 
         table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_%' AND 
         name='__date'
-    {% else %}
-    WHERE 
-        database ='{{this.schema}}' AND 
-        table LIKE '{{stage}}_{{sourcetype_name}}_{{pipeline_name}}_%_{{stream_name}}%' AND 
-        name='__date'
-    {% endif %}
-
 {% endset %}
 
 {% set results = run_query(table_list_query) %}
