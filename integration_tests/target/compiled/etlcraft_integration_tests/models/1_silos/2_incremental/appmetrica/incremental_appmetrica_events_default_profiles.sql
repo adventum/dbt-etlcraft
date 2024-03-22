@@ -1,2 +1,0 @@
-SELECT *
-FROM test.normalize_appmetrica_events_default_profiles
