@@ -11,6 +11,11 @@
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
+{%- set registry_name = model_name_parts[2:] -%}
+{%- set registry_name = '_'.join(registry_name) -%}
+
+
+{%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
 {#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 2 or model_name_parts[0] != 'hash' -%}
@@ -18,7 +23,13 @@
 {%- endif -%}
 
 {#- задаём паттерн, чтобы найти combine-таблицу нужного пайплайна -#}
-{%- set table_pattern = 'combine_' ~ pipeline_name -%}  
+
+{%- if pipeline_name == 'registry' -%}
+    {%- set table_pattern = 'join_[^_]+_' ~ pipeline_name ~'_'~ registry_name -%}  
+{%- else -%}
+    {%- set table_pattern = 'combine_' ~ pipeline_name -%}
+{%- endif -%}
+
 
 {#- находим все таблицы, которые соответствут паттерну -#}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
@@ -28,6 +39,7 @@
 {%- if not relations -%}
 {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". Please ensure that your source data follows the expected structure.') }}
 {%- endif -%}
+
 
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
@@ -40,24 +52,32 @@
     on_schema_change='fail'
 ) }}
 
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
-
 {#- задаём список всех линков -#}
 {%- set links = metadata['links'] -%}
 {#- задаём списки, куда будем отбирать линки и сущности -#}
 {%- set links_list = [] -%}
 {%- set entities_list = [] -%}
+{%- set registry_main_entities_list = [] -%}
 {#- отбираем нужные линки и их сущности -#}
 {%- for link_name in links  -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
-    {%- set entities = links[link_name].get('entities') -%}
+    {%- set datetime_field = links[link_name].get('datetime_field') -%}
+    {%- set main_entities = links[link_name].get('main_entities') or [] -%}
+    {%- set other_entities = links[link_name].get('other_entities') or [] -%}
+    {%- set entities = main_entities + other_entities -%}
     {%- if link_pipeline == pipeline_name -%}
         {%- do links_list.append(link_name) -%}
         {%- for entity in entities -%}
             {%- do entities_list.append(entity) -%}
         {%- endfor -%}
     {%- endif -%} 
+    {%- for  main_entity in main_entities -%}
+        {%- if link_pipeline == 'registry'  -%}
+            {%- do registry_main_entities_list.append(main_entity) -%}
+        {%- endif -%}
+    {%- endfor -%}
 {%- endfor -%}
+
 
 {#- проверяем результат по линкам
 Этот запрос
@@ -66,17 +86,15 @@ SELECT  {{ links_list }}
 для hash_events выводит ['AppInstallStat', 'AppEventStat', 'AppSessionStat', 'AppDeeplinkStat', 'VisitStat', 'AppProfileMatching']
 -#}
 
-{#- делаем полученный список сущностей уникальным -#}
-{%- set unique_entities_list = entities_list|unique|list -%}
-
-{#- проверяем результат по сущностям
+{#- проверяем результат по линкам
 Этот запрос
-SELECT {{ unique_entities_list }}
-для hash_datestat выводит  ['Account', 'AdSource', 'AdCampaign', 'AdGroup', 'Ad', 'AdPhrase', 'UtmParams', 'UtmHash']
-для hash_events выводит ['Account', 'AppMetricaDevice', 'MobileAdsId', 'CrmUser', 'OsName', 'City', 'AdSource', 'UtmParams', 'UtmHash', 'Transaction', 'PromoCode', 'AppSession', 'Visit', 'YmClient', 'AppMetricaDeviceId']
+SELECT  {{ registry_main_entities_list }}  
+для hash_datestat выводит ['AppMetricaDevice'] 
+для hash_events выводит ['AppMetricaDevice'] 
 -#}
 
-{#- условие либо glue=yes, либо сущность из registries -#}
+
+{#- условие либо glue=yes, либо сущность из main_entities -#}
 
 {#- находим сущности с glue=yes -#}
 {#- задаём список всех сущностей метадаты -#}
@@ -97,24 +115,24 @@ SELECT {{ metadata_entities_list }}
 для hash_datestat и hash_events выводит  ['YmClient', 'CrmUser', 'AppMetricaDevice']
 -#}
 
-{#- находим сущности из раздела registries -#}
-{% set registries = metadata['registries'] %}
-{% set registries_list = [] %} {# сущности из раздела registries - здесь -#}
-{% for registry_name in registries  %}
-    {% do registries_list.append(registry_name) %}
-{%- endfor -%}
 
-{#- проверяем результат по сущностям из раздела registries 
+{#- делаем полученный список сущностей уникальным -#}
+{%- set unique_entities_list = entities_list|unique|list -%}
+
+
+{#- проверяем результат по сущностям
 Этот запрос
-SELECT {{ registries_list }}
-для hash_datestat и hash_events выводит  ['AppMetricaDeviceId']
+SELECT {{ unique_entities_list }}
+для hash_datestat выводит  ['Account', 'AdSource', 'AdCampaign', 'AdGroup', 'Ad', 'AdPhrase', 'UtmParams', 'UtmHash']
+для hash_events выводит ['Account', 'AppMetricaDevice', 'MobileAdsId', 'CrmUser', 'OsName', 'City', 'AdSource', 'UtmParams', 'UtmHash', 'Transaction', 'PromoCode', 'AppSession', 'Visit', 'YmClient', 'AppMetricaDeviceId']
 -#}
+
 
 {#- из уникального списка сущностей отбираем те, которые 
     либо есть в списке сущностей glue='yes', либо есть в разделе registries -#}
 {%- set final_entities_list = [] -%}
 {%- for unique_entity in unique_entities_list  -%}
-    {%- if unique_entity in metadata_entities_list or unique_entity in registries_list -%}
+    {%- if unique_entity in registry_main_entities_list or unique_entity in metadata_entities_list -%}
         {%- do final_entities_list.append(unique_entity) -%}
     {%- endif -%}
 {%- endfor -%}
@@ -128,25 +146,52 @@ SELECT {{ final_entities_list }}
 
 {#- основной запрос -#} 
 
+
+
+
+
+SELECT *,
+  assumeNotNull(CASE 
+{% for link in links_list %}
+    {%- set link_hash = link ~ 'Hash' -%}  
+    WHEN __link = '{{link}}' 
+    THEN {{link_hash}} 
+{% endfor %}
+    END) as __id,
+
+  assumeNotNull(CASE 
+{% for link_name in links  %}
+    {%- set datetime_field = links[link_name].get('datetime_field') -%}
+    {%- set link_pipeline = links[link_name].get('pipeline') -%}
+    {%- if link_pipeline == pipeline_name -%}
+        WHEN __link = '{{link_name}}' 
+        THEN toDateTime({{datetime_field}})
+    {% endif %}
+{% endfor %}
+    END) as __datetime
+FROM (
+
 SELECT 
     *, 
     {% for link in links_list %}
         {# добавляем хэши для отобранных линков #}
         {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
     {% endfor %}
-    {%- if final_entities_list -%},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
+    {%- if final_entities_list and links_list -%},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
     {% for entity in final_entities_list %}
         {# добавляем хэши для отобранных сущностей #}
         {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
     {% endfor %}
 
+
 FROM {{ source_table }} 
-WHERE 
-{% for link in links_list %}
-    {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
-{% endfor %}
+    WHERE 
+    {% for link in links_list %}
+        {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
+    {% endfor %}
+    )
+
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
-
 {% endif %}
 {% endmacro %}
