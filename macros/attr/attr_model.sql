@@ -63,7 +63,7 @@ target_count as (
     Выборка данных и расчет значений для каждой модели.
 #}
 SELECT 
-    qid, __datetime, __id, __priority,`__if_missed`,__link,__period_number,__step
+    qid, __datetime, __id, __priority,`__if_missed`,__link,__period_number
 
 {% for model_type, fields in model_info.items() %}
     {% if model_type == 'last_click' %}

@@ -1,41 +1,58 @@
 {%- macro create_dataset(
-  params = none,
+  funnel = none,
+  conditions = none,
   override_target_metadata=none,
   override_target_model_name=none
   ) -%}
 
-{%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
-{%- set dataset_name = model_name_parts[1:] -%}
-{%- set dataset_name = '_'.join(dataset_name) -%}
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
-{%- set dataset_info = metadata['datasets'][dataset_name] -%}
+
+{%- set relations = []-%}
+
+{# возможно стоит добавить pipeline в funnels из metadata #}
+
+{% for condition in conditions %}
+  {% if condition.pipeline == 'events' %}
+      {%- set ref =  'attr_' ~ funnel  ~ '_final_table' -%}
+      {%- do relations.append(ref) -%}
+  {% else %}
+      {%- set ref =  'full_' ~ condition.pipeline  -%}
+      {%- do relations.append(ref) -%}
+  {%- endif -%}  
+{%- endfor -%}
+
+{%- set unique_relations = relations|unique|list -%}
+{%- set source_table = '(' ~ etlcraft.custom_union_relations( relations=[ref('full_datestat'), ref('attr_myfirstfunnel_final_table')]) ~ ')' -%}
+{{
+    config(
+        materialized = 'table',
+        order_by = ('__datetime')
+    )
+}}
 
 {%- set source_field = "splitByChar('_', __table_name)[4]" -%}
 {%- set preset_field = "splitByChar('_', __table_name)[4]" -%}
-{%- set accounts_field = "splitByChar('_', __table_name)[4]" -%}
+{%- set account_field = "splitByChar('_', __table_name)[4]" -%}
 
-
-
-
-
-
-SELECT * 
-{% if 'funnel' in dataset_info %}
-  FROM  {{ ref('attr_' ~ dataset_info.funnel  ~ '_final_table') }}
-{% else %}
- FROM {{ ref('full_' ~ dataset_info.pipelines) }}
-{% endif %}
-
-WHERE 
-{{source_field}} in {% if 'sources' in dataset_info %} {{dataset_info.sources }}  {% else %} {{source_field}} {% endif %}
-and 
-{{preset_field}} in {% if 'preset' in dataset_info %} '{{dataset_info.preset }}' {% else %} {{preset_field}} {% endif %}
-and 
-{{accounts_field}} in  {% if 'accounts' in dataset_info %} {{dataset_info.accounts }}  {% else %} {{accounts_field}} {% endif %}
- 
-
-
-
+{% for condition in conditions %}
+  {% if loop.last %}
+    SELECT * FROM {{ source_table }} 
+    WHERE 
+    {{source_field}} = '{{condition.source}}'
+    and 
+    {{account_field}} = '{{condition.account}}'
+    and 
+    {{preset_field}} = '{{condition.preset}}'
+  {% else %}
+    SELECT * FROM {{ source_table }} 
+    WHERE 
+    {{source_field}} = '{{condition.source}}'
+    and 
+    {{account_field}} = '{{condition.account}}'
+    and 
+    {{preset_field}} = '{{condition.preset}}'
+    UNION ALL
+  {%- endif -%}  
+{%- endfor -%}
 
 
 {% endmacro %}
