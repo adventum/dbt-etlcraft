@@ -4,6 +4,10 @@
   stage_name=none
   ) -%}
 
+{# 
+    Настройка материализации данных.
+    order_by=('key_number') определяет порядок сортировки данных по ключевому номеру.
+#}
 {{
     config(
         materialized='table',
@@ -11,11 +15,18 @@
     )
 }}
 
+{# Создание временной таблицы с уникальными ключами #}
 with all_keys as
-(select distinct hash as key_hash from {{ ref('graph_tuples') }}
-union distinct select distinct node_left as key_hash from {{ ref('graph_tuples') }})
+(
+    {# 
+        Выбор уникальных хэшей из результатов макроса graph_tuples 
+        и объединение их с уникальными узлами.
+    #}
+    select distinct hash as key_hash from {{ ref('graph_tuples') }}
+    union distinct select distinct node_left as key_hash from {{ ref('graph_tuples') }}
+)
 
+{# Выборка всех ключей и присвоение им номера #}
 select *, row_number() over() as key_number from all_keys
-
 
 {% endmacro %}

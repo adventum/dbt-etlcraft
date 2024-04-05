@@ -4,6 +4,10 @@
   stage_name=none
   ) -%}
 
+{# 
+    Настройка материализации данных.
+    order_by=('key_hash') определяет порядок сортировки данных по ключевому хэшу.
+#}
 {{
     config(
         materialized='table',
@@ -11,7 +15,7 @@
     )
 }}
 
+{# Выборка всех уникальных ключей из ранее созданной таблицы graph_lookup #}
 select * from {{ ref('graph_lookup') }}
-
 
 {% endmacro %}

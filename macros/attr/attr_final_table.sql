@@ -4,7 +4,10 @@
   funnel_name=none
   ) -%}
 
-
+{# 
+    Настройка материализации данных.
+    Порядок сортировки: по времени (__datetime).
+#}
 {{
     config(
         materialized = 'table',
@@ -12,8 +15,11 @@
     )
 }}
 
+{# 
+    Выборка данных для окончательной таблицы.
+    Присоединение результатов двух предыдущих макросов: attr_join_to_attr_prepare_with_qid и attr_model.
+#}
 with 
-
     out as ( 
         select * except(_dbt_source_relation) 
         from  {{ ref('attr_' ~funnel_name~ '_join_to_attr_prepare_with_qid') }}
@@ -23,7 +29,4 @@ with
     
 select * from out 
 
-
- 
-
-{% endmacro %}
+{%- endmacro %}

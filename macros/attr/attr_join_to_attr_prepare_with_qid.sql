@@ -4,8 +4,9 @@
   funnel_name=none
   ) -%}
 
-
-
+{# 
+    Извлечение метаданных для определения типов моделей и их приоритетов.
+#}
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 {%- set funnels = metadata['funnels'] -%}
 {%- set attribution_models = metadata['attribution_models'] -%}
@@ -13,11 +14,19 @@
 {%- set step_name_list = funnels[funnel_name].steps -%}
 {%- set steps = metadata['steps'] -%}
 
-{%- set model_info = {} -%}  {# Создаем пустой словарь для хранения информации о моделях #}
+{# 
+    Создание словаря для хранения информации о моделях.
+    Каждая модель представлена как ключ, а ее тип как значения.
+#}
+{%- set model_info = {} -%}
 {% for model in model_list %}
     {%- set _ = model_info.update({attribution_models[model].type: attribution_models[model].priorities}) -%}
 {% endfor %}
 
+{# 
+    Настройка материализации данных.
+    order_by=('qid', '__period_number', '__datetime', '__priority', '__id') определяет порядок сортировки данных по идентификатору группы, номеру периода, дате, приоритету и идентификатору.
+#}
 {{
     config(
         materialized='table',
@@ -25,7 +34,9 @@
     )
 }}
 
-
+{# 
+    Объединение результатов двух запросов: attr_prepare_with_qid и attr_create_missed_steps.
+#}
 select 
     y.__period_number as __period_number, 
     y.__if_missed as __if_missed, 
@@ -33,6 +44,9 @@ select
     y.__step as __step,
     x.*EXCEPT(adSourceDirty),
 
+{# 
+    Вычисление ранга для каждой модели в зависимости от ее приоритета.
+#}
 {% for model_type, priorities in model_info.items() %}
     CASE
     {% for priority in priorities %}
@@ -40,9 +54,12 @@ select
         WHEN {{ priority }} THEN {{ counter }}
     {% endfor %}
     ELSE 0
-        END as {{ '__'~ model_type ~ '_rank' }},
+    END as {{ '__'~ model_type ~ '_rank' }},
 {% endfor %}
 
+{# 
+    Определение adSourceDirty для каждого события в зависимости от его приоритета и флага пропущенного шага.
+#}
 CASE
 {% for step_name in step_name_list %}
     {%- set counter = loop.index -%}

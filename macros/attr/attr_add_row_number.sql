@@ -4,7 +4,10 @@
   funnel_name=none
   ) -%}
 
-
+{# 
+    Настройка материализации данных.
+    order_by=('qid', '__datetime', '__link', '__id') определяет порядок сортировки данных по идентификатору группы, дате, ссылке и идентификатору.
+#}
 {{
     config(
         materialized='table',
@@ -12,11 +15,12 @@
     )
 }}
 
-
+{# 
+    Добавление порядкового номера строки (__rn) для каждой группы (qid), упорядоченной по дате, приоритету и идентификатору.
+#}
 select
-    * ,
-        row_number() over (partition by qid order by __datetime, __priority,  __id) AS  __rn
-
+    *,
+    row_number() over (partition by qid order by __datetime, __priority, __id) AS __rn
 from {{ ref('attr_' ~ funnel_name ~ '_create_events') }}
 
 {% endmacro %}

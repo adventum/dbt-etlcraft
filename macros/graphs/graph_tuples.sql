@@ -4,39 +4,46 @@
   stage_name=none
   ) -%}
 
-
+{# Извлекаем метаданные или используем метаданные по умолчанию #}
 {%- set metadata_dict = fromyaml(override_target_metadata or etlcraft.metadata()) -%}
+{# Получаем модели склейки из метаданных #}
 {%- set glue_models = metadata_dict['glue_models'] -%}
-{%- set query_test = '' -%}
 
+{# Цикл по моделям склейки #}
 {%- for table, data in glue_models.items() -%}
     {% set cols = data['cols'] %}
     {% set datetime_field = data['datetime_field'] %}
     {%- set query = '' -%}
     
-
+    {# Проверяем, не первая ли это итерация #}
     {%- if not loop.first %}
         {{ query ~ 'union all' }}
     {% endif -%}
 
+    {# Цикл по колонкам текущей модели склейки #}
     {%- for col in cols[1:] -%}
 
+        {# Если это не первая итерация в цикле, добавляем оператор объединения #}
         {%- if not loop.first %}
             {{ query ~ 'union all' }}
         {% endif -%}
         {%- set tmp -%}
         
+            {# Создаем SQL-запрос для текущей колонки #}
             select
                     tuple(toLowCardinality(__link), {{ datetime_field }},  __id) as hash,
                     tuple(toLowCardinality('{{ col }}'), toDateTime(0),  {{ col }}) as node_left
             from {{ target.schema }}.{{ table }}
             where nullIf({{ col }}, '') is not null
         {%- endset -%}
+        
+        {# Создаем таблицу с результатом запроса #}
         {{ config(
            materialized='table',
            on_schema_change='fail'
         ) }}
-
+        
+        {# Добавляем SQL-запрос в общий запрос #}
         {{ query ~ tmp  }}
 
     {%- endfor -%}
