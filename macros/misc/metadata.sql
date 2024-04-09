@@ -71,10 +71,11 @@ entities:
 links: 
   AdCostStat:
     pipeline: datestat
+    datetime_field: __date
     keys:
     - name: __date 
     - name: reportType
-    entities:
+    main_entities:
     - Account
     - AdSource 
     - AdCampaign 
@@ -84,9 +85,10 @@ links:
     - UtmParams 
     - UtmHash
   MediaplanStat:
+    datetime_field: planCostDate
     keys:
     - name: planCostDate
-    entities:
+    main_entities:
     - Account
     - Product
     - CityCode
@@ -94,9 +96,10 @@ links:
     - UtmParams
   AppInstallStat:
     pipeline: events
+    datetime_field: event_datetime
     keys:
     - name: event_datetime
-    entities:
+    main_entities:
     - Account
     - AppMetricaDevice
     - MobileAdsId
@@ -108,9 +111,10 @@ links:
     - UtmHash
   AppEventStat:
     pipeline: events
+    datetime_field: event_datetime
     keys:
     - name: event_datetime
-    entities:
+    main_entities:
     - Account
     - AppMetricaDevice
     - MobileAdsId
@@ -121,9 +125,10 @@ links:
     - City
   AppSessionStat:
     pipeline: events
+    datetime_field: event_datetime
     keys:
     - name: event_datetime
-    entities:
+    main_entities:
     - Account
     - AppSession
     - AppMetricaDevice
@@ -133,9 +138,10 @@ links:
     - City
   AppDeeplinkStat:
     pipeline: events
+    datetime_field: event_datetime
     keys:
     - name: event_datetime
-    entities:
+    main_entities:
     - Account
     - AppMetricaDevice
     - MobileAdsId
@@ -147,11 +153,13 @@ links:
     - UtmHash
   VisitStat:
     pipeline: events
+    datetime_field: __date
     keys:
     - name: event_datetime
-    entities:
-    - Account 
+    main_entities: 
     - Visit
+    other_entities:
+    - Account 
     - YmClient
     - PromoCode
     - OsName
@@ -160,47 +168,132 @@ links:
     - UtmParams  
     - UtmHash
   AppProfileMatching:
-    pipeline: events
-    entities:
-    - AppMetricaDeviceId
+    pipeline: registry
+    datetime_field: toDateTime(0)
+    keys:
+    - name: toDateTime(0)
+    main_entities: 
+    - AppMetricaDevice
+    other_entities: 
     - CrmUser
-    - City
-registries:
-  AppMetricaDeviceId:
-    - incremental_appmetrica_registry_default_profiles
 glue_models:
-  full_link_visit_stat:
-    datetime_field: event_datetime
-    cols:
-    - VisitStatHash
-    - YmClientHash
-  full_link_app_event_stat:
-    datetime_field: event_datetime
+  hash_events:
+    datetime_field: __datetime
     cols:
     - AppEventStatHash
-    - CrmUserHash 
-    - AppMetricaDeviceIdHash
-  full_link_app_install_stat:
-    datetime_field: event_datetime
-    cols:
-    - AppInstallStatHash
     - CrmUserHash
-    - AppMetricaDeviceIdHash
-  full_link_app_session_stat:
-    datetime_field: event_datetime
-    cols:
-    - AppSessionStatHash
-    - CrmUserHash
-    - AppMetricaDeviceIdHash
-  full_link_app_deeplink_stat:
-    datetime_field: deeplinkDateTime
-    cols:
-    - AppDeeplinkStatHash
-    - CrmUserHash
-    - AppMetricaDeviceIdHash
-  full_link_app_profile_matching:
-    datetime_field: toDateTime(0)
+    - YmClientHash
+    - AppMetricaDeviceHash
+  hash_registry_app_profile_matching:
+    datetime_field: __datetime
     cols:
     - AppProfileMatchingHash
-    - AppMetricaDeviceIdHash
+    - AppMetricaDeviceHash
+    - CrmUserHash
+steps:
+  visits_step:
+      - link: VisitStat
+        datetime_field: __datetime
+        condition: osName = 'web'
+        period: 90
+        if_missed: '[Без веб сессии]'
+  install_step:
+      - link: AppInstallStat
+        datetime_field: __datetime
+        condition: installs >= 1
+        period: 30
+        if_missed: '[Без установки]'
+  app_visits_step:
+      - link: AppSessionStat
+        datetime_field: __datetime
+        condition: sessions >= 1
+        period: 30
+        if_missed: '[Без апп сессии]'
+      - link: AppDeeplinkStat
+        datetime_field: __datetime
+        period: 30
+        if_missed: '[Без апп сессии]'
+  event_step:
+      - link: AppEventStat
+        datetime_field: __datetime
+        condition: screenView >= 1
+        period: 7
+attribution_models:
+  my_first_model:
+    type: last_click
+    priorities: 
+    - LENGTH (adSourceDirty) < 2
+    - match(adSourceDirty, 'Органическая установка')
+    - __priority = 4 and not __if_missed = 1
+    - __priority = 3 and not __if_missed = 1
+    - __priority = 2 and not __if_missed = 1
+    - __priority = 1 and not __if_missed = 1
+    fields:
+    - utmSource
+    - utmMedium
+    - utmCampaign
+    - utmTerm
+    - utmContent
+    - adSourceDirty
+  my_second_model:
+    type: first_click
+    priorities: 
+    - __priority = 3 and not __if_missed = 1
+    - __priority = 2 and not __if_missed = 1
+    - __priority = 1 and not __if_missed = 1
+    fields:
+    - utmSource
+    - utmMedium
+    - utmCampaign
+    - utmTerm
+    - utmContent
+    - adSourceDirty
+  my_third_model:
+    type: first_click
+    priorities: 
+    - __priority = 3 and not __if_missed = 1
+    - __priority = 2 and not __if_missed = 1
+    - __priority = 1 and not __if_missed = 1
+    fields:
+    - utmSource
+    - utmMedium
+    - utmCampaign
+    - utmTerm
+    - utmContent
+    - adSourceDirty
+funnels:
+  myfirstfunnel:
+    steps:
+    - visits_step
+    - install_step
+    - app_visits_step
+    - event_step
+    models:
+    - my_first_model
+    - my_second_model
+  mysecondfunnel:
+    steps:
+    - install_step
+    - app_visits_step
+    - event_step
+    models:
+    - my_first_model
+datasets:
+  event_table:
+    pipelines: events
+    sources:
+    - appmetrica
+    - ym
+    preset: default
+    accounts:
+    - testaccount
+    funnel: myfirstfunnel
+  cost_table:
+    pipelines: datestat
+    sources:
+    - appmetrica
+    - ym
+    preset: default
+    accounts:
+    - testaccount
 {%- endmacro -%}

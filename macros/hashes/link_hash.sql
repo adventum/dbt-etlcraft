@@ -6,11 +6,17 @@
     {#- имя хэша задаём из входного аргумента, оборачиваем в кавычки -#}
     {%- set name_hash = "'" ~ link_name ~ "'" -%}
 
-    {#- для заданного линка берём его сущности  и ключи-#}
-    {%- set link_entities = links[link_name]['entities'] -%} {# связанные линком хабы #}
-    {%- set link_keys = links[link_name].get('keys') -%} {# доп. ключи для линка #}
-    {%- set all_keys = [] -%}
+    {#- AppProfileMatching -#}
 
+
+    {#- для заданного линка берём его сущности  и ключи-#}
+    {%- set link_entities = links[link_name]['main_entities'] -%} {# связанные линком хабы #}
+    {%- set link_keys = links[link_name].get('keys') -%} {# доп. ключи для линка #}
+    {%- set all_keys = []  -%}
+    {%- if 'Stat' in link_name -%}
+        {%- set date_dict = {'name': '__date'} -%}
+        {%- do all_keys.append(date_dict) -%}
+    {%- endif -%}
     {#- для каждой сущности заданного линка берем его ключи -#}
     {%- for entity in link_entities -%}
         {%- set _ = all_keys.extend(entities[entity]['keys']) -%} {# собираем список ключей хабов #}
@@ -21,9 +27,13 @@
     {%- endif -%}
 
     {%- set all_cols = [name_hash] -%} {# сюда складываем ключи с трансформациями #}
+
+
     {%- set skip_null_cols = [] -%} {# skipInNullCheck #}
 
     {#- тут происходит техническая предобработка данных для всех ключей -#}
+    
+
     {%- for key in all_keys -%}
         {#- приводим к формату String -#}
         {%- set sql_string = 'toString({})'.format(key['name']) -%} 
