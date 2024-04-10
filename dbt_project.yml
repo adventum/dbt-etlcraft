@@ -8,7 +8,7 @@ config-version: 2
 require-dbt-version: ">=1.3.0"
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'etlcraft'
+profile: 'dbt_local'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be

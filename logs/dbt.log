@@ -1,0 +1,55 @@
+
+
+============================== 2024-04-10 12:22:27.330387 | 188c7b80-c2f8-401e-a6ee-8f8843c6d5c4 ==============================
+[0m12:22:27.330387 [info ] [MainThread]: Running with dbt=1.4.7
+[0m12:22:27.331950 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m12:22:27.332158 [debug] [MainThread]: Tracking: tracking
+[0m12:22:27.333595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b86b6a200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b851d8df0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b851d8e20>]}
+[0m12:22:27.334240 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b86b6a200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b851d8e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8b84bf5c90>]}
+[0m12:22:27.334520 [debug] [MainThread]: Flushing usage events
+[0m12:22:27.904158 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found 2 package(s) specified in packages.yml, but only 0 package(s) installed in dbt_packages. Run "dbt deps" to install package dependencies.
+
+
+============================== 2024-04-10 12:22:40.818970 | f36b6f05-98ea-43f1-9051-fbdbaca19db8 ==============================
+[0m12:22:40.818970 [info ] [MainThread]: Running with dbt=1.4.7
+[0m12:22:40.820221 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'which': 'deps', 'rpc_method': 'deps', 'indirect_selection': 'eager'}
+[0m12:22:40.820343 [debug] [MainThread]: Tracking: tracking
+[0m12:22:40.821756 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0077d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a00d4280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a00d40d0>]}
+[0m12:22:40.830492 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-w7mgoia6'
+[0m12:22:40.830904 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m12:22:41.073766 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m12:22:41.074437 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m12:22:41.196036 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m12:22:41.200551 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/yu-iskw/dbt_unittest.json
+[0m12:22:41.347837 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/yu-iskw/dbt_unittest.json 200
+[0m12:22:41.352738 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m12:22:41.813307 [info ] [MainThread]:   Installed from version 1.1.1
+[0m12:22:41.813690 [info ] [MainThread]:   Up to date!
+[0m12:22:41.813977 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'f36b6f05-98ea-43f1-9051-fbdbaca19db8', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a00765f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0075360>]}
+[0m12:22:41.814232 [info ] [MainThread]: Installing yu-iskw/dbt_unittest
+[0m12:22:42.161067 [info ] [MainThread]:   Installed from version 0.3.3
+[0m12:22:42.162124 [info ] [MainThread]:   Up to date!
+[0m12:22:42.162463 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'f36b6f05-98ea-43f1-9051-fbdbaca19db8', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0075c60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a00764a0>]}
+[0m12:22:42.163337 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0077b80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0077700>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02a0077880>]}
+[0m12:22:42.163904 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-04-10 12:22:47.393476 | 2b3d915b-3573-4625-8517-a090c24c9886 ==============================
+[0m12:22:47.393476 [info ] [MainThread]: Running with dbt=1.4.7
+[0m12:22:47.394841 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m12:22:47.394968 [debug] [MainThread]: Tracking: tracking
+[0m12:22:47.397164 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bc0e1c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bc17b040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bc17b010>]}
+[0m12:22:47.416760 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m12:22:47.417387 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m12:22:47.417812 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '2b3d915b-3573-4625-8517-a090c24c9886', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bc17a230>]}
+[0m12:22:48.611338 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2b3d915b-3573-4625-8517-a090c24c9886', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bb6b1ba0>]}
+[0m12:22:48.626370 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2b3d915b-3573-4625-8517-a090c24c9886', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bb944e20>]}
+[0m12:22:48.626778 [info ] [MainThread]: Found 0 models, 8 tests, 0 snapshots, 0 analyses, 527 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+[0m12:22:48.627031 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2b3d915b-3573-4625-8517-a090c24c9886', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bb665540>]}
+[0m12:22:48.628193 [info ] [MainThread]: 
+[0m12:22:48.628759 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m12:22:48.629065 [debug] [MainThread]: Command end result
+[0m12:22:48.637914 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bc12b1c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bb945d20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd3bb6b1480>]}
+[0m12:22:48.638370 [debug] [MainThread]: Flushing usage events
