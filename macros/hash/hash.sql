@@ -17,7 +17,7 @@
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
-{#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
+{#- если имя модели не соответствует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 2 or model_name_parts[0] != 'hash' -%}
 {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "hash_{pipeline_name}"') }}
 {%- endif -%}
