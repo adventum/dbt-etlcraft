@@ -45,9 +45,8 @@ FROM (
         (
             select
 
-                toLowCardinality('combine_appmetrica_registry')  as _dbt_source_relation,
+                --toLowCardinality('combine_appmetrica_registry')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("crmUserId") as crmUserId ,
                             toString("cityName") as cityName ,

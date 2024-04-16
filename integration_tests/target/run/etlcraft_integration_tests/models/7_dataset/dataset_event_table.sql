@@ -3,7 +3,7 @@
     
     
         
-        insert into test.dataset_event_table__dbt_backup ("_dbt_source_relation", "None", "__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link", "AdCostStatHash", "__id", "__datetime", "__period_number", "__if_missed", "__priority", "__step", "qid", "event_datetime", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "transactionId", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "YmClientHash", "__last_click_rank", "__first_click_rank", "__myfirstfunnel_last_click_utmSource", "__myfirstfunnel_last_click_utmMedium", "__myfirstfunnel_last_click_utmCampaign", "__myfirstfunnel_last_click_utmTerm", "__myfirstfunnel_last_click_utmContent", "__myfirstfunnel_last_click_adSourceDirty", "__myfirstfunnel_first_click_utmSource", "__myfirstfunnel_first_click_utmMedium", "__myfirstfunnel_first_click_utmCampaign", "__myfirstfunnel_first_click_utmTerm", "__myfirstfunnel_first_click_utmContent", "__myfirstfunnel_first_click_adSourceDirty")
+        insert into test.dataset_event_table__dbt_backup ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link", "AdCostStatHash", "__id", "__datetime", "__period_number", "__if_missed", "__priority", "__step", "qid", "event_datetime", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "transactionId", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "YmClientHash", "__last_click_rank", "__first_click_rank", "__myfirstfunnel_last_click_utmSource", "__myfirstfunnel_last_click_utmMedium", "__myfirstfunnel_last_click_utmCampaign", "__myfirstfunnel_last_click_utmTerm", "__myfirstfunnel_last_click_utmContent", "__myfirstfunnel_last_click_adSourceDirty", "__myfirstfunnel_first_click_utmSource", "__myfirstfunnel_first_click_utmMedium", "__myfirstfunnel_first_click_utmCampaign", "__myfirstfunnel_first_click_utmTerm", "__myfirstfunnel_first_click_utmContent", "__myfirstfunnel_first_click_adSourceDirty")
   
 
 
@@ -16,9 +16,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -116,9 +115,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,
@@ -224,9 +222,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -324,9 +321,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,
@@ -432,9 +428,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -532,9 +527,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,

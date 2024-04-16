@@ -10,9 +10,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -110,9 +109,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,
@@ -218,9 +216,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -318,9 +315,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,
@@ -426,9 +422,8 @@
         (
             select
 
-                toLowCardinality('full_datestat')  as _dbt_source_relation,
+                --toLowCardinality('full_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -526,9 +521,8 @@
         (
             select
 
-                toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
+                --toLowCardinality('attr_myfirstfunnel_final_table')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString('') as reportType ,
                             toString("accountName") as accountName ,

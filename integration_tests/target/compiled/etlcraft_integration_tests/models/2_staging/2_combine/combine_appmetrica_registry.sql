@@ -5,7 +5,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_appmetrica_registry')  as None,
+                --toLowCardinality('join_appmetrica_registry')  as None,
                 
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("crmUserId") as crmUserId ,
@@ -22,7 +22,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_appmetrica_registry_app_profile_matching')  as None,
+                --toLowCardinality('join_appmetrica_registry_app_profile_matching')  as None,
                 
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("crmUserId") as crmUserId ,

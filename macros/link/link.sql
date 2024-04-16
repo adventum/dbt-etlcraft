@@ -28,11 +28,11 @@
     on_schema_change='fail'
 ) }}
 
-{#- если не установлено - будем делать view -#}
+{#- если не установлено - будем делать table -#}
 {%- else -%}
 
 {{ config(
-    materialized='view'
+    materialized='table'
 ) }}
 
 {%- endif -%}

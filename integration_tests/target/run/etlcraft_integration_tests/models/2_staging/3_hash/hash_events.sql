@@ -83,9 +83,8 @@ FROM (
         (
             select
 
-                toLowCardinality('combine_events')  as _dbt_source_relation,
+                --toLowCardinality('combine_events')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime("event_datetime") as event_datetime ,
