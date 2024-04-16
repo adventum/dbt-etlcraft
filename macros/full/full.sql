@@ -29,7 +29,14 @@
 {%- endfor -%} 
 
 {%- set link_registry_tables = etlcraft.custom_union_relations(relations=relations) -%}
- 
- SELECT * FROM {{ link_registry_tables }} 
+
+{{
+    config(
+        materialized = 'table',
+        order_by = ('__datetime')
+    )
+}}
+
+SELECT * FROM {{ link_registry_tables }} 
 
 {% endmacro %}
