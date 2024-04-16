@@ -10,7 +10,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_utmcraft_registry')  as None,
+                --toLowCardinality('join_utmcraft_registry')  as None,
                 
                             toString("utmHash") as utmHash ,
                             toString("utm_base_url") as utm_base_url ,

@@ -7,7 +7,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_mt_datestat')  as None,
+                --toLowCardinality('join_mt_datestat')  as None,
                 
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
@@ -44,7 +44,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_vkads_datestat')  as None,
+                --toLowCardinality('join_vkads_datestat')  as None,
                 
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
@@ -81,7 +81,7 @@ FROM (
         (
             select
 
-                toLowCardinality('join_yd_datestat')  as None,
+                --toLowCardinality('join_yd_datestat')  as None,
                 
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,

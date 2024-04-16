@@ -40,9 +40,8 @@ FROM (
         (
             select
 
-                toLowCardinality('combine_datestat')  as _dbt_source_relation,
+                --toLowCardinality('combine_datestat')  as _dbt_source_relation,
                 
-                            toString("None") as None ,
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,

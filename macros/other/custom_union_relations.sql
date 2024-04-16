@@ -62,7 +62,7 @@
         (
             select
 
-                toLowCardinality('{{ relation.name }}')  as {{ source_column_name }},
+                --toLowCardinality('{{ relation.name }}')  as {{ source_column_name }},
                 {% for col_name in ordered_column_names -%}
 
                     {%- set col = column_superset[col_name] %}
