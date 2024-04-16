@@ -14,7 +14,8 @@
 {#- задаём по возможности инкрементальность -#}
 
 {%- set columns_names_with_date_type = [] -%}
-{% for c in adapter.get_columns_in_relation(load_relation(ref(source_model_name))) -%}
+{%- set source_columns = adapter.get_columns_in_relation(load_relation(ref(source_model_name))) -%}
+{%- for c in source_columns -%}
 {%- if 'Date' in c.data_type or 'DateTime' in c.data_type -%}
 {%- do columns_names_with_date_type.append(c.name)  -%}
 {%- endif -%}
@@ -42,7 +43,7 @@
 {%- set numeric_types = ['Int', 'Float', 'Num'] -%}
 
 {#- для каждой колонки таблицы, на которую будем ссылаться -#}
-SELECT {% for c in adapter.get_columns_in_relation(load_relation(ref(source_model_name))) -%}
+SELECT {% for c in source_columns -%}
 {#- если тип данных колонки не числовой - добавляем её в список для будущей группировки -#}
 {% if c.data_type not in numeric_types %}{{ c.name }}
 {%- do group_by_fields.append(c.name)  -%}
