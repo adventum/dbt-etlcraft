@@ -3,7 +3,7 @@
   create view test.hash_registry_app_profile_matching__dbt_tmp 
   
   as (
-    -- depends_on: test.join_appmetrica_registry_app_profile_matching
+    -- depends_on: test.join_appmetrica_registry
 SELECT *,
   assumeNotNull(CASE 
 WHEN __link = 'AppProfileMatching' 

@@ -1,4 +1,4 @@
--- depends_on: test.join_appmetrica_registry_app_profile_matching
+-- depends_on: test.join_appmetrica_registry
 SELECT *,
   assumeNotNull(CASE 
 WHEN __link = 'AppProfileMatching' 

@@ -1,6 +1,4 @@
-{%- macro link(disable_incremental=False) %}
-
-{% set metadata = fromyaml(etlcraft.metadata()) %}
+{%- macro link() %}
 
 {#- задаём части имени - чтобы выделить имя нужной hash-таблицы -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
@@ -55,6 +53,5 @@ SELECT {% for c in source_columns -%}
 {%- endif %}{% if not loop.last %},{% endif %}{% endfor %} 
 FROM {{ ref(source_model_name) }}
 GROUP BY {{ group_by_fields | join(', ') }}
-
 
 {% endmacro %}
