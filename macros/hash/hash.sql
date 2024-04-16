@@ -10,9 +10,7 @@
 
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
-{%- set pipeline_name = model_name_parts[1] -%}
-{%- set registry_name = model_name_parts[2:] -%}
-{%- set registry_name = '_'.join(registry_name) -%}
+{%- set pipeline_name = model_name_parts[-1] -%}
 
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
@@ -25,7 +23,7 @@
 {#- задаём паттерн, чтобы найти combine-таблицу нужного пайплайна -#}
 
 {%- if pipeline_name == 'registry' -%}
-    {%- set table_pattern = 'join_[^_]+_' ~ pipeline_name ~'_'~ registry_name -%}  
+    {%- set table_pattern = 'combine_' ~ model_name_parts[1] ~'_'~ pipeline_name -%}  
 {%- else -%}
     {%- set table_pattern = 'combine_' ~ pipeline_name -%}
 {%- endif -%}
