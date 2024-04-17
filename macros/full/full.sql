@@ -37,7 +37,7 @@
 {#- задаём переменную, где находятся все имеющиеся таблицы пайплайна registry и шага link -#}
 {%- set link_registry_tables = etlcraft.custom_union_relations(relations=relations_registry) -%}
 
-{#- для пайплайна events делаем материализацию table и соединяем данные graph_qid + имеющиеся registry -#}
+{#- для пайплайна events делаем материализацию table и соединяем данные link_events??? + graph_qid + имеющиеся registry -#}
 {%- if pipeline_name =='events' -%} 
 {{
     config(
@@ -47,8 +47,31 @@
 }}
 
 SELECT * 
-FROM {{ ref('graph_qid') }} t1
+FROM (
+    SELECT * FROM {{ ref('link_events') }}
+    LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
+) t1
 LEFT JOIN {{ link_registry_tables }} t2 USING (__id, __link, __datetime)
-{%- endif -%} 
 
+{#- без link_events вот такой запрос 
+SELECT * 
+FROM {{ ref('graph_qid') }}  t1
+LEFT JOIN {{ link_registry_tables }} t2 USING (__id, __link, __datetime)
+-#}
+
+{#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
+{%- elif pipeline_name =='datestat' -%} 
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+SELECT * 
+FROM {{ ref('link_datestat') }} t1
+LEFT JOIN {{ link_registry_tables }} t2 USING (__id, __link, __datetime)
+
+
+{%- endif -%} 
 {% endmacro %}
