@@ -69,6 +69,10 @@ entities:
     {# - name: appSessionId #}
     - name: installationDeviceId
 links: 
+{#- UtmHashRegistry:
+    pipeline: registry
+    main_entities:
+    - UtmHash #}
   AdCostStat:
     pipeline: datestat
     datetime_field: __date
@@ -184,7 +188,7 @@ glue_models:
     - CrmUserHash
     - YmClientHash
     - AppMetricaDeviceHash
-  hash_registry_app_profile_matching:
+  hash_appmetrica_registry:
     datetime_field: __datetime
     cols:
     - AppProfileMatchingHash
