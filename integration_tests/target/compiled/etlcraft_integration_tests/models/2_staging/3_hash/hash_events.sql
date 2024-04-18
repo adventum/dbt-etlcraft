@@ -17,6 +17,7 @@ WHEN __link = 'VisitStat'
   assumeNotNull(CASE 
 
 
+
 WHEN __link = 'AppInstallStat' 
         THEN toDateTime(event_datetime)
     
@@ -63,6 +64,11 @@ SELECT
     
         
         assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '')))))) as CrmUserHash
+
+,
+    
+        
+        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(utmHash))), ''), '')))))) as UtmHashHash
 
 ,
     

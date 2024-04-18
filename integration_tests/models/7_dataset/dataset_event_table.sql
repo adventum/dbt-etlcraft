@@ -1,3 +1,8 @@
+
+SELECT *
+FROM {{ ref('full_events')}}
+
+{#
 {{ etlcraft.create_dataset(
     funnel = 'myfirstfunnel',
     conditions =
@@ -21,3 +26,4 @@
     }
      ]
 ) }}
+#}

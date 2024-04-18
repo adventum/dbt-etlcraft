@@ -10,6 +10,7 @@ FROM (
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("crmUserId") as crmUserId ,
                             toString("cityName") as cityName ,
+                            toString("utmHash") as utmHash ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link 
 
