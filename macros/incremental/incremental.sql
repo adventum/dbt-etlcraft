@@ -36,7 +36,15 @@
 {#- если инкрементальное поле с датой так и не установлено, будем делать SELECT * -#}
 {#- If IDF is not found, treat this as a simple proxy -#}
 {%- if incremental_datetime_field == False  -%}
-    SELECT * 
+
+    {{ config(
+        materialized='table',
+        order_by=('__table_name'),
+        on_schema_change='fail'
+    ) }}
+
+SELECT * 
+
 {#- If IDF exists, create an incremental model -#}
 {#- ниже - то, что будет в модели -#}
 {%- else -%}
