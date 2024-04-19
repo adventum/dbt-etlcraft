@@ -1,9 +1,11 @@
 
-
-  create view test.join_ym_events__dbt_tmp 
+        
   
-  as (
-    -- depends_on: test.incremental_ym_events_default_yandex_metrika_stream
+    
+    
+        
+        insert into test.join_ym_events__dbt_tmp ("__date", "__table_name", "visitId", "clientId", "promoCode", "osName", "cityName", "cityCode", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "couponActivationSessions", "participationInLotterySessions", "pageViews", "__emitted_at", "__link")
+  -- depends_on: test.incremental_ym_events_default_yandex_metrika_stream
 WITH events AS (
 SELECT * FROM (
     
@@ -75,7 +77,7 @@ SELECT
     if(countSubstrings(ymsgoalsID, '131126557')>0,1,0) AS checkoutSessions, 
     if(countSubstrings(ymsgoalsID, '131127241')>0,1,0) AS webSalesSessions, 
     countSubstrings(ymsgoalsID, '131127241') AS sales, 
-    NULL AS amountSales,
+    0.0 AS amountSales,
     if(countSubstrings(ymsgoalsID, '199402504')>0,1,0) AS registrationCardSessions,
     if(countSubstrings(ymsgoalsID, '199402597')>0,1,0) AS linkingCardToPhoneNumberSessions, 
     if(countSubstrings(ymsgoalsID, '226410025')>0,1,0) AS registrationLendingPromotionsSessions, 
@@ -92,5 +94,5 @@ FROM events
 
 
 
-
-  )
+  
+    

@@ -1,9 +1,12 @@
 
-
-  create view test.incremental_mt_datestat_default_campaigns__dbt_tmp 
   
-  as (
-    SELECT *
+    
+    
+        
+        insert into test.incremental_mt_datestat_default_campaigns__dbt_backup ("__clientName", "__productName", "id", "name", "__table_name", "__emitted_at", "__normalized_at")
+  
+
+SELECT *
 FROM test.normalize_mt_datestat_default_campaigns
 
-  )
+  

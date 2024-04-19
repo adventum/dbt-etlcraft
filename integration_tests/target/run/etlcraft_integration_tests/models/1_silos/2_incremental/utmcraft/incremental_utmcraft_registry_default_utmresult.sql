@@ -1,9 +1,12 @@
 
-
-  create view test.incremental_utmcraft_registry_default_utmresult__dbt_tmp 
   
-  as (
-    SELECT *
+    
+    
+        
+        insert into test.incremental_utmcraft_registry_default_utmresult__dbt_backup ("created_at", "created_by_id", "data", "form_id", "id", "updated_at", "updated_by_id", "utm_hashcode", "__table_name", "__emitted_at", "__normalized_at")
+  
+
+SELECT *
 FROM test.normalize_utmcraft_registry_default_utmresult
 
-  )
+  

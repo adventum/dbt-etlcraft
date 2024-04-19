@@ -1,9 +1,11 @@
 
-
-  create view test.join_vkads_datestat__dbt_tmp 
+        
   
-  as (
-    -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
+    
+    
+        
+        insert into test.join_vkads_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+  -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
 -- depends_on: test.incremental_vkads_datestat_default_ad_plans
 WITH ad_plans_statistics AS (
 SELECT * FROM (
@@ -112,5 +114,5 @@ JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
 
 
 
-
-  )
+  
+    

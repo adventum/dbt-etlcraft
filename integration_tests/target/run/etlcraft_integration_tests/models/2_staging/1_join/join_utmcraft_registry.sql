@@ -1,9 +1,10 @@
 
-
-  create view test.join_utmcraft_registry__dbt_tmp 
   
-  as (
-    -- depends_on: test.incremental_utmcraft_registry_default_utmresult
+    
+    
+        
+        insert into test.join_utmcraft_registry__dbt_backup ("utmHash", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "__emitted_at", "__table_name", "crmUserId", "appmetricaDeviceId", "__link")
+  -- depends_on: test.incremental_utmcraft_registry_default_utmresult
 SELECT
     utm_hashcode AS utmHash,
     JSONExtractString(data, '4') AS utm_base_url,
@@ -32,7 +33,11 @@ SELECT
            if(JSONExtractString(data, '92') = 'custom-value-input-field',JSONExtractString(data, 'custom-92'),JSONExtractString(data, '92')),
            if(JSONExtractString(data, '92') != '' or JSONExtractString(data, 'custom-92') != '', ';', ''),
            if(JSONExtractString(data, '86') = 'custom-value-input-field',JSONExtractString(data, 'custom-86'),JSONExtractString(data, '86'))) AS utm_audience,
-    __emitted_at         
+    __emitted_at,
+    toLowCardinality(__table_name) AS __table_name,
+    '' AS crmUserId,  
+    '' AS appmetricaDeviceId,
+    'UtmHashRegistry' AS __link         
 FROM (
     
 
@@ -64,5 +69,4 @@ FROM (
 
 
 
-
-  )
+  

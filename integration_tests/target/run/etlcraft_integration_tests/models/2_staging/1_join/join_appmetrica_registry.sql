@@ -1,15 +1,17 @@
 
-
-  create view test.join_appmetrica_registry__dbt_tmp 
   
-  as (
-    -- depends_on: test.incremental_appmetrica_registry_default_profiles
+    
+    
+        
+        insert into test.join_appmetrica_registry__dbt_backup ("appmetricaDeviceId", "crmUserId", "cityName", "utmHash", "__emitted_at", "__table_name", "__link")
+  -- depends_on: test.incremental_appmetrica_registry_default_profiles
 SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     profile_id AS crmUserId,
     city AS cityName,
     '' AS utmHash,
     __emitted_at,
+    toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('AppProfileMatching') AS __link 
 FROM (
     
@@ -38,5 +40,4 @@ FROM (
 
 
 
-
-  )
+  

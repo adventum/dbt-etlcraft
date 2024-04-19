@@ -4,9 +4,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_utmcraft_registry')  as None,
-                
                             toString("utmHash") as utmHash ,
                             toString("utm_base_url") as utm_base_url ,
                             toString("utm_utmSource") as utm_utmSource ,
@@ -16,9 +13,14 @@ FROM (
                             toString("utm_utmContent") as utm_utmContent ,
                             toString("utm_strategy") as utm_strategy ,
                             toString("utm_audience") as utm_audience ,
-                            toDateTime("__emitted_at") as __emitted_at 
+                            toDateTime("__emitted_at") as __emitted_at ,
+                            toString("__table_name") as __table_name ,
+                            toString("crmUserId") as crmUserId ,
+                            toString("appmetricaDeviceId") as appmetricaDeviceId ,
+                            toString("__link") as __link 
 
             from test.join_utmcraft_registry
         )
 
-        )
+        ) 
+

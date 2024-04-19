@@ -106,4 +106,3 @@ JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
 
 
 
-

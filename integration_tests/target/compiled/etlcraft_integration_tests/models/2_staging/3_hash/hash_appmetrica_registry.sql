@@ -6,9 +6,8 @@ WHEN __link = 'UtmHashRegistry'
 WHEN __link = 'AppProfileMatching' 
     THEN AppProfileMatchingHash 
 
-    END) as __id,
-
-  assumeNotNull(CASE 
+    END) as __id
+  , assumeNotNull(CASE 
 WHEN __link = 'UtmHashRegistry' 
         THEN toDateTime(toDateTime(0))
     
@@ -24,6 +23,7 @@ WHEN __link = 'AppProfileMatching'
     
 
     END) as __datetime
+
 FROM (
 
 SELECT 
@@ -51,20 +51,16 @@ SELECT
 
 
     
-
-
 FROM (
 
         (
             select
-
-                --toLowCardinality('combine_appmetrica_registry')  as _dbt_source_relation,
-                
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("crmUserId") as crmUserId ,
                             toString("cityName") as cityName ,
                             toString("utmHash") as utmHash ,
                             toDateTime("__emitted_at") as __emitted_at ,
+                            toString("__table_name") as __table_name ,
                             toString("__link") as __link 
 
             from test.combine_appmetrica_registry
@@ -76,7 +72,6 @@ FROM (
         True AND 
         True
     )
-
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 

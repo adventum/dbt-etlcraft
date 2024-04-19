@@ -1,9 +1,12 @@
 
-
-  create view test.incremental_adjust_events_default_events__dbt_tmp 
   
-  as (
-    SELECT *
+    
+    
+        
+        insert into test.incremental_adjust_events_default_events__dbt_backup ("app_token", "description", "formatting", "id", "is_skad_event", "name", "section", "short_name", "tokens", "__table_name", "__emitted_at", "__normalized_at")
+  
+
+SELECT *
 FROM test.normalize_adjust_events_default_events
 
-  )
+  

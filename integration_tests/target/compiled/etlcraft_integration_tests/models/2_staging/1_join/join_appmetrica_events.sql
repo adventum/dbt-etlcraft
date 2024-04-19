@@ -12,9 +12,9 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    '' AS visitId,
-    '' AS clientId,
-    '' AS promoCode,
+    '' AS visitId, --
+    '' AS clientId, -- 
+    '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
     assumeNotNull(coalesce(lower(if(length(utmSource) > 0, concat(utmSource, ' / ', utmMedium), null)), publisher_name, '')) AS adSourceDirty,
@@ -25,7 +25,7 @@ SELECT
     extract(deeplink_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     '' AS transactionId,
     greatest(coalesce(extract(utmCampaign, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmContent, '__([a-zA-Z0-9]{8})'), '')) AS utmHash,
-    0 AS sessions,
+    0 AS sessions, --
     0 AS addToCartSessions,
     0 AS cartViewSessions,
     0 AS checkoutSessions,
@@ -435,8 +435,6 @@ FROM join_appmetrica_events_screen_view
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts
-
-
 
 
 

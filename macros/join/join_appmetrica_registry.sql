@@ -9,7 +9,7 @@
 
 {{ config(
     materialized='table',
-    order_by=('__date', '__table_name'),
+    order_by=('__table_name'),
     on_schema_change='fail'
 ) }}
 
