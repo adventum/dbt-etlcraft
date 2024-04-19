@@ -16,12 +16,12 @@
 }}
 
 {# 
-    Выборка данных из таблицы hash_events с добавлением идентификаторов группы из ранее созданной таблицы graph_qid.
+    Выборка данных из таблицы full_events с добавлением идентификаторов группы из ранее созданной таблицы graph_qid.
 #}
-select
+SELECT
     y.qid, x.*
-from {{ ref('hash_events') }} as x
-left join {{ ref('graph_qid') }} as y
-    using (__datetime,__link, __id)
+FROM {{ ref('full_events') }} AS x
+LEFT JOIN {{ ref('graph_qid') }} AS y
+    USING (__datetime,__link, __id)
 
 {% endmacro %}
