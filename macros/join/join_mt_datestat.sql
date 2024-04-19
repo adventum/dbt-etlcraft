@@ -7,6 +7,14 @@
     params
     ) -%}
 
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+
 {%- set sourcetype_name = 'mt' -%}
 {%- set pipeline_name = 'datestat' -%}
 
@@ -24,6 +32,7 @@
 {%- set table_pattern_campaigns = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_campaigns ~ '$' -%}
 {%- set relations_campaigns = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_campaigns) -%}   
 {%- set source_table_campaigns = '(' ~ dbt_utils.union_relations(relations_campaigns) ~ ')' -%}
+
 
 WITH banners_statistics AS (
 SELECT * FROM {{ source_table_banners_statistics }}
