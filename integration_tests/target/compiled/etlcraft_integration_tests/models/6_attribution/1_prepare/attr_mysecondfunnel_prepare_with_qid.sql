@@ -1,14 +1,14 @@
--- depends_on: test.hash_events
+-- depends_on: test.full_events
 -- depends_on: test.graph_qid
 
 
 
 
-select
+SELECT
     y.qid, x.*
-from test.hash_events as x
-left join test.graph_qid as y
-    using (__datetime,__link, __id)
+FROM test.full_events AS x
+LEFT JOIN test.graph_qid AS y
+    USING (__datetime,__link, __id)
 
 
 

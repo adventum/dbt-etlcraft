@@ -1,9 +1,10 @@
 
-
-  create view test.hash_events__dbt_tmp 
   
-  as (
-    -- depends_on: test.combine_events
+    
+    
+        
+        insert into test.hash_events__dbt_backup ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "UtmHashHash", "YmClientHash", "__id", "__datetime")
+  -- depends_on: test.combine_events
 SELECT *,
   assumeNotNull(CASE 
 WHEN __link = 'AppInstallStat' 
@@ -17,9 +18,8 @@ WHEN __link = 'AppDeeplinkStat'
 WHEN __link = 'VisitStat' 
     THEN VisitStatHash 
 
-    END) as __id,
-
-  assumeNotNull(CASE 
+    END) as __id
+  , assumeNotNull(CASE 
 
 
 
@@ -41,6 +41,7 @@ WHEN __link = 'VisitStat'
 
 
     END) as __datetime
+
 FROM (
 
 SELECT 
@@ -82,15 +83,10 @@ SELECT
 
 
     
-
-
 FROM (
 
         (
             select
-
-                --toLowCardinality('combine_events')  as _dbt_source_relation,
-                
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime("event_datetime") as event_datetime ,
@@ -117,7 +113,7 @@ FROM (
                             toUInt8("checkoutSessions") as checkoutSessions ,
                             toUInt8("webSalesSessions") as webSalesSessions ,
                             toUInt8("sales") as sales ,
-                            toNullable("amountSales") as amountSales ,
+                            toFloat64("amountSales") as amountSales ,
                             toUInt8("registrationCardSessions") as registrationCardSessions ,
                             toUInt8("registrationButtonClick") as registrationButtonClick ,
                             toUInt8("linkingCardToPhoneNumberSessions") as linkingCardToPhoneNumberSessions ,
@@ -149,8 +145,7 @@ FROM (
         True
     )
 
-
 -- SETTINGS short_circuit_function_evaluation=force_enable
 
 
-  )
+  

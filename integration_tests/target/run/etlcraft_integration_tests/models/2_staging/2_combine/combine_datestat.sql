@@ -1,9 +1,11 @@
 
-
-  create view test.combine_datestat__dbt_tmp 
+        
   
-  as (
-    -- depends_on: test.join_mt_datestat
+    
+    
+        
+        insert into test.combine_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+  -- depends_on: test.join_mt_datestat
 -- depends_on: test.join_vkads_datestat
 -- depends_on: test.join_yd_datestat
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
@@ -11,9 +13,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_mt_datestat')  as None,
-                
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -48,9 +47,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_vkads_datestat')  as None,
-                
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -85,9 +81,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_yd_datestat')  as None,
-                
                             toDate("__date") as __date ,
                             toString("reportType") as reportType ,
                             toString("accountName") as accountName ,
@@ -117,5 +110,8 @@ FROM (
             from test.join_yd_datestat
         )
 
-        )
-  )
+        ) 
+
+
+  
+    

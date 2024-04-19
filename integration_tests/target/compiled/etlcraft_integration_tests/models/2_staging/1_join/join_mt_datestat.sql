@@ -115,4 +115,3 @@ JOIN campaigns ON banners.campaign_id = campaigns.id
 
 
 
-

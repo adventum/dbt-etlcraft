@@ -1,18 +1,17 @@
 
-
-  create view test.combine_events__dbt_tmp 
+        
   
-  as (
-    -- depends_on: test.join_appmetrica_events
+    
+    
+        
+        insert into test.combine_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "cityCode", "pageViews")
+  -- depends_on: test.join_appmetrica_events
 -- depends_on: test.join_ym_events
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM (
 
         (
             select
-
-                --toLowCardinality('join_appmetrica_events')  as None,
-                
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime("event_datetime") as event_datetime ,
@@ -66,9 +65,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_ym_events')  as None,
-                
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime(0) as event_datetime ,
@@ -117,5 +113,8 @@ FROM (
             from test.join_ym_events
         )
 
-        )
-  )
+        ) 
+
+
+  
+    

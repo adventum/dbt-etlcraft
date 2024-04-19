@@ -5,9 +5,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_appmetrica_events')  as None,
-                
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime("event_datetime") as event_datetime ,
@@ -61,9 +58,6 @@ FROM (
 
         (
             select
-
-                --toLowCardinality('join_ym_events')  as None,
-                
                             toDateTime("__date") as __date ,
                             toString("__table_name") as __table_name ,
                             toDateTime(0) as event_datetime ,
@@ -112,4 +106,5 @@ FROM (
             from test.join_ym_events
         )
 
-        )
+        ) 
+
