@@ -6,12 +6,30 @@
   date_to = none
   ) -%}
 
-{%- if execute -%}
+{#- задаём по возможности инкрементальность -#}
+{%- if pipeline_name in ('datestat', 'events') -%}
+
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+
+{%- else -%}
+
+{{ config(
+    materialized='table',
+    order_by=('__table_name'),
+    on_schema_change='fail'
+) }}
+
+{%-endif -%}
 
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[-1] -%}
-
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
@@ -28,27 +46,12 @@
     {%- set table_pattern = 'combine_' ~ pipeline_name -%}
 {%- endif -%}
 
-
 {#- находим все таблицы, которые соответствут паттерну -#}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
                                                               table_pattern=table_pattern) -%} 
 
-{#- если что-то не так - выдаём ошибку -#}                                                                  
-{%- if not relations -%}
-{{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". Please ensure that your source data follows the expected structure.') }}
-{%- endif -%}
-
-
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
-
-{{ config(
-    materialized='incremental',
-    order_by=('__date', '__table_name'),
-    incremental_strategy='delete+insert',
-    unique_key=['__date', '__table_name'],
-    on_schema_change='fail'
-) }}
 
 {#- задаём список всех линков -#}
 {%- set links = metadata['links'] -%}
@@ -76,7 +79,6 @@
     {%- endfor -%}
 {%- endfor -%}
 
-
 {#- проверяем результат по линкам
 Этот запрос
 SELECT  {{ links_list }}  
@@ -84,13 +86,12 @@ SELECT  {{ links_list }}
 для hash_events выводит ['AppInstallStat', 'AppEventStat', 'AppSessionStat', 'AppDeeplinkStat', 'VisitStat', 'AppProfileMatching']
 -#}
 
-{#- проверяем результат по линкам
+{#- проверяем результат по сущностям
 Этот запрос
 SELECT  {{ registry_main_entities_list }}  
 для hash_datestat выводит ['AppMetricaDevice'] 
 для hash_events выводит ['AppMetricaDevice'] 
 -#}
-
 
 {#- условие либо glue=yes, либо сущность из main_entities -#}
 
@@ -113,7 +114,6 @@ SELECT {{ metadata_entities_list }}
 для hash_datestat и hash_events выводит  ['YmClient', 'CrmUser', 'AppMetricaDevice']
 -#}
 
-
 {#- делаем полученный список сущностей уникальным -#}
 {%- set unique_entities_list = entities_list|unique|list -%}
 
@@ -124,7 +124,6 @@ SELECT {{ unique_entities_list }}
 для hash_datestat выводит  ['Account', 'AdSource', 'AdCampaign', 'AdGroup', 'Ad', 'AdPhrase', 'UtmParams', 'UtmHash']
 для hash_events выводит ['Account', 'AppMetricaDevice', 'MobileAdsId', 'CrmUser', 'OsName', 'City', 'AdSource', 'UtmParams', 'UtmHash', 'Transaction', 'PromoCode', 'AppSession', 'Visit', 'YmClient', 'AppMetricaDeviceId']
 -#}
-
 
 {#- из уникального списка сущностей отбираем те, которые 
     либо есть в списке сущностей glue='yes', либо есть в разделе registries -#}
@@ -144,10 +143,6 @@ SELECT {{ final_entities_list }}
 
 {#- основной запрос -#} 
 
-
-
-
-
 SELECT *,
   assumeNotNull(CASE 
 {% for link in links_list %}
@@ -155,9 +150,8 @@ SELECT *,
     WHEN __link = '{{link}}' 
     THEN {{link_hash}} 
 {% endfor %}
-    END) as __id,
-
-  assumeNotNull(CASE 
+    END) as __id
+  , assumeNotNull(CASE 
 {% for link_name in links  %}
     {%- set datetime_field = links[link_name].get('datetime_field') -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
@@ -167,6 +161,7 @@ SELECT *,
     {% endif %}
 {% endfor %}
     END) as __datetime
+
 FROM (
 
 SELECT 
@@ -180,8 +175,6 @@ SELECT
         {# добавляем хэши для отобранных сущностей #}
         {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
     {% endfor %}
-
-
 FROM {{ source_table }} 
     WHERE 
     {% for link in links_list %}
@@ -189,7 +182,6 @@ FROM {{ source_table }}
     {% endfor %}
     )
 
-
 -- SETTINGS short_circuit_function_evaluation=force_enable
-{% endif %}
+
 {% endmacro %}
