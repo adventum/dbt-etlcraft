@@ -6,8 +6,6 @@
   date_to = none
   ) -%}
 
-{%- if execute -%}
-
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {#- в combine могут быть модели из 2 или трех частей, но последняя часть всегда обозначает пайплайн -#}
@@ -32,27 +30,40 @@
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
                                                               table_pattern=table_pattern) -%} 
 
-{#- если что-то не так - выдаём ошибку -#}                                                                  
+{#- если что-то не так - выдаём ошибку                                                                  
 {%- if not relations -%}
 {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". Please ensure that your source data follows the expected structure.') }}
-{%- endif -%}
+{%- endif -%} -#} 
 
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 
-{#- делаем это через кастомный макрос, чтобы null заменить на '' или 0  -#}  {#- relations, source_column_name=None  - без этого ошибка -#}
+{#- делаем это через кастомный макрос, чтобы null заменить на '' или 0  -#} 
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations, source_column_name=None) ~ ')' -%}
 
-{#- если не писать варианты, то делать так - сейчас мы используем этот вариант -#}
+{#- задаём по возможности инкрементальность -#}
+{%- if pipeline_name in ('datestat', 'events') -%}
+
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+
+{%-else -%}
+
+{{ config(
+    materialized='table',
+    order_by=('__table_name'),
+    on_schema_change='fail'
+) }}
+
+{%-endif -%}
 
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM {{ source_table }} 
-    
 
-{#- если писать варианты, то делать так - сейчас не используем этот вариант
-{% set macro_name =  'combine_'~ pipeline_name  %}
-{{ etlcraft[macro_name](pipeline_name,relations_dict,date_from,date_to,params)}} -#}
-
-{%- endif -%}
 {% endmacro %}
 
 
