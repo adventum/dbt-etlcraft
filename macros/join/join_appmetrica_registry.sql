@@ -9,6 +9,7 @@
 
 {{ config(
     materialized='table',
+    order_by=('__date', '__table_name'),
     on_schema_change='fail'
 ) }}
 
@@ -26,6 +27,7 @@ SELECT
     city AS cityName,
     '' AS utmHash,
     __emitted_at,
+    toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('AppProfileMatching') AS __link 
 FROM {{ source_table }}
 
