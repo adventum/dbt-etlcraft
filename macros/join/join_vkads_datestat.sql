@@ -7,6 +7,13 @@
     params
     ) -%}
 
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
 
 {%- set sourcetype_name = 'vkads' -%}
 {%- set pipeline_name = 'datestat' -%}

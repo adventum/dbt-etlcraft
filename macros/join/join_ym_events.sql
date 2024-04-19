@@ -7,6 +7,14 @@
     params
     ) -%}
 
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+
 {%- set sourcetype_name = 'ym' -%}
 {%- set pipeline_name = 'events' -%}
 {%- set stream_name = 'yandex_metrika_stream' -%}
@@ -47,7 +55,7 @@ SELECT
     if(countSubstrings(ymsgoalsID, '131126557')>0,1,0) AS checkoutSessions, 
     if(countSubstrings(ymsgoalsID, '131127241')>0,1,0) AS webSalesSessions, 
     countSubstrings(ymsgoalsID, '131127241') AS sales, 
-    NULL AS amountSales,
+    0.0 AS amountSales,
     if(countSubstrings(ymsgoalsID, '199402504')>0,1,0) AS registrationCardSessions,
     if(countSubstrings(ymsgoalsID, '199402597')>0,1,0) AS linkingCardToPhoneNumberSessions, 
     if(countSubstrings(ymsgoalsID, '226410025')>0,1,0) AS registrationLendingPromotionsSessions, 

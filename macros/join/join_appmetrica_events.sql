@@ -7,7 +7,13 @@
     params
     ) -%}
 
-{%- if execute -%}
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
 
 {#- задаём общие части имени -#}
 {%- set sourcetype_name = 'appmetrica' -%}
@@ -34,6 +40,8 @@
 {%- set relations_sessions_starts = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_sessions_starts) -%}   
 {%- set source_table_sessions_starts = '(' ~ dbt_utils.union_relations(relations_sessions_starts) ~ ')' -%} 
 
+
+
 {#- для каждого стрима создаём его CTE с одинаковым набором полей и их расположением -#}
 {#- первый стрим - deeplinks -#}
 WITH join_appmetrica_events_deeplinks AS (
@@ -45,9 +53,9 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    '' AS visitId,
-    '' AS clientId,
-    '' AS promoCode,
+    '' AS visitId, --
+    '' AS clientId, -- 
+    '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
     assumeNotNull(coalesce({{ etlcraft.get_adsourcedirty() }}, publisher_name, '')) AS adSourceDirty,
@@ -58,7 +66,7 @@ SELECT
     extract(deeplink_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     '' AS transactionId,
     {{ etlcraft.get_utmhash('__', ['utmCampaign', 'utmContent']) }} AS utmHash,
-    0 AS sessions,
+    0 AS sessions, --
     0 AS addToCartSessions,
     0 AS cartViewSessions,
     0 AS checkoutSessions,
@@ -343,5 +351,4 @@ SELECT *
 FROM join_appmetrica_events_sessions_starts
 
 
-{% endif %}
 {% endmacro %}

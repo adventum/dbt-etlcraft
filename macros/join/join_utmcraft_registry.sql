@@ -7,6 +7,10 @@
     params
     ) -%}
 
+{{ config(
+    materialized='table',
+    on_schema_change='fail'
+) }}
 
 {%- set sourcetype_name = 'utmcraft' -%}
 {%- set pipeline_name = 'registry' -%}
@@ -48,6 +52,9 @@ SELECT
     '' AS appmetricaDeviceId,
     'UtmHashRegistry' AS __link         
 FROM {{ source_table }}
+
+
+{% endmacro %}
 
 
 {% endmacro %}
