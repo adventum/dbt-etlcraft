@@ -9,6 +9,7 @@
 
 {{ config(
     materialized='table',
+    order_by=('__date', '__table_name'),
     on_schema_change='fail'
 ) }}
 
@@ -48,13 +49,11 @@ SELECT
            if(JSONExtractString(data, '92') != '' or JSONExtractString(data, 'custom-92') != '', ';', ''),
            if(JSONExtractString(data, '86') = 'custom-value-input-field',JSONExtractString(data, 'custom-86'),JSONExtractString(data, '86'))) AS utm_audience,
     __emitted_at,
+    toLowCardinality(__table_name) AS __table_name,
     '' AS crmUserId,  
     '' AS appmetricaDeviceId,
     'UtmHashRegistry' AS __link         
 FROM {{ source_table }}
-
-
-{% endmacro %}
 
 
 {% endmacro %}
