@@ -6,8 +6,12 @@
   date_to = none
   ) -%}
 
+{#- задаём части имени - pipeline это например datestat -#}
+{%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
+{%- set pipeline_name = model_name_parts[-1] -%}
+
 {#- задаём по возможности инкрементальность -#}
-{%- if pipeline_name in ('datestat', 'events') -%}
+{%- if pipeline_name in ('datestat', 'events', 'periodstat') -%}
 
 {{ config(
     materialized='incremental',
@@ -26,10 +30,6 @@
 ) }}
 
 {%-endif -%}
-
-{#- задаём части имени - pipeline это например datestat -#}
-{%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
-{%- set pipeline_name = model_name_parts[-1] -%}
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
