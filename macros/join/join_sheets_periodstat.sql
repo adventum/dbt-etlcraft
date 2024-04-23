@@ -26,7 +26,7 @@
 SELECT
     __date,
     Campaign AS campaign,
-    Cost AS cost,
+    toFloat64(Cost) AS cost,
     toDate(Period_start) AS periodStart,
     toDate(Period_end) AS periodEnd,
     __emitted_at,
