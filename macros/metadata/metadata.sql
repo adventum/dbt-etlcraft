@@ -68,7 +68,21 @@ entities:
     keys:
     {# - name: appSessionId #}
     - name: installationDeviceId
+  PeriodStart:
+    keys:
+    - name: periodStart
+  PeriodEnd:
+    keys:
+    - name: periodEnd
 links: 
+  PeriodStat:
+    pipeline: periodstat
+    datetime_field: __date
+    keys:
+    - name: __date
+    main_entities:
+    - PeriodStart
+    - PeriodEnd
   UtmHashRegistry:
     pipeline: registry
     datetime_field: toDateTime(0)

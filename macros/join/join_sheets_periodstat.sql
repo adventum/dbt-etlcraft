@@ -21,7 +21,7 @@
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
 {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
-
+{%- set link_value = params -%}
 
 SELECT
     __date,
@@ -30,8 +30,10 @@ SELECT
     toDate(Period_start) AS periodStart,
     toDate(Period_end) AS periodEnd,
     __emitted_at,
-    toLowCardinality(__table_name) AS __table_name,
-    toLowCardinality('AppProfileMatching') AS __link 
+    toLowCardinality(__table_name) AS __table_name, 
+    toLowCardinality('PeriodStat') AS __link --MediaplanStat
+    {#- toLowCardinality({{ link_value }}) AS __link #}
+
 FROM {{ source_table }}
 
 {% endmacro %}
