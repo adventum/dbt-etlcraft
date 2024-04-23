@@ -75,7 +75,7 @@ entities:
     keys:
     - name: periodEnd
 links: 
-  PeriodStat:
+  ManualAdCostStat:
     pipeline: periodstat
     datetime_field: __date
     keys:
