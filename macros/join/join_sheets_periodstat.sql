@@ -31,7 +31,7 @@ SELECT
     toDate(Period_end) AS periodEnd,
     __emitted_at,
     toLowCardinality(__table_name) AS __table_name, 
-    toLowCardinality('PeriodStat') AS __link --MediaplanStat
+    toLowCardinality('ManualAdCostStat') AS __link 
     {#- toLowCardinality({{ link_value }}) AS __link #}
 
 FROM {{ source_table }}
