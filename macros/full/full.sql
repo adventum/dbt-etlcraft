@@ -45,13 +45,31 @@
         order_by = ('__datetime')
     )
 }}
-
+{# делаем пошагово, чтобы из результата убрать колонки, начинающиеся как t2.<название колонки> #}
+WITH t1 AS (
+SELECT * FROM {{ ref('link_events') }}
+LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
+)
+, t2 AS (
+SELECT * FROM {{ link_registry_tables }}
+)
+, t3 AS (
 SELECT * 
+FROM t1
+LEFT JOIN t2 USING (__id, __link, __datetime)
+)
+SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.appmetricaDeviceId`, `t2.crmUserId`, 
+`t2.cityName`, `t2.utmHash`, `t2.UtmHashHash`, `t2.AppMetricaDeviceHash`, `t2.CrmUserHash`)
+FROM t3
+
+{# такой вариант не работает - дублирующиеся колонки всё равно есть
+SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.appmetricaDeviceId`, `t2.crmUserId`, 
+`t2.cityName`, `t2.utmHash`, `t2.UtmHashHash`, `t2.AppMetricaDeviceHash`, `t2.CrmUserHash`)
 FROM (
     SELECT * FROM {{ ref('link_events') }}
     LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
 ) t1
-LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime)
+LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime) #}
 
 
 {#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
@@ -63,9 +81,24 @@ LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __d
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-SELECT * 
+
+WITH t1 AS (
+SELECT * FROM {{ ref('link_datestat') }}
+)
+, t2 AS (
+SELECT * FROM {{ link_registry_tables }}
+)
+, t3 AS (
+SELECT * FROM t1
+LEFT JOIN t2 USING (__id, __link, __datetime)
+)
+SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.utmHash`, `t2.UtmHashHash`)
+FROM t3
+
+{# такой вариант не работает, дублирующиеся колонки всё равно есть 
+SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.utmHash`, `t2.UtmHashHash`)
 FROM {{ ref('link_datestat') }} t1
-LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime)
+LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime) #}
 
 {#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням
 {%- elif pipeline_name =='periodstat' -%}  -#}
