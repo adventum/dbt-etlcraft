@@ -30,8 +30,8 @@
 }}
 
 {%- set source_field = "splitByChar('_', __table_name)[4]" -%}
-{%- set preset_field = "splitByChar('_', __table_name)[4]" -%}
-{%- set account_field = "splitByChar('_', __table_name)[4]" -%}
+{%- set preset_field = "splitByChar('_', __table_name)[6]" -%}
+{%- set account_field = "splitByChar('_', __table_name)[7]" -%}
 
 {% for condition in conditions %}
   {% if loop.last %}
