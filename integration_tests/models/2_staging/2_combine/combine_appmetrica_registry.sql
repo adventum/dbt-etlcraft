@@ -1,2 +1,2 @@
--- depends_on: {{ ref('join_appmetrica_registry') }}
+-- depends_on: {{ ref('join_appmetrica_registry_appprofilematching') }}
 {{ etlcraft.combine() }}

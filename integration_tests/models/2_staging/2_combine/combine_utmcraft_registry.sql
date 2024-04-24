@@ -1,2 +1,2 @@
--- depends_on: {{ ref('join_utmcraft_registry') }}
+-- depends_on: {{ ref('join_utmcraft_registry_utmhashregistry') }}
 {{ etlcraft.combine() }}

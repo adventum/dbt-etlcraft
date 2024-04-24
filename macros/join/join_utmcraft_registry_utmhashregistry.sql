@@ -1,4 +1,4 @@
-{%- macro join_utmcraft_registry(
+{%- macro join_utmcraft_registry_utmhashregistry(
     sourcetype_name,
     pipeline_name,
     relations_dict,

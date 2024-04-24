@@ -3,11 +3,10 @@ SELECT *,
   assumeNotNull(CASE 
 WHEN __link = 'UtmHashRegistry' 
     THEN UtmHashRegistryHash 
-WHEN __link = 'AppProfileMatching' 
-    THEN AppProfileMatchingHash 
 
     END) as __id
   , assumeNotNull(CASE 
+
 WHEN __link = 'UtmHashRegistry' 
         THEN toDateTime(toDateTime(0))
     
@@ -30,24 +29,11 @@ SELECT
     *, 
     
         
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '') = '', null, hex(MD5('UtmHashRegistry' || ';' || ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '')))))) as UtmHashRegistryHash,
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(appmetricaDeviceId))), ''), '') || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '') = '', null, hex(MD5('AppProfileMatching' || ';' || ifnull(nullif(upper(trim(toString(appmetricaDeviceId))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '')))))) as AppProfileMatchingHash
+        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '') = '', null, hex(MD5('UtmHashRegistry' || ';' || ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '')))))) as UtmHashRegistryHash
     ,
     
         
         assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(utmHash))), ''), '')))))) as UtmHashHash
-
-,
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(appmetricaDeviceId))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(appmetricaDeviceId))), ''), '')))))) as AppMetricaDeviceHash
-
-,
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '')))))) as CrmUserHash
 
 
     
@@ -66,8 +52,6 @@ FROM (
                             toString("utm_audience") as utm_audience ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__table_name") as __table_name ,
-                            toString("crmUserId") as crmUserId ,
-                            toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("__link") as __link 
 
             from test.combine_utmcraft_registry
@@ -76,7 +60,6 @@ FROM (
         ) 
     WHERE 
     
-        True AND 
         True
     )
 

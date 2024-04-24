@@ -3,7 +3,7 @@
     
     
         
-        insert into test.combine_utmcraft_registry__dbt_tmp ("utmHash", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "__emitted_at", "__table_name", "crmUserId", "appmetricaDeviceId", "__link")
+        insert into test.combine_utmcraft_registry__dbt_backup ("utmHash", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.join_utmcraft_registry
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM (
@@ -21,8 +21,6 @@ FROM (
                             toString("utm_audience") as utm_audience ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__table_name") as __table_name ,
-                            toString("crmUserId") as crmUserId ,
-                            toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("__link") as __link 
 
             from test.join_utmcraft_registry

@@ -1,4 +1,4 @@
-{%- macro join_appmetrica_registry(
+{%- macro join_appmetrica_registry_appprofilematching(
     sourcetype_name,
     pipeline_name,
     relations_dict,

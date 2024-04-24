@@ -10,6 +10,7 @@
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set sourcetype_name = model_name_parts[1] -%}
 {%- set pipeline_name = model_name_parts[2] -%}
+{%- set link_name = model_name_parts[3] -%}
 
 {#- получаем список incremental таблиц и их полей в формате table_name: [field1,field2, ... fieldn] -#}
 {%- set relations_dict =  etlcraft.get_relations_dict('incremental',sourcetype_name) -%}
@@ -22,7 +23,11 @@
 {%- endif -%}
 
 {#- устанавливаем имя макроса - туда будем перенаправлять исполнение, это название вида джойна -#}
-{% set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name %}
+{%- if pipeline_name != 'registry' -%}
+{%- set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name -%}
+{%- else -%}
+{%- set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name ~ '_' ~ link_name -%}
+{%- endif -%}
 
 {#- здесь перечислены параметры, которые д.б. такими же в каждом виде макроса join -#}
 {{ etlcraft[macro_name](sourcetype_name,pipeline_name,relations_dict,date_from,date_to,params)}}

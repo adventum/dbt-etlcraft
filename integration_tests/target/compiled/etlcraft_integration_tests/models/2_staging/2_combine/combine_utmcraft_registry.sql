@@ -15,8 +15,6 @@ FROM (
                             toString("utm_audience") as utm_audience ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__table_name") as __table_name ,
-                            toString("crmUserId") as crmUserId ,
-                            toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("__link") as __link 
 
             from test.join_utmcraft_registry

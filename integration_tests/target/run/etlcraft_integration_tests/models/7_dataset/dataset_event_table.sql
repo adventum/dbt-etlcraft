@@ -1,6 +1,6 @@
 
 
-  create view test.dataset_event_table__dbt_tmp 
+  create view test.dataset_event_table__dbt_backup 
   
   as (
     SELECT *
