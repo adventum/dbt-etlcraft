@@ -21,7 +21,7 @@
 {%- endfor -%}
 
 {%- set unique_relations = relations|unique|list -%}
-{%- set source_table = '(' ~ etlcraft.custom_union_relations( relations=[ref('full_datestat'), ref('attr_myfirstfunnel_final_table')]) ~ ')' -%}
+{%- set source_table = '(' ~ etlcraft.custom_union_relations( relations=unique_relations) ~ ')' -%}
 {{
     config(
         materialized = 'table',
