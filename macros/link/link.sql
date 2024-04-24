@@ -1,4 +1,12 @@
-{%- macro link() %}
+{%- macro link(
+  params = none,
+  disable_incremental=none,
+  override_target_model_name=none,
+  date_from = none,
+  date_to = none
+  ) 
+-%}
+
 
 {#- задаём части имени - чтобы выделить имя нужной hash-таблицы -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
@@ -38,7 +46,9 @@
 {%- endif -%}
 
 {#- задаём наименования числовых типов данных -#}
-{%- set numeric_types = ['Int', 'Float', 'Num'] -%}
+{%- set numeric_types = ['UInt8', 'UInt16', 'UInt32', 'UInt64', 'UInt256', 
+                        'Int8', 'Int16', 'Int32', 'Int64', 'Int128', 'Int256',
+                        'Float8', 'Float16','Float32', 'Float64','Float128', 'Float256','Num'] -%} 
 
 {#- для каждой колонки таблицы, на которую будем ссылаться -#}
 SELECT {% for c in source_columns -%}
