@@ -104,34 +104,51 @@ LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __d
 {#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням -#}
 {%- elif pipeline_name =='periodstat' -%}  
 
+{#-
 {{ config(
     materialized='incremental',
     order_by=('__date', '__table_name'),
     incremental_strategy='delete+insert',
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
-) }}
+) }}  -#}
 
-WITH unnest_dates AS (    
+{#- задаём наименования числовых типов данных -#}
+{%- set numeric_types = ['UInt8', 'UInt16', 'UInt32', 'UInt64', 'UInt256', 
+                        'Int8', 'Int16', 'Int32', 'Int64', 'Int128', 'Int256',
+                        'Float8', 'Float16','Float32', 'Float64','Float128', 'Float256','Num'] -%} 
+
+{%- set columns_numeric = [] -%}
+{%- set columns_not_numeric = [] -%}
+{%- set source_columns = adapter.get_columns_in_relation(load_relation(ref('link_periodstat'))) -%}
+
+
+{%- for c in source_columns -%}
+{%- if c.data_type in numeric_types -%}
+{%- do columns_numeric.append(c.name)  -%}
+{%- else -%}
+{%- do columns_not_numeric.append(c.name)  -%}
+{%- endif -%}
+{%- endfor -%} 
+
+WITH unnest_dates AS (
 SELECT *, 
     dateAdd(periodStart, arrayJoin(range( 0, 1 + toUInt16(date_diff('day', periodStart, periodEnd))))) AS period_date
-	,COUNT(*) OVER(PARTITION BY periodStart, periodEnd, __date, campaign) AS divide_by_days
-    FROM {{ ref('link_periodstat') }} 
+	, COUNT(*) OVER(PARTITION BY 
+{% for c in columns_not_numeric -%}{{c}}
+{% if not loop.last %},{% endif %}
+{% endfor %} 
+    ) AS divide_by_days
+FROM {{ ref('link_periodstat') }}
 )
-, calc AS (
-SELECT
-    period_date, 
-    __date, 
-    campaign, 
-    divide_by_days, 
-    periodStart, 
-    periodEnd, 
-    cost / divide_by_days AS cost_per_day,
-    __table_name
+SELECT period_date, 
+{% for column in columns_not_numeric -%}{{column}},
+{% endfor %} 
+{% for column in columns_numeric -%}{{column}}/divide_by_days AS {{column}}_per_day
+{% if not loop.last %},{% endif %}
+{% endfor %} 
+
 FROM unnest_dates
-)
-SELECT *
-FROM calc
 
 
 {%- endif -%} 
