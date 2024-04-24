@@ -7,6 +7,7 @@ WHEN __link = 'AdCostStat'
     END) as __id
   , assumeNotNull(CASE 
 
+
 WHEN __link = 'AdCostStat' 
         THEN toDateTime(__date)
     
