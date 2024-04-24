@@ -25,7 +25,6 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     profile_id AS crmUserId,
     city AS cityName,
-    '' AS utmHash,
     __emitted_at,
     toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('AppProfileMatching') AS __link 
