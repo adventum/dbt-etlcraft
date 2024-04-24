@@ -60,6 +60,7 @@
 {%- set entities_list = [] -%}
 {%- set registry_main_entities_list = [] -%}
 {#- отбираем нужные линки и их сущности -#}
+{%- if pipeline_name !='registry' -%}
 {%- for link_name in links  -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
     {%- set datetime_field = links[link_name].get('datetime_field') -%}
@@ -78,20 +79,7 @@
         {%- endif -%}
     {%- endfor -%}
 {%- endfor -%}
-
-{#- проверяем результат по линкам
-Этот запрос
-SELECT  {{ links_list }}  
-для hash_datestat выводит ['AdCostStat']
-для hash_events выводит ['AppInstallStat', 'AppEventStat', 'AppSessionStat', 'AppDeeplinkStat', 'VisitStat', 'AppProfileMatching']
--#}
-
-{#- проверяем результат по сущностям
-Этот запрос
-SELECT  {{ registry_main_entities_list }}  
-для hash_datestat выводит ['AppMetricaDevice'] 
-для hash_events выводит ['AppMetricaDevice'] 
--#}
+{%- endif -%}
 
 {#- условие либо glue=yes, либо сущность из main_entities -#}
 
@@ -108,22 +96,9 @@ SELECT  {{ registry_main_entities_list }}
     {%- endif -%} 
 {%- endfor -%}
 
-{#- проверяем результат по glue='yes'
-Этот запрос
-SELECT {{ metadata_entities_list }}
-для hash_datestat и hash_events выводит  ['YmClient', 'CrmUser', 'AppMetricaDevice']
--#}
-
 {#- делаем полученный список сущностей уникальным -#}
 {%- set unique_entities_list = entities_list|unique|list -%}
 
-
-{#- проверяем результат по сущностям
-Этот запрос
-SELECT {{ unique_entities_list }}
-для hash_datestat выводит  ['Account', 'AdSource', 'AdCampaign', 'AdGroup', 'Ad', 'AdPhrase', 'UtmParams', 'UtmHash']
-для hash_events выводит ['Account', 'AppMetricaDevice', 'MobileAdsId', 'CrmUser', 'OsName', 'City', 'AdSource', 'UtmParams', 'UtmHash', 'Transaction', 'PromoCode', 'AppSession', 'Visit', 'YmClient', 'AppMetricaDeviceId']
--#}
 
 {#- из уникального списка сущностей отбираем те, которые 
     либо есть в списке сущностей glue='yes', либо есть в разделе registries -#}
@@ -134,12 +109,26 @@ SELECT {{ unique_entities_list }}
     {%- endif -%}
 {%- endfor -%}
 
-{#- проверяем результат по финальному списку сущностей 
-Этот запрос
-SELECT {{ final_entities_list }}
-для hash_datestat выводит []
-для hash_events выводит ['AppMetricaDevice', 'CrmUser', 'YmClient', 'AppMetricaDeviceId']
--#}
+
+{#- для моделей пайплайна registry отбираем линки и сущности отдельно, 
+чтобы выводить модели по-отдельности для каждого источника данных -#}
+{%- if pipeline_name == 'registry' -%}
+{#- для названия линка берём то значение, что указано начиная с шага join в поле __link -#}
+{%- set links_list = dbt_utils.get_column_values(table=ref(table_pattern), column='__link',max_records=1) -%}
+{#- для этого линка отбираем связанные с ним сущности -#}
+{%- set final_entities_list = [] -%}
+{%- for link_name in links_list  -%}
+    {%- set main_entities = links[link_name].get('main_entities') or [] -%}
+    {%- set other_entities = links[link_name].get('other_entities') or [] -%}
+    {%- set entities = main_entities + other_entities -%}
+    {%- for entity in entities -%}
+        {%- do final_entities_list.append(entity) -%}
+    {%- endfor -%}
+{%- endfor -%} 
+{#- делаем полученные списки уникальными -#}
+{%- set links_list = links_list|unique|list -%}
+{%- set final_entities_list = final_entities_list|unique|list -%}
+{%- endif -%}
 
 {#- основной запрос -#} 
 
