@@ -62,19 +62,7 @@ SELECT *
 FROM t1
 LEFT JOIN t2 USING (__id, __link, __datetime)
 )
-SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.appmetricaDeviceId`, `t2.crmUserId`, 
-`t2.cityName`, `t2.utmHash`, `t2.UtmHashHash`, `t2.AppMetricaDeviceHash`, `t2.CrmUserHash`)
-FROM t3
-
-{# такой вариант не работает - дублирующиеся колонки всё равно есть
-SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.appmetricaDeviceId`, `t2.crmUserId`, 
-`t2.cityName`, `t2.utmHash`, `t2.UtmHashHash`, `t2.AppMetricaDeviceHash`, `t2.CrmUserHash`)
-FROM (
-    SELECT * FROM {{ ref('link_events') }}
-    LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
-) t1
-LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime) #}
-
+SELECT COLUMNS('^[a-z|_][^2]') FROM t3
 
 {#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
 {%- elif pipeline_name =='datestat' -%} 
@@ -96,14 +84,7 @@ SELECT * FROM {{ link_registry_tables }}
 SELECT * FROM t1
 LEFT JOIN t2 USING (__id, __link, __datetime)
 )
-SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.utmHash`, `t2.UtmHashHash`)
-FROM t3
-
-{# такой вариант не работает, дублирующиеся колонки всё равно есть 
-SELECT * EXCEPT(`t2.__emitted_at`, `t2.__table_name`, `t2.utmHash`, `t2.UtmHashHash`)
-FROM {{ ref('link_datestat') }} t1
-LEFT JOIN (SELECT * FROM {{ link_registry_tables }}) t2 USING (__id, __link, __datetime) #}
-
+SELECT COLUMNS('^[a-z|_][^2]') FROM t3
 
 {#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням -#}
 {%- elif pipeline_name =='periodstat' -%}  
