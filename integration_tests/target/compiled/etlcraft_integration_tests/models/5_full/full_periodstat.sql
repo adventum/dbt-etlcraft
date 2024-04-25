@@ -1,5 +1,5 @@
--- depends_on: test.link_appmetrica_registry
--- depends_on: test.link_utmcraft_registry
+-- depends_on: test.link_registry_appprofilematching
+-- depends_on: test.link_registry_utmhashregistry
 -- depends_on: test.link_periodstat
 WITH unnest_dates AS (
 SELECT *, 

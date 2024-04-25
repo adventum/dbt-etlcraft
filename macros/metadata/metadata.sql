@@ -205,7 +205,7 @@ glue_models:
     - CrmUserHash
     - YmClientHash
     - AppMetricaDeviceHash
-  hash_appmetrica_registry:
+  hash_registry_appprofilematching:
     datetime_field: toDateTime(0)
     cols:
     - AppProfileMatchingHash

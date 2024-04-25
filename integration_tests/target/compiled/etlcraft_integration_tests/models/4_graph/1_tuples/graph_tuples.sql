@@ -42,7 +42,7 @@
             select
                     tuple(toLowCardinality(__link), toDateTime(0),  __id) as hash,
                     tuple(toLowCardinality('AppMetricaDeviceHash'), toDateTime(0),  AppMetricaDeviceHash) as node_left
-            from test.hash_appmetrica_registry
+            from test.hash_registry_appprofilematching
             where nullIf(AppMetricaDeviceHash, '') is not null
             union all
         
@@ -53,7 +53,7 @@
             select
                     tuple(toLowCardinality(__link), toDateTime(0),  __id) as hash,
                     tuple(toLowCardinality('CrmUserHash'), toDateTime(0),  CrmUserHash) as node_left
-            from test.hash_appmetrica_registry
+            from test.hash_registry_appprofilematching
             where nullIf(CrmUserHash, '') is not null
 
 

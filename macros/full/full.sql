@@ -13,9 +13,16 @@
 
 {#- задаём список возможных таблиц registry -#}
 {%- set registry_possible_tables = [
-    'link_appmetrica_registry', 
-    'link_utmcraft_registry', 
-    'link_abcd_registry'
+    'link_registry_appprofilematching', 
+    'link_registry_utmhashregistry',  
+    'link_registry_manualadcoststat',
+    'link_registry_visitstat',
+    'link_registry_appdeeplinkstat',
+    'link_registry_appsessionstat',
+    'link_registry_appeventstat',
+    'link_registry_appinstallstat',
+    'link_registry_mediaplanstat',
+    'link_registry_adcoststat'
     ] -%}
 
 {#- отбираем те из них, которые существуют -#}

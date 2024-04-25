@@ -6,8 +6,8 @@
         
         insert into test.full_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link", "AdCostStatHash", "UtmHashHash", "__id", "__datetime", "appmetricaDeviceId", "crmUserId", "cityName", "AppProfileMatchingHash", "AppMetricaDeviceHash", "CrmUserHash", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "UtmHashRegistryHash")
   -- depends_on: test.link_datestat
--- depends_on: test.link_appmetrica_registry
--- depends_on: test.link_utmcraft_registry
+-- depends_on: test.link_registry_appprofilematching
+-- depends_on: test.link_registry_utmhashregistry
 
 
 WITH t1 AS (
@@ -41,7 +41,7 @@ SELECT * FROM
                             toString('') as UtmHashRegistryHash ,
                             toString('') as UtmHashHash 
 
-            from test.link_appmetrica_registry
+            from test.link_registry_appprofilematching
         )
 
         union all
@@ -72,7 +72,7 @@ SELECT * FROM
                             toString("UtmHashRegistryHash") as UtmHashRegistryHash ,
                             toString("UtmHashHash") as UtmHashHash 
 
-            from test.link_utmcraft_registry
+            from test.link_registry_utmhashregistry
         )
 
         
