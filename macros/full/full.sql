@@ -10,20 +10,17 @@
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
 
-
-{#- задаём список возможных таблиц registry -#}
-{%- set registry_possible_tables = [
-    'link_registry_appprofilematching', 
-    'link_registry_utmhashregistry',  
-    'link_registry_manualadcoststat',
-    'link_registry_visitstat',
-    'link_registry_appdeeplinkstat',
-    'link_registry_appsessionstat',
-    'link_registry_appeventstat',
-    'link_registry_appinstallstat',
-    'link_registry_mediaplanstat',
-    'link_registry_adcoststat'
-    ] -%}
+{#- создаём список возможных таблиц registry -#}
+{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set links_list = [] -%}
+{%- set registry_possible_tables = [] -%}
+{%- set links = metadata['links'] -%}
+{%- for link_name in links  -%}
+  {%- set lower_link_name = link_name|lower -%} {# приводим к нижнему регистру  #}
+  {%- do links_list.append(lower_link_name) -%}
+  {%- set table_name = 'link_registry_' ~ lower_link_name -%} {# создаём вариант имени registry-таблицы #}
+  {%- do registry_possible_tables.append(table_name) -%}
+{%- endfor -%}
 
 {#- отбираем те из них, которые существуют -#}
 {%- set registry_existing_tables = [] -%}
