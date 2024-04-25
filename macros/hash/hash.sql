@@ -120,8 +120,16 @@
 {#- для моделей пайплайна registry отбираем линки и сущности отдельно, 
 чтобы выводить модели по-отдельности для каждого источника данных -#}
 {%- if pipeline_name == 'registry' -%}
-{#- для названия линка берём то значение, что указано начиная с шага join в поле __link -#}
-{%- set links_list = dbt_utils.get_column_values(table=ref(table_pattern), column='__link',max_records=1) -%}
+
+{%- set links_list = [] -%}
+{%- set links = metadata['links'] -%}
+{%- for link in links  -%}
+  {%- set lower_link_name = link|lower -%} {# приводим к нижнему регистру  #}
+  {%- if lower_link_name == link_name -%} {# сравниваем линк в нижнем регистре с линком из названия модели #}
+    {%- do links_list.append(link) -%} {# если они совпадают, отбираем этот линк #}
+  {%- endif -%}
+{%- endfor -%}
+
 {#- для этого линка отбираем связанные с ним сущности -#}
 {%- set final_entities_list = [] -%}
 {%- for link_name in links_list  -%}
