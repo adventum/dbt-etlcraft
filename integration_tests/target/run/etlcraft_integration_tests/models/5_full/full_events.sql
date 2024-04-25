@@ -5,8 +5,8 @@
         
         insert into test.full_events__dbt_backup ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "UtmHashHash", "YmClientHash", "__id", "__datetime", "qid", "AppProfileMatchingHash", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "UtmHashRegistryHash")
   -- depends_on: test.graph_qid
--- depends_on: test.link_appmetrica_registry
--- depends_on: test.link_utmcraft_registry
+-- depends_on: test.link_registry_appprofilematching
+-- depends_on: test.link_registry_utmhashregistry
 
 
 WITH t1 AS (
@@ -41,7 +41,7 @@ SELECT * FROM
                             toString('') as UtmHashRegistryHash ,
                             toString('') as UtmHashHash 
 
-            from test.link_appmetrica_registry
+            from test.link_registry_appprofilematching
         )
 
         union all
@@ -72,7 +72,7 @@ SELECT * FROM
                             toString("UtmHashRegistryHash") as UtmHashRegistryHash ,
                             toString("UtmHashHash") as UtmHashHash 
 
-            from test.link_utmcraft_registry
+            from test.link_registry_utmhashregistry
         )
 
         

@@ -1,5 +1,5 @@
 -- depends_on: {{ ref('link_datestat') }}
--- depends_on: {{ ref('link_appmetrica_registry') }}
--- depends_on: {{ ref('link_utmcraft_registry') }}
+-- depends_on: {{ ref('link_registry_appprofilematching') }}
+-- depends_on: {{ ref('link_registry_utmhashregistry') }}
 {{ etlcraft.full() }}
 

@@ -8,22 +8,26 @@
 
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
-{#- в combine могут быть модели из 2 или трех частей, но последняя часть всегда обозначает пайплайн -#}
-{%- set pipeline_name = model_name_parts[-1] -%}
+{#- в combine могут быть модели из 2 или трех частей, вторая часть всегда пайплайн -#}
+{%- set pipeline_name = model_name_parts[1] -%}
+{%- if pipeline_name == 'registry' -%}
+  {%- set link_name = model_name_parts[2] -%}
+{%- endif -%}
 
 {#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 2 or model_name_parts[0] != 'combine' -%}
-  {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "combine_{pipeline_name}"') }}
+  {%- if pipeline_name == 'registry' -%}
+    {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "combine_{pipeline_name}_{link_name}"') }}
+  {%- else -%}  
+    {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "combine_{pipeline_name}"') }}
+  {%- endif -%}
 {%- endif -%}
 
 {#- задаём паттерн, чтобы найти все join-таблицы нужного пайплайна -#}
-{#- для обычных направлений, состоящих из двух частей имени -#}
-{%- if model_name_parts|length < 3 -%}
-  {%- set table_pattern = 'join' ~ '_[^_]+_' ~ pipeline_name -%} 
-{#- для направления registry, где в combine данные должны идти отдельно по типам источника -#}
+{%- if pipeline_name == 'registry' -%}
+  {%- set table_pattern = 'join' ~ '_[^_]+_' ~ pipeline_name ~ '_' ~ link_name -%} 
 {%- else -%} 
-  {%- set sourcetype_name = model_name_parts[1] -%} 
-  {%- set table_pattern = 'join_' ~ sourcetype_name ~ '_' ~ pipeline_name -%} 
+  {%- set table_pattern = 'join' ~ '_[^_]+_' ~ pipeline_name -%} 
 {%- endif -%}
 
 {#- находим все таблицы, которые соответствут паттерну -#}
@@ -38,7 +42,7 @@
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 
 {#- делаем это через кастомный макрос, чтобы null заменить на '' или 0  -#} 
-{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations, source_column_name=None) ~ ')' -%}
+{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
 
 {#- задаём по возможности инкрементальность -#}
 {%- if pipeline_name in ('datestat', 'events', 'periodstat') -%}

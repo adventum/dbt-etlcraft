@@ -5,8 +5,8 @@
     
         
         insert into test.full_periodstat__dbt_tmp ("period_date", "__date", "campaign", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime", "cost_per_day")
-  -- depends_on: test.link_appmetrica_registry
--- depends_on: test.link_utmcraft_registry
+  -- depends_on: test.link_registry_appprofilematching
+-- depends_on: test.link_registry_utmhashregistry
 -- depends_on: test.link_periodstat
 WITH unnest_dates AS (
 SELECT *, 

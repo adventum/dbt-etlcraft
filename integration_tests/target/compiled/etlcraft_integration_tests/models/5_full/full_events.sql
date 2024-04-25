@@ -1,6 +1,6 @@
 -- depends_on: test.graph_qid
--- depends_on: test.link_appmetrica_registry
--- depends_on: test.link_utmcraft_registry
+-- depends_on: test.link_registry_appprofilematching
+-- depends_on: test.link_registry_utmhashregistry
 
 
 WITH t1 AS (
@@ -35,7 +35,7 @@ SELECT * FROM
                             toString('') as UtmHashRegistryHash ,
                             toString('') as UtmHashHash 
 
-            from test.link_appmetrica_registry
+            from test.link_registry_appprofilematching
         )
 
         union all
@@ -66,7 +66,7 @@ SELECT * FROM
                             toString("UtmHashRegistryHash") as UtmHashRegistryHash ,
                             toString("UtmHashHash") as UtmHashHash 
 
-            from test.link_utmcraft_registry
+            from test.link_registry_utmhashregistry
         )
 
         

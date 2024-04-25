@@ -8,7 +8,10 @@
 
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
-{%- set pipeline_name = model_name_parts[-1] -%}
+{%- set pipeline_name = model_name_parts[1] -%}
+{%- if pipeline_name == 'registry' -%}
+  {%- set link_name = model_name_parts[2] -%}
+{%- endif -%}
 
 {#- задаём по возможности инкрементальность -#}
 {%- if pipeline_name in ('datestat', 'events', 'periodstat') -%}
@@ -33,15 +36,19 @@
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 
-{#- если имя модели не соответствует шаблону - выдаём ошибку -#}
+{#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 2 or model_name_parts[0] != 'hash' -%}
-{{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "hash_{pipeline_name}"') }}
+  {%- if pipeline_name == 'registry' -%}
+    {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "hash_{pipeline_name}_{link_name}"') }}
+  {%- else -%}  
+    {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "hash_{pipeline_name}"') }}
+  {%- endif -%}
 {%- endif -%}
 
 {#- задаём паттерн, чтобы найти combine-таблицу нужного пайплайна -#}
 
 {%- if pipeline_name == 'registry' -%}
-    {%- set table_pattern = 'combine_' ~ model_name_parts[1] ~'_'~ pipeline_name -%}  
+    {%- set table_pattern = 'combine_' ~ pipeline_name ~'_'~ link_name -%}  
 {%- else -%}
     {%- set table_pattern = 'combine_' ~ pipeline_name -%}
 {%- endif -%}
