@@ -23,7 +23,7 @@
 #}
 select 
     node_id_left,
-    max(group_id) as qid
+    min(group_id) as qid
 from {{ ref('graph_edge') }}
 group by node_id_left
 
