@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "UtmHashHash", "YmClientHash", "__id", "__datetime")
+        insert into test.hash_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "visitId", "clientId", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "UtmHashHash", "YmClientHash", "__id", "__datetime")
   -- depends_on: test.combine_events
 SELECT *,
   assumeNotNull(CASE 
@@ -96,8 +96,6 @@ FROM (
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("mobileAdsId") as mobileAdsId ,
                             toString("crmUserId") as crmUserId ,
-                            toString("visitId") as visitId ,
-                            toString("clientId") as clientId ,
                             toString("promoCode") as promoCode ,
                             toString("osName") as osName ,
                             toString("cityName") as cityName ,
@@ -131,6 +129,8 @@ FROM (
                             toString("installationDeviceId") as installationDeviceId ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString("visitId") as visitId ,
+                            toString("clientId") as clientId ,
                             toString("cityCode") as cityCode ,
                             toUInt32("pageViews") as pageViews 
 

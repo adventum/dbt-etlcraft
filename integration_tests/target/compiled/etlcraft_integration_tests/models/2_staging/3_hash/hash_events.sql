@@ -89,8 +89,6 @@ FROM (
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("mobileAdsId") as mobileAdsId ,
                             toString("crmUserId") as crmUserId ,
-                            toString("visitId") as visitId ,
-                            toString("clientId") as clientId ,
                             toString("promoCode") as promoCode ,
                             toString("osName") as osName ,
                             toString("cityName") as cityName ,
@@ -124,6 +122,8 @@ FROM (
                             toString("installationDeviceId") as installationDeviceId ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString("visitId") as visitId ,
+                            toString("clientId") as clientId ,
                             toString("cityCode") as cityCode ,
                             toUInt32("pageViews") as pageViews 
 
