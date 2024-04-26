@@ -38,7 +38,7 @@
     {%- do relations_registry.append(fields) -%}
 {%- endfor -%} 
 
-{#- задаём переменную, где находятся все имеющиеся таблицы пайплайна registry и шага link -#}
+{#- задаём переменную, где находятся все имеющиеся таблицы пайплайна registry шага link -#}
 {%- set link_registry_tables = etlcraft.custom_union_relations(relations=relations_registry) -%}
 
 {#- для пайплайна events делаем материализацию table и соединяем данные link_events + graph_qid + имеющиеся registry -#}
@@ -62,7 +62,19 @@ SELECT *
 FROM t1
 LEFT JOIN t2 USING (__id, __link, __datetime)
 )
-SELECT COLUMNS('^[a-z|_][^2]') FROM t3
+SELECT * --COLUMNS('^[a-z|_][^2]') 
+FROM t3
+
+{#- t2.utmHash, 
+    t2.__emitted_at, 
+    t2.__table_name, 
+    t2.UtmHashHash, 
+    t2.appmetricaDeviceId,
+    t2.crmUserId,
+    t2.cityName,
+    t2.AppMetricaDeviceHash,
+    t2.CrmUserHash -#}
+
 
 {#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
 {%- elif pipeline_name =='datestat' -%} 
@@ -84,7 +96,15 @@ SELECT * FROM {{ link_registry_tables }}
 SELECT * FROM t1
 LEFT JOIN t2 USING (__id, __link, __datetime)
 )
-SELECT COLUMNS('^[a-z|_][^2]') FROM t3
+SELECT * --COLUMNS('^[a-z|_][^2]') 
+FROM t3
+
+{#- t2.utmHash, 
+    t2.__emitted_at,
+    t2.__table_name,
+    t2.UtmHashHash
+-#}
+
 
 {#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням -#}
 {%- elif pipeline_name =='periodstat' -%}  

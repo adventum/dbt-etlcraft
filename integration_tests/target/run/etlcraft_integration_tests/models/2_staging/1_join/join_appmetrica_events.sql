@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_appmetrica_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link")
+        insert into test.join_appmetrica_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link")
   -- depends_on: test.incremental_appmetrica_events_default_deeplinks
 -- depends_on: test.incremental_appmetrica_events_default_events
 -- depends_on: test.incremental_appmetrica_events_default_install
@@ -19,8 +19,8 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    '' AS visitId, --
-    '' AS clientId, -- 
+    --'' AS visitId, --
+    --'' AS clientId, -- 
     '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
@@ -145,8 +145,8 @@ SELECT
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId,   
-    '' AS visitId,
-    '' AS clientId,
+    --'' AS visitId,
+    --'' AS clientId,
     promoCode,
     osName,
     cityName,
@@ -217,8 +217,8 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    '' AS visitId,
-    '' AS clientId,
+    --'' AS visitId,
+    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,
@@ -293,8 +293,8 @@ SELECT
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId, 
-    '' AS visitId,
-    '' AS clientId,
+    --'' AS visitId,
+    --'' AS clientId,
     '' AS promoCode,
     osName,
     cityName,
@@ -364,8 +364,8 @@ SELECT
     appmetrica_device_id AS appmetricaDeviceId,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     profile_id AS crmUserId,
-    '' AS visitId,
-    '' AS clientId,
+    --'' AS visitId,
+    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,

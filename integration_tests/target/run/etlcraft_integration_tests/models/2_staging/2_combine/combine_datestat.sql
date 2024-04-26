@@ -4,7 +4,7 @@
     
     
         
-        insert into test.combine_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.combine_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adPhraseId")
   -- depends_on: test.join_mt_datestat
 -- depends_on: test.join_vkads_datestat
 -- depends_on: test.join_yd_datestat
@@ -18,11 +18,9 @@ FROM (
                             toString("accountName") as accountName ,
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
-                            toString("productName") as productName ,
                             toString("adCampaignName") as adCampaignName ,
                             toString("adGroupName") as adGroupName ,
                             toString("adId") as adId ,
-                            toString("adPhraseId") as adPhraseId ,
                             toString("utmSource") as utmSource ,
                             toString("utmMedium") as utmMedium ,
                             toString("utmCampaign") as utmCampaign ,
@@ -30,14 +28,13 @@ FROM (
                             toString("utmContent") as utmContent ,
                             toString("utmHash") as utmHash ,
                             toString("adTitle1") as adTitle1 ,
-                            toString("adTitle2") as adTitle2 ,
                             toString("adText") as adText ,
-                            toString("adPhraseName") as adPhraseName ,
                             toFloat64("adCost") as adCost ,
                             toInt32("impressions") as impressions ,
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__link") as __link 
+                            toString("__link") as __link ,
+                            toString('') as adPhraseId 
 
             from test.join_mt_datestat
         )
@@ -52,26 +49,23 @@ FROM (
                             toString("accountName") as accountName ,
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
-                            toString("productName") as productName ,
                             toString("adCampaignName") as adCampaignName ,
-                            toString("adGroupName") as adGroupName ,
+                            toString('') as adGroupName ,
                             toString("adId") as adId ,
-                            toString("adPhraseId") as adPhraseId ,
-                            toString("utmSource") as utmSource ,
-                            toString("utmMedium") as utmMedium ,
-                            toString("utmCampaign") as utmCampaign ,
-                            toString("utmTerm") as utmTerm ,
-                            toString("utmContent") as utmContent ,
-                            toString("utmHash") as utmHash ,
-                            toString("adTitle1") as adTitle1 ,
-                            toString("adTitle2") as adTitle2 ,
-                            toString("adText") as adText ,
-                            toString("adPhraseName") as adPhraseName ,
+                            toString('') as utmSource ,
+                            toString('') as utmMedium ,
+                            toString('') as utmCampaign ,
+                            toString('') as utmTerm ,
+                            toString('') as utmContent ,
+                            toString('') as utmHash ,
+                            toString('') as adTitle1 ,
+                            toString('') as adText ,
                             toFloat64("adCost") as adCost ,
                             toInt32("impressions") as impressions ,
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__link") as __link 
+                            toString("__link") as __link ,
+                            toString('') as adPhraseId 
 
             from test.join_vkads_datestat
         )
@@ -86,26 +80,23 @@ FROM (
                             toString("accountName") as accountName ,
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
-                            toString("productName") as productName ,
                             toString("adCampaignName") as adCampaignName ,
                             toString("adGroupName") as adGroupName ,
                             toString("adId") as adId ,
-                            toString("adPhraseId") as adPhraseId ,
-                            toString("utmSource") as utmSource ,
-                            toString("utmMedium") as utmMedium ,
-                            toString("utmCampaign") as utmCampaign ,
-                            toString("utmTerm") as utmTerm ,
-                            toString("utmContent") as utmContent ,
+                            toString('') as utmSource ,
+                            toString('') as utmMedium ,
+                            toString('') as utmCampaign ,
+                            toString('') as utmTerm ,
+                            toString('') as utmContent ,
                             toString("utmHash") as utmHash ,
-                            toString("adTitle1") as adTitle1 ,
-                            toString("adTitle2") as adTitle2 ,
-                            toString("adText") as adText ,
-                            toString("adPhraseName") as adPhraseName ,
+                            toString('') as adTitle1 ,
+                            toString('') as adText ,
                             toFloat64("adCost") as adCost ,
                             toInt32("impressions") as impressions ,
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__link") as __link 
+                            toString("__link") as __link ,
+                            toString("adPhraseId") as adPhraseId 
 
             from test.join_yd_datestat
         )

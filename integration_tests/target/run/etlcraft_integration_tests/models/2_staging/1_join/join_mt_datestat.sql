@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_mt_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_mt_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_mt_datestat_default_banners_statistics
 -- depends_on: test.incremental_mt_datestat_default_banners
 -- depends_on: test.incremental_mt_datestat_default_campaigns
@@ -93,11 +93,11 @@ SELECT
     toLowCardinality(splitByChar('_', banners_statistics.__table_name)[6]) AS accountName,
     toLowCardinality(banners_statistics.__table_name) AS __table_name,
     'MyTarget' AS adSourceDirty,
-    '' AS productName,
+    --'' AS productName,
     campaigns.name AS adCampaignName,
     '' AS adGroupName,
     banners.id AS adId,
-    '' AS adPhraseId,
+    --'' AS adPhraseId,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_source=([^&]*)') AS utmSource,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_medium=([^&]*)') AS utmMedium,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_campaign=([^&]*)') AS utmCampaign,
@@ -105,10 +105,10 @@ SELECT
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_content=([^&]*)') AS utmContent,
     greatest(coalesce(extract(adGroupName, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmContent, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmCampaign, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(adCampaignName, '__([a-zA-Z0-9]{8})'), '')) AS utmHash,
     JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.title_25.text') AS adTitle1,
-    '' AS adTitle2,
+    --'' AS adTitle2,
     assumeNotNull(coalesce(nullif(JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.text_90.text'), ''),
     JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.text_220.text'), '')) AS adText,
-    '' AS adPhraseName,
+    --'' AS adPhraseName,
     toFloat64(JSONExtractString(banners_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(banners_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(banners_statistics.base, 'clicks')) AS clicks,

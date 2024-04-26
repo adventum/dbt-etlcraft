@@ -4,7 +4,7 @@
     
     
         
-        insert into test.combine_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "visitId", "clientId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "cityCode", "pageViews")
+        insert into test.combine_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link", "visitId", "clientId", "cityCode", "pageViews")
   -- depends_on: test.join_appmetrica_events
 -- depends_on: test.join_ym_events
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
@@ -19,8 +19,6 @@ FROM (
                             toString("appmetricaDeviceId") as appmetricaDeviceId ,
                             toString("mobileAdsId") as mobileAdsId ,
                             toString("crmUserId") as crmUserId ,
-                            toString("visitId") as visitId ,
-                            toString("clientId") as clientId ,
                             toString("promoCode") as promoCode ,
                             toString("osName") as osName ,
                             toString("cityName") as cityName ,
@@ -54,6 +52,8 @@ FROM (
                             toString("installationDeviceId") as installationDeviceId ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString('') as visitId ,
+                            toString('') as clientId ,
                             toString('') as cityCode ,
                             toUInt32(0) as pageViews 
 
@@ -72,8 +72,6 @@ FROM (
                             toString('') as appmetricaDeviceId ,
                             toString('') as mobileAdsId ,
                             toString('') as crmUserId ,
-                            toString("visitId") as visitId ,
-                            toString("clientId") as clientId ,
                             toString("promoCode") as promoCode ,
                             toString("osName") as osName ,
                             toString("cityName") as cityName ,
@@ -91,7 +89,7 @@ FROM (
                             toUInt8("checkoutSessions") as checkoutSessions ,
                             toUInt8("webSalesSessions") as webSalesSessions ,
                             toUInt8("sales") as sales ,
-                            toFloat64("amountSales") as amountSales ,
+                            toFloat64(0) as amountSales ,
                             toUInt8("registrationCardSessions") as registrationCardSessions ,
                             toUInt8(0) as registrationButtonClick ,
                             toUInt8("linkingCardToPhoneNumberSessions") as linkingCardToPhoneNumberSessions ,
@@ -107,6 +105,8 @@ FROM (
                             toString('') as installationDeviceId ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString("visitId") as visitId ,
+                            toString("clientId") as clientId ,
                             toString("cityCode") as cityCode ,
                             toUInt32("pageViews") as pageViews 
 

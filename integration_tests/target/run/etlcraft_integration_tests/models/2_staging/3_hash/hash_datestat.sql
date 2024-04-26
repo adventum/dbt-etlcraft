@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "productName", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adTitle2", "adText", "adPhraseName", "adCost", "impressions", "clicks", "__emitted_at", "__link", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
+        insert into test.hash_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
   -- depends_on: test.combine_datestat
 SELECT *,
   assumeNotNull(CASE 
@@ -51,11 +51,9 @@ FROM (
                             toString("accountName") as accountName ,
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
-                            toString("productName") as productName ,
                             toString("adCampaignName") as adCampaignName ,
                             toString("adGroupName") as adGroupName ,
                             toString("adId") as adId ,
-                            toString("adPhraseId") as adPhraseId ,
                             toString("utmSource") as utmSource ,
                             toString("utmMedium") as utmMedium ,
                             toString("utmCampaign") as utmCampaign ,
@@ -63,14 +61,13 @@ FROM (
                             toString("utmContent") as utmContent ,
                             toString("utmHash") as utmHash ,
                             toString("adTitle1") as adTitle1 ,
-                            toString("adTitle2") as adTitle2 ,
                             toString("adText") as adText ,
-                            toString("adPhraseName") as adPhraseName ,
                             toFloat64("adCost") as adCost ,
                             toInt32("impressions") as impressions ,
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__link") as __link 
+                            toString("__link") as __link ,
+                            toString("adPhraseId") as adPhraseId 
 
             from test.combine_datestat
         )
