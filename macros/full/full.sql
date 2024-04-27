@@ -10,7 +10,36 @@
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
 
-{#- создаём список возможных таблиц registry -#}
+{#- для каждого пайплайна у нас своя материализация и своё поведение в начале, до присоединения registry-таблиц -#}
+{#- для пайплайна events делаем материализацию table и соединяем данные link_events + graph_qid + имеющиеся registry -#}
+{%- if pipeline_name =='events' -%} 
+{{
+    config(
+        materialized = 'table',
+        order_by = ('__datetime')
+    )
+}}
+{#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
+{%- elif pipeline_name =='datestat' -%} 
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }}
+{#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням + добавляем имеющиеся registry -#}
+{%- elif pipeline_name =='periodstat' -%}  
+{{ config(
+    materialized='incremental',
+    order_by=('__date', '__table_name'),
+    incremental_strategy='delete+insert',
+    unique_key=['__date', '__table_name'],
+    on_schema_change='fail'
+) }} 
+{%- endif -%} 
+ 
+{#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 {%- set links_list = [] -%}
 {%- set registry_possible_tables = [] -%}
@@ -31,129 +60,119 @@
     {%- endif -%} 
 {%- endfor -%}
 
-{#-  для отобранных таблиц создаём relations, чтобы сделать к ним запрос  -#}
-{%- set relations_registry = [] -%}    
-{%- for table_ in registry_existing_tables -%}
-    {%- set fields = ref( table_ ) -%}
-    {%- do relations_registry.append(fields) -%}
-{%- endfor -%} 
 
-{#- задаём переменную, где находятся все имеющиеся таблицы пайплайна registry шага link -#}
-{%- set link_registry_tables = etlcraft.custom_union_relations(relations=relations_registry) -%}
+{#- создаём основу будущей таблицы для каждого пайплайна - для каждого пайплайна это свой CTE t0 -#}
 
-{#- для пайплайна events делаем материализацию table и соединяем данные link_events + graph_qid + имеющиеся registry -#}
-{%- if pipeline_name =='events' -%} 
-{{
-    config(
-        materialized = 'table',
-        order_by = ('__datetime')
-    )
-}}
-{# делаем пошагово, чтобы из результата убрать колонки, начинающиеся как t2.<название колонки> #}
-WITH t1 AS (
+{#- начинаем перебор пайплайнов с помощью if -#}
+{%- if pipeline_name =='events' -%} {# для пайплайна events основа это link_events + graph_qid #}
+WITH t0 AS (
 SELECT * FROM {{ ref('link_events') }}
 LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
 )
-, t2 AS (
-SELECT * FROM {{ link_registry_tables }}
-)
-, t3 AS (
-SELECT * 
-FROM t1
-LEFT JOIN t2 USING (__id, __link, __datetime)
-)
-SELECT * --COLUMNS('^[a-z|_][^2]') 
-FROM t3
+{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_events'))) -%} {# берём колонки #}
 
-{#- t2.utmHash, 
-    t2.__emitted_at, 
-    t2.__table_name, 
-    t2.UtmHashHash, 
-    t2.appmetricaDeviceId,
-    t2.crmUserId,
-    t2.cityName,
-    t2.AppMetricaDeviceHash,
-    t2.CrmUserHash -#}
-
-
-{#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
-{%- elif pipeline_name =='datestat' -%} 
-{{ config(
-    materialized='incremental',
-    order_by=('__date', '__table_name'),
-    incremental_strategy='delete+insert',
-    unique_key=['__date', '__table_name'],
-    on_schema_change='fail'
-) }}
-
-WITH t1 AS (
+{%- elif pipeline_name =='datestat' -%}  {# для пайплайна datestat это link_datestat #} 
+WITH t0 AS (
 SELECT * FROM {{ ref('link_datestat') }}
 )
-, t2 AS (
-SELECT * FROM {{ link_registry_tables }}
-)
-, t3 AS (
-SELECT * FROM t1
-LEFT JOIN t2 USING (__id, __link, __datetime)
-)
-SELECT * --COLUMNS('^[a-z|_][^2]') 
-FROM t3
+{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_datestat'))) -%} {# берём колонки #}
 
-{#- t2.utmHash, 
-    t2.__emitted_at,
-    t2.__table_name,
-    t2.UtmHashHash
--#}
-
-
-{#- для пайплайна periodstat делаем материализацию incremental и разбиваем метрики по дням -#}
-{%- elif pipeline_name =='periodstat' -%}  
-
-{{ config(
-    materialized='incremental',
-    order_by=('__date', '__table_name'),
-    incremental_strategy='delete+insert',
-    unique_key=['__date', '__table_name'],
-    on_schema_change='fail'
-) }} 
-
+{%- elif pipeline_name =='periodstat' -%}  {# для пайплайна periodstat берём данные из link_periodstat и разбиваем их по дням #}
 {#- задаём наименования числовых типов данных -#}
 {%- set numeric_types = ['UInt8', 'UInt16', 'UInt32', 'UInt64', 'UInt256', 
                         'Int8', 'Int16', 'Int32', 'Int64', 'Int128', 'Int256',
                         'Float8', 'Float16','Float32', 'Float64','Float128', 'Float256','Num'] -%} 
+{%- set columns_numeric = [] -%} {# сюда отберём колонки с числовыми типами данных #}
+{%- set columns_not_numeric = [] -%} {# сюда - с нечисловыми #}
+{%- set source_columns = adapter.get_columns_in_relation(load_relation(ref('link_periodstat'))) -%} {# берём колонки #}
 
-{%- set columns_numeric = [] -%}
-{%- set columns_not_numeric = [] -%}
-{%- set source_columns = adapter.get_columns_in_relation(load_relation(ref('link_periodstat'))) -%}
-
-
-{%- for c in source_columns -%}
-{%- if c.data_type in numeric_types -%}
-{%- do columns_numeric.append(c.name)  -%}
-{%- else -%}
-{%- do columns_not_numeric.append(c.name)  -%}
-{%- endif -%}
+{%- for c in source_columns -%} {# для каждой колонки проверяем её тип данных и отбираем её в тот или иной заготовленный список #}
+    {%- if c.data_type in numeric_types -%}
+        {%- do columns_numeric.append(c.name)  -%}
+    {%- else -%}
+        {%- do columns_not_numeric.append(c.name)  -%}
+    {%- endif -%}
 {%- endfor -%} 
 
-WITH unnest_dates AS (
-SELECT *, 
+{# будем разбивать период на дни - например была одна строка с periodStart='2024-01-01' и periodEnd='2024-01-31' #}
+{# а мы сделаем 31 строку - по одной на каждый день этого периода #}
+WITH unnest_dates AS ( 
+SELECT *, {# берём все данные, какие были в таблице и добавляем к ним каждый день периода #}
     dateAdd(periodStart, arrayJoin(range( 0, 1 + toUInt16(date_diff('day', periodStart, periodEnd))))) AS period_date
 	, COUNT(*) OVER(PARTITION BY 
 {% for c in columns_not_numeric -%}{{c}}
 {% if not loop.last %},{% endif %}
 {% endfor %} 
-    ) AS divide_by_days
+    ) AS divide_by_days {# здесь мы вычисляем кол-во дней, на которое надо будем в дальнейшем делить метрики #}
 FROM {{ ref('link_periodstat') }}
 )
-SELECT period_date, 
-{% for column in columns_not_numeric -%}{{column}},
+, t0 AS (
+SELECT period_date, {# отбираем все даты периода  #}
+{% for column in columns_not_numeric -%}{{column}}, {# не числовые колонки - такими какими они и были #}
+{% endfor %}   {# а значения в числовых колонках делим на количество дней в периоде #}
+{% for column in columns_numeric -%}{{column}}/divide_by_days AS {{column}}_per_day {# и таким образом получаем новые столбцы #}
+{% if not loop.last %},{% endif %}   {# например вместо cost будет cost_per_day #}
 {% endfor %} 
-{% for column in columns_numeric -%}{{column}}/divide_by_days AS {{column}}_per_day
-{% if not loop.last %},{% endif %}
-{% endfor %} 
-
 FROM unnest_dates
+)
+{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_periodstat'))) -%} {# берём колонки #}
+{%- endif -%} {# заканчиваем перебор пайплайнов с помощью if #}
+
+{%- set pipeline_columns = [] -%}
+{%- for c in pipeline_source_columns -%} 
+    {%- do pipeline_columns.append(c.name)  -%}
+{%- endfor -%} 
+
+{#- теперь основу - т.е. CTE t0 для каждого пайплайна - будем поочерёдно обогащать данными из registry-таблиц, 
+                                                    для этого запускаем цикл for -#}
+{%- for r in registry_existing_tables -%}  
+    {%- set fields_list = [] -%} {# создаём список, куда будем отбирать поля для будущего USING(...) #}
+    {%- set links_list = [] -%}
+    {%- set links = metadata['links'] -%}
+    {%- for link in links  -%}
+      {%- if link|lower == r.split('_')[-1]  -%} {# приводим к нижнему регистру и сравниваем с линком из названия модели #}
+        {%- do links_list.append(link) -%} {# если они совпадают, отбираем этот линк #}
+      {%- endif -%}
+    {%- endfor -%}
+    {#- для этого линка отбираем связанные с ним сущности -#}
+    {%- for link_name in links_list  -%}
+        {%- set main_entities = links[link_name].get('main_entities') or [] -%}
+        {%- set other_entities = links[link_name].get('other_entities') or [] -%}
+        {%- set entities = main_entities + other_entities -%}
+        {%- for entity in entities -%}
+            {%- do fields_list.append(entity ~ 'Hash') -%} {# сохраняем имя поля с этой сущностью для будущего USING(...) #}
+        {%- endfor -%}
+    {%- endfor -%}
+    {#- делаем полученный список уникальным -#}
+    {%- set fields_list = fields_list|unique|list -%}
+
+    {#- отбираем только те значения fields_list, которые есть в pipeline_source_columns -#}
+    {%- set existing_fields_list = [] -%}
+    {%- for f in fields_list -%}
+        {%- if f in pipeline_columns|unique|list -%}
+            {%- do existing_fields_list.append(f) -%}
+        {%- endif -%}
+    {%- endfor -%}
+
+    {# здесь проходим циклом - создаём t1, который обогащает t0 одной таблицей registry, 
+    на следующем обороте t2 обогащает t1 ещё одной таблицей registry и тд.
+    Для каждого раза у нас автоматически подставляются и таблица registry, и её хэш-поля в USING(...) для верного джойна #}
+
+{%- if existing_fields_list|length >= 1 -%} {# если у нас есть общие поля, по к-ым можно сделать USING(...), то мы делаем джойн #}
+, t{{loop.index}} AS ( 
+SELECT * FROM t{{loop.index-1}}
+LEFT JOIN {{r}} USING ({% for f in existing_fields_list %}{{f}}{% if not loop.last %},{% endif -%}{% endfor %}) 
+)
+{%- else -%}   {# если общих полей для USING(...) нет, то мы этот шаг делаем без джойна, просто как SELECT * FROM предыдущий шаг #}
+, t{{loop.index}} AS ( 
+SELECT * FROM t{{loop.index-1}}
+)
+{%- endif -%}
+
+{%- endfor %} {# после завершения цикла берём t<кол-во имевшихся registry-таблиц> - т.е. из последнего CTE #}
+SELECT * FROM t{{registry_existing_tables|length}} 
 
 
-{%- endif -%} 
+{# SELECT COLUMNS('^[a-z|_][^2]')  помогало отбирать на лету все колонки по regexp - например все колонки кроме t2.<...>  #}
+
 {% endmacro %}
