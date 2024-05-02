@@ -10,6 +10,8 @@
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
 
+{#- ********************************************    материализация  ************************************************ -#}
+
 {#- для каждого пайплайна у нас своя материализация и своё поведение в начале, до присоединения registry-таблиц -#}
 {#- для пайплайна events делаем материализацию table и соединяем данные link_events + graph_qid + имеющиеся registry -#}
 {%- if pipeline_name =='events' -%} 
@@ -38,7 +40,9 @@
     on_schema_change='fail'
 ) }} 
 {%- endif -%} 
- 
+
+{#- ************************************* списки возможных и существующих таблиц registry ************************************* -#}
+
 {#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 {%- set links_list = [] -%}
@@ -60,6 +64,7 @@
     {%- endif -%} 
 {%- endfor -%}
 
+{#- ****************************************   t0 для каждого пайплайна   **************************************************** -#}
 
 {#- создаём основу будущей таблицы для каждого пайплайна - для каждого пайплайна это свой CTE t0 -#}
 
@@ -123,6 +128,8 @@ FROM unnest_dates
     {%- do pipeline_columns.append(c.name)  -%}
 {%- endfor -%} 
 
+{#-  ********************************* цикл для последовательных джойнов таблиц registry  **************************************  -#}
+
 {#- теперь основу - т.е. CTE t0 для каждого пайплайна - будем поочерёдно обогащать данными из registry-таблиц, 
                                                     для этого запускаем цикл for -#}
 {%- for r in registry_existing_tables -%}  
@@ -137,9 +144,9 @@ FROM unnest_dates
     {#- для этого линка отбираем связанные с ним сущности -#}
     {%- for link_name in links_list  -%}
         {%- set main_entities = links[link_name].get('main_entities') or [] -%}
-        {%- set other_entities = links[link_name].get('other_entities') or [] -%}
-        {%- set entities = main_entities + other_entities -%}
-        {%- for entity in entities -%}
+                                  {#-  {%- set other_entities = links[link_name].get('other_entities') or [] -%} -#}
+                                  {#-  {%- set entities = main_entities + other_entities -%} -#}
+        {%- for entity in main_entities -%}
             {%- do fields_list.append(entity ~ 'Hash') -%} {# сохраняем имя поля с этой сущностью для будущего USING(...) #}
         {%- endfor -%}
     {%- endfor -%}
