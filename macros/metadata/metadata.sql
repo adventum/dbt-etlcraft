@@ -195,7 +195,6 @@ links:
     - name: toDateTime(0)
     main_entities: 
     - AppMetricaDevice
-    other_entities: 
     - CrmUser
 glue_models:
   hash_events:
