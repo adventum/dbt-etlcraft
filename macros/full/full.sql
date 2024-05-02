@@ -10,7 +10,7 @@
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
 
-{#- ********************************************    материализация  ************************************************ -#}
+{#- ***********************************************  материализация  ************************************************************ -#}
 
 {#- для каждого пайплайна у нас своя материализация и своё поведение в начале, до присоединения registry-таблиц -#}
 {#- для пайплайна events делаем материализацию table и соединяем данные link_events + graph_qid + имеющиеся registry -#}
@@ -18,7 +18,7 @@
 {{
     config(
         materialized = 'table',
-        order_by = ('__datetime')
+       order_by = ('__datetime') 
     )
 }}
 {#- для пайплайна datestat делаем материализацию incremental и соединяем данные link_datestat + имеющиеся registry -#}
@@ -41,7 +41,7 @@
 ) }} 
 {%- endif -%} 
 
-{#- ************************************* списки возможных и существующих таблиц registry ************************************* -#}
+{#- ************************************* отбор возможных и существующих таблиц registry ************************************* -#}
 
 {#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
@@ -64,9 +64,7 @@
     {%- endif -%} 
 {%- endfor -%}
 
-{#- ****************************************   t0 для каждого пайплайна   **************************************************** -#}
-
-{#- создаём основу будущей таблицы для каждого пайплайна - для каждого пайплайна это свой CTE t0 -#}
+{#- *********************************  для каждого пайплайна создаём основу запроса - CTE t0    ********************************** -#}
 
 {#- начинаем перебор пайплайнов с помощью if -#}
 {%- if pipeline_name =='events' -%} {# для пайплайна events основа это link_events + graph_qid #}
@@ -74,15 +72,14 @@ WITH t0 AS (
 SELECT * FROM {{ ref('link_events') }}
 LEFT JOIN {{ ref('graph_qid') }} USING (__id, __link, __datetime)
 )
-{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_events'))) -%} {# берём колонки #}
 
 {%- elif pipeline_name =='datestat' -%}  {# для пайплайна datestat это link_datestat #} 
 WITH t0 AS (
 SELECT * FROM {{ ref('link_datestat') }}
 )
-{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_datestat'))) -%} {# берём колонки #}
 
 {%- elif pipeline_name =='periodstat' -%}  {# для пайплайна periodstat берём данные из link_periodstat и разбиваем их по дням #}
+{#- для этого понадобится произвести дополнительные действия -#}
 {#- задаём наименования числовых типов данных -#}
 {%- set numeric_types = ['UInt8', 'UInt16', 'UInt32', 'UInt64', 'UInt256', 
                         'Int8', 'Int16', 'Int32', 'Int64', 'Int128', 'Int256',
@@ -99,8 +96,9 @@ SELECT * FROM {{ ref('link_datestat') }}
     {%- endif -%}
 {%- endfor -%} 
 
-{# будем разбивать период на дни - например была одна строка с periodStart='2024-01-01' и periodEnd='2024-01-31' #}
-{# а мы сделаем 31 строку - по одной на каждый день этого периода #}
+{# будем разбивать период на дни - например была одна строка с periodStart='2024-01-01' и periodEnd='2024-01-31' и
+и значением cost за весь период, например, 31000 #}
+{# а мы сделаем 31 строку - по одной на каждый день этого периода и значением cost_per_day равным 1000 #}
 WITH unnest_dates AS ( 
 SELECT *, {# берём все данные, какие были в таблице и добавляем к ним каждый день периода #}
     dateAdd(periodStart, arrayJoin(range( 0, 1 + toUInt16(date_diff('day', periodStart, periodEnd))))) AS period_date
@@ -120,18 +118,42 @@ SELECT period_date, {# отбираем все даты периода  #}
 {% endfor %} 
 FROM unnest_dates
 )
-{%- set pipeline_source_columns = adapter.get_columns_in_relation(load_relation(ref('link_periodstat'))) -%} {# берём колонки #}
 {%- endif -%} {# заканчиваем перебор пайплайнов с помощью if #}
 
-{%- set pipeline_columns = [] -%}
-{%- for c in pipeline_source_columns -%} 
-    {%- do pipeline_columns.append(c.name)  -%}
+{#- ******************************  для каждого пайплайна отбор полей pipeline_columns   ********************************** -#}
+
+{#- здесь нет условия if, но, поскольку при вызове моделей у каждой свой pipeline_name, значения будут разными -#}
+{%- set pipeline_columns = [] -%} {# сюда будем отбирать колонки с сущностями каждого пайплайна #}
+{%- set links_list = [] -%}
+{%- set links = metadata['links'] -%}    
+    {%- for link in links  -%}
+      {%- do links_list.append(link) -%} 
+    {%- endfor -%}
+
+{%- for link_name in links_list  -%}
+    {%- set pipeline = links[link_name].get('pipeline') or [] -%}
+    {%- if pipeline == pipeline_name -%}
+        {%- set main_entities = links[link_name].get('main_entities') or [] -%}
+        {%- set other_entities = links[link_name].get('other_entities') or [] -%}
+        {%- set entities = main_entities + other_entities -%}
+        {%- for entity in entities -%}
+            {%- do pipeline_columns.append(entity ~ 'Hash') -%}
+        {%- endfor -%}
+    {%- endif -%}
 {%- endfor -%} 
+{#- делаем полученный список уникальным -#}
+{%- set pipeline_columns = pipeline_columns|unique|list -%}
+
+{#- SELECT {{ pipeline_columns }} например для events выводит
+SELECT ['AccountHash', 'AppMetricaDeviceHash', 'MobileAdsIdHash', 'CrmUserHash', 'OsNameHash', 'CityHash', 
+'AdSourceHash', 'UtmParamsHash', 'UtmHashHash', 'TransactionHash', 'PromoCodeHash', 
+'AppSessionHash', 'VisitHash', 'YmClientHash'] -#}
 
 {#-  ********************************* цикл для последовательных джойнов таблиц registry  **************************************  -#}
 
 {#- теперь основу - т.е. CTE t0 для каждого пайплайна - будем поочерёдно обогащать данными из registry-таблиц, 
                                                     для этого запускаем цикл for -#}
+                                                   
 {%- for r in registry_existing_tables -%}  
     {%- set fields_list = [] -%} {# создаём список, куда будем отбирать поля для будущего USING(...) #}
     {%- set links_list = [] -%}
@@ -153,7 +175,7 @@ FROM unnest_dates
     {#- делаем полученный список уникальным -#}
     {%- set fields_list = fields_list|unique|list -%}
 
-    {#- отбираем только те значения fields_list, которые есть в pipeline_source_columns -#}
+    {#- отбираем только те значения fields_list, которые есть в pipeline_columns -#}
     {%- set existing_fields_list = [] -%}
     {%- for f in fields_list -%}
         {%- if f in pipeline_columns|unique|list -%}
