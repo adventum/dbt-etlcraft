@@ -6,6 +6,7 @@
   date_to = none
   ) -%}
 
+{#- ************************************************* части имени и материализация *********************************************** -#}
 {#- задаём части имени - pipeline это например datestat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 {%- set pipeline_name = model_name_parts[1] -%}
@@ -34,8 +35,6 @@
 
 {%-endif -%}
 
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
-
 {#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 2 or model_name_parts[0] != 'hash' -%}
   {%- if pipeline_name == 'registry' -%}
@@ -44,6 +43,8 @@
     {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "hash_{pipeline_name}"') }}
   {%- endif -%}
 {%- endif -%}
+
+{#- ************************************************* находим source_table *********************************************** -#}
 
 {#- задаём паттерн, чтобы найти combine-таблицу нужного пайплайна -#}
 
@@ -60,7 +61,10 @@
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
 
+{#- ************************************************* работа с metadata *********************************************** -#}
+
 {#- задаём список всех линков -#}
+{%- set metadata = fromyaml(etlcraft.metadata()) -%}
 {%- set links = metadata['links'] -%}
 {#- задаём списки, куда будем отбирать линки и сущности -#}
 {%- set links_list = [] -%}
@@ -116,6 +120,7 @@
     {%- endif -%}
 {%- endfor -%}
 
+{#- ********************************************* работа с metadata для пайплайна registry *************************************** -#}
 
 {#- для моделей пайплайна registry отбираем линки и сущности отдельно, 
 чтобы выводить модели по-отдельности для каждого источника данных -#}
@@ -145,7 +150,8 @@
 {%- set final_entities_list = final_entities_list|unique|list -%}
 {%- endif -%}
 
-{#- основной запрос -#} 
+
+{#- **************************************************** SQL-запрос ********************************************************* -#}
 
 SELECT *,
   assumeNotNull(CASE 
