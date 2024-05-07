@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
+        insert into test.hash_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
   -- depends_on: test.combine_datestat
 SELECT *,
   assumeNotNull(CASE 
@@ -52,7 +52,6 @@ FROM (
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
                             toString("adCampaignName") as adCampaignName ,
-                            toString("adGroupName") as adGroupName ,
                             toString("adId") as adId ,
                             toString("utmSource") as utmSource ,
                             toString("utmMedium") as utmMedium ,
@@ -67,6 +66,7 @@ FROM (
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString("adGroupName") as adGroupName ,
                             toString("adPhraseId") as adPhraseId 
 
             from test.combine_datestat
