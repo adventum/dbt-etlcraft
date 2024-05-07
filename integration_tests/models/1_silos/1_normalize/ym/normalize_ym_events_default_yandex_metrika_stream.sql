@@ -1,1 +1,1 @@
-{{ etlcraft.normalize() }}
+{{ etlcraft.normalize(fields=['__clientName','__productName','ym:s:clientID','ym:s:dateTime','ym:s:goalsID','ym:s:goalsOrder','ym:s:lastAdvEngine','ym:s:lastReferalSource','ym:s:lastSearchEngine','ym:s:lastTrafficSource','ym:s:pageViews','ym:s:parsedParamsKey1','ym:s:parsedParamsKey2','ym:s:purchaseCoupon','ym:s:purchaseID','ym:s:purchaseRevenue','ym:s:regionCity','ym:s:UTMCampaign','ym:s:UTMContent','ym:s:UTMMedium','ym:s:UTMSource','ym:s:UTMTerm','ym:s:visitID']) }}

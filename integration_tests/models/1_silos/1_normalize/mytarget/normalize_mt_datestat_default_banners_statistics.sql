@@ -1,1 +1,1 @@
-{{ etlcraft.normalize() }}
+{{ etlcraft.normalize(fields=['__clientName','__productName','banner_id','base','date']) }}

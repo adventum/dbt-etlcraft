@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_mt_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_mt_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_mt_datestat_default_banners_statistics
 -- depends_on: test.incremental_mt_datestat_default_banners
 -- depends_on: test.incremental_mt_datestat_default_campaigns
@@ -95,7 +95,7 @@ SELECT
     'MyTarget' AS adSourceDirty,
     --'' AS productName,
     campaigns.name AS adCampaignName,
-    '' AS adGroupName,
+    --'' AS adGroupName,
     banners.id AS adId,
     --'' AS adPhraseId,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_source=([^&]*)') AS utmSource,
@@ -103,7 +103,7 @@ SELECT
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_campaign=([^&]*)') AS utmCampaign,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_term=([^&]*)') AS utmTerm,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_content=([^&]*)') AS utmContent,
-    greatest(coalesce(extract(adGroupName, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmContent, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmCampaign, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(adCampaignName, '__([a-zA-Z0-9]{8})'), '')) AS utmHash,
+    greatest(coalesce(extract(utmContent, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(utmCampaign, '__([a-zA-Z0-9]{8})'), ''), coalesce(extract(adCampaignName, '__([a-zA-Z0-9]{8})'), '')) AS utmHash,
     JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.title_25.text') AS adTitle1,
     --'' AS adTitle2,
     assumeNotNull(coalesce(nullif(JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.text_90.text'), ''),

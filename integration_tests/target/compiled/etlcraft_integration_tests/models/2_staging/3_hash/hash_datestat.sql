@@ -45,7 +45,6 @@ FROM (
                             toString("__table_name") as __table_name ,
                             toString("adSourceDirty") as adSourceDirty ,
                             toString("adCampaignName") as adCampaignName ,
-                            toString("adGroupName") as adGroupName ,
                             toString("adId") as adId ,
                             toString("utmSource") as utmSource ,
                             toString("utmMedium") as utmMedium ,
@@ -60,6 +59,7 @@ FROM (
                             toInt32("clicks") as clicks ,
                             toDateTime("__emitted_at") as __emitted_at ,
                             toString("__link") as __link ,
+                            toString("adGroupName") as adGroupName ,
                             toString("adPhraseId") as adPhraseId 
 
             from test.combine_datestat
