@@ -1,1 +1,0 @@
-{{ etlcraft.normalize(incremental_datetime_field='install_datetime', override_target_model_name='normalize_appmetrica_events_default_installations', fields=['__clientName','__productName','appmetrica_device_id','city','click_datetime','click_url_parameters','google_aid','install_datetime','ios_ifa','is_reinstallation','os_name','profile_id','publisher_name']) }}

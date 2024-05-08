@@ -1,14 +1,14 @@
 SELECT * FROM (
 SELECT
-        JSONExtractString(_airbyte_data, 'event_datetime') AS __date, 
+        JSONExtractString(_airbyte_data, 'event_receive_datetime') AS __date, 
         JSONExtractString(_airbyte_data, '__clientName') AS __clientName, 
         JSONExtractString(_airbyte_data, '__productName') AS __productName, 
         JSONExtractString(_airbyte_data, 'app_version_name') AS app_version_name, 
         JSONExtractString(_airbyte_data, 'appmetrica_device_id') AS appmetrica_device_id, 
         JSONExtractString(_airbyte_data, 'city') AS city, 
-        JSONExtractString(_airbyte_data, 'event_datetime') AS event_datetime, 
         JSONExtractString(_airbyte_data, 'event_json') AS event_json, 
         JSONExtractString(_airbyte_data, 'event_name') AS event_name, 
+        JSONExtractString(_airbyte_data, 'event_receive_datetime') AS event_receive_datetime, 
         JSONExtractString(_airbyte_data, 'google_aid') AS google_aid, 
         JSONExtractString(_airbyte_data, 'installation_id') AS installation_id, 
         JSONExtractString(_airbyte_data, 'ios_ifa') AS ios_ifa, 
