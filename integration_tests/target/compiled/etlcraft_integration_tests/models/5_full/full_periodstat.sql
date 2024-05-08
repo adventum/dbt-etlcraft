@@ -50,13 +50,11 @@ cost/divide_by_days AS cost_per_day
 FROM unnest_dates
 )
 , t1 AS ( 
-SELECT * FROM t0
+SELECT * 
+FROM t0
 )
 , t2 AS ( 
-SELECT * FROM t1
+SELECT * 
+FROM t1
 ) 
-SELECT * FROM t2 
-
-
-
-
+SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM t2

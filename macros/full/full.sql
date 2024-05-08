@@ -189,19 +189,23 @@ SELECT ['AccountHash', 'AppMetricaDeviceHash', 'MobileAdsIdHash', 'CrmUserHash',
 
 {%- if existing_fields_list|length >= 1 -%} {# если у нас есть общие поля, по к-ым можно сделать USING(...), то мы делаем джойн #}
 , t{{loop.index}} AS ( 
-SELECT * FROM t{{loop.index-1}}
+SELECT t{{loop.index-1}}.*, {{r}}.*EXCEPT(__emitted_at, __table_name, __id, __datetime, __link) 
+FROM t{{loop.index-1}} 
 LEFT JOIN {{r}} USING ({% for f in existing_fields_list %}{{f}}{% if not loop.last %},{% endif -%}{% endfor %}) 
 )
 {%- else -%}   {# если общих полей для USING(...) нет, то мы этот шаг делаем без джойна, просто как SELECT * FROM предыдущий шаг #}
 , t{{loop.index}} AS ( 
-SELECT * FROM t{{loop.index-1}}
+SELECT * 
+FROM t{{loop.index-1}}
 )
 {%- endif -%}
 
 {%- endfor %} {# после завершения цикла берём t<кол-во имевшихся registry-таблиц> - т.е. из последнего CTE #}
-SELECT * FROM t{{registry_existing_tables|length}} 
+SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM t{{registry_existing_tables|length}} 
 
 
-{# SELECT COLUMNS('^[a-z|_][^2]')  помогало отбирать на лету все колонки по regexp - например все колонки кроме t2.<...>  #}
+{#- SELECT COLUMNS('^[a-z|_][^2]')  помогало отбирать на лету все колонки по regexp - например все колонки кроме t2.<...>  -#}
+{#- SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM отобрать все колонки, кроме тех, где есть точка 
+то есть от начала до конца есть только буквы, цифры, нижние подчеркивания -#}
 
 {% endmacro %}
