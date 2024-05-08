@@ -1,8 +1,6 @@
+-- depends_on: {{ ref('full_datestat') }}
+-- depends_on: {{ ref('attr_myfirstfunnel_final_table') }}
 
-SELECT *
-FROM {{ ref('full_events')}}
-
-{#
 {{ etlcraft.create_dataset(
     funnel = 'myfirstfunnel',
     conditions =
@@ -26,4 +24,3 @@ FROM {{ ref('full_events')}}
     }
      ]
 ) }}
-#}

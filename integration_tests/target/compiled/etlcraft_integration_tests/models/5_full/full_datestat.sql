@@ -6,14 +6,12 @@ WITH t0 AS (
 SELECT * FROM test.link_datestat
 )
 , t1 AS ( 
-SELECT * FROM t0
+SELECT t0.*, link_registry_utmhashregistry.*EXCEPT(__emitted_at, __table_name, __id, __datetime, __link) 
+FROM t0 
 LEFT JOIN link_registry_utmhashregistry USING (UtmHashHash) 
 )
 , t2 AS ( 
-SELECT * FROM t1
+SELECT * 
+FROM t1
 ) 
-SELECT * FROM t2 
-
-
-
-
+SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM t2
