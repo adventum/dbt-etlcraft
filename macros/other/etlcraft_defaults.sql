@@ -11,6 +11,22 @@ sourcetypes:
         incremental_datetime_field: install_time
       post_attribution_installs:
         incremental_datetime_field: install_time 
+  appmetrica:
+    streams:
+      installations: 
+        incremental_datetime_field: install_receive_datetime
+      deeplinks: 
+        incremental_datetime_field: event_receive_datetime
+      events: 
+        incremental_datetime_field: event_receive_datetime
+      crashes: 
+        incremental_datetime_field: crash_receive_datetime
+      errors: 
+        incremental_datetime_field: error_receive_datetime
+      push_tokens: 
+        incremental_datetime_field: token_receive_datetime
+      session_starts: 
+        incremental_datetime_field: session_start_receive_datetime
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
 {% endmacro %}
