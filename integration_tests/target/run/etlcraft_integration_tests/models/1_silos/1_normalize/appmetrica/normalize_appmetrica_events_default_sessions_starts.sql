@@ -4,7 +4,7 @@
   
   as (
     SELECT
-        JSONExtractString(_airbyte_data, 'session_start_datetime') AS __date, 
+        JSONExtractString(_airbyte_data, 'session_start_receive_datetime') AS __date, 
         JSONExtractString(_airbyte_data, '__clientName') AS __clientName, 
         JSONExtractString(_airbyte_data, '__productName') AS __productName, 
         JSONExtractString(_airbyte_data, 'appmetrica_device_id') AS appmetrica_device_id, 
@@ -14,7 +14,7 @@
         JSONExtractString(_airbyte_data, 'ios_ifa') AS ios_ifa, 
         JSONExtractString(_airbyte_data, 'os_name') AS os_name, 
         JSONExtractString(_airbyte_data, 'profile_id') AS profile_id, 
-        JSONExtractString(_airbyte_data, 'session_start_datetime') AS session_start_datetime,
+        JSONExtractString(_airbyte_data, 'session_start_receive_datetime') AS session_start_receive_datetime,
         toLowCardinality(_dbt_source_relation) AS __table_name,  
         toDateTime32(substring(_airbyte_emitted_at, 1, 19)) AS __emitted_at, 
         NOW() AS __normalized_at

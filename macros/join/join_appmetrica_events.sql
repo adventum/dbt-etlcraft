@@ -28,7 +28,7 @@
 {%- set relations_events = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
 {%- set source_table_events = '(' ~ dbt_utils.union_relations(relations_events) ~ ')' -%}  
 
-{%- set table_pattern_install = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'install' ~ '$' -%}
+{%- set table_pattern_install = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'installations' ~ '$' -%}
 {%- set relations_install = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_install) -%}   
 {%- set source_table_install = '(' ~ dbt_utils.union_relations(relations_install) ~ ')' -%} 
 
@@ -48,13 +48,11 @@ WITH join_appmetrica_events_deeplinks AS (
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_datetime) AS event_datetime,
+    toDateTime(event_receive_datetime) AS event_datetime,
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId, --
-    --'' AS clientId, -- 
     '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
@@ -108,7 +106,7 @@ SELECT
     profile_id AS crmUserId,
     JSONExtractString(event_json, 'coupon') AS promoCode,    
     toDate(__date) AS __date, 
-    toDateTime(event_datetime) AS event_datetime, 
+    toDateTime(event_receive_datetime) AS event_datetime, 
     0 AS screen_view
 FROM {{ source_table_events }}
 )
@@ -121,8 +119,6 @@ SELECT
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId,   
-    --'' AS visitId,
-    --'' AS clientId,
     promoCode,
     osName,
     cityName,
@@ -194,13 +190,11 @@ WHERE __rn IN (SELECT __rn FROM min_event) AND
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(install_datetime) AS event_datetime, 
+    toDateTime(install_receive_datetime) AS event_datetime, 
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,
@@ -242,13 +236,11 @@ FROM {{ source_table_install }}
 SELECT
     toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_datetime) AS event_datetime, 
+    toDateTime(event_receive_datetime) AS event_datetime, 
     accountName,
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId, 
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     osName,
     cityName,
@@ -290,13 +282,11 @@ FROM {{ source_table_screen_view }}
 SELECT
     toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(session_start_datetime) AS event_datetime, 
+    toDateTime(session_start_receive_datetime) AS event_datetime, 
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,

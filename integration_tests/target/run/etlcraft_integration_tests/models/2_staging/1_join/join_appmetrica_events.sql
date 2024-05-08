@@ -7,20 +7,18 @@
         insert into test.join_appmetrica_events__dbt_tmp ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link")
   -- depends_on: test.incremental_appmetrica_events_default_deeplinks
 -- depends_on: test.incremental_appmetrica_events_default_events
--- depends_on: test.incremental_appmetrica_events_default_install
+-- depends_on: test.incremental_appmetrica_events_default_installations
 -- depends_on: test.incremental_appmetrica_events_default_screen_view
 -- depends_on: test.incremental_appmetrica_events_default_sessions_starts
 WITH join_appmetrica_events_deeplinks AS (
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_datetime) AS event_datetime,
+    toDateTime(event_receive_datetime) AS event_datetime,
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId, --
-    --'' AS clientId, -- 
     '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
@@ -68,7 +66,7 @@ FROM (
                     cast("appmetrica_device_id" as String) as "appmetrica_device_id" ,
                     cast("city" as String) as "city" ,
                     cast("deeplink_url_parameters" as String) as "deeplink_url_parameters" ,
-                    cast("event_datetime" as String) as "event_datetime" ,
+                    cast("event_receive_datetime" as String) as "event_receive_datetime" ,
                     cast("google_aid" as String) as "google_aid" ,
                     cast("ios_ifa" as String) as "ios_ifa" ,
                     cast("os_name" as String) as "os_name" ,
@@ -100,7 +98,7 @@ SELECT
     profile_id AS crmUserId,
     JSONExtractString(event_json, 'coupon') AS promoCode,    
     toDate(__date) AS __date, 
-    toDateTime(event_datetime) AS event_datetime, 
+    toDateTime(event_receive_datetime) AS event_datetime, 
     0 AS screen_view
 FROM (
     
@@ -116,9 +114,9 @@ FROM (
                     cast("app_version_name" as String) as "app_version_name" ,
                     cast("appmetrica_device_id" as String) as "appmetrica_device_id" ,
                     cast("city" as String) as "city" ,
-                    cast("event_datetime" as String) as "event_datetime" ,
                     cast("event_json" as String) as "event_json" ,
                     cast("event_name" as String) as "event_name" ,
+                    cast("event_receive_datetime" as String) as "event_receive_datetime" ,
                     cast("google_aid" as String) as "google_aid" ,
                     cast("installation_id" as String) as "installation_id" ,
                     cast("ios_ifa" as String) as "ios_ifa" ,
@@ -145,8 +143,6 @@ SELECT
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId,   
-    --'' AS visitId,
-    --'' AS clientId,
     promoCode,
     osName,
     cityName,
@@ -212,13 +208,11 @@ WHERE __rn IN (SELECT __rn FROM min_event) AND
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(install_datetime) AS event_datetime, 
+    toDateTime(install_receive_datetime) AS event_datetime, 
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,
@@ -257,7 +251,7 @@ FROM (
 
         (
             select
-                cast('test.incremental_appmetrica_events_default_install' as String) as _dbt_source_relation,
+                cast('test.incremental_appmetrica_events_default_installations' as String) as _dbt_source_relation,
 
                 
                     cast("__date" as Date) as "__date" ,
@@ -268,7 +262,7 @@ FROM (
                     cast("click_datetime" as String) as "click_datetime" ,
                     cast("click_url_parameters" as String) as "click_url_parameters" ,
                     cast("google_aid" as String) as "google_aid" ,
-                    cast("install_datetime" as String) as "install_datetime" ,
+                    cast("install_receive_datetime" as String) as "install_receive_datetime" ,
                     cast("ios_ifa" as String) as "ios_ifa" ,
                     cast("is_reinstallation" as String) as "is_reinstallation" ,
                     cast("os_name" as String) as "os_name" ,
@@ -278,7 +272,7 @@ FROM (
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
 
-            from test.incremental_appmetrica_events_default_install
+            from test.incremental_appmetrica_events_default_installations
 
             
         )
@@ -288,13 +282,11 @@ FROM (
 SELECT
     toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_datetime) AS event_datetime, 
+    toDateTime(event_receive_datetime) AS event_datetime, 
     accountName,
     appmetricaDeviceId,
     mobileAdsId,
     crmUserId, 
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     osName,
     cityName,
@@ -337,7 +329,7 @@ FROM (
 
                 
                     cast("__date" as Date) as "__date" ,
-                    cast("event_datetime" as DateTime) as "event_datetime" ,
+                    cast("event_receive_datetime" as DateTime) as "event_receive_datetime" ,
                     cast("mobileAdsId" as String) as "mobileAdsId" ,
                     cast("accountName" as String) as "accountName" ,
                     cast("appmetricaDeviceId" as String) as "appmetricaDeviceId" ,
@@ -359,13 +351,11 @@ FROM (
 SELECT
     toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(session_start_datetime) AS event_datetime, 
+    toDateTime(session_start_receive_datetime) AS event_datetime, 
     toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     profile_id AS crmUserId,
-    --'' AS visitId,
-    --'' AS clientId,
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,
@@ -417,7 +407,7 @@ FROM (
                     cast("ios_ifa" as String) as "ios_ifa" ,
                     cast("os_name" as String) as "os_name" ,
                     cast("profile_id" as String) as "profile_id" ,
-                    cast("session_start_datetime" as String) as "session_start_datetime" ,
+                    cast("session_start_receive_datetime" as String) as "session_start_receive_datetime" ,
                     cast("__table_name" as String) as "__table_name" ,
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
