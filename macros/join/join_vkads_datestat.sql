@@ -16,15 +16,16 @@
 ) }}
 
 {%- set sourcetype_name = 'vkads' -%}
-{%- set pipeline_name = 'datestat' -%}
+{%- set pipeline_name_datestat = 'datestat' -%} 
+{%- set pipeline_name_periodstat = 'periodstat' -%}
 
 {%- set stream_name_ad_plans_statistics = 'ad_plans_statistics' -%}
-{%- set table_pattern_ad_plans_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_ad_plans_statistics ~ '$' -%}
+{%- set table_pattern_ad_plans_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_ad_plans_statistics ~ '$' -%}
 {%- set relations_ad_plans_statistics = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans_statistics) -%}   
 {%- set source_table_ad_plans_statistics = '(' ~ dbt_utils.union_relations(relations_ad_plans_statistics) ~ ')' -%} 
 
 {%- set stream_name_ad_plans = 'ad_plans' -%}
-{%- set table_pattern_ad_plans = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
+{%- set table_pattern_ad_plans = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_periodstat ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
 {%- set relations_ad_plans = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans) -%}   
 {%- set source_table_ad_plans = '(' ~ dbt_utils.union_relations(relations_ad_plans) ~ ')' -%}
 
@@ -45,21 +46,8 @@ SELECT
     toLowCardinality(splitByChar('_', ad_plans.__table_name)[6]) AS accountName,
     toLowCardinality(ad_plans.__table_name) AS __table_name,
     'VK Ads' AS adSourceDirty,
-    --'' AS productName,
     ad_plans.name AS adCampaignName,
-    --'' AS adGroupName,
     ad_plans.id AS adId,
-    --'' AS adPhraseId,
-    --'' AS utmSource,
-    --'' AS utmMedium,
-    --'' AS utmCampaign,
-    --'' AS utmTerm,
-    --'' AS utmContent,
-    --'' AS utmHash,
-    --'' AS adTitle1,
-    --'' AS adTitle2,
-    --'' AS adText,
-    --'' AS adPhraseName,  
     toFloat64(JSONExtractString(ad_plans_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'clicks')) AS clicks,
