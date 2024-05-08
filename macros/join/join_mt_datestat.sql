@@ -16,20 +16,21 @@
 ) }}
 
 {%- set sourcetype_name = 'mt' -%}
-{%- set pipeline_name = 'datestat' -%}
+{%- set pipeline_name_datestat = 'datestat' -%} 
+{%- set pipeline_name_registry = 'registry' -%}
 
 {%- set stream_name_banners_statistics = 'banners_statistics' -%}
-{%- set table_pattern_banners_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_banners_statistics ~ '$' -%}
+{%- set table_pattern_banners_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_banners_statistics ~ '$' -%}
 {%- set relations_banners_statistics = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners_statistics) -%}   
 {%- set source_table_banners_statistics = '(' ~ dbt_utils.union_relations(relations_banners_statistics) ~ ')' -%} 
 
 {%- set stream_name_banners = 'banners' -%}
-{%- set table_pattern_banners = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_banners ~ '$' -%}
+{%- set table_pattern_banners = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_banners ~ '$' -%}
 {%- set relations_banners = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners) -%}   
 {%- set source_table_banners = '(' ~ dbt_utils.union_relations(relations_banners) ~ ')' -%}
 
 {%- set stream_name_campaigns = 'campaigns' -%}
-{%- set table_pattern_campaigns = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name_campaigns ~ '$' -%}
+{%- set table_pattern_campaigns = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_campaigns ~ '$' -%}
 {%- set relations_campaigns = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_campaigns) -%}   
 {%- set source_table_campaigns = '(' ~ dbt_utils.union_relations(relations_campaigns) ~ ')' -%}
 

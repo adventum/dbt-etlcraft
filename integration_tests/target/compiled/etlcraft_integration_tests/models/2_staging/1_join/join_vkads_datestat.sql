@@ -1,5 +1,5 @@
 -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
--- depends_on: test.incremental_vkads_datestat_default_ad_plans
+-- depends_on: test.incremental_vkads_periodstat_default_ad_plans
 WITH ad_plans_statistics AS (
 SELECT * FROM (
     
@@ -42,7 +42,7 @@ SELECT * FROM (
 
         (
             select
-                cast('test.incremental_vkads_datestat_default_ad_plans' as String) as _dbt_source_relation,
+                cast('test.incremental_vkads_periodstat_default_ad_plans' as String) as _dbt_source_relation,
 
                 
                     cast("ad_groups" as String) as "ad_groups" ,
@@ -65,7 +65,7 @@ SELECT * FROM (
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
 
-            from test.incremental_vkads_datestat_default_ad_plans
+            from test.incremental_vkads_periodstat_default_ad_plans
 
             
         )
@@ -79,21 +79,8 @@ SELECT
     toLowCardinality(splitByChar('_', ad_plans.__table_name)[6]) AS accountName,
     toLowCardinality(ad_plans.__table_name) AS __table_name,
     'VK Ads' AS adSourceDirty,
-    --'' AS productName,
     ad_plans.name AS adCampaignName,
-    --'' AS adGroupName,
     ad_plans.id AS adId,
-    --'' AS adPhraseId,
-    --'' AS utmSource,
-    --'' AS utmMedium,
-    --'' AS utmCampaign,
-    --'' AS utmTerm,
-    --'' AS utmContent,
-    --'' AS utmHash,
-    --'' AS adTitle1,
-    --'' AS adTitle2,
-    --'' AS adText,
-    --'' AS adPhraseName,  
     toFloat64(JSONExtractString(ad_plans_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'clicks')) AS clicks,

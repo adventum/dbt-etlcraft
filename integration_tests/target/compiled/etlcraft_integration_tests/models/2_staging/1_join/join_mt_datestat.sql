@@ -1,6 +1,6 @@
 -- depends_on: test.incremental_mt_datestat_default_banners_statistics
--- depends_on: test.incremental_mt_datestat_default_banners
--- depends_on: test.incremental_mt_datestat_default_campaigns
+-- depends_on: test.incremental_mt_registry_default_banners
+-- depends_on: test.incremental_mt_registry_default_campaigns
 WITH banners_statistics AS (
 SELECT * FROM (
     
@@ -34,7 +34,7 @@ SELECT * FROM (
 
         (
             select
-                cast('test.incremental_mt_datestat_default_banners' as String) as _dbt_source_relation,
+                cast('test.incremental_mt_registry_default_banners' as String) as _dbt_source_relation,
 
                 
                     cast("__clientName" as String) as "__clientName" ,
@@ -47,7 +47,7 @@ SELECT * FROM (
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
 
-            from test.incremental_mt_datestat_default_banners
+            from test.incremental_mt_registry_default_banners
 
             
         )
@@ -61,7 +61,7 @@ SELECT * FROM (
 
         (
             select
-                cast('test.incremental_mt_datestat_default_campaigns' as String) as _dbt_source_relation,
+                cast('test.incremental_mt_registry_default_campaigns' as String) as _dbt_source_relation,
 
                 
                     cast("__clientName" as String) as "__clientName" ,
@@ -72,7 +72,7 @@ SELECT * FROM (
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
 
-            from test.incremental_mt_datestat_default_campaigns
+            from test.incremental_mt_registry_default_campaigns
 
             
         )
