@@ -5,26 +5,29 @@
   override_target_model_name=none
   ) -%}
 
+{#- возможно стоит добавить pipeline в funnels из metadata -#}
 
-{%- set relations = []-%}
-
-{# возможно стоит добавить pipeline в funnels из metadata #}
-
+{%- set patterns = [] -%} {# сюда будем собирать паттерны названий таблиц, к-ые нам будут нужны #}
 {% for condition in conditions %}
   {% if condition.pipeline == 'events' %}
-      {%- set ref =  'attr_' ~ funnel  ~ '_final_table' -%}
-      {%- do relations.append(ref) -%}
+      {%- set pattern =  'attr_' ~ funnel  ~ '_final_table' -%}
   {% else %}
-      {%- set ref =  'full_' ~ condition.pipeline  -%}
-      {%- do relations.append(ref) -%}
+      {%- set pattern =  'full_' ~ condition.pipeline  -%}
   {%- endif -%}  
+  {% if pattern not in patterns %} {# сразу заботимся об уникальности списка #}
+    {% do patterns.append(pattern) %}
+  {%- endif -%} 
 {%- endfor -%}
 
-{%- set unique_relations = relations|unique|list -%} 
-{#- {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations=unique_relations) ~ ')' -%} -#}
+{%- set relation_list = [] -%} {# сюда будем собирать их relations #}
+{%- for i in range(patterns|length) -%}
+  {%- do relation_list.append(ref(patterns[i])) -%}
+{%- endfor -%}
 
-{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations=[ref('full_datestat'),ref('attr_myfirstfunnel_final_table')]) ~ ')' -%}  
+{#- передаём полученный список relations сюда, и получаем таблицу, с которой будем работать -#}
+{% set source_table = '(' ~ etlcraft.custom_union_relations(relations=relation_list) ~ ')' %} 
 
+{#- делаем материализацию table -#}
 {{
     config(
         materialized = 'table',
@@ -32,10 +35,12 @@
     )
 }}
 
+{#- задаём переменные для дальнейшего прописывания условий -#}
 {%- set source_field = "splitByChar('_', __table_name)[4]" -%}
 {%- set preset_field = "splitByChar('_', __table_name)[6]" -%}
 {%- set account_field = "splitByChar('_', __table_name)[7]" -%}
 
+{#- генерируем SQL-запрос для каждого condition, указанного пользователем, с нужными с условиями -#}
 {% for condition in conditions %}
   {% if loop.last %}
     SELECT * FROM {{ source_table }} 
