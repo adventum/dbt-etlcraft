@@ -64,6 +64,6 @@ FROM t0
 SELECT * 
 FROM t1
 ) 
-SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM t2
+SELECT COLUMNS('^[^.]+$') FROM t2
   
     

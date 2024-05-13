@@ -8,8 +8,6 @@
     override_target_model_name=none,
     debug_column_names=False) -%}
 
-{%- do etlcraft.fix_alias() -%} {# это нужно для моделей с окончанием _manual #}
-
 {#- выполнять на втором этапе после выведения зависимостей 
 первый этап - parse, здесь делается manifest, на втором этапе уже поймёт ref - возьмет его из манифеста. 
 Надо завернуть в execute, иначе будет пусто -#}
@@ -18,7 +16,7 @@
 {#- задаём части имени - либо из параметра, либо из имени файла - разбивая на части по знаку _ -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
 
-{#- если имя модели не соответсвует шаблону - выдаём ошибку -#}
+{#- если имя модели не соответствует шаблону - выдаём ошибку -#}
 {%- if model_name_parts|length < 5 or model_name_parts[0] != 'normalize' -%}
     {{ exceptions.raise_compiler_error('Model name "' ~ this.name ~ '" does not follow the expected pattern: "normalize_{sourcetype_name}_{pipeline_name}_{template_name}_{stream_name}"') }}
 {%- endif -%}
@@ -89,4 +87,3 @@ FROM {{ source_table }}
 
 {%- endif -%} {# конец для if execute #}
 {%- endmacro -%}
-

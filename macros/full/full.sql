@@ -201,7 +201,7 @@ FROM t{{loop.index-1}}
 {%- endif -%}
 
 {%- endfor %} {# после завершения цикла берём t<кол-во имевшихся registry-таблиц> - т.е. из последнего CTE #}
-SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM t{{registry_existing_tables|length}} 
+SELECT COLUMNS('^[^.]+$') FROM t{{registry_existing_tables|length}} 
 
 
 {#- SELECT COLUMNS('^[a-z|_][^2]')  помогало отбирать на лету все колонки по regexp - например все колонки кроме t2.<...>  -#}

@@ -9,8 +9,10 @@
 
 {%- set patterns = [] -%} {# сюда будем собирать паттерны названий таблиц, к-ые нам будут нужны #}
 {% for condition in conditions %}
-  {% if condition.pipeline == 'events' %}
+  {% if condition.pipeline == 'events' and funnel %}
       {%- set pattern =  'attr_' ~ funnel  ~ '_final_table' -%}
+  {% elif condition.pipeline == 'events' and not funnel %}
+      {%- set pattern =  'full_' ~ condition.pipeline  -%}
   {% else %}
       {%- set pattern =  'full_' ~ condition.pipeline  -%}
   {%- endif -%}  

@@ -26,13 +26,6 @@
 {#- задаём relations при помощи собственного макроса - он находится в clickhouse-adapters -#}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
 
-{#- прописываем условие для поиска _manual, у к-ых сработал fix_alias и их без _manual не видно -#}
-{%- if not relations -%} 
-{%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ 
-    '_' ~ stream_name ~ '_manual' -%}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}
-{%- endif -%}
-
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%} 
 
