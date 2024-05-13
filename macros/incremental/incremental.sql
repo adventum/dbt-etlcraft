@@ -21,16 +21,27 @@
 {%- set template_name = model_name_parts[3] -%}
 {%- set stream_name_parts = model_name_parts[4:] -%}
 {%- set stream_name = '_'.join(stream_name_parts) -%}
-{%- set normalized_relation_name = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_' ~ stream_name -%}
+{%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_' ~ stream_name -%}
 
-{#- было вот так set normalized_relation_name = 'normalize_' + model_name_parts[1] + '_' + model_name_parts[2] + '_' model_name_parts[3] + '_'.join(model_name_parts[4:]) -#}
+{#- задаём relations при помощи собственного макроса - он находится в clickhouse-adapters -#}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+
+{#- прописываем условие для поиска _manual, у к-ых сработал fix_alias и их без _manual не видно -#}
+{%- if not relations -%} 
+{%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ 
+    '_' ~ stream_name ~ '_manual' -%}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}
+{%- endif -%}
+
+{#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
+{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%} 
 
 {#- задаём инкрементальное поле с датой если его нет -#}
 {#- Determine the incremental datetime field (IDF) if not provided -#}
 {%- if disable_incremental -%}
     {%- set incremental_datetime_field = False -%}    
 {%- else -%}
-  {%- set incremental_datetime_field = etlcraft.find_incremental_datetime_field([], normalized_relation_name, defaults_dict=defaults_dict, do_not_throw=True) -%}
+  {%- set incremental_datetime_field = etlcraft.find_incremental_datetime_field([], table_pattern, defaults_dict=defaults_dict, do_not_throw=True) -%}
 {%- endif -%}
 
 {#- если инкрементальное поле с датой так и не установлено, будем делать SELECT * -#}
@@ -58,5 +69,5 @@ SELECT *
 SELECT * 
 REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)   
 {%- endif %}
-FROM {{ ref(normalized_relation_name) }}
+FROM {{ source_table }}
 {% endmacro %}

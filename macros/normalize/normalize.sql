@@ -8,6 +8,8 @@
     override_target_model_name=none,
     debug_column_names=False) -%}
 
+{%- do etlcraft.fix_alias() -%} {# это нужно для моделей с окончанием _manual #}
+
 {#- выполнять на втором этапе после выведения зависимостей 
 первый этап - parse, здесь делается manifest, на втором этапе уже поймёт ref - возьмет его из манифеста. 
 Надо завернуть в execute, иначе будет пусто -#}
@@ -25,6 +27,7 @@
 {%- set sourcetype_name = model_name_parts[1] -%}
 {%- set pipeline_name = model_name_parts[2] -%}
 {%- set template_name = model_name_parts[3] -%}
+{%- set last_model_name_part = model_name_parts[-1] -%}
 {%- set stream_name_parts = model_name_parts[4:] -%}
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {%- set table_pattern = '_airbyte_raw_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
@@ -41,7 +44,6 @@
 {%- endif -%}
 
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
-{#- {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%}    -#}
 {%- set source_table = '(' ~ etlcraft.custom_union_relations_source(relations) ~ ')' -%} 
 {%- endif -%} {# конец для if source_table  #}
 
