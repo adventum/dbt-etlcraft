@@ -1,4 +1,4 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "04bc456f-0261-440d-87be-c9ef2975e8c7","{""id"":""savers.nakop.open.result.ok"",""name"":""savers.nakop.open.result.ok"",""short_name"":"""",""section"":"""",""formatting"":null,""description"":"""",""app_token"":[""fr9spxch4074""],""tokens"":[""1p215b""],""is_skad_event"":false}","2024-03-04 05:37:49.716"
 "112587dd-9c05-4896-b41a-da754d2d7ecc","{""id"":""cashback.categories_submitted"",""name"":""cashback.categories_submitted"",""short_name"":"""",""section"":"""",""formatting"":null,""description"":"""",""app_token"":[""fr9spxch4074""],""tokens"":[""t4px3e""],""is_skad_event"":false}","2024-03-04 05:37:49.712"
 "2672323f-548a-4d21-813c-bfa7d65d7abe","{""id"":""savers.vklad.open.result.ok"",""name"":""savers.vklad.open.result.ok"",""short_name"":"""",""section"":"""",""formatting"":null,""description"":"""",""app_token"":[""fr9spxch4074""],""tokens"":[""ixjzir""],""is_skad_event"":false}","2024-03-04 05:37:49.716"

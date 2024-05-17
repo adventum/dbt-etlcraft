@@ -1,4 +1,4 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "003b5949-0638-40d5-bd26-524931fd7ae1","{""Campaign"":""campaign_1"",""Period_start"":""2024-01-01"",""Period_end"":""2024-01-31"",""Cost"":""30000""}","2024-04-19 01:04:32.000 +0000"
 "00433b3d-3246-4766-948f-166badbc34ab","{""Campaign"":""campaign_1"",""Period_start"":""2024-02-01"",""Period_end"":""2024-02-29"",""Cost"":""25000""}","2024-04-19 01:04:34.000 +0000"
 "0094ccf7-b54f-4fb4-8219-a738e1ec60d9","{""Campaign"":""campaign_2"",""Period_start"":""2024-01-01"",""Period_end"":""2024-01-31"",""Cost"":""50000""}","2024-04-19 01:04:33.000 +0000"

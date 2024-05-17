@@ -1,4 +1,4 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "00019161-9158-4d06-94ee-159be5853c4c","{""date"":""2024-02-10"",""tracker_token"":""15k6e70m"",""network"":""adv_tt_shareit"",""country"":""ru"",""event_token"":""5eeblo"",""event_name"":""acceptor.accepted"",""period"":""8"",""events"":1.0}","2024-03-04 05:37:57.363"
 "0002585b-4280-4f62-9dac-a976c46e25ff","{""date"":""2024-02-04"",""tracker_token"":""1639dqgn"",""network"":""adv_shareit"",""country"":""ru"",""event_token"":""qzrinh"",""event_name"":""registration.result.ok"",""period"":""1"",""events"":2.0}","2024-03-04 05:37:56.581"
 "000467ce-7f78-4929-92f3-d4d37b7cb8f0","{""date"":""2023-12-17"",""tracker_token"":""15k6e70m"",""network"":""adv_tt_shareit"",""country"":""ru"",""event_token"":""qzrinh"",""event_name"":""registration.result.ok"",""period"":""0"",""events"":38.0}","2024-03-04 05:37:53.229"
