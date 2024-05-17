@@ -1,4 +1,4 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "02c51b63-2bf5-47af-a446-8fa9aee23946","{""date"":""2024-02-22"",""base"":{""shows"":7143,""clicks"":37,""goals"":0,""spent"":500.0,""cpm"":70.0,""cpc"":13.51,""cpa"":0.0,""ctr"":0.5179896402071958,""cr"":0.0},""banner_id"":""1111"",""__productName"":"""",""__clientName"":""""}","2024-02-27 02:01:08.267 +0000"
 "02d45bf1-c569-4a6e-80d2-b0687c3ce461","{""date"":""2024-02-22"",""base"":{""shows"":2713,""clicks"":45,""goals"":0,""spent"":192.62,""cpm"":71.0,""cpc"":4.28,""cpa"":0.0,""ctr"":1.6586804275709546,""cr"":0.0},""banner_id"":""2222"",""__productName"":"""",""__clientName"":""""}","2024-02-27 02:01:13.900 +0000"
 "01e8de92-e4cf-4cc9-8cff-9d105736bbe6","{""date"":""2024-02-23"",""base"":{""shows"":12429,""clicks"":143,""goals"":0,""spent"":870.0,""cpm"":70.0,""cpc"":6.08,""cpa"":0.0,""ctr"":1.150535039021643,""cr"":0.0},""banner_id"":""1111"",""__productName"":"""",""__clientName"":""""}","2024-02-27 02:01:08.267 +0000"

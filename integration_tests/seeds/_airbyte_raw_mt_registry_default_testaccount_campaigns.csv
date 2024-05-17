@@ -1,3 +1,3 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "22760cd9-473c-4ade-80d3-45f7daefed06","{""id"":""111"",""name"":""campaign_1"",""__productName"":"""",""__clientName"":""""}","2024-02-27 02:01:17.203 +0000"
 "23441925-56c8-4a92-bccd-d1487b7fb18f","{""id"":""222"",""name"":""campaign_2"",""__productName"":"""",""__clientName"":""""}","2024-02-27 02:01:17.265 +0000"

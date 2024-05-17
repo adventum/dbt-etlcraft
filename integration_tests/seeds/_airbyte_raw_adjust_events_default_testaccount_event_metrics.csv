@@ -1,4 +1,4 @@
-"_airbyte_ab_id","_airbyte_data","_airbyte_emitted_at"
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
 "00012a39-32a1-40cd-a06e-c9c18655558c","{""date"":""2024-01-21"",""tracker_token"":""15vygo9o"",""network"":""adv_tm_erinlabs"",""country"":""ua"",""event_token"":""w4yhqa"",""event_name"":""registration.inititated"",""events"":5.0}","2024-03-04 05:38:02.141"
 "000423ed-9004-4d9a-936e-8fa451174f3f","{""date"":""2024-02-02"",""tracker_token"":""17aa98v7"",""network"":""adv_mx_imobile"",""country"":""ru"",""event_token"":""5prfvu"",""event_name"":""products_screen.product.click.split"",""events"":2.0}","2024-03-04 05:38:02.510"
 "00073001-9f2a-440b-964b-e8bfa2299e77","{""date"":""2024-01-01"",""tracker_token"":""176n6amy"",""network"":""adv_mx_bidmatrix"",""country"":""ru"",""event_token"":""5eeblo"",""event_name"":""acceptor.accepted"",""events"":6.0}","2024-03-04 05:38:01.682"

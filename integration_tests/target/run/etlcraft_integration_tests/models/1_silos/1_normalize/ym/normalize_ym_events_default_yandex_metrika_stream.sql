@@ -29,16 +29,16 @@
         JSONExtractString(_airbyte_data, 'ym:s:UTMTerm') AS ymsUTMTerm, 
         JSONExtractString(_airbyte_data, 'ym:s:visitID') AS ymsvisitID,
         toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(_airbyte_emitted_at, 1, 19)) AS __emitted_at, 
+        toDateTime32(substring(_airbyte_extracted_at, 1, 19)) AS __emitted_at, 
         NOW() AS __normalized_at
 FROM (
 
 (
 SELECT
         toLowCardinality('_airbyte_raw_ym_events_default_testaccount_yandex_metrika_stream') AS _dbt_source_relation,
-        toString("_airbyte_ab_id") AS _airbyte_ab_id ,
+        toString("_airbyte_raw_id") AS _airbyte_raw_id ,
         toString("_airbyte_data") AS _airbyte_data ,
-        toString("_airbyte_emitted_at") AS _airbyte_emitted_at 
+        toString("_airbyte_extracted_at") AS _airbyte_extracted_at 
 FROM test._airbyte_raw_ym_events_default_testaccount_yandex_metrika_stream
 )
 
