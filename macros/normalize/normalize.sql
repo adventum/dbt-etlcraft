@@ -34,7 +34,10 @@
 {%- if source_table is none -%}
 
 {#- задаём relations при помощи собственного макроса - он находится в clickhouse-adapters - найти все таблицы, которые подходят под единый шаблон, например, все mt для какого-либо проекта -#}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
+{#- если сырые данные лежат в той же схеме, то schema_pattern=target.schema -#}
+{#- если сырые данные идут из Airbyte новой версии, то они пишутся в отдельную схему airbyte_internal -#}
+{#- и поэтому для такого случая schema_pattern='airbyte_internal' -#}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern='airbyte_internal', 
                                                               table_pattern=table_pattern) -%}   
 {#- если что-то не так - выдаём ошибку -#}                                                                  
 {%- if not relations -%}
@@ -87,3 +90,4 @@ FROM {{ source_table }}
 
 {%- endif -%} {# конец для if execute #}
 {%- endmacro -%}
+
