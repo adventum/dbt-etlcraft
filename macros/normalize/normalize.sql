@@ -3,10 +3,12 @@
     incremental_datetime_field=none, 
     disable_incremental_datetime_field=none,
     defaults_dict=etlcraft.etlcraft_defaults(), 
-    schema_pattern=this.schema, 
+    schema_pattern='airbyte_internal', 
     source_table=none, 
     override_target_model_name=none,
     debug_column_names=False) -%}
+
+{#- было schema_pattern=this.schema -#}
 
 {#- выполнять на втором этапе после выведения зависимостей 
 первый этап - parse, здесь делается manifest, на втором этапе уже поймёт ref - возьмет его из манифеста. 
@@ -36,8 +38,8 @@
 {#- задаём relations при помощи собственного макроса - он находится в clickhouse-adapters - найти все таблицы, которые подходят под единый шаблон, например, все mt для какого-либо проекта -#}
 {#- если сырые данные лежат в той же схеме, то schema_pattern=target.schema -#}
 {#- если сырые данные идут из Airbyte новой версии, то они пишутся в отдельную схему airbyte_internal -#}
-{#- и поэтому для такого случая schema_pattern='airbyte_internal' -#}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern='airbyte_internal', 
+{#- и поэтому для такого случая schema_pattern='airbyte_internal' из параметра -#}
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=schema_pattern, 
                                                               table_pattern=table_pattern) -%}   
 {#- если что-то не так - выдаём ошибку -#}                                                                  
 {%- if not relations -%}
@@ -90,4 +92,3 @@ FROM {{ source_table }}
 
 {%- endif -%} {# конец для if execute #}
 {%- endmacro -%}
-
