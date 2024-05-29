@@ -66,7 +66,13 @@ SELECT
 {%- set col = column_superset[col_name] %}
 {%- set col_type = column_override.get(col.column, col.data_type) if col_name in relation_columns[relation] else col.data_type %}
 {%- set col_expr = adapter.quote(col_name) if col_name in relation_columns[relation] else ("''" if 'String' in col_type else "0") %}
-        to{{ col_type.split('(')[0] }}({{ col_expr }}) AS {{ col.name }} {% if not loop.last %},{% endif -%}
+{#- сырые данные из Airbyte приходят как DateTime64, а нам нужен String для макроса normalize -#}
+{%- if col_type.split('(')[0] == 'DateTime64' %}
+        toString({{ col_expr }}) AS {{ col.name }}
+{%- else %}
+        to{{ col_type.split('(')[0] }}({{ col_expr }}) AS {{ col.name }} 
+{%- endif %}
+{%- if not loop.last %},{% endif -%}
 {%- endfor %}
 FROM {{ relation }}
 )
