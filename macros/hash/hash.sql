@@ -3,8 +3,7 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none,
-  database_type=none
+  date_to = none
   ) -%}
 
 {#- ************************************************* части имени и материализация *********************************************** -#}
@@ -167,17 +166,11 @@ SELECT *,
     {%- set datetime_field = links[link_name].get('datetime_field') -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
     {%- if link_pipeline == pipeline_name -%}
-    {%- if datetime_field -%}
         WHEN __link = '{{link_name}}' 
         THEN toDateTime({{datetime_field}})
-    {%- else -%}
-        WHEN __link = '{{link_name}}' 
-        THEN etlcraft.zero_date({{datetime_field}}, database_type=database_type)
-        {% endif %}
     {% endif %}
 {% endfor %}
     END) as __datetime
-
 FROM (
 
 SELECT 
