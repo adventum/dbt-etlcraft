@@ -1,11 +1,15 @@
 {%- macro zero_date(
-    datetime_field, 
-    database_type
+    database_type=none
     ) -%}
 
-{%- if database_type=='BQ' -%}
-    {%- set field = toDateTime('1970-01-01') -%}
-{%- else -%}
-    {%- set field = toDateTime(0) -%}
+{#- этот макрос нужен, чтобы для разных типов баз данных сгенерировать дефолтное поле с датой -#}
+
+{%- if not database_type -%} {# если тип базы данных не указан (по умолчанию работаем в ClickHouse) #}
+    {%- set field = 0 -%} {# пишем ноль - CH выдаст toDateTime(0) как '1970-01-01 00:00:00' #}
+{%- else -%} {# в другом случае, например, BQ #}
+    {%- set field = ('1970-01-01') -%} {# прописываем дату явно #}
 {%- endif -%}
+
+{{ field }} 
+
 {%- endmacro %}

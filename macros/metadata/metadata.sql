@@ -85,9 +85,9 @@ links:
     - PeriodEnd
   UtmHashRegistry:
     pipeline: registry
-    datetime_field: toDateTime(0)
+    {# datetime_field: toDateTime(0) #}
     keys:
-    - name: toDateTime(0)
+    {# - name: toDateTime(0) #}
     main_entities:
     - UtmHash 
   AdCostStat:
@@ -190,9 +190,9 @@ links:
     - UtmHash
   AppProfileMatching:
     pipeline: registry
-    datetime_field: toDateTime(0)
+    {# datetime_field: toDateTime(0) #}
     keys:
-    - name: toDateTime(0)
+    {# - name: toDateTime(0) #}
     main_entities: 
     - AppMetricaDevice
     - CrmUser
