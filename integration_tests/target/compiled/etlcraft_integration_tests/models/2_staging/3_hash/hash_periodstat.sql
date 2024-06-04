@@ -1,35 +1,21 @@
 -- depends_on: test.combine_periodstat
 SELECT *,
-  assumeNotNull(CASE 
-WHEN __link = 'ManualAdCostStat' 
+  assumeNotNull(CASE  
+    WHEN __link = 'ManualAdCostStat' 
     THEN ManualAdCostStatHash 
 
     END) as __id
-  , assumeNotNull(CASE 
-WHEN __link = 'ManualAdCostStat' 
-        THEN toDateTime(__date)
+  , assumeNotNull(CASE
+    WHEN __link = 'ManualAdCostStat' 
     
-
-
-
-
-
-
-
-
-
-
-    END) as __datetime
-
+    THEN toDateTime(__date) 
+    END) AS __datetime
 FROM (
 
-SELECT 
-    *, 
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(__date))), ''), '') || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ifnull(nullif(upper(trim(toString(__date))), ''), '') = '', null, hex(MD5('ManualAdCostStat' || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '')))))) as ManualAdCostStatHash
-    
-    
+SELECT *, 
+assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(__date))), ''), '') || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ifnull(nullif(upper(trim(toString(__date))), ''), '') = '', null, hex(MD5('ManualAdCostStat' || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '')))))) as ManualAdCostStatHash
+
+
 FROM (
 
         (
@@ -47,10 +33,10 @@ FROM (
         )
 
         ) 
-    WHERE 
-    
-        True
-    )
+WHERE 
+
+    True
+)
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 

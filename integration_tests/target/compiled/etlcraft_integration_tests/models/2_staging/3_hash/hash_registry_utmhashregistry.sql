@@ -1,42 +1,28 @@
 -- depends_on: test.combine_registry_utmhashregistry
 SELECT *,
-  assumeNotNull(CASE 
-WHEN __link = 'UtmHashRegistry' 
+  assumeNotNull(CASE  
+    WHEN __link = 'UtmHashRegistry' 
     THEN UtmHashRegistryHash 
 
     END) as __id
-  , assumeNotNull(CASE 
-
-WHEN __link = 'UtmHashRegistry' 
-        THEN toDateTime(toDateTime(0))
+  , assumeNotNull(CASE
+    WHEN __link = 'UtmHashRegistry' 
     
-
-
-
-
-
-
-
-WHEN __link = 'AppProfileMatching' 
-        THEN toDateTime(toDateTime(0))
+    THEN toDateTime(0) 
     
-
-    END) as __datetime
-
+    WHEN __link = 'AppProfileMatching' 
+    
+    THEN toDateTime(0) 
+    END) AS __datetime
 FROM (
 
-SELECT 
-    *, 
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '') = '', null, hex(MD5('UtmHashRegistry' || ';' || ifnull(nullif(upper(trim(toString(utmHash))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(toDateTime(0)))), ''), '')))))) as UtmHashRegistryHash
-    ,
-    
-        
-        assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(utmHash))), ''), '')))))) as UtmHashHash
+SELECT *, 
+assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') = '', null, hex(MD5('UtmHashRegistry' || ';' || ifnull(nullif(upper(trim(toString(utmHash))), ''), '')))))) as UtmHashRegistryHash
+
+,
+assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(utmHash))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(utmHash))), ''), '')))))) as UtmHashHash
 
 
-    
 FROM (
 
         (
@@ -58,10 +44,10 @@ FROM (
         )
 
         ) 
-    WHERE 
-    
-        True
-    )
+WHERE 
+
+    True
+)
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 

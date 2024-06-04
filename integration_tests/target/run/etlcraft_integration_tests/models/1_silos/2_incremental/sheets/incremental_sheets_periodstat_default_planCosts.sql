@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_sheets_periodstat_default_planCosts__dbt_tmp ("__date", "Campaign", "Cost", "Period_end", "Period_start", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_sheets_periodstat_default_planCosts__dbt_new_data_dd0d5b65_f7d9_4a8d_b2dd_47c481a6cc3b ("__date", "Campaign", "Cost", "Period_end", "Period_start", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_sheets_periodstat_default_planCosts
 
 SELECT * 
@@ -28,4 +28,4 @@ FROM (
         )
 
   
-    
+      
