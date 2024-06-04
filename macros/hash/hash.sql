@@ -167,7 +167,7 @@ SELECT *,
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
     {%- if link_pipeline == pipeline_name -%}
         WHEN __link = '{{link_name}}' 
-        {%- if datetime_field != none -%}
+        {%- if datetime_field -%}
             THEN toDateTime({{datetime_field}})
         {% else %}
             THEN null
