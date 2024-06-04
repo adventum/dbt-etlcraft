@@ -155,45 +155,42 @@
 
 SELECT *,
   assumeNotNull(CASE 
-{% for link in links_list %}
-    {%- set link_hash = link ~ 'Hash' -%}  
+{%- for link in links_list %}
+    {%- set link_hash = link ~ 'Hash' %}  
     WHEN __link = '{{link}}' 
     THEN {{link_hash}} 
 {% endfor %}
     END) as __id
   , assumeNotNull(CASE 
-{% for link_name in links  %}
+{%- for link_name in links -%}
     {%- set datetime_field = links[link_name].get('datetime_field') -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
-    {%- if link_pipeline == pipeline_name -%}
-        WHEN __link = '{{link_name}}' 
-        {%- if datetime_field -%}
-            THEN toDateTime({{datetime_field}})
-        {% else %}
-            THEN null
-        {% endif %}
-    {% endif %}
-{% endfor %}
-    END) as __datetime
+    {%- if link_pipeline == pipeline_name %}
+    WHEN __link = '{{link_name}}' 
+    {% if datetime_field -%} {# если поле datetime_field из метадаты есть #}
+    THEN toDateTime({{datetime_field}}) {# то приводим его к формату даты #}
+    {% else -%} {# если такого поля в метадате нет #}
+    THEN toDateTime({{ etlcraft.zero_date() }}) {# то приводим дефолтное поле к формату даты через свой макрос, либо просто меняем эту строку на THEN null #}
+    {% endif -%}{%- endif -%} {% endfor -%}
+    END) AS __datetime
 FROM (
 
-SELECT 
-    *, 
-    {% for link in links_list %}
-        {# добавляем хэши для отобранных линков #}
-        {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
-    {% endfor %}
-    {%- if final_entities_list and links_list -%},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
-    {% for entity in final_entities_list %}
-        {# добавляем хэши для отобранных сущностей #}
-        {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
-    {% endfor %}
+SELECT *, 
+{% for link in links_list %}
+{#- добавляем хэши для отобранных линков -#}
+    {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
+{% endfor %}
+{% if final_entities_list and links_list %},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
+{% for entity in final_entities_list %}
+{#- добавляем хэши для отобранных сущностей -#}
+    {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
+{% endfor -%}
 FROM {{ source_table }} 
-    WHERE 
-    {% for link in links_list %}
-        {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
-    {% endfor %}
-    )
+WHERE 
+{% for link in links_list %}
+    {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
+{% endfor %}
+)
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 
