@@ -4,7 +4,7 @@
     
     
         
-        insert into test.combine_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId")
+        insert into test.combine_datestat__dbt_new_data_dd0d5b65_f7d9_4a8d_b2dd_47c481a6cc3b ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId")
   -- depends_on: test.join_mt_datestat
 -- depends_on: test.join_vkads_datestat
 -- depends_on: test.join_yd_datestat
@@ -105,4 +105,4 @@ FROM (
 
 
   
-    
+      

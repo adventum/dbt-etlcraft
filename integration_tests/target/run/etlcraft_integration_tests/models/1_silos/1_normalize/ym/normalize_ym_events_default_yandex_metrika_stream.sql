@@ -35,11 +35,11 @@ FROM (
 
 (
 SELECT
-        toLowCardinality('_airbyte_raw_ym_events_default_testaccount_yandex_metrika_stream') AS _dbt_source_relation,
-        toString("_airbyte_raw_id") AS _airbyte_raw_id ,
-        toString("_airbyte_data") AS _airbyte_data ,
-        toString("_airbyte_extracted_at") AS _airbyte_extracted_at 
-FROM test._airbyte_raw_ym_events_default_testaccount_yandex_metrika_stream
+        toLowCardinality('datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream') AS _dbt_source_relation,
+        toString("_airbyte_raw_id") AS _airbyte_raw_id,
+        toString("_airbyte_data") AS _airbyte_data,
+        toString("_airbyte_extracted_at") AS _airbyte_extracted_at
+FROM airbyte_internal.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream
 )
 
 )
