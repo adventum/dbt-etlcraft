@@ -15,7 +15,7 @@ SELECT
         JSONExtractString(_airbyte_data, 'uniques_video') AS uniques_video, 
         JSONExtractString(_airbyte_data, 'video') AS video,
         toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(_airbyte_extracted_at, 1, 19)) AS __emitted_at, 
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
         NOW() AS __normalized_at
 FROM (
 

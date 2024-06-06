@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_adjust_events_default_cohorts__dbt_new_data_dd0d5b65_f7d9_4a8d_b2dd_47c481a6cc3b ("__date", "country", "date", "event_name", "event_token", "events", "network", "period", "tracker_token", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_adjust_events_default_cohorts__dbt_tmp ("__date", "country", "date", "event_name", "event_token", "events", "network", "period", "tracker_token", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_adjust_events_default_cohorts
 
 SELECT * 
@@ -32,4 +32,4 @@ FROM (
         )
 
   
-      
+    

@@ -36,7 +36,7 @@ SELECT *,
     
     WHEN __link = 'VisitStat' 
     
-    THEN toDateTime(__date) 
+    THEN toDateTime(event_datetime) 
     END) AS __datetime
 FROM (
 

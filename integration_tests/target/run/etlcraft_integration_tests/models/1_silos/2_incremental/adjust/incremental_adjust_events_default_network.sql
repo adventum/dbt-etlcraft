@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_adjust_events_default_network__dbt_new_data_dd0d5b65_f7d9_4a8d_b2dd_47c481a6cc3b ("__date", "clicks", "country", "country_code", "date", "events", "impressions", "installs", "network", "rejected_installs", "sessions", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_adjust_events_default_network__dbt_tmp ("__date", "clicks", "country", "country_code", "date", "events", "impressions", "installs", "network", "rejected_installs", "sessions", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_adjust_events_default_network
 
 SELECT * 
@@ -34,4 +34,4 @@ FROM (
         )
 
   
-      
+    

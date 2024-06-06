@@ -14,11 +14,13 @@ SELECT *,
   , assumeNotNull(CASE
     WHEN __link = 'UtmHashRegistry' 
     
-    THEN toDateTime(0) 
+    THEN toDateTime(
+    0) 
     
     WHEN __link = 'AppProfileMatching' 
     
-    THEN toDateTime(0) 
+    THEN toDateTime(
+    0) 
     END) AS __datetime
 FROM (
 
