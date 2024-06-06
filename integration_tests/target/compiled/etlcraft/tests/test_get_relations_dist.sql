@@ -2,5 +2,5 @@
 
 
 
-
-SELECT 'Unknown key' WHERE 1!=1
+ 
+SELECT 'Unknown key'

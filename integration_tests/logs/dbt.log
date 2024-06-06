@@ -52089,3 +52089,1849 @@ drop table if exists test.dataset_event_table__dbt_backup
 [0m11:34:22.706215 [info ] [MainThread]: Done. PASS=90 WARN=0 ERROR=0 SKIP=0 TOTAL=90
 [0m11:34:22.706791 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd43f1e7d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd43f1c7f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd43f27c5e0>]}
 [0m11:34:22.707221 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-06-06 11:51:15.283328 | 2599e162-7cef-484c-90d0-7e046032f96f ==============================
+[0m11:51:15.283328 [info ] [MainThread]: Running with dbt=1.4.7
+[0m11:51:15.285853 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
+[0m11:51:15.286120 [debug] [MainThread]: Tracking: tracking
+[0m11:51:15.291967 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9dc1c60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9f73940>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9f73f40>]}
+[0m11:51:15.321528 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m11:51:15.538091 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m11:51:15.538354 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m11:51:15.548079 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2599e162-7cef-484c-90d0-7e046032f96f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d92d00d0>]}
+[0m11:51:15.573990 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2599e162-7cef-484c-90d0-7e046032f96f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9282170>]}
+[0m11:51:15.574396 [info ] [MainThread]: Found 90 models, 8 tests, 0 snapshots, 0 analyses, 535 macros, 0 operations, 24 seed files, 0 sources, 0 exposures, 0 metrics
+[0m11:51:15.574689 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2599e162-7cef-484c-90d0-7e046032f96f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9282890>]}
+[0m11:51:15.579046 [info ] [MainThread]: 
+[0m11:51:15.580699 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m11:51:15.585618 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_None_test'
+[0m11:51:15.597361 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:51:16.692929 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_None_test: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "connection_name": "list_None_test"} */
+select
+      t.name as name,
+      t.database as schema,
+      if(engine not in ('MaterializedView', 'View'), 'table', 'view') as type,
+      db.engine as db_engine
+    from system.tables as t JOIN system.databases as db on t.database = db.name
+    where schema = 'test'
+  ...
+[0m11:51:16.722920 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.03 seconds
+[0m11:51:16.733327 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2599e162-7cef-484c-90d0-7e046032f96f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9281f60>]}
+[0m11:51:16.733970 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m11:51:16.734253 [info ] [MainThread]: 
+[0m11:51:16.741748 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts
+[0m11:51:16.742374 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics
+[0m11:51:16.743354 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts'
+[0m11:51:16.744121 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics'
+[0m11:51:16.744489 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts)
+[0m11:51:16.744883 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics
+[0m11:51:16.745125 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts
+[0m11:51:16.786650 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m11:51:16.788016 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_adjust_default_cohorts$')        
+...
+[0m11:51:16.853964 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.06 seconds
+[0m11:51:16.872687 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_adjust_default_event_metrics$')        
+...
+[0m11:51:16.882659 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_adjust_default_cohorts'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:16.893145 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.896528 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_adjust_default_event_metrics'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:16.897227 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.910441 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.944468 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts"
+[0m11:51:16.946230 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics"
+[0m11:51:16.947886 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics (compile): 2024-06-06 11:51:16.745311 => 2024-06-06 11:51:16.947756
+[0m11:51:16.948287 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics
+[0m11:51:16.948570 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics (execute): 2024-06-06 11:51:16.948490 => 2024-06-06 11:51:16.948510
+[0m11:51:16.950502 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_adjust_events_default_event_metrics
+[0m11:51:16.950922 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts (compile): 2024-06-06 11:51:16.766924 => 2024-06-06 11:51:16.950802
+[0m11:51:16.951662 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_adjust_events_default_network
+[0m11:51:16.952494 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts
+[0m11:51:16.953494 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_adjust_events_default_network'
+[0m11:51:16.953913 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts (execute): 2024-06-06 11:51:16.953846 => 2024-06-06 11:51:16.953859
+[0m11:51:16.954284 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_adjust_events_default_network)
+[0m11:51:16.955816 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_adjust_events_default_cohorts
+[0m11:51:16.956475 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_adjust_events_default_network
+[0m11:51:16.956920 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_adjust_registry_default_events
+[0m11:51:16.962096 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_network: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_network"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_adjust_default_network$')        
+...
+[0m11:51:16.963455 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_adjust_registry_default_events'
+[0m11:51:16.964649 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_adjust_registry_default_events)
+[0m11:51:16.965353 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_adjust_registry_default_events
+[0m11:51:16.970030 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_registry_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_registry_default_events"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_adjust_default_events$')        
+...
+[0m11:51:16.971439 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.974814 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_events_default_network: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_events_default_network"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_adjust_default_network'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:16.978055 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.981813 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_adjust_registry_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_adjust_registry_default_events"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_adjust_default_events'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:16.982674 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:16.994905 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_adjust_events_default_network"
+[0m11:51:16.995997 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.005364 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_adjust_registry_default_events"
+[0m11:51:17.005986 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_network (compile): 2024-06-06 11:51:16.957295 => 2024-06-06 11:51:17.005890
+[0m11:51:17.006399 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_adjust_events_default_network
+[0m11:51:17.006750 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_events_default_network (execute): 2024-06-06 11:51:17.006659 => 2024-06-06 11:51:17.006678
+[0m11:51:17.007471 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_adjust_events_default_network
+[0m11:51:17.007843 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks
+[0m11:51:17.008309 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_registry_default_events (compile): 2024-06-06 11:51:16.965590 => 2024-06-06 11:51:17.008226
+[0m11:51:17.009388 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks'
+[0m11:51:17.010021 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_adjust_registry_default_events
+[0m11:51:17.010505 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks)
+[0m11:51:17.011169 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_adjust_registry_default_events (execute): 2024-06-06 11:51:17.011035 => 2024-06-06 11:51:17.011060
+[0m11:51:17.011545 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks
+[0m11:51:17.012429 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_adjust_registry_default_events
+[0m11:51:17.016406 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_deeplinks$')        
+...
+[0m11:51:17.017194 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_events
+[0m11:51:17.019049 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_events_default_events'
+[0m11:51:17.019907 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_events_default_events)
+[0m11:51:17.020582 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_events_default_events
+[0m11:51:17.026329 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_events"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_events$')        
+...
+[0m11:51:17.027872 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.031769 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_deeplinks'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.033386 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.036609 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_events"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_events'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.041502 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.052122 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks"
+[0m11:51:17.053122 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m11:51:17.066425 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_events_default_events"
+[0m11:51:17.067462 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks (compile): 2024-06-06 11:51:17.012678 => 2024-06-06 11:51:17.067315
+[0m11:51:17.068004 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks
+[0m11:51:17.068493 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks (execute): 2024-06-06 11:51:17.068421 => 2024-06-06 11:51:17.068435
+[0m11:51:17.069113 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_deeplinks
+[0m11:51:17.069589 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations
+[0m11:51:17.070587 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations'
+[0m11:51:17.070941 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_events (compile): 2024-06-06 11:51:17.021130 => 2024-06-06 11:51:17.070868
+[0m11:51:17.071341 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations)
+[0m11:51:17.071884 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_events_default_events
+[0m11:51:17.072299 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations
+[0m11:51:17.072897 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_events (execute): 2024-06-06 11:51:17.072704 => 2024-06-06 11:51:17.072778
+[0m11:51:17.077574 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_installations$')        
+...
+[0m11:51:17.078524 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_events
+[0m11:51:17.080452 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view
+[0m11:51:17.082364 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view'
+[0m11:51:17.082771 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view)
+[0m11:51:17.082962 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view
+[0m11:51:17.087220 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_events$')        
+...
+[0m11:51:17.088156 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.094222 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_installations'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.095727 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.099507 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_events'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.100236 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.110515 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.115199 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations"
+[0m11:51:17.129561 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view"
+[0m11:51:17.130090 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view (compile): 2024-06-06 11:51:17.083055 => 2024-06-06 11:51:17.130011
+[0m11:51:17.130468 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view
+[0m11:51:17.130720 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view (execute): 2024-06-06 11:51:17.130648 => 2024-06-06 11:51:17.130666
+[0m11:51:17.131307 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_screen_view
+[0m11:51:17.131639 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts
+[0m11:51:17.132624 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts'
+[0m11:51:17.133386 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations (compile): 2024-06-06 11:51:17.073217 => 2024-06-06 11:51:17.133302
+[0m11:51:17.133600 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts)
+[0m11:51:17.133884 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations
+[0m11:51:17.134132 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts
+[0m11:51:17.134386 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations (execute): 2024-06-06 11:51:17.134323 => 2024-06-06 11:51:17.134335
+[0m11:51:17.138931 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_sessions_starts$')        
+...
+[0m11:51:17.140271 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_installations
+[0m11:51:17.141979 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles
+[0m11:51:17.143032 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles'
+[0m11:51:17.143757 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles)
+[0m11:51:17.144236 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles
+[0m11:51:17.148405 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_appmetrica_default_profiles$')        
+...
+[0m11:51:17.149348 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.154136 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_sessions_starts'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.160107 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.166143 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m11:51:17.172050 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts"
+[0m11:51:17.176040 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_appmetrica_default_profiles'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.177843 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts (compile): 2024-06-06 11:51:17.134660 => 2024-06-06 11:51:17.177658
+[0m11:51:17.178397 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts
+[0m11:51:17.178809 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts (execute): 2024-06-06 11:51:17.178664 => 2024-06-06 11:51:17.178682
+[0m11:51:17.179471 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_events_default_sessions_starts
+[0m11:51:17.179894 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics
+[0m11:51:17.180679 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics'
+[0m11:51:17.181020 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics)
+[0m11:51:17.181270 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics
+[0m11:51:17.181998 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.186645 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_mt_default_banners_statistics$')        
+...
+[0m11:51:17.192692 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles"
+[0m11:51:17.194622 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles (compile): 2024-06-06 11:51:17.144429 => 2024-06-06 11:51:17.194453
+[0m11:51:17.195125 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles
+[0m11:51:17.195476 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles (execute): 2024-06-06 11:51:17.195379 => 2024-06-06 11:51:17.195399
+[0m11:51:17.196167 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_appmetrica_registry_default_profiles
+[0m11:51:17.196579 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_mt_registry_default_banners
+[0m11:51:17.197144 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_mt_registry_default_banners'
+[0m11:51:17.197441 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_mt_registry_default_banners)
+[0m11:51:17.197695 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_mt_registry_default_banners
+[0m11:51:17.201931 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_registry_default_banners: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_registry_default_banners"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_mt_default_banners$')        
+...
+[0m11:51:17.203821 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.207652 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_mt_default_banners_statistics'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.208971 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.212662 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_registry_default_banners: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_registry_default_banners"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_mt_default_banners'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.214205 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.220369 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.222045 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics"
+[0m11:51:17.229267 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_mt_registry_default_banners"
+[0m11:51:17.230013 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics (compile): 2024-06-06 11:51:17.182899 => 2024-06-06 11:51:17.229917
+[0m11:51:17.230320 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics
+[0m11:51:17.230560 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics (execute): 2024-06-06 11:51:17.230492 => 2024-06-06 11:51:17.230505
+[0m11:51:17.231126 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_mt_datestat_default_banners_statistics
+[0m11:51:17.231515 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns
+[0m11:51:17.232518 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns'
+[0m11:51:17.233209 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns)
+[0m11:51:17.233592 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns
+[0m11:51:17.238598 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_mt_default_campaigns$')        
+...
+[0m11:51:17.239926 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_registry_default_banners (compile): 2024-06-06 11:51:17.198240 => 2024-06-06 11:51:17.239819
+[0m11:51:17.240545 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_mt_registry_default_banners
+[0m11:51:17.240835 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_registry_default_banners (execute): 2024-06-06 11:51:17.240757 => 2024-06-06 11:51:17.240771
+[0m11:51:17.241416 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_mt_registry_default_banners
+[0m11:51:17.241978 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts
+[0m11:51:17.243286 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts'
+[0m11:51:17.243731 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts)
+[0m11:51:17.243998 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts
+[0m11:51:17.247704 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_sheets_default_planCosts$')        
+...
+[0m11:51:17.248421 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.253227 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_mt_default_campaigns'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.254756 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.258624 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_sheets_default_planCosts'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.260412 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.265471 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns"
+[0m11:51:17.266326 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.272467 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts"
+[0m11:51:17.273028 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns (compile): 2024-06-06 11:51:17.234148 => 2024-06-06 11:51:17.272924
+[0m11:51:17.273450 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns
+[0m11:51:17.273703 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns (execute): 2024-06-06 11:51:17.273632 => 2024-06-06 11:51:17.273646
+[0m11:51:17.274254 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_mt_registry_default_campaigns
+[0m11:51:17.274597 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult
+[0m11:51:17.275060 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult'
+[0m11:51:17.275564 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult)
+[0m11:51:17.276883 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult
+[0m11:51:17.281011 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_utmcraft_default_utmresult$')        
+...
+[0m11:51:17.282161 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts (compile): 2024-06-06 11:51:17.244104 => 2024-06-06 11:51:17.282002
+[0m11:51:17.282955 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts
+[0m11:51:17.283272 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts (execute): 2024-06-06 11:51:17.283197 => 2024-06-06 11:51:17.283211
+[0m11:51:17.283870 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_sheets_periodstat_default_planCosts
+[0m11:51:17.284264 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics
+[0m11:51:17.285405 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics'
+[0m11:51:17.286132 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics)
+[0m11:51:17.286629 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics
+[0m11:51:17.287275 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.291609 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_vkads_default_ad_plans_statistics$')        
+...
+[0m11:51:17.296048 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_utmcraft_default_utmresult'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.303528 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.304064 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.313601 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult"
+[0m11:51:17.317027 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.318462 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult (compile): 2024-06-06 11:51:17.277078 => 2024-06-06 11:51:17.318353
+[0m11:51:17.319032 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult
+[0m11:51:17.319280 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult (execute): 2024-06-06 11:51:17.319215 => 2024-06-06 11:51:17.319229
+[0m11:51:17.319820 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_utmcraft_registry_default_utmresult
+[0m11:51:17.320192 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans
+[0m11:51:17.321042 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans'
+[0m11:51:17.321645 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans)
+[0m11:51:17.321970 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans
+[0m11:51:17.326175 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_vkads_default_ad_plans$')        
+...
+[0m11:51:17.327736 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.341733 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics"
+[0m11:51:17.342359 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics (compile): 2024-06-06 11:51:17.287619 => 2024-06-06 11:51:17.342250
+[0m11:51:17.343154 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics
+[0m11:51:17.343882 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m11:51:17.344201 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics (execute): 2024-06-06 11:51:17.344121 => 2024-06-06 11:51:17.344138
+[0m11:51:17.347202 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_vkads_default_ad_plans'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.348917 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_vkads_datestat_default_ad_plans_statistics
+[0m11:51:17.350673 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report
+[0m11:51:17.351318 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report'
+[0m11:51:17.352215 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report)
+[0m11:51:17.352871 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report
+[0m11:51:17.356693 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_yd_default_custom_report$')        
+...
+[0m11:51:17.359108 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.370680 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.375732 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans"
+[0m11:51:17.436813 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_yd_default_custom_report'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.438350 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans (compile): 2024-06-06 11:51:17.322155 => 2024-06-06 11:51:17.438198
+[0m11:51:17.438733 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans
+[0m11:51:17.438947 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans (execute): 2024-06-06 11:51:17.438880 => 2024-06-06 11:51:17.438895
+[0m11:51:17.439500 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_vkads_periodstat_default_ad_plans
+[0m11:51:17.439839 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream
+[0m11:51:17.440374 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream'
+[0m11:51:17.440644 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream)
+[0m11:51:17.440886 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream
+[0m11:51:17.445159 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'airbyte_internal')
+        and match(table_name, '[^_]+_[^_]+_raw__stream_ym_default_yandex_metrika_stream$')        
+...
+[0m11:51:17.447952 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.458351 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.460109 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report"
+[0m11:51:17.463494 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream"} */
+
+    select name, type from system.columns where table = 'datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream'
+    
+      and database = 'airbyte_internal'
+    
+    order by position
+  ...
+[0m11:51:17.465128 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report (compile): 2024-06-06 11:51:17.353132 => 2024-06-06 11:51:17.464968
+[0m11:51:17.465689 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report
+[0m11:51:17.466099 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report (execute): 2024-06-06 11:51:17.465992 => 2024-06-06 11:51:17.466011
+[0m11:51:17.466722 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.normalize_yd_datestat_default_custom_report
+[0m11:51:17.467149 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts
+[0m11:51:17.468285 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts'
+[0m11:51:17.468986 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts)
+[0m11:51:17.469561 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts
+[0m11:51:17.471306 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts (compile): 2024-06-06 11:51:17.469753 => 2024-06-06 11:51:17.471222
+[0m11:51:17.472010 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts
+[0m11:51:17.472360 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts (execute): 2024-06-06 11:51:17.472290 => 2024-06-06 11:51:17.472302
+[0m11:51:17.472954 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_cohorts
+[0m11:51:17.473473 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.473800 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics
+[0m11:51:17.495689 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics'
+[0m11:51:17.496605 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream"
+[0m11:51:17.496976 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics)
+[0m11:51:17.497666 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics
+[0m11:51:17.499555 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics (compile): 2024-06-06 11:51:17.497850 => 2024-06-06 11:51:17.499462
+[0m11:51:17.499944 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics
+[0m11:51:17.500167 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics (execute): 2024-06-06 11:51:17.500111 => 2024-06-06 11:51:17.500124
+[0m11:51:17.500757 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_event_metrics
+[0m11:51:17.501112 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events
+[0m11:51:17.502143 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events'
+[0m11:51:17.502529 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream (compile): 2024-06-06 11:51:17.441059 => 2024-06-06 11:51:17.502382
+[0m11:51:17.502828 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events)
+[0m11:51:17.503281 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream
+[0m11:51:17.503940 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events
+[0m11:51:17.504497 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream (execute): 2024-06-06 11:51:17.504384 => 2024-06-06 11:51:17.504405
+[0m11:51:17.506985 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events (compile): 2024-06-06 11:51:17.504781 => 2024-06-06 11:51:17.506898
+[0m11:51:17.508151 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.normalize_ym_events_default_yandex_metrika_stream
+[0m11:51:17.508508 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events
+[0m11:51:17.508871 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network
+[0m11:51:17.509659 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events (execute): 2024-06-06 11:51:17.509580 => 2024-06-06 11:51:17.509595
+[0m11:51:17.510261 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network'
+[0m11:51:17.511002 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_events
+[0m11:51:17.511568 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network)
+[0m11:51:17.512055 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents
+[0m11:51:17.512570 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network
+[0m11:51:17.513151 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents'
+[0m11:51:17.515369 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network (compile): 2024-06-06 11:51:17.513627 => 2024-06-06 11:51:17.515278
+[0m11:51:17.515899 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents)
+[0m11:51:17.516454 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network
+[0m11:51:17.516873 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents
+[0m11:51:17.517304 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network (execute): 2024-06-06 11:51:17.517165 => 2024-06-06 11:51:17.517187
+[0m11:51:17.519575 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents (compile): 2024-06-06 11:51:17.517953 => 2024-06-06 11:51:17.519486
+[0m11:51:17.520760 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_adjust_default_network
+[0m11:51:17.521193 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents
+[0m11:51:17.522140 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks
+[0m11:51:17.522675 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents (execute): 2024-06-06 11:51:17.522606 => 2024-06-06 11:51:17.522618
+[0m11:51:17.523618 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks'
+[0m11:51:17.524548 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default__viewitemevents
+[0m11:51:17.525021 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks)
+[0m11:51:17.525813 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events
+[0m11:51:17.526477 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks
+[0m11:51:17.527176 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events'
+[0m11:51:17.529303 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks (compile): 2024-06-06 11:51:17.527519 => 2024-06-06 11:51:17.529197
+[0m11:51:17.529810 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events)
+[0m11:51:17.530187 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks
+[0m11:51:17.530574 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events
+[0m11:51:17.530970 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks (execute): 2024-06-06 11:51:17.530873 => 2024-06-06 11:51:17.530889
+[0m11:51:17.533340 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events (compile): 2024-06-06 11:51:17.531295 => 2024-06-06 11:51:17.533209
+[0m11:51:17.534329 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_deeplinks
+[0m11:51:17.534758 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events
+[0m11:51:17.535197 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations
+[0m11:51:17.535493 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events (execute): 2024-06-06 11:51:17.535437 => 2024-06-06 11:51:17.535448
+[0m11:51:17.536766 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations'
+[0m11:51:17.538375 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_events
+[0m11:51:17.538841 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations)
+[0m11:51:17.539331 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles
+[0m11:51:17.539651 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations
+[0m11:51:17.540316 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles'
+[0m11:51:17.542322 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations (compile): 2024-06-06 11:51:17.540654 => 2024-06-06 11:51:17.542237
+[0m11:51:17.542831 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles)
+[0m11:51:17.543429 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations
+[0m11:51:17.544003 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles
+[0m11:51:17.544695 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations (execute): 2024-06-06 11:51:17.544512 => 2024-06-06 11:51:17.544560
+[0m11:51:17.547047 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles (compile): 2024-06-06 11:51:17.545089 => 2024-06-06 11:51:17.546965
+[0m11:51:17.547968 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_installations
+[0m11:51:17.548336 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles
+[0m11:51:17.548963 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts
+[0m11:51:17.549491 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles (execute): 2024-06-06 11:51:17.549426 => 2024-06-06 11:51:17.549437
+[0m11:51:17.550001 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts'
+[0m11:51:17.550599 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_profiles
+[0m11:51:17.550856 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts)
+[0m11:51:17.551208 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents
+[0m11:51:17.551517 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts
+[0m11:51:17.552159 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents'
+[0m11:51:17.556082 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts (compile): 2024-06-06 11:51:17.552501 => 2024-06-06 11:51:17.555984
+[0m11:51:17.556577 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents)
+[0m11:51:17.557117 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts
+[0m11:51:17.557446 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents
+[0m11:51:17.557703 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts (execute): 2024-06-06 11:51:17.557637 => 2024-06-06 11:51:17.557649
+[0m11:51:17.559305 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents (compile): 2024-06-06 11:51:17.557889 => 2024-06-06 11:51:17.559221
+[0m11:51:17.560470 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts
+[0m11:51:17.561132 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents
+[0m11:51:17.561619 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners
+[0m11:51:17.562244 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents (execute): 2024-06-06 11:51:17.562129 => 2024-06-06 11:51:17.562147
+[0m11:51:17.563263 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners'
+[0m11:51:17.564330 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_appmetrica_default_viewitemevents
+[0m11:51:17.564607 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners)
+[0m11:51:17.564992 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics
+[0m11:51:17.565418 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners
+[0m11:51:17.565950 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics'
+[0m11:51:17.567642 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners (compile): 2024-06-06 11:51:17.566192 => 2024-06-06 11:51:17.567562
+[0m11:51:17.568039 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics)
+[0m11:51:17.568324 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners
+[0m11:51:17.568575 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics
+[0m11:51:17.568845 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners (execute): 2024-06-06 11:51:17.568778 => 2024-06-06 11:51:17.568791
+[0m11:51:17.570359 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics (compile): 2024-06-06 11:51:17.569032 => 2024-06-06 11:51:17.570283
+[0m11:51:17.571408 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners
+[0m11:51:17.571861 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics
+[0m11:51:17.572224 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns
+[0m11:51:17.572661 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics (execute): 2024-06-06 11:51:17.572598 => 2024-06-06 11:51:17.572610
+[0m11:51:17.573189 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns'
+[0m11:51:17.574133 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_banners_statistics
+[0m11:51:17.574491 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns)
+[0m11:51:17.574841 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts
+[0m11:51:17.575258 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns
+[0m11:51:17.575793 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts'
+[0m11:51:17.577376 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns (compile): 2024-06-06 11:51:17.576029 => 2024-06-06 11:51:17.577300
+[0m11:51:17.578071 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts)
+[0m11:51:17.578652 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns
+[0m11:51:17.579089 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts
+[0m11:51:17.579512 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns (execute): 2024-06-06 11:51:17.579394 => 2024-06-06 11:51:17.579416
+[0m11:51:17.581135 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts (compile): 2024-06-06 11:51:17.579801 => 2024-06-06 11:51:17.581067
+[0m11:51:17.582284 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_mt_default_campaigns
+[0m11:51:17.582674 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts
+[0m11:51:17.583031 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult
+[0m11:51:17.583483 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts (execute): 2024-06-06 11:51:17.583418 => 2024-06-06 11:51:17.583430
+[0m11:51:17.584021 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult'
+[0m11:51:17.584628 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_sheets_default_planCosts
+[0m11:51:17.585017 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult)
+[0m11:51:17.585483 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups
+[0m11:51:17.585784 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult
+[0m11:51:17.586451 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups'
+[0m11:51:17.589065 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult (compile): 2024-06-06 11:51:17.586706 => 2024-06-06 11:51:17.588972
+[0m11:51:17.589566 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups)
+[0m11:51:17.590153 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult
+[0m11:51:17.590625 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups
+[0m11:51:17.591028 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult (execute): 2024-06-06 11:51:17.590908 => 2024-06-06 11:51:17.590930
+[0m11:51:17.593527 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups (compile): 2024-06-06 11:51:17.591409 => 2024-06-06 11:51:17.593446
+[0m11:51:17.594605 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_utmcraft_default_utmresult
+[0m11:51:17.594915 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups
+[0m11:51:17.595579 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics
+[0m11:51:17.596510 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups (execute): 2024-06-06 11:51:17.596397 => 2024-06-06 11:51:17.596417
+[0m11:51:17.597047 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics'
+[0m11:51:17.597658 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups
+[0m11:51:17.598021 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics)
+[0m11:51:17.598668 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans
+[0m11:51:17.598977 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics
+[0m11:51:17.599863 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans'
+[0m11:51:17.601631 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics (compile): 2024-06-06 11:51:17.600216 => 2024-06-06 11:51:17.601549
+[0m11:51:17.602079 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans)
+[0m11:51:17.602463 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics
+[0m11:51:17.602712 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans
+[0m11:51:17.603082 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics (execute): 2024-06-06 11:51:17.602992 => 2024-06-06 11:51:17.603006
+[0m11:51:17.604580 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans (compile): 2024-06-06 11:51:17.603280 => 2024-06-06 11:51:17.604508
+[0m11:51:17.605295 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_groups_statistics
+[0m11:51:17.605604 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans
+[0m11:51:17.605959 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics
+[0m11:51:17.606405 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans (execute): 2024-06-06 11:51:17.606342 => 2024-06-06 11:51:17.606353
+[0m11:51:17.606919 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics'
+[0m11:51:17.607527 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans
+[0m11:51:17.607888 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics)
+[0m11:51:17.608358 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners
+[0m11:51:17.609187 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics
+[0m11:51:17.610454 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners'
+[0m11:51:17.612664 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics (compile): 2024-06-06 11:51:17.610849 => 2024-06-06 11:51:17.612577
+[0m11:51:17.613128 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners)
+[0m11:51:17.613514 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics
+[0m11:51:17.613759 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners
+[0m11:51:17.614015 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics (execute): 2024-06-06 11:51:17.613950 => 2024-06-06 11:51:17.613963
+[0m11:51:17.615554 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners (compile): 2024-06-06 11:51:17.614213 => 2024-06-06 11:51:17.615479
+[0m11:51:17.616655 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_ad_plans_statistics
+[0m11:51:17.616992 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners
+[0m11:51:17.617371 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics
+[0m11:51:17.617813 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners (execute): 2024-06-06 11:51:17.617750 => 2024-06-06 11:51:17.617760
+[0m11:51:17.618336 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics'
+[0m11:51:17.619314 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners
+[0m11:51:17.619638 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics)
+[0m11:51:17.620012 [debug] [Thread-2 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report
+[0m11:51:17.620434 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics
+[0m11:51:17.620963 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report'
+[0m11:51:17.622605 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics (compile): 2024-06-06 11:51:17.621209 => 2024-06-06 11:51:17.622529
+[0m11:51:17.623170 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report)
+[0m11:51:17.623566 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics
+[0m11:51:17.623818 [debug] [Thread-2 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report
+[0m11:51:17.624084 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics (execute): 2024-06-06 11:51:17.624016 => 2024-06-06 11:51:17.624030
+[0m11:51:17.626702 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report (compile): 2024-06-06 11:51:17.624291 => 2024-06-06 11:51:17.626609
+[0m11:51:17.627470 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_vkads_default_banners_statistics
+[0m11:51:17.627784 [debug] [Thread-2 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report
+[0m11:51:17.628191 [debug] [Thread-1 (]: Began running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream
+[0m11:51:17.628494 [debug] [Thread-2 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report (execute): 2024-06-06 11:51:17.628433 => 2024-06-06 11:51:17.628444
+[0m11:51:17.629284 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream'
+[0m11:51:17.629958 [debug] [Thread-2 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_yd_default_custom_report
+[0m11:51:17.630333 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream)
+[0m11:51:17.630807 [debug] [Thread-2 (]: Began running node test.etlcraft.test_find_incremental_datetime_field
+[0m11:51:17.631232 [debug] [Thread-1 (]: Began compiling node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream
+[0m11:51:17.631745 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_find_incremental_datetime_field'
+[0m11:51:17.633625 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream (compile): 2024-06-06 11:51:17.632067 => 2024-06-06 11:51:17.633547
+[0m11:51:17.634069 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_find_incremental_datetime_field)
+[0m11:51:17.634450 [debug] [Thread-1 (]: Began executing node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream
+[0m11:51:17.634702 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_find_incremental_datetime_field
+[0m11:51:17.634955 [debug] [Thread-1 (]: Timing info for seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream (execute): 2024-06-06 11:51:17.634891 => 2024-06-06 11:51:17.634903
+[0m11:51:17.641408 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_find_incremental_datetime_field"
+[0m11:51:17.642210 [debug] [Thread-1 (]: Finished running node seed.etlcraft_integration_tests.datacraft_clientname_raw__stream_ym_default_yandex_metrika_stream
+[0m11:51:17.642925 [debug] [Thread-1 (]: Began running node test.etlcraft.test_get_column_count_in_subquery
+[0m11:51:17.643922 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_column_count_in_subquery'
+[0m11:51:17.644158 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_get_column_count_in_subquery)
+[0m11:51:17.644354 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_get_column_count_in_subquery
+[0m11:51:17.647955 [debug] [Thread-1 (]: Writing injected SQL for node "test.etlcraft.test_get_column_count_in_subquery"
+[0m11:51:17.648555 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_find_incremental_datetime_field (compile): 2024-06-06 11:51:17.635151 => 2024-06-06 11:51:17.648396
+[0m11:51:17.649502 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_find_incremental_datetime_field
+[0m11:51:17.649793 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_find_incremental_datetime_field (execute): 2024-06-06 11:51:17.649724 => 2024-06-06 11:51:17.649737
+[0m11:51:17.650321 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_find_incremental_datetime_field
+[0m11:51:17.650636 [debug] [Thread-2 (]: Began running node test.etlcraft.test_get_from_default_dict
+[0m11:51:17.651098 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_get_column_count_in_subquery (compile): 2024-06-06 11:51:17.644631 => 2024-06-06 11:51:17.651026
+[0m11:51:17.651896 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_from_default_dict'
+[0m11:51:17.652696 [debug] [Thread-1 (]: Began executing node test.etlcraft.test_get_column_count_in_subquery
+[0m11:51:17.653143 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_get_from_default_dict)
+[0m11:51:17.653608 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_get_column_count_in_subquery (execute): 2024-06-06 11:51:17.653537 => 2024-06-06 11:51:17.653550
+[0m11:51:17.653852 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_get_from_default_dict
+[0m11:51:17.654667 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_get_column_count_in_subquery
+[0m11:51:17.661512 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_get_from_default_dict"
+[0m11:51:17.662283 [debug] [Thread-1 (]: Began running node test.etlcraft.test_get_min_max_date
+[0m11:51:17.663310 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_min_max_date'
+[0m11:51:17.663522 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_get_min_max_date)
+[0m11:51:17.663724 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_get_min_max_date
+[0m11:51:17.676494 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.etlcraft.test_get_min_max_date: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "test.etlcraft.test_get_min_max_date"} */
+
+    
+    SELECT 
+        table 
+    
+     FROM (
+    SELECT 
+    'dbt_test__audit' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    '__datetime' as name,
+    '2023-12-01' as __datetime
+    UNION all
+    SELECT 
+    'dbt_test__audit' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col2'as name,
+    '2023-12-02' as __datetime
+    UNION all
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    '__datetime' as name,
+    '2023-12-03' as __datetime
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    '__datetime' as name,
+    '2023-12-01' as __datetime
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col2' as name,
+    '2023-12-02' as __datetime
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col3' as name,
+    '2023-12-03' as __datetime
+)
+    
+    WHERE 
+        database ='test_dbt_test__audit' AND 
+        table LIKE 'incremental_testsourcetypename_testtemplatename_%' AND 
+        name='__date'
+
+  ...
+[0m11:51:17.677812 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_from_default_dict (compile): 2024-06-06 11:51:17.654928 => 2024-06-06 11:51:17.677649
+[0m11:51:17.678418 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_get_from_default_dict
+[0m11:51:17.678740 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_from_default_dict (execute): 2024-06-06 11:51:17.678638 => 2024-06-06 11:51:17.678653
+[0m11:51:17.679323 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_get_from_default_dict
+[0m11:51:17.679720 [debug] [Thread-2 (]: Began running node test.etlcraft.test_get_relations_dist
+[0m11:51:17.680576 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_relations_dist'
+[0m11:51:17.680855 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_get_relations_dist)
+[0m11:51:17.681076 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_get_relations_dist
+[0m11:51:17.695436 [debug] [Thread-2 (]: dbt_clickhouse adapter: On test.etlcraft.test_get_relations_dist: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "test.etlcraft.test_get_relations_dist"} */
+
+    SELECT 
+        table, 
+        groupArray(name) AS fields
+    
+    FROM (
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col1'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col2'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col3'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col1'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col2'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col3'as name
+)
+    
+    WHERE database = '' AND table LIKE 'incremental_testsourcetypename_testtemplatename_%'
+    GROUP BY table
+
+...
+[0m11:51:17.696187 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m11:51:17.699908 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.etlcraft.test_get_min_max_date: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "test.etlcraft.test_get_min_max_date"} */
+
+SELECT max(toDate(min_date)) as date_from,
+       max(toDate(max_date)) as date_to
+FROM (
+
+)
+WHERE min_date > '1972-01-01'
+...
+[0m11:51:17.708861 [debug] [Thread-1 (]: dbt_clickhouse adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "test.etlcraft.test_get_min_max_date"} */
+
+SELECT max(toDate(min_date)) as date_from,
+       max(toDate(max_date)) as date_to
+FROM (
+
+)
+WHERE min_date > '1972-01-01'
+
+[0m11:51:17.711256 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_get_min_max_date (compile): 2024-06-06 11:51:17.663854 => 2024-06-06 11:51:17.711108
+[0m11:51:17.723119 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.03 seconds
+[0m11:51:17.724894 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_get_relations_dist"
+[0m11:51:17.725557 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_relations_dist (compile): 2024-06-06 11:51:17.681217 => 2024-06-06 11:51:17.725466
+[0m11:51:17.726515 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_get_relations_dist
+[0m11:51:17.727550 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_relations_dist (execute): 2024-06-06 11:51:17.727301 => 2024-06-06 11:51:17.727337
+[0m11:51:17.728394 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_get_relations_dist
+[0m11:51:17.728691 [debug] [Thread-1 (]: Database Error in test test_get_min_max_date (tests/test_get_min_max_date.sql)
+  :HTTPDriver for http://localhost:8123 returned response code 400)
+   Code: 62. DB::Exception: Syntax error: failed at position 239 (')') (line 7, col 1): )
+  WHERE min_date > '1972-01-01'
+  
+   FORMAT Native. Expected one of: SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, EXPLAIN. (SYNTAX_ERROR) (version 24.1.4.20 (official build))
+[0m11:51:17.729140 [debug] [Thread-2 (]: Began running node test.etlcraft.test_json_list_keys
+[0m11:51:17.729480 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_get_min_max_date
+[0m11:51:17.730142 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_json_list_keys'
+[0m11:51:17.730572 [debug] [Thread-1 (]: Began running node test.etlcraft.test_normalize
+[0m11:51:17.731017 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_json_list_keys)
+[0m11:51:17.731785 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_normalize'
+[0m11:51:17.732073 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_json_list_keys
+[0m11:51:17.732391 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_normalize)
+[0m11:51:17.739448 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_json_list_keys"
+[0m11:51:17.739901 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_normalize
+[0m11:51:17.745769 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_normalize (compile): 2024-06-06 11:51:17.740417 => 2024-06-06 11:51:17.745666
+[0m11:51:17.746805 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_json_list_keys (compile): 2024-06-06 11:51:17.732657 => 2024-06-06 11:51:17.746719
+[0m11:51:17.747130 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_json_list_keys
+[0m11:51:17.747352 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_json_list_keys (execute): 2024-06-06 11:51:17.747282 => 2024-06-06 11:51:17.747297
+[0m11:51:17.747975 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_json_list_keys
+[0m11:51:17.748312 [debug] [Thread-2 (]: Began running node test.etlcraft.test_normalize_name
+[0m11:51:17.749307 [debug] [Thread-1 (]: Compilation Error in test test_normalize (tests/test_normalize.sql)
+  No columns with names ending in "date", "datetime", "timestamp", "_time" were found in the relation "normalize_testsource_testtemplate_project_goals". Please ensure that your source data contains such a column for incremental processing.
+  
+  > in macro find_incremental_datetime_field (macros/other/find_incremental_datetime_field.sql)
+  > called by macro normalize (macros/normalize/normalize.sql)
+  > called by test test_normalize (tests/test_normalize.sql)
+[0m11:51:17.750106 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_normalize_name'
+[0m11:51:17.750701 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_normalize
+[0m11:51:17.750924 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.etlcraft.test_normalize_name)
+[0m11:51:17.751304 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics
+[0m11:51:17.751842 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_normalize_name
+[0m11:51:17.752465 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics'
+[0m11:51:17.762582 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_normalize_name"
+[0m11:51:17.762951 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics)
+[0m11:51:17.763626 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics
+[0m11:51:17.773321 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_adjust_events_default_event_metrics')        
+...
+[0m11:51:17.774553 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_normalize_name (compile): 2024-06-06 11:51:17.752945 => 2024-06-06 11:51:17.774364
+[0m11:51:17.775111 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_normalize_name
+[0m11:51:17.775692 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_normalize_name (execute): 2024-06-06 11:51:17.775575 => 2024-06-06 11:51:17.775597
+[0m11:51:17.776358 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_normalize_name
+[0m11:51:17.776826 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts
+[0m11:51:17.777948 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts'
+[0m11:51:17.778334 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts)
+[0m11:51:17.778644 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts
+[0m11:51:17.784265 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_adjust_events_default_cohorts')        
+...
+[0m11:51:17.785142 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.801136 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics"} */
+
+    select name, type from system.columns where table = 'normalize_adjust_events_default_event_metrics'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.803177 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m11:51:17.806528 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts"} */
+
+    select name, type from system.columns where table = 'normalize_adjust_events_default_cohorts'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.807400 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.813896 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics"
+[0m11:51:17.815152 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.818039 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts"
+[0m11:51:17.818785 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics (compile): 2024-06-06 11:51:17.763801 => 2024-06-06 11:51:17.818501
+[0m11:51:17.819385 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics
+[0m11:51:17.819645 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics (execute): 2024-06-06 11:51:17.819579 => 2024-06-06 11:51:17.819595
+[0m11:51:17.820212 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_adjust_events_default_event_metrics
+[0m11:51:17.820535 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_adjust_events_default_network
+[0m11:51:17.821187 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_adjust_events_default_network'
+[0m11:51:17.821579 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_adjust_events_default_network)
+[0m11:51:17.822189 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_adjust_events_default_network
+[0m11:51:17.822615 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts (compile): 2024-06-06 11:51:17.778862 => 2024-06-06 11:51:17.822529
+[0m11:51:17.826947 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_network: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_network"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_adjust_events_default_network')        
+...
+[0m11:51:17.827540 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts
+[0m11:51:17.829238 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts (execute): 2024-06-06 11:51:17.829136 => 2024-06-06 11:51:17.829157
+[0m11:51:17.830602 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_adjust_events_default_cohorts
+[0m11:51:17.831967 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_adjust_registry_default_events
+[0m11:51:17.832427 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_adjust_registry_default_events'
+[0m11:51:17.832597 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_adjust_registry_default_events)
+[0m11:51:17.832774 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_adjust_registry_default_events
+[0m11:51:17.837008 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_registry_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_registry_default_events"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_adjust_registry_default_events')        
+...
+[0m11:51:17.838511 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.843454 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_events_default_network: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_events_default_network"} */
+
+    select name, type from system.columns where table = 'normalize_adjust_events_default_network'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.845332 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.849550 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_adjust_registry_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_adjust_registry_default_events"} */
+
+    select name, type from system.columns where table = 'normalize_adjust_registry_default_events'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.851018 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.853580 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_adjust_events_default_network"
+[0m11:51:17.854518 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_network (compile): 2024-06-06 11:51:17.822875 => 2024-06-06 11:51:17.854354
+[0m11:51:17.855008 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_adjust_events_default_network
+[0m11:51:17.855330 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_events_default_network (execute): 2024-06-06 11:51:17.855235 => 2024-06-06 11:51:17.855255
+[0m11:51:17.856103 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_adjust_events_default_network
+[0m11:51:17.856505 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks
+[0m11:51:17.857135 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks'
+[0m11:51:17.857466 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks)
+[0m11:51:17.857818 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks
+[0m11:51:17.858545 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.863157 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_events_default_deeplinks')        
+...
+[0m11:51:17.866489 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_adjust_registry_default_events"
+[0m11:51:17.868133 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_registry_default_events (compile): 2024-06-06 11:51:17.833193 => 2024-06-06 11:51:17.868017
+[0m11:51:17.868451 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_adjust_registry_default_events
+[0m11:51:17.868755 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_adjust_registry_default_events (execute): 2024-06-06 11:51:17.868655 => 2024-06-06 11:51:17.868670
+[0m11:51:17.869380 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_adjust_registry_default_events
+[0m11:51:17.869775 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_events
+[0m11:51:17.870359 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_events'
+[0m11:51:17.870664 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_events_default_events)
+[0m11:51:17.870914 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_events_default_events
+[0m11:51:17.875449 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_events"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_events_default_events')        
+...
+[0m11:51:17.876957 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.880817 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_events_default_deeplinks'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.882682 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.885731 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_events: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_events"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_events_default_events'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.891318 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.894187 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_events_default_events"
+[0m11:51:17.895304 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.897928 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks"
+[0m11:51:17.898415 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_events (compile): 2024-06-06 11:51:17.871503 => 2024-06-06 11:51:17.898286
+[0m11:51:17.899140 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_events_default_events
+[0m11:51:17.899519 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks (compile): 2024-06-06 11:51:17.859053 => 2024-06-06 11:51:17.899395
+[0m11:51:17.899903 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_events (execute): 2024-06-06 11:51:17.899846 => 2024-06-06 11:51:17.899860
+[0m11:51:17.900326 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks
+[0m11:51:17.901227 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_events
+[0m11:51:17.901568 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks (execute): 2024-06-06 11:51:17.901492 => 2024-06-06 11:51:17.901501
+[0m11:51:17.901933 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view
+[0m11:51:17.903068 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_deeplinks
+[0m11:51:17.903925 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view'
+[0m11:51:17.904338 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations
+[0m11:51:17.904598 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view)
+[0m11:51:17.905248 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations'
+[0m11:51:17.905548 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view
+[0m11:51:17.905764 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations)
+[0m11:51:17.911215 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_events_default_screen_view')        
+...
+[0m11:51:17.911758 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations
+[0m11:51:17.917667 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_events_default_installations')        
+...
+[0m11:51:17.918392 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.923400 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_events_default_screen_view'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.925316 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.928745 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_events_default_installations'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.930211 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.933026 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view"
+[0m11:51:17.934165 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.936772 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations"
+[0m11:51:17.937505 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view (compile): 2024-06-06 11:51:17.906051 => 2024-06-06 11:51:17.937369
+[0m11:51:17.938194 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view
+[0m11:51:17.938613 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations (compile): 2024-06-06 11:51:17.913686 => 2024-06-06 11:51:17.938540
+[0m11:51:17.939083 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view (execute): 2024-06-06 11:51:17.938969 => 2024-06-06 11:51:17.938993
+[0m11:51:17.939504 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations
+[0m11:51:17.940303 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_screen_view
+[0m11:51:17.940603 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations (execute): 2024-06-06 11:51:17.940539 => 2024-06-06 11:51:17.940549
+[0m11:51:17.940973 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts
+[0m11:51:17.942197 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_installations
+[0m11:51:17.943259 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts'
+[0m11:51:17.943831 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles
+[0m11:51:17.944417 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts)
+[0m11:51:17.945123 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles'
+[0m11:51:17.945478 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts
+[0m11:51:17.945712 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles)
+[0m11:51:17.949679 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_events_default_sessions_starts')        
+...
+[0m11:51:17.950250 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles
+[0m11:51:17.954765 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_appmetrica_registry_default_profiles')        
+...
+[0m11:51:17.960368 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.964588 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_events_default_sessions_starts'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.965610 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.970339 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles"} */
+
+    select name, type from system.columns where table = 'normalize_appmetrica_registry_default_profiles'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:17.973082 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.976127 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts"
+[0m11:51:17.976942 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:17.978624 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles"
+[0m11:51:17.979185 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles (compile): 2024-06-06 11:51:17.951238 => 2024-06-06 11:51:17.979091
+[0m11:51:17.979498 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles
+[0m11:51:17.979738 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles (execute): 2024-06-06 11:51:17.979670 => 2024-06-06 11:51:17.979684
+[0m11:51:17.980283 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles
+[0m11:51:17.980630 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics
+[0m11:51:17.981156 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts (compile): 2024-06-06 11:51:17.945921 => 2024-06-06 11:51:17.981064
+[0m11:51:17.981905 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics'
+[0m11:51:17.982187 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m11:51:17.982905 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts
+[0m11:51:17.983322 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics)
+[0m11:51:17.983580 [debug] [MainThread]: Connection 'model.etlcraft_integration_tests.incremental_appmetrica_registry_default_profiles' was left open.
+[0m11:51:17.983875 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts (execute): 2024-06-06 11:51:17.983800 => 2024-06-06 11:51:17.983814
+[0m11:51:17.984170 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics
+[0m11:51:17.984524 [debug] [MainThread]: On model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics: Close
+[0m11:51:17.985366 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts
+[0m11:51:17.989610 [debug] [MainThread]: Connection 'model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts' was left open.
+[0m11:51:17.990367 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_mt_registry_default_banners
+[0m11:51:17.990720 [debug] [MainThread]: On model.etlcraft_integration_tests.incremental_appmetrica_events_default_sessions_starts: Close
+[0m11:51:17.991996 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6c48185e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6c481be50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa6d9c62aa0>]}
+[0m11:51:17.992333 [debug] [MainThread]: Flushing usage events
+[0m11:51:17.993346 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics (compile): 2024-06-06 11:51:17.985642 => 2024-06-06 11:51:17.993235
+[0m11:51:17.993868 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_mt_registry_default_banners'
+[0m11:51:17.995405 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_mt_registry_default_banners
+[0m11:51:18.000738 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m11:51:18.001971 [debug] [Thread-1 (]: Runtime Error in model incremental_mt_datestat_default_banners_statistics (models/1_silos/2_incremental/mytarget/incremental_mt_datestat_default_banners_statistics.sql)
+  connection never acquired for thread {self.thread_id}, have {self.known}
+[0m11:51:18.004052 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_mt_datestat_default_banners_statistics
+[0m11:51:18.004851 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns
+[0m11:51:18.007579 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns'
+[0m11:51:18.008018 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns
+[0m11:51:18.012057 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m11:51:18.083980 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_mt_registry_default_banners: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_mt_registry_default_banners"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_mt_registry_default_banners')        
+...
+[0m11:51:18.088226 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_mt_registry_default_campaigns')        
+...
+[0m11:51:18.090792 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.094300 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_mt_registry_default_banners: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_mt_registry_default_banners"} */
+
+    select name, type from system.columns where table = 'normalize_mt_registry_default_banners'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.095658 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.099458 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns"} */
+
+    select name, type from system.columns where table = 'normalize_mt_registry_default_campaigns'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.101576 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.103463 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_mt_registry_default_banners"
+[0m11:51:18.104699 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_mt_registry_default_banners (compile): 2024-06-06 11:51:17.996685 => 2024-06-06 11:51:18.104488
+[0m11:51:18.105310 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_mt_registry_default_banners
+[0m11:51:18.105693 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_mt_registry_default_banners (execute): 2024-06-06 11:51:18.105592 => 2024-06-06 11:51:18.105609
+[0m11:51:18.106392 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_mt_registry_default_banners
+[0m11:51:18.106794 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts
+[0m11:51:18.107995 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.108861 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts'
+[0m11:51:18.110724 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns"
+[0m11:51:18.111179 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts)
+[0m11:51:18.111777 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts
+[0m11:51:18.115856 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_sheets_periodstat_default_planCosts')        
+...
+[0m11:51:18.117629 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns (compile): 2024-06-06 11:51:18.008203 => 2024-06-06 11:51:18.117477
+[0m11:51:18.118303 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns
+[0m11:51:18.118653 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns (execute): 2024-06-06 11:51:18.118574 => 2024-06-06 11:51:18.118592
+[0m11:51:18.119284 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_mt_registry_default_campaigns
+[0m11:51:18.120118 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult
+[0m11:51:18.120931 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult'
+[0m11:51:18.121096 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult)
+[0m11:51:18.121237 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult
+[0m11:51:18.125424 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_utmcraft_registry_default_utmresult')        
+...
+[0m11:51:18.126356 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.133120 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts"} */
+
+    select name, type from system.columns where table = 'normalize_sheets_periodstat_default_planCosts'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.133821 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.138433 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult"} */
+
+    select name, type from system.columns where table = 'normalize_utmcraft_registry_default_utmresult'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.139998 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.142369 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts"
+[0m11:51:18.143226 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts (compile): 2024-06-06 11:51:18.112161 => 2024-06-06 11:51:18.143061
+[0m11:51:18.143743 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts
+[0m11:51:18.144098 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts (execute): 2024-06-06 11:51:18.143996 => 2024-06-06 11:51:18.144016
+[0m11:51:18.144892 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_sheets_periodstat_default_planCosts
+[0m11:51:18.145388 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics
+[0m11:51:18.146113 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics'
+[0m11:51:18.146730 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics)
+[0m11:51:18.146987 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics
+[0m11:51:18.150995 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_vkads_datestat_default_ad_plans_statistics')        
+...
+[0m11:51:18.151840 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.154542 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult"
+[0m11:51:18.155996 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult (compile): 2024-06-06 11:51:18.121333 => 2024-06-06 11:51:18.155840
+[0m11:51:18.156437 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult
+[0m11:51:18.156611 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult (execute): 2024-06-06 11:51:18.156537 => 2024-06-06 11:51:18.156568
+[0m11:51:18.157149 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_utmcraft_registry_default_utmresult
+[0m11:51:18.157537 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans
+[0m11:51:18.158420 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans'
+[0m11:51:18.158788 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans)
+[0m11:51:18.159018 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans
+[0m11:51:18.159681 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.163732 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_vkads_periodstat_default_ad_plans')        
+...
+[0m11:51:18.167147 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics"} */
+
+    select name, type from system.columns where table = 'normalize_vkads_datestat_default_ad_plans_statistics'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.173811 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.174396 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.178022 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans"} */
+
+    select name, type from system.columns where table = 'normalize_vkads_periodstat_default_ad_plans'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.181145 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics"
+[0m11:51:18.182585 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics (compile): 2024-06-06 11:51:18.147125 => 2024-06-06 11:51:18.182473
+[0m11:51:18.182912 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics
+[0m11:51:18.183103 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics (execute): 2024-06-06 11:51:18.183041 => 2024-06-06 11:51:18.183055
+[0m11:51:18.183720 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_vkads_datestat_default_ad_plans_statistics
+[0m11:51:18.184127 [debug] [Thread-2 (]: Began running node model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report
+[0m11:51:18.185142 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report'
+[0m11:51:18.185613 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report)
+[0m11:51:18.185844 [debug] [Thread-2 (]: Began compiling node model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report
+[0m11:51:18.190899 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_yd_datestat_default_custom_report')        
+...
+[0m11:51:18.192448 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.194987 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans"
+[0m11:51:18.196463 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans (compile): 2024-06-06 11:51:18.159952 => 2024-06-06 11:51:18.196246
+[0m11:51:18.197083 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans
+[0m11:51:18.197459 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans (execute): 2024-06-06 11:51:18.197350 => 2024-06-06 11:51:18.197372
+[0m11:51:18.198023 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_vkads_periodstat_default_ad_plans
+[0m11:51:18.198356 [debug] [Thread-1 (]: Began running node model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream
+[0m11:51:18.198830 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream'
+[0m11:51:18.199004 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream)
+[0m11:51:18.199187 [debug] [Thread-1 (]: Began compiling node model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream
+[0m11:51:18.202873 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream"} */
+
+
+      
+        select distinct
+            table_schema as "table_schema",
+            table_name as "table_name",
+            
+            case toString(table_type)
+                when 'BASE TABLE' then 'table'
+                when 'EXTERNAL TABLE' then 'external'
+                when 'MATERIALIZED VIEW' then 'materializedview'
+                else lower(toString(table_type))
+            end as "table_type"
+
+        from information_schema.tables
+        where match(table_schema, 'test')
+        and match(table_name, 'normalize_ym_events_default_yandex_metrika_stream')        
+...
+[0m11:51:18.205674 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.209371 [debug] [Thread-2 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report"} */
+
+    select name, type from system.columns where table = 'normalize_yd_datestat_default_custom_report'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.210827 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.214493 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream"} */
+
+    select name, type from system.columns where table = 'normalize_ym_events_default_yandex_metrika_stream'
+    
+      and database = 'test'
+    
+    order by position
+  ...
+[0m11:51:18.220725 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.221434 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m11:51:18.225072 [debug] [Thread-1 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream"
+[0m11:51:18.228410 [debug] [Thread-2 (]: Writing injected SQL for node "model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report"
+[0m11:51:18.229664 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report (compile): 2024-06-06 11:51:18.185956 => 2024-06-06 11:51:18.229551
+[0m11:51:18.230106 [debug] [Thread-2 (]: Began executing node model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report
+[0m11:51:18.230403 [debug] [Thread-2 (]: Timing info for model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report (execute): 2024-06-06 11:51:18.230324 => 2024-06-06 11:51:18.230338
+[0m11:51:18.231043 [debug] [Thread-2 (]: Finished running node model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report
+[0m11:51:18.231786 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream (compile): 2024-06-06 11:51:18.199313 => 2024-06-06 11:51:18.231703
+[0m11:51:18.232034 [debug] [Thread-1 (]: Began executing node model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream
+[0m11:51:18.232170 [debug] [Thread-1 (]: Timing info for model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream (execute): 2024-06-06 11:51:18.232130 => 2024-06-06 11:51:18.232139
+[0m11:51:18.232861 [debug] [Thread-1 (]: Finished running node model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream
+[0m11:51:18.691786 [debug] [MainThread]: Connection 'model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report' was left open.
+[0m11:51:18.692413 [debug] [MainThread]: On model.etlcraft_integration_tests.incremental_yd_datestat_default_custom_report: Close
+[0m11:51:18.692560 [debug] [MainThread]: Connection 'model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream' was left open.
+[0m11:51:18.692695 [debug] [MainThread]: On model.etlcraft_integration_tests.incremental_ym_events_default_yandex_metrika_stream: Close
+[0m11:51:18.692965 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Compilation Error in test test_normalize (tests/test_normalize.sql)
+    No columns with names ending in "date", "datetime", "timestamp", "_time" were found in the relation "normalize_testsource_testtemplate_project_goals". Please ensure that your source data contains such a column for incremental processing.
+    
+    > in macro find_incremental_datetime_field (macros/other/find_incremental_datetime_field.sql)
+    > called by macro normalize (macros/normalize/normalize.sql)
+    > called by test test_normalize (tests/test_normalize.sql)
