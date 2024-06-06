@@ -16,10 +16,10 @@ WHERE 'updated_at' != 'updated_at'
 
 UNION ALL SELECT
 'Error: Incorrect datetime field identified with dict for stream'
-WHERE 'created_at' != 'created_at'
+WHERE 'updated_at' != 'created_at'
 
 
 
 UNION ALL SELECT
 'Error: Incorrect datetime field identified when there is no incremental field'
-WHERE 'True' != 'True'
+WHERE 'False' != 'True'
