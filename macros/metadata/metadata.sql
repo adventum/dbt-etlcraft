@@ -174,7 +174,7 @@ links:
     - UtmHash
   VisitStat:
     pipeline: events
-    datetime_field: __date
+    datetime_field: event_datetime {# __date #}
     keys:
     - name: event_datetime
     main_entities: 

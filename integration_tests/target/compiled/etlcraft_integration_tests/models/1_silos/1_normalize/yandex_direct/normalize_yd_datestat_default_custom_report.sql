@@ -11,7 +11,7 @@ SELECT
         JSONExtractString(_airbyte_data, 'Date') AS Date, 
         JSONExtractString(_airbyte_data, 'Impressions') AS Impressions,
         toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(_airbyte_extracted_at, 1, 19)) AS __emitted_at, 
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
         NOW() AS __normalized_at
 FROM (
 
