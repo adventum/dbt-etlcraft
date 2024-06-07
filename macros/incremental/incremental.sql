@@ -23,6 +23,10 @@
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_' ~ stream_name -%}
 
+{%- if pipeline_name in ('registry') -%}
+{%- set disable_incremental=true -%}
+{%- endif -%}
+
 {#- задаём инкрементальное поле с датой если его нет -#}
 {#- Determine the incremental datetime field (IDF) if not provided -#}
 {%- if disable_incremental -%}

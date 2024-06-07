@@ -12,6 +12,10 @@
 {%- set pipeline_name = model_name_parts[2] -%}
 {%- set link_name = model_name_parts[3] -%}
 
+{%- if pipeline_name in ('registry') -%}
+{%- set disable_incremental=true -%}
+{%- endif -%}
+
 {#- получаем список incremental таблиц и их полей в формате table_name: [field1,field2, ... fieldn] -#}
 {%- set relations_dict =  etlcraft.get_relations_dict('incremental',sourcetype_name) -%}
 
