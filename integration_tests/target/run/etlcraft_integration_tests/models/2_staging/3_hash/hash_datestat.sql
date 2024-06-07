@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_datestat__dbt_new_data_f6e8ee16_f9a8_4fbb_be99_0c523e494e40 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
+        insert into test.hash_datestat__dbt_new_data_8321cbef_6326_48d2_a58a_4e787ccb0180 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime")
   -- depends_on: test.combine_datestat
 SELECT *,
   assumeNotNull(CASE  
