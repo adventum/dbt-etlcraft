@@ -1,1 +1,0 @@
-{{ etlcraft.normalize(disable_incremental_datetime_field=true, fields=['ad_groups','autobidding_mode','budget_limit','budget_limit_day','created','date_end','date_start','id','max_price','name','objective','priced_goal','pricelist_id','status','updated','vkads_status']) }}

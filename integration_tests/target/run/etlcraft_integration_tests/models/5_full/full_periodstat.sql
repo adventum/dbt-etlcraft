@@ -4,7 +4,7 @@
     
     
         
-        insert into test.full_periodstat__dbt_new_data_f6e8ee16_f9a8_4fbb_be99_0c523e494e40 ("period_date", "__date", "campaign", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime", "cost_per_day")
+        insert into test.full_periodstat__dbt_new_data_8321cbef_6326_48d2_a58a_4e787ccb0180 ("period_date", "__date", "campaign", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime", "cost_per_day")
   -- depends_on: test.link_registry_appprofilematching
 -- depends_on: test.link_registry_utmhashregistry
 -- depends_on: test.link_periodstat
