@@ -4,10 +4,14 @@
         {{ exceptions.raise_compiler_error("Both an exclude and include list were provided to the `union` macro. Only one is allowed") }}
     {%- endif -%}
 
-    {#-- Prevent querying of db in parsing mode. This works because this macro does not create any new refs. -#}
+    {#- Prevent querying of db in parsing mode. This works because this macro does not create any new refs. -#}
     {%- if not execute %}
         {{ return('') }}
     {% endif -%}
+
+    {%- if not relations -%}
+        {{ exceptions.raise_compiler_error('There are no relations in macro custom_union_relations') }}
+    {%- endif -%}
 
     {%- set column_override = column_override if column_override is not none else {} -%}
 
@@ -59,45 +63,21 @@
 
     {%- for relation in relations %}
 
-        (
-            select
+(
+SELECT
+{%- for col_name in ordered_column_names -%}
+{%- set col = column_superset[col_name] %}
+{%- set col_type = column_override.get(col.column, col.data_type) if col_name in relation_columns[relation] else col.data_type %}
+{%- set col_expr = adapter.quote(col_name) if col_name in relation_columns[relation] else ("''" if 'String' in col_type else "0") %}
+        to{{ col_type.split('(')[0] }}({{ col_expr }}) as {{ col.name }} {% if not loop.last %},{% endif -%}
+{%- endfor %}
+FROM {{ relation }}
+)
 
-                {#- toLowCardinality('{{ relation.name }}')  as {{ source_column_name }}, -#}
-                {% for col_name in ordered_column_names -%}
+{% if not loop.last -%}
+UNION ALL
+{% endif -%}
 
-                    {%- set col = column_superset[col_name] %}
-                    {%- set col_type = column_override.get(col.column, col.data_type) if col_name in relation_columns[relation] else col.data_type %}
-                    {%- set col_expr = adapter.quote(col_name) if col_name in relation_columns[relation] else ("''" if 'String' in col_type else "0") %}
-                            to{{ col_type.split('(')[0] }}({{ col_expr }}) as {{ col.name }} {% if not loop.last %},{% endif -%}
-                {%- endfor %}
-
-            from {{ relation }}
-        )
-
-        {% if not loop.last -%}
-            union all
-        {% endif -%}
-
-    {%- endfor -%}
+{%- endfor -%}
 
 {%- endmacro -%}
-
-{#- default
-        (
-            select
-
-                cast({{ dbt_utils.string_literal(relation) }} as String) as {{ source_column_name }},
-                {% for col_name in ordered_column_names -%}
-
-                    {%- set col = column_superset[col_name] %}
-                    {%- set col_type = column_override.get(col.column, col.data_type) if col_name in relation_columns[relation] else 'Nullable(' ~ col.data_type ~ ')' %}
-                    {%- set col_name = adapter.quote(col_name) if col_name in relation_columns[relation] else 'null' %}
-                    cast({{ col_name }} as {{ col_type }}) as {{ col.quoted }} {% if not loop.last %},{% endif -%}
-
-                {%- endfor %}
-
-            from {{ relation }}
-        )
-
-
- -#}

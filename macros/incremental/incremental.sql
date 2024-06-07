@@ -23,12 +23,6 @@
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_' ~ stream_name -%}
 
-{#- задаём relations при помощи собственного макроса - он находится в clickhouse-adapters -#}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
-
-{#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
-{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%} 
-
 {#- задаём инкрементальное поле с датой если его нет -#}
 {#- Determine the incremental datetime field (IDF) if not provided -#}
 {%- if disable_incremental -%}
@@ -62,5 +56,5 @@ SELECT *
 SELECT * 
 REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)   
 {%- endif %}
-FROM {{ source_table }}
+FROM {{ table_pattern }}
 {% endmacro %}

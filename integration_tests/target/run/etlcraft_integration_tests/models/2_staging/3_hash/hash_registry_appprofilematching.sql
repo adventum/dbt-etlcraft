@@ -36,19 +36,18 @@ assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '
 
 FROM (
 
-        (
-            select
-                            toString("appmetricaDeviceId") as appmetricaDeviceId ,
-                            toString("crmUserId") as crmUserId ,
-                            toString("cityName") as cityName ,
-                            toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__table_name") as __table_name ,
-                            toString("__link") as __link 
+(
+SELECT
+        toString("appmetricaDeviceId") as appmetricaDeviceId ,
+        toString("crmUserId") as crmUserId ,
+        toString("cityName") as cityName ,
+        toDateTime("__emitted_at") as __emitted_at ,
+        toString("__table_name") as __table_name ,
+        toString("__link") as __link 
+FROM test.combine_registry_appprofilematching
+)
 
-            from test.combine_registry_appprofilematching
-        )
-
-        ) 
+) 
 WHERE 
 
     True
