@@ -33,6 +33,10 @@
 {#- было: set table_pattern = '_airbyte_raw_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -#}
 {%- set table_pattern = '[^_]+' ~ '_[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
 
+{%- if pipeline_name in ('registry') -%}
+{%- set disable_incremental_datetime_field=true -%}
+{%- endif -%}
+
 {#- если параметр source_table при вызове макроса не задан -#}
 {%- if source_table is none -%}
 
