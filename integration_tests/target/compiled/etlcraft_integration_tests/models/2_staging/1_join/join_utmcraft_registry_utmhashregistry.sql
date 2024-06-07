@@ -31,6 +31,7 @@ SELECT
     toLowCardinality(__table_name) AS __table_name,
     'UtmHashRegistry' AS __link         
 FROM (
+    
 
         (
             select

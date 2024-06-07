@@ -18,21 +18,20 @@ assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(__date))), ''), '') 
 
 FROM (
 
-        (
-            select
-                            toDate("__date") as __date ,
-                            toString("campaign") as campaign ,
-                            toFloat64("cost") as cost ,
-                            toDate("periodStart") as periodStart ,
-                            toDate("periodEnd") as periodEnd ,
-                            toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__table_name") as __table_name ,
-                            toString("__link") as __link 
+(
+SELECT
+        toDate("__date") as __date ,
+        toString("campaign") as campaign ,
+        toFloat64("cost") as cost ,
+        toDate("periodStart") as periodStart ,
+        toDate("periodEnd") as periodEnd ,
+        toDateTime("__emitted_at") as __emitted_at ,
+        toString("__table_name") as __table_name ,
+        toString("__link") as __link 
+FROM test.combine_periodstat
+)
 
-            from test.combine_periodstat
-        )
-
-        ) 
+) 
 WHERE 
 
     True

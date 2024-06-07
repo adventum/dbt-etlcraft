@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_periodstat__dbt_new_data_257a9f0c_75e4_425f_88c2_849703901296 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
+        insert into test.hash_periodstat__dbt_new_data_f6e8ee16_f9a8_4fbb_be99_0c523e494e40 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
   -- depends_on: test.combine_periodstat
 SELECT *,
   assumeNotNull(CASE  
@@ -25,21 +25,20 @@ assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(__date))), ''), '') 
 
 FROM (
 
-        (
-            select
-                            toDate("__date") as __date ,
-                            toString("campaign") as campaign ,
-                            toFloat64("cost") as cost ,
-                            toDate("periodStart") as periodStart ,
-                            toDate("periodEnd") as periodEnd ,
-                            toDateTime("__emitted_at") as __emitted_at ,
-                            toString("__table_name") as __table_name ,
-                            toString("__link") as __link 
+(
+SELECT
+        toDate("__date") as __date ,
+        toString("campaign") as campaign ,
+        toFloat64("cost") as cost ,
+        toDate("periodStart") as periodStart ,
+        toDate("periodEnd") as periodEnd ,
+        toDateTime("__emitted_at") as __emitted_at ,
+        toString("__table_name") as __table_name ,
+        toString("__link") as __link 
+FROM test.combine_periodstat
+)
 
-            from test.combine_periodstat
-        )
-
-        ) 
+) 
 WHERE 
 
     True

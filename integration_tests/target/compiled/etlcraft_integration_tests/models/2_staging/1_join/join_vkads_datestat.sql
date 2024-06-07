@@ -2,6 +2,7 @@
 -- depends_on: test.incremental_vkads_periodstat_default_ad_plans
 WITH ad_plans_statistics AS (
 SELECT * FROM (
+    
 
         (
             select
@@ -37,6 +38,7 @@ WHERE toDate(__date) between '2024-02-26' and '2024-03-02'),
 
 ad_plans AS (
 SELECT * FROM (
+    
 
         (
             select
