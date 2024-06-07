@@ -1,7 +1,6 @@
 -- depends_on: test.incremental_yd_datestat_default_custom_report
 WITH cmps AS (
 SELECT * FROM (
-    
 
         (
             select

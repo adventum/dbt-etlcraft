@@ -22,11 +22,11 @@ FROM (
 
 (
 SELECT
-        toLowCardinality('datacraft_clientname_raw__stream_appmetrica_default_sessions_starts') AS _dbt_source_relation,
+        toLowCardinality('datacraft_clientname_raw__stream_appmetrica_default_accountid_sessions_starts') AS _dbt_source_relation,
         toString("_airbyte_raw_id") AS _airbyte_raw_id,
         toString("_airbyte_data") AS _airbyte_data,
         toString("_airbyte_extracted_at") AS _airbyte_extracted_at
-FROM airbyte_internal.datacraft_clientname_raw__stream_appmetrica_default_sessions_starts
+FROM test.datacraft_clientname_raw__stream_appmetrica_default_accountid_sessions_starts
 )
 
 )
