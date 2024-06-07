@@ -4,7 +4,7 @@
     
     
         
-        insert into test.combine_periodstat__dbt_tmp ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
+        insert into test.combine_periodstat__dbt_new_data_257a9f0c_75e4_425f_88c2_849703901296 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.join_sheets_periodstat
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM (
@@ -27,4 +27,4 @@ FROM (
 
 
   
-    
+      

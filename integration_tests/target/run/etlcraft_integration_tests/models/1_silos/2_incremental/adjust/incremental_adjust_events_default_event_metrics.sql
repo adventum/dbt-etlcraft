@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_adjust_events_default_event_metrics__dbt_tmp ("__date", "country", "date", "event_name", "event_token", "events", "network", "tracker_token", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_adjust_events_default_event_metrics__dbt_new_data_257a9f0c_75e4_425f_88c2_849703901296 ("__date", "country", "date", "event_name", "event_token", "events", "network", "tracker_token", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_adjust_events_default_event_metrics
 
 SELECT * 
@@ -31,4 +31,4 @@ FROM (
         )
 
   
-    
+      

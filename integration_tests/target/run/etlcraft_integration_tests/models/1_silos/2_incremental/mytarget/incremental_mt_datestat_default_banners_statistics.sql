@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_mt_datestat_default_banners_statistics__dbt_tmp ("__date", "__clientName", "__productName", "banner_id", "base", "date", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_mt_datestat_default_banners_statistics__dbt_new_data_257a9f0c_75e4_425f_88c2_849703901296 ("__date", "__clientName", "__productName", "banner_id", "base", "date", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_mt_datestat_default_banners_statistics
 
 SELECT * 
@@ -29,4 +29,4 @@ FROM (
         )
 
   
-    
+      

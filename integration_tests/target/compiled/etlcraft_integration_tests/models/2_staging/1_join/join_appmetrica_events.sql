@@ -46,7 +46,6 @@ SELECT
     __emitted_at,
     toLowCardinality('AppDeeplinkStat') AS __link
 FROM (
-    
 
         (
             select
@@ -94,7 +93,6 @@ SELECT
     toDateTime(event_receive_datetime) AS event_datetime, 
     0 AS screen_view
 FROM (
-    
 
         (
             select
@@ -240,7 +238,6 @@ SELECT
     __emitted_at,
     toLowCardinality('AppInstallStat') AS __link
 FROM (
-    
 
         (
             select
@@ -314,7 +311,6 @@ SELECT
     __emitted_at,
     toLowCardinality('AppEventStat') AS __link 
 FROM (
-    
 
         (
             select
@@ -383,7 +379,6 @@ SELECT
     __emitted_at,
     toLowCardinality('AppSessionStat') AS __link 
 FROM (
-    
 
         (
             select

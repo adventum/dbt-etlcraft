@@ -1,7 +1,6 @@
 -- depends_on: test.incremental_ym_events_default_yandex_metrika_stream
 WITH events AS (
 SELECT * FROM (
-    
 
         (
             select
