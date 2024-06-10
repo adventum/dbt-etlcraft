@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_sheets_periodstat__dbt_new_data_e73065dd_cb2b_48cf_898d_f49bff11cfc3 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
+        insert into test.join_sheets_periodstat__dbt_new_data_e511c210_fafe_4da5_81d4_73537699fec3 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.incremental_sheets_periodstat_default_planCosts
 SELECT
     __date,

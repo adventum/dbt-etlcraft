@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_appmetrica_events_default_deeplinks__dbt_new_data_e73065dd_cb2b_48cf_898d_f49bff11cfc3 ("__date", "__clientName", "__productName", "appmetrica_device_id", "city", "deeplink_url_parameters", "event_receive_datetime", "google_aid", "ios_ifa", "os_name", "profile_id", "publisher_name", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_appmetrica_events_default_deeplinks__dbt_new_data_e511c210_fafe_4da5_81d4_73537699fec3 ("__date", "__clientName", "__productName", "appmetrica_device_id", "city", "deeplink_url_parameters", "event_receive_datetime", "google_aid", "ios_ifa", "os_name", "profile_id", "publisher_name", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_appmetrica_events_default_deeplinks
 
 SELECT * 
