@@ -18,9 +18,29 @@
 {%- set sourcetype_name = 'yd' -%}
 {%- set pipeline_name = 'datestat' -%}
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+'  -%}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
+{%- if not relations -%} 
+    {{ exceptions.raise_compiler_error('No relations') }}
+{%- endif -%} 
 {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
+{%- if not source_table -%} 
+    {{ exceptions.raise_compiler_error('No source_table') }}
+{%- endif -%}
 
+{#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize ??? таблиц -#}
+  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% if not min_max_date_dict %} 
+      {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
+  {% endif %}
+  {% set date_from = min_max_date_dict.get('date_from')[0] %}
+  {% if not date_from %} 
+      {{ exceptions.raise_compiler_error('No date_from') }} 
+  {% endif %}
+  {% set date_to = min_max_date_dict.get('date_to')[0] %}
+  {% if not date_to %} 
+      {{ exceptions.raise_compiler_error('No date_to') }} 
+  {% endif %}
+  
 WITH cmps AS (
 SELECT * FROM {{ source_table }}
 {%- if date_from and  date_to %} 
