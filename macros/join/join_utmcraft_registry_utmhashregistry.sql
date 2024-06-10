@@ -18,7 +18,13 @@
 {%- set stream_name = 'utmresult' -%}
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ stream_name ~ '$' -%}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}   
+{%- if not relations -%} 
+    {{ exceptions.raise_compiler_error('No relations') }}
+{%- endif -%}
 {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
+{%- if not source_table -%} 
+    {{ exceptions.raise_compiler_error('No source_table') }}
+{%- endif -%}
 
 SELECT
     utm_hashcode AS utmHash,
