@@ -21,14 +21,15 @@
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
 {%- if not relations -%} 
-    {{ exceptions.raise_compiler_error('No relations') }}
+    {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". 
+    Please ensure that your source data follows the expected structure.') }}
 {%- endif -%}
 {%- set source_table = '(' ~ dbt_utils.union_relations(relations) ~ ')' -%} 
 {%- if not source_table -%} 
-    {{ exceptions.raise_compiler_error('No source_table') }}
+    {{ exceptions.raise_compiler_error('No source_table were found by pattern "' ~ table_pattern ~ '"') }}
 {%- endif -%}
 
-{#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize ??? таблиц -#}
+{#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
   {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
@@ -41,7 +42,7 @@
   {% if not date_to %} 
       {{ exceptions.raise_compiler_error('No date_to') }} 
   {% endif %}
-  
+
 WITH events AS (
 SELECT * FROM {{ source_table }}
 {%- if date_from and  date_to %} 
@@ -88,5 +89,5 @@ SELECT
 
 FROM events
 
-{%- endif -%}
+{%-endif -%}
 {% endmacro %}

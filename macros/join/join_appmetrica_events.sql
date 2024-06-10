@@ -22,53 +22,62 @@
 {#- для каждого стрима собираем инкрементал-таблицы и создаём свой source_table_<...> -#}
 {%- set table_pattern_deeplinks = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'deeplinks' ~ '$' -%}
 {%- set relations_deeplinks = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_deeplinks) -%}   
-  {%- if not relations_deeplinks -%} 
-        {{ exceptions.raise_compiler_error('No relations_deeplinks') }}
-  {%- endif -%}
+{%- if not relations_deeplinks -%} 
+    {{ exceptions.raise_compiler_error('No relations_deeplinks. 
+    No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_deeplinks"') }}
+{%- endif -%}
 {%- set source_table_deeplinks = '(' ~ dbt_utils.union_relations(relations_deeplinks) ~ ')' -%}    
-  {%- if not source_table_deeplinks -%} 
-        {{ exceptions.raise_compiler_error('No source_table_deeplinks') }}
-  {%- endif -%}
-
+{%- if not source_table_deeplinks -%} 
+    {{ exceptions.raise_compiler_error('No source_table_deeplinks.
+    Macro dbt_utils.union_relations fetches no data from relations_deeplinks') }}
+{%- endif -%}
 
 {%- set table_pattern_events = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'events' ~ '$' -%}
 {%- set relations_events = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
-  {%- if not relations_events -%} 
-        {{ exceptions.raise_compiler_error('No relations_events') }}
-  {%- endif -%}
+{%- if not relations_events -%} 
+    {{ exceptions.raise_compiler_error('No relations_events.
+    No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_events"') }}
+{%- endif -%}
 {%- set source_table_events = '(' ~ dbt_utils.union_relations(relations_events) ~ ')' -%}  
-  {%- if not source_table_events -%} 
-        {{ exceptions.raise_compiler_error('No source_table_events') }}
-  {%- endif -%}
+{%- if not source_table_events -%} 
+    {{ exceptions.raise_compiler_error('No source_table_events.
+    Macro dbt_utils.union_relations fetches no data from relations_events') }}
+{%- endif -%}
 
 {%- set table_pattern_install = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'installations' ~ '$' -%}
 {%- set relations_install = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_install) -%}   
   {%- if not relations_install -%} 
-        {{ exceptions.raise_compiler_error('No relations_install') }}
+        {{ exceptions.raise_compiler_error('No relations_install.
+        No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_installations"') }}
   {%- endif -%}
 {%- set source_table_install = '(' ~ dbt_utils.union_relations(relations_install) ~ ')' -%} 
   {%- if not source_table_install -%} 
-        {{ exceptions.raise_compiler_error('No source_table_install') }}
+        {{ exceptions.raise_compiler_error('No source_table_install.
+        Macro dbt_utils.union_relations fetches no data from relations_install') }}
   {%- endif -%}
 
 {%- set table_pattern_screen_view = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'screen_view' ~ '$' -%}
 {%- set relations_screen_view = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_screen_view) -%}   
   {%- if not relations_screen_view -%} 
-        {{ exceptions.raise_compiler_error('No relations_screen_view') }}
+        {{ exceptions.raise_compiler_error('No relations_screen_view.
+        No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_screen_view"') }}
   {%- endif -%}
 {%- set source_table_screen_view = '(' ~ dbt_utils.union_relations(relations_screen_view) ~ ')' -%} 
   {%- if not source_table_screen_view -%} 
-        {{ exceptions.raise_compiler_error('No source_table_screen_view') }}
+        {{ exceptions.raise_compiler_error('No source_table_screen_view.
+        Macro dbt_utils.union_relations fetches no data from relations_screen_view') }}
   {%- endif -%}
 
 {%- set table_pattern_sessions_starts = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'sessions_starts' ~ '$' -%}
 {%- set relations_sessions_starts = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_sessions_starts) -%}   
   {%- if not relations_sessions_starts -%} 
-        {{ exceptions.raise_compiler_error('No relations_sessions_starts') }}
+        {{ exceptions.raise_compiler_error('No relations_sessions_starts.
+        No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_sessions_starts"') }}
   {%- endif -%}
 {%- set source_table_sessions_starts = '(' ~ dbt_utils.union_relations(relations_sessions_starts) ~ ')' -%} 
   {%- if not source_table_sessions_starts -%} 
-        {{ exceptions.raise_compiler_error('No source_table_sessions_starts') }}
+        {{ exceptions.raise_compiler_error('No source_table_sessions_starts.
+        Macro dbt_utils.union_relations fetches no data from relations_sessions_starts') }}
   {%- endif -%}
 
 
