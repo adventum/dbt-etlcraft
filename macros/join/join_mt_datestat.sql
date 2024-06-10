@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'mt' -%}
 {%- set pipeline_name_datestat = 'datestat' -%} 
 {%- set pipeline_name_registry = 'registry' -%}
@@ -113,5 +113,5 @@ JOIN banners ON banners_statistics.banner_id = banners.id
 JOIN campaigns ON banners.campaign_id = campaigns.id
 
 
-
+{%- endif -%}
 {% endmacro %}

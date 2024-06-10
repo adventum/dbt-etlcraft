@@ -1,5 +1,12 @@
 -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
 -- depends_on: test.incremental_vkads_registry_default_ad_plans
+                                                             
+  
+  
+  
+  
+  
+  
 WITH ad_plans_statistics AS (
 SELECT * FROM (
     
@@ -88,8 +95,4 @@ SELECT
     toLowCardinality('AdCostStat') AS __link 
 FROM ad_plans
 JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
-
-
-
-
 

@@ -4,8 +4,15 @@
     
     
         
-        insert into test.join_yd_datestat__dbt_new_data_169e4b03_dba9_4a78_9da5_782d0a7c8ec1 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_yd_datestat__dbt_new_data_e73065dd_cb2b_48cf_898d_f49bff11cfc3 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_yd_datestat_default_custom_report
+                                                             
+  
+  
+  
+  
+  
+  
 WITH cmps AS (
 SELECT * FROM (
     
@@ -65,9 +72,6 @@ SELECT
     __emitted_at,
     toLowCardinality('AdCostStat') AS __link 
 FROM cmps
-
-
-
 
 
   

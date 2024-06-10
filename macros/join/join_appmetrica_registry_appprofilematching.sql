@@ -12,7 +12,7 @@
     order_by=('__table_name'),
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'appmetrica' -%}
 {%- set pipeline_name = 'registry' -%}
 {%- set stream_name = 'profiles' -%}
@@ -35,4 +35,5 @@ SELECT
     toLowCardinality('AppProfileMatching') AS __link 
 FROM {{ source_table }}
 
+{%- endif -%}
 {% endmacro %}
