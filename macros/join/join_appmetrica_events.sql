@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {#- задаём общие части имени -#}
 {%- set sourcetype_name = 'appmetrica' -%}
 {%- set pipeline_name = 'events' -%}  {# это общее для всех стримов #}
@@ -370,5 +370,5 @@ UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts
 
-
+{%- endif -%}
 {% endmacro %}

@@ -426,6 +426,3 @@ UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts
 
-
-
-

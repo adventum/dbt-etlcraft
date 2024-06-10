@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'yd' -%}
 {%- set pipeline_name = 'datestat' -%}
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+'  -%}
@@ -76,5 +76,5 @@ SELECT
     toLowCardinality('AdCostStat') AS __link 
 FROM cmps
 
-
+{%- endif -%}
 {% endmacro %}

@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'ym' -%}
 {%- set pipeline_name = 'events' -%}
 {%- set stream_name = 'yandex_metrika_stream' -%}
@@ -88,5 +88,5 @@ SELECT
 
 FROM events
 
-
+{%- endif -%}
 {% endmacro %}

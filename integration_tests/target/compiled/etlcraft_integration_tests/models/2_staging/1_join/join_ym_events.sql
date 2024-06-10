@@ -1,4 +1,11 @@
 -- depends_on: test.incremental_ym_events_default_yandex_metrika_stream
+                                                             
+  
+  
+  
+  
+  
+  
 WITH events AS (
 SELECT * FROM (
     
@@ -82,7 +89,4 @@ SELECT
     toLowCardinality('VisitStat') AS __link 
 
 FROM events
-
-
-
 

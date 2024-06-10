@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'vkads' -%}
 {%- set pipeline_name_datestat = 'datestat' -%} 
 {%- set pipeline_name_periodstat = 'periodstat' -%}
@@ -83,5 +83,5 @@ FROM ad_plans
 JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
 
 
-
+{%- endif -%}
 {% endmacro %}

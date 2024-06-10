@@ -1,6 +1,13 @@
 -- depends_on: test.incremental_mt_datestat_default_banners_statistics
 -- depends_on: test.incremental_mt_registry_default_banners
 -- depends_on: test.incremental_mt_registry_default_campaigns
+                                                             
+  
+  
+  
+  
+  
+
 WITH banners_statistics AS (
 SELECT * FROM (
     
@@ -110,8 +117,4 @@ SELECT
 FROM banners_statistics
 JOIN banners ON banners_statistics.banner_id = banners.id 
 JOIN campaigns ON banners.campaign_id = campaigns.id
-
-
-
-
 

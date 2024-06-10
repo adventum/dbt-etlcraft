@@ -12,7 +12,7 @@
     order_by=('__table_name'),
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'utmcraft' -%}
 {%- set pipeline_name = 'registry' -%}
 {%- set stream_name = 'utmresult' -%}
@@ -59,5 +59,5 @@ SELECT
     'UtmHashRegistry' AS __link         
 FROM {{ source_table }}
 
-
+{%- endif -%}
 {% endmacro %}

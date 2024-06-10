@@ -1,4 +1,11 @@
 -- depends_on: test.incremental_yd_datestat_default_custom_report
+                                                             
+  
+  
+  
+  
+  
+  
 WITH cmps AS (
 SELECT * FROM (
     
@@ -58,7 +65,4 @@ SELECT
     __emitted_at,
     toLowCardinality('AdCostStat') AS __link 
 FROM cmps
-
-
-
 

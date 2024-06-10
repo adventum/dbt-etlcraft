@@ -14,7 +14,7 @@
     unique_key=['__date', '__table_name'],
     on_schema_change='fail'
 ) }}
-
+{%- if execute -%}
 {%- set sourcetype_name = 'sheets' -%}
 {%- set pipeline_name = 'periodstat' -%}
 {%- set stream_name = 'planCosts' -%}
@@ -42,4 +42,5 @@ SELECT
 
 FROM {{ source_table }}
 
+{%- endif -%}
 {% endmacro %}
