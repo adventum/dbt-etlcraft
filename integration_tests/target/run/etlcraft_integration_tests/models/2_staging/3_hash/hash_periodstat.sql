@@ -4,7 +4,7 @@
     
     
         
-        insert into test.hash_periodstat__dbt_new_data_8321cbef_6326_48d2_a58a_4e787ccb0180 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
+        insert into test.hash_periodstat__dbt_new_data_169e4b03_dba9_4a78_9da5_782d0a7c8ec1 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
   -- depends_on: test.combine_periodstat
 SELECT *,
   assumeNotNull(CASE  

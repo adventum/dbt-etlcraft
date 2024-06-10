@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_appmetrica_events_default_installations__dbt_new_data_8321cbef_6326_48d2_a58a_4e787ccb0180 ("__date", "__clientName", "__productName", "appmetrica_device_id", "city", "click_datetime", "click_url_parameters", "google_aid", "install_receive_datetime", "ios_ifa", "is_reinstallation", "os_name", "profile_id", "publisher_name", "__table_name", "__emitted_at", "__normalized_at")
+        insert into test.incremental_appmetrica_events_default_installations__dbt_new_data_169e4b03_dba9_4a78_9da5_782d0a7c8ec1 ("__date", "__clientName", "__productName", "appmetrica_device_id", "city", "click_datetime", "click_url_parameters", "google_aid", "install_receive_datetime", "ios_ifa", "is_reinstallation", "os_name", "profile_id", "publisher_name", "__table_name", "__emitted_at", "__normalized_at")
   -- depends_on: test.normalize_appmetrica_events_default_installations
 
 SELECT * 
