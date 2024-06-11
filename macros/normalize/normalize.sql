@@ -3,7 +3,7 @@
     incremental_datetime_field=none, 
     disable_incremental_datetime_field=none,
     defaults_dict=etlcraft.etlcraft_defaults(), 
-    schema_pattern='airbyte_internal', 
+    schema_pattern=this.schema, 
     source_table=none, 
     override_target_model_name=none,
     debug_column_names=False) -%}
@@ -33,7 +33,7 @@
 {#- было: set table_pattern = '_airbyte_raw_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -#}
 {%- set table_pattern = '[^_]+' ~ '_[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
 
-{%- if pipeline_name in ('registry') -%}
+{%- if pipeline_name in ('registry', 'periodstat') -%}
 {%- set disable_incremental_datetime_field=true -%}
 {%- endif -%}
 

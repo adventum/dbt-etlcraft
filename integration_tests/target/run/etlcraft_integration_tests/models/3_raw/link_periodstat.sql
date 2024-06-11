@@ -3,11 +3,11 @@
     
     
         
-        insert into test.link_periodstat__dbt_backup ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
+        insert into test.link_periodstat__dbt_backup ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
   -- depends_on: test.hash_periodstat
-SELECT __date,campaign,SUM(cost) AS cost,periodStart,periodEnd,__emitted_at,__table_name,__link,ManualAdCostStatHash,__id,__datetime 
+SELECT campaign,SUM(cost) AS cost,periodStart,periodEnd,__emitted_at,__table_name,__link,ManualAdCostStatHash,__id,__datetime 
 FROM test.hash_periodstat
-GROUP BY __date, campaign, periodStart, periodEnd, __emitted_at, __table_name, __link, ManualAdCostStatHash, __id, __datetime
+GROUP BY campaign, periodStart, periodEnd, __emitted_at, __table_name, __link, ManualAdCostStatHash, __id, __datetime
 
 
   

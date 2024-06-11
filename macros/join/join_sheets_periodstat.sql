@@ -8,10 +8,8 @@
     ) -%}
 
 {{ config(
-    materialized='incremental',
-    order_by=('__date', '__table_name'),
-    incremental_strategy='delete+insert',
-    unique_key=['__date', '__table_name'],
+    materialized='table',
+    order_by=('__table_name'),
     on_schema_change='fail'
 ) }}
 {%- if execute -%}
@@ -31,7 +29,6 @@
 {%- set link_value = params -%}
 
 SELECT
-    __date,
     Campaign AS campaign,
     toFloat64(Cost) AS cost,
     toDate(Period_start) AS periodStart,

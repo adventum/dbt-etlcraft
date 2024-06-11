@@ -1,13 +1,11 @@
 
-        
   
     
     
         
-        insert into test.join_sheets_periodstat__dbt_new_data_e511c210_fafe_4da5_81d4_73537699fec3 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
+        insert into test.join_sheets_periodstat__dbt_backup ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.incremental_sheets_periodstat_default_planCosts
 SELECT
-    __date,
     Campaign AS campaign,
     toFloat64(Cost) AS cost,
     toDate(Period_start) AS periodStart,
@@ -24,7 +22,6 @@ FROM (
                 cast('test.incremental_sheets_periodstat_default_planCosts' as String) as _dbt_source_relation,
 
                 
-                    cast("__date" as Date) as "__date" ,
                     cast("Campaign" as String) as "Campaign" ,
                     cast("Cost" as String) as "Cost" ,
                     cast("Period_end" as String) as "Period_end" ,
@@ -42,4 +39,3 @@ FROM (
 
 
   
-      

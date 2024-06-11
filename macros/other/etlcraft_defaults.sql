@@ -27,6 +27,8 @@ sourcetypes:
         incremental_datetime_field: token_receive_datetime
       session_starts: 
         incremental_datetime_field: session_start_receive_datetime
+  calltouch:
+    incremental_datetime_field: event_time
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
 {% endmacro %}

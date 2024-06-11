@@ -4,7 +4,6 @@ FROM (
 
 (
 SELECT
-        toDate("__date") as __date ,
         toString("campaign") as campaign ,
         toFloat64("cost") as cost ,
         toDate("periodStart") as periodStart ,

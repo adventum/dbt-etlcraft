@@ -7,8 +7,6 @@ WITH unnest_dates AS (
 SELECT *, 
     dateAdd(periodStart, arrayJoin(range( 0, 1 + toUInt16(date_diff('day', periodStart, periodEnd))))) AS period_date
 	, COUNT(*) OVER(PARTITION BY 
-__date
-,
 campaign
 ,
 periodStart
@@ -33,7 +31,6 @@ FROM test.link_periodstat
 )
 , t0 AS (
 SELECT period_date, 
-__date, 
 campaign, 
 periodStart, 
 periodEnd, 

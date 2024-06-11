@@ -7,11 +7,16 @@
   ) -%}
 
 
+{{ config(
+    materialized='table',
+    order_by=('__table_name'),
+    on_schema_change='fail'
+) }}
 
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
 {%- set entities_list = [] -%}
-{% set registries = metadata['registries'] %}
+{% set registries = metadata['registries'] %} 
 
 {% for registry_name in registries  %}
     {%- set registry_key = registries[registry_name].get('keys') -%}
@@ -19,14 +24,14 @@
     {%- if entity_glue -%}  {# по факту читается как True, поэтому пишем просто if #}
         {%- do entities_list.append(registry_key) -%}
     {%- endif -%} 
-{%- endfor -%}
+{%- endfor -%} 
 
 {%- set final_entities_list = [] -%}
 {%- for unique_entity in unique_entities_list  -%}
     {%- if unique_entity in metadata_entities_list -%}
         {%- do final_entities_list.append(unique_entity) -%}
     {%- endif -%}
-{%- endfor -%}
+{%- endfor -%} 
 
 
 SELECT {{entities_list}}

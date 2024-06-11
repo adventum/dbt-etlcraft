@@ -13,7 +13,7 @@
     {%- set link_entities = links[link_name]['main_entities'] -%} {# связанные линком хабы #}
     {%- set link_keys = links[link_name].get('keys') -%} {# доп. ключи для линка #}
     {%- set all_keys = []  -%}
-    {%- if 'Stat' in link_name -%}
+    {%- if 'Stat' in link_name and 'Manual' not in link_name -%} {# раньше было только if 'Stat' in link_name #}
         {%- set date_dict = {'name': '__date'} -%}
         {%- do all_keys.append(date_dict) -%}
     {%- endif -%}
