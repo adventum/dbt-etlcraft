@@ -4,7 +4,6 @@
   
   as (
     SELECT
-        JSONExtractString(_airbyte_data, 'Period_start') AS __date, 
         JSONExtractString(_airbyte_data, 'Campaign') AS Campaign, 
         JSONExtractString(_airbyte_data, 'Cost') AS Cost, 
         JSONExtractString(_airbyte_data, 'Period_end') AS Period_end, 

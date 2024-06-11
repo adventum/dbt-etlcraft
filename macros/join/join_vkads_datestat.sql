@@ -17,7 +17,7 @@
 {%- if execute -%}
 {%- set sourcetype_name = 'vkads' -%}
 {%- set pipeline_name_datestat = 'datestat' -%} 
-{%- set pipeline_name_periodstat = 'periodstat' -%}
+{%- set pipeline_name_registry = 'registry' -%}
 
 {%- set stream_name_ad_plans_statistics = 'ad_plans_statistics' -%}
 {%- set table_pattern_ad_plans_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_ad_plans_statistics ~ '$' -%}
@@ -25,48 +25,48 @@
 {%- if not relations_ad_plans_statistics -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_ad_plans_statistics ~ '". 
     Please ensure that your source data follows the expected structure.') }}
-{%- endif -%}
+{%- endif -%} 
 {%- set source_table_ad_plans_statistics = '(' ~ dbt_utils.union_relations(relations_ad_plans_statistics) ~ ')' -%} 
 {%- if not source_table_ad_plans_statistics -%} 
     {{ exceptions.raise_compiler_error('No source_table were found by pattern "' ~ table_pattern_ad_plans_statistics ~ '"') }}
-{%- endif -%}
+{%- endif -%} 
 
 {%- set stream_name_ad_plans = 'ad_plans' -%}
-{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_periodstat ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
+{%- set table_pattern_ad_plans = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
 {%- set relations_ad_plans = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans) -%}   
 {%- if not relations_ad_plans -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_ad_plans ~ '". 
     Please ensure that your source data follows the expected structure.') }}
-{%- endif -%}
+{%- endif -%}  
 {%- set source_table_ad_plans = '(' ~ dbt_utils.union_relations(relations_ad_plans) ~ ')' -%}
 {%- if not source_table_ad_plans -%} 
     {{ exceptions.raise_compiler_error('No source_table were found by pattern "' ~ table_pattern_ad_plans ~ '"') }}
-{%- endif -%}
+{%- endif -%}  
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
   {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
-  {% endif %}
+  {% endif %}  
   {% set date_from = min_max_date_dict.get('date_from')[0] %}
   {% if not date_from %} 
       {{ exceptions.raise_compiler_error('No date_from') }} 
-  {% endif %}
+  {% endif %}  
   {% set date_to = min_max_date_dict.get('date_to')[0] %}
   {% if not date_to %} 
       {{ exceptions.raise_compiler_error('No date_to') }} 
-  {% endif %}
+  {% endif %}  
 
 WITH ad_plans_statistics AS (
 SELECT * FROM {{ source_table_ad_plans_statistics }}
 {%- if date_from and  date_to %} 
 WHERE toDate(__date) between '{{date_from}}' and '{{date_to}}'
 {%- endif -%}
-),
+),  
 
 ad_plans AS (
 SELECT * FROM {{ source_table_ad_plans }}
-)
+)  
 
 SELECT
     toDate(ad_plans_statistics.__date) AS __date,

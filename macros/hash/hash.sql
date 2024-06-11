@@ -15,7 +15,7 @@
 {%- endif -%}
 
 {#- задаём по возможности инкрементальность -#}
-{%- if pipeline_name in ('datestat', 'events', 'periodstat') -%}
+{%- if pipeline_name in ('datestat', 'events') -%}
 
 {{ config(
     materialized='incremental',
@@ -71,7 +71,7 @@
 {%- set entities_list = [] -%}
 {%- set registry_main_entities_list = [] -%}
 {#- отбираем нужные линки и их сущности -#}
-{%- if pipeline_name !='registry' -%}
+{%- if pipeline_name !='registry' -%} {# or pipeline_name !='periodstat'  #}
 {%- for link_name in links  -%}
     {%- set link_pipeline = links[link_name].get('pipeline') -%}
     {%- set datetime_field = links[link_name].get('datetime_field') -%}
@@ -85,7 +85,7 @@
         {%- endfor -%}
     {%- endif -%} 
     {%- for  main_entity in main_entities -%}
-        {%- if link_pipeline == 'registry'  -%}
+        {%- if link_pipeline == 'registry' -%} {#  or link_pipeline == 'periodstat' #}
             {%- do registry_main_entities_list.append(main_entity) -%}
         {%- endif -%}
     {%- endfor -%}
@@ -124,7 +124,7 @@
 
 {#- для моделей пайплайна registry отбираем линки и сущности отдельно, 
 чтобы выводить модели по-отдельности для каждого источника данных -#}
-{%- if pipeline_name == 'registry' -%}
+{%- if pipeline_name == 'registry'-%} {#  or pipeline_name == 'periodstat' #}
 
 {%- set links_list = [] -%}
 {%- set links = metadata['links'] -%}

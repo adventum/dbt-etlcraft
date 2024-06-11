@@ -1,10 +1,9 @@
 
-        
   
     
     
         
-        insert into test.hash_periodstat__dbt_new_data_e511c210_fafe_4da5_81d4_73537699fec3 ("__date", "campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
+        insert into test.hash_periodstat__dbt_backup ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
   -- depends_on: test.combine_periodstat
 SELECT *,
   assumeNotNull(CASE  
@@ -15,19 +14,19 @@ SELECT *,
   , assumeNotNull(CASE
     WHEN __link = 'ManualAdCostStat' 
     
-    THEN toDateTime(__date) 
+    THEN toDateTime(
+    0) 
     END) AS __datetime
 FROM (
 
 SELECT *, 
-assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(__date))), ''), '') || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ifnull(nullif(upper(trim(toString(__date))), ''), '') = '', null, hex(MD5('ManualAdCostStat' || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(__date))), ''), '')))))) as ManualAdCostStatHash
+assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') = '', null, hex(MD5('ManualAdCostStat' || ';' || ifnull(nullif(upper(trim(toString(periodStart))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodEnd))), ''), '') || ';' || ifnull(nullif(upper(trim(toString(periodStart))), ''), '')))))) as ManualAdCostStatHash
 
 
 FROM (
 
 (
 SELECT
-        toDate("__date") as __date ,
         toString("campaign") as campaign ,
         toFloat64("cost") as cost ,
         toDate("periodStart") as periodStart ,
@@ -48,4 +47,3 @@ WHERE
 
 
   
-      

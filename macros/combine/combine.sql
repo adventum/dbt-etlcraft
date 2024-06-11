@@ -45,7 +45,7 @@
 {%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
 
 {#- задаём по возможности инкрементальность -#}
-{%- if pipeline_name in ('datestat', 'events', 'periodstat') -%}
+{%- if pipeline_name in ('datestat', 'events') -%}
 
   {{ config(
       materialized='incremental',

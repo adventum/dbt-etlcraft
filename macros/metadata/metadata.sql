@@ -77,9 +77,8 @@ entities:
 links: 
   ManualAdCostStat:
     pipeline: periodstat
-    datetime_field: __date
     keys:
-    - name: __date
+    - name: periodStart
     main_entities:
     - PeriodStart
     - PeriodEnd

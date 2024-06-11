@@ -23,7 +23,7 @@
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {%- set table_pattern = 'normalize_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_' ~ stream_name -%}
 
-{%- if pipeline_name in ('registry') -%}
+{%- if pipeline_name in ('registry', 'periodstat') -%}
 {%- set disable_incremental=true -%}
 {%- endif -%}
 

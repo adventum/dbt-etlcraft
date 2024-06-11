@@ -4,16 +4,16 @@
     
     
         
-        insert into test.join_vkads_datestat__dbt_new_data_e511c210_fafe_4da5_81d4_73537699fec3 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_vkads_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
 -- depends_on: test.incremental_vkads_registry_default_ad_plans
                                                              
+    
   
+    
   
-  
-  
-  
-  
+    
+
 WITH ad_plans_statistics AS (
 SELECT * FROM (
     
@@ -48,7 +48,7 @@ SELECT * FROM (
         )
 
         ) 
-WHERE toDate(__date) between '2024-02-26' and '2024-03-02'),
+WHERE toDate(__date) between '2024-02-26' and '2024-03-02'),  
 
 ad_plans AS (
 SELECT * FROM (
@@ -56,7 +56,7 @@ SELECT * FROM (
 
         (
             select
-                cast('test.incremental_vkads_periodstat_default_ad_plans' as String) as _dbt_source_relation,
+                cast('test.incremental_vkads_registry_default_ad_plans' as String) as _dbt_source_relation,
 
                 
                     cast("ad_groups" as String) as "ad_groups" ,
@@ -79,13 +79,13 @@ SELECT * FROM (
                     cast("__emitted_at" as DateTime) as "__emitted_at" ,
                     cast("__normalized_at" as DateTime) as "__normalized_at" 
 
-            from test.incremental_vkads_periodstat_default_ad_plans
+            from test.incremental_vkads_registry_default_ad_plans
 
             
         )
 
         )
-)
+)  
 
 SELECT
     toDate(ad_plans_statistics.__date) AS __date,
@@ -105,4 +105,4 @@ JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
 
 
   
-      
+    
