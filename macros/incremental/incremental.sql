@@ -58,12 +58,7 @@ SELECT *
         on_schema_change='fail'
     ) }}
 
-{% if sourcetype_name=='calltouch' %}    
-SELECT * REPLACE({{ etlcraft.cast_date_field(incremental_datetime_field) }} AS __date)
-{%- else %}
-SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)
-{%- endif %}
-
+SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)  
 {%- endif %} {# конец условия про наличие инкрементального поля с датой #}
 
 FROM {{ table_pattern }}

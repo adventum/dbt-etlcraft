@@ -1,10 +1,10 @@
 
 
-  create view test.normalize_calltouch_events_default_calls__dbt_tmp 
+  create view test.normalize_calltouch_events_default_calls 
   
   as (
     SELECT
-        JSONExtractString(_airbyte_data, 'date') AS __date, 
+        replaceRegexpOne(replaceRegexpOne(date, '\\s+(\\d):', ' 0\\1:'), '(\\d{2})\\/(\\d{2})\\/(\\d{4})', '\\3-\\2-\\1') AS __date, 
         JSONExtractString(_airbyte_data, 'additionalTags') AS additionalTags, 
         JSONExtractString(_airbyte_data, 'attribution') AS attribution, 
         JSONExtractString(_airbyte_data, 'attrs') AS attrs, 

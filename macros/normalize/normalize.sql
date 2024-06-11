@@ -1,6 +1,7 @@
 {%- macro normalize(
     fields,
     incremental_datetime_field=none, 
+    incremental_datetime_formula=none,
     disable_incremental_datetime_field=none,
     defaults_dict=etlcraft.etlcraft_defaults(), 
     schema_pattern='airbyte_internal', 
@@ -55,6 +56,17 @@
 {%- set source_table = '(' ~ etlcraft.custom_union_relations_source(relations) ~ ')' -%} 
 {%- endif -%} {# конец для if source_table  #}
 
+{#- ищем формулу для поля с датой -#}
+{%- if incremental_datetime_formula is none and disable_incremental_datetime_field is none -%}
+    {#- задаём переменную incremental_datetime_formula -#}
+    {%- set incremental_datetime_formula = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'streams', stream_name, 'incremental_datetime_formula'], default_return=none) -%}
+    {%- if not incremental_datetime_formula -%}
+    {%- set incremental_datetime_formula = etlcraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'incremental_datetime_formula'], default_return=none) -%}
+    {%- endif -%}
+{%- endif -%}
+{%- if incremental_datetime_formula -%}
+{%- set incremental_datetime_field = '__date' -%}
+{%- endif -%}
 {#- если при вызове макроса параметры не заданы -#}
 {%- if incremental_datetime_field is none and disable_incremental_datetime_field is none -%}
     {#- задаём переменную incremental_datetime_field -#}
@@ -79,8 +91,11 @@
 {%- set column_list = column_list | sort -%}
 {#- преобразование для инкрементального поля с датой -#}
 {%- if incremental_datetime_field -%}
-    
-    {%- set column_value = etlcraft.json_extract_string('_airbyte_data', incremental_datetime_field) if not debug_column_names else "'__date'" -%}        
+    {%- if incremental_datetime_formula -%}
+    {% set column_value = incremental_datetime_formula|replace('__date', etlcraft.json_extract_string('_airbyte_data', incremental_datetime_field)) %}  
+    {%- else -%}      
+    {%- set column_value = etlcraft.json_extract_string('_airbyte_data', incremental_datetime_field) if not debug_column_names else "'__date'" -%}    
+    {%- endif -%}    
     {%- set column_list = [column_value ~ " AS __date"] + column_list -%}
 {%- endif -%}
 {#- условие для пустого итогового списка -#}
