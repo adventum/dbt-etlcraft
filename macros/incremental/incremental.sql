@@ -48,7 +48,7 @@
 SELECT * 
 
 {#- If IDF exists, create an incremental model -#}
-{#- ниже - то, что будет в модели -#}
+{#- если инкрементальное поле с датой установлено: ниже - то, что будет в модели -#}
 {%- else -%}
     {{ config(
         materialized='incremental',
@@ -57,8 +57,15 @@ SELECT *
         unique_key=['__date', '__table_name'],
         on_schema_change='fail'
     ) }}
-SELECT * 
-REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)   
+
+{% if sourcetype_name=='calltouch' %}    
+SELECT * REPLACE({{ etlcraft.cast_date_field(incremental_datetime_field) }} AS __date)
+{%- else %}
+SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)
 {%- endif %}
+
+{%- endif %} {# конец условия про наличие инкрементального поля с датой #}
+
 FROM {{ table_pattern }}
+
 {% endmacro %}

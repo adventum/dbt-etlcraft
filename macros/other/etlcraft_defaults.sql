@@ -28,7 +28,7 @@ sourcetypes:
       session_starts: 
         incremental_datetime_field: session_start_receive_datetime
   calltouch:
-    incremental_datetime_field: event_time
+    incremental_datetime_field: replaceRegexpOne(replaceRegexpOne(date, '\\s+(\\d):', ' 0\\1:'), '(\\d{2})\\/(\\d{2})\\/(\\d{4})', '\\3-\\2-\\1') 
 {% endset %}
   {{ return(fromyaml(etlcraft_defaults_dict)) }}
 {% endmacro %}
