@@ -79,6 +79,7 @@
 {%- set column_list = column_list | sort -%}
 {#- преобразование для инкрементального поля с датой -#}
 {%- if incremental_datetime_field -%}
+    
     {%- set column_value = etlcraft.json_extract_string('_airbyte_data', incremental_datetime_field) if not debug_column_names else "'__date'" -%}        
     {%- set column_list = [column_value ~ " AS __date"] + column_list -%}
 {%- endif -%}

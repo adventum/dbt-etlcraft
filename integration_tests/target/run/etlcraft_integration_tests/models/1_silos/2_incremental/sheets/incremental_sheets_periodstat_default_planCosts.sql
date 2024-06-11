@@ -7,7 +7,9 @@
   -- depends_on: test.normalize_sheets_periodstat_default_planCosts
 
 
-SELECT *
+SELECT * 
+
 FROM normalize_sheets_periodstat_default_planCosts
+
 
   
