@@ -23,8 +23,14 @@
 {%- set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name ~ '_' ~ link_name -%}
 {%- endif -%}
 
+{#- устанавливаем имя макроса - для двух видов yandex direct - со смарт-компаниями и без них -#}
+{%- if sourcetype_name == 'yd' and model_name_parts[-1] == 'smart' -%}
+{%- set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name ~'_'~ 'smart' -%}
+{%- elif sourcetype_name == 'yd' and model_name_parts[-1] != 'smart' -%}
+{%- set macro_name =  'join_'~ sourcetype_name ~'_'~ pipeline_name -%}
+{%- endif -%}
+
 {#- здесь перечислены параметры, которые д.б. такими же в каждом виде макроса join -#}
 {{ etlcraft[macro_name](sourcetype_name,pipeline_name,date_from,date_to,params)}}
 
 {% endmacro %}
-
