@@ -27,5 +27,4 @@ FROM test.join_utmcraft_registry_utmhashregistry
 
 ) 
 
-
   

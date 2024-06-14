@@ -10,8 +10,6 @@
 
 SELECT * REPLACE(toDate(__date, 'UTC') AS __date) 
 
-FROM normalize_adjust_events_default_network
-
-
+FROM test.normalize_adjust_events_default_network
   
     

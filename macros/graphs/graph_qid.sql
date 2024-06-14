@@ -1,7 +1,8 @@
 {%- macro graph_qid(
   params = none,
   override_target_metadata=none,
-  stage_name=none
+  stage_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -30,5 +31,8 @@ select
     qid
 from {{ ref('graph_glue') }}  -- Объединение с таблицей graph_glue
 join {{ ref('graph_lookup') }} on key_number = node_id_left  -- Соединение с таблицей graph_lookup
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

@@ -28,24 +28,10 @@ assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(appmetricaDeviceId))
 assumeNotNull(coalesce(if(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '') = '', null, hex(MD5(ifnull(nullif(upper(trim(toString(crmUserId))), ''), '')))))) as CrmUserHash
 
 
-FROM (
-
-(
-SELECT
-        toString("appmetricaDeviceId") as appmetricaDeviceId ,
-        toString("crmUserId") as crmUserId ,
-        toString("cityName") as cityName ,
-        toDateTime("__emitted_at") as __emitted_at ,
-        toString("__table_name") as __table_name ,
-        toString("__link") as __link 
-FROM test.combine_registry_appprofilematching
-)
-
-) 
+FROM test.combine_registry_appprofilematching 
 WHERE 
 
     True
 )
-
 -- SETTINGS short_circuit_function_evaluation=force_enable
 

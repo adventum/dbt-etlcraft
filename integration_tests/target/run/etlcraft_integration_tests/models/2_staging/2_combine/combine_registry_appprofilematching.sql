@@ -21,5 +21,4 @@ FROM test.join_appmetrica_registry_appprofilematching
 
 ) 
 
-
   

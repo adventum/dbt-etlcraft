@@ -13,7 +13,8 @@
     
    
     
-  
+  WITH final_query AS (
+
   
     SELECT * FROM (
 
@@ -655,5 +656,8 @@ FROM test.attr_myfirstfunnel_final_table
     splitByChar('_', __table_name)[7] = 'testaccount'
     and 
     splitByChar('_', __table_name)[6] = 'default'
-  
+  )
+SELECT *
+FROM final_query
+
   

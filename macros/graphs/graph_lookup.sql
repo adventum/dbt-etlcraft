@@ -1,7 +1,8 @@
 {%- macro graph_lookup(
   params = none,
   override_target_metadata=none,
-  stage_name=none
+  stage_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -28,5 +29,8 @@ with all_keys as
 
 {# Выборка всех ключей и присвоение им номера #}
 select *, row_number() over() as key_number from all_keys
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

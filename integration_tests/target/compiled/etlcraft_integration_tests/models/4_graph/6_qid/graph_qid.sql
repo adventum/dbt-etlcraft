@@ -16,4 +16,3 @@ join test.graph_lookup on key_number = node_id_left  -- Соединение с 
 
 
 
-

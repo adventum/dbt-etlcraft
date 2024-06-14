@@ -3,7 +3,8 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none
+  date_to = none,
+  limit0=none
   ) -%}
 
 {#- задаём части имени - pipeline это например datestat -#}
@@ -67,5 +68,8 @@
 
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM {{ source_table }} 
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

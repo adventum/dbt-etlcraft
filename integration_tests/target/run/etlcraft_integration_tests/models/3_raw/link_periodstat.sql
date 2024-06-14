@@ -9,5 +9,4 @@ SELECT campaign,SUM(cost) AS cost,periodStart,periodEnd,__emitted_at,__table_nam
 FROM test.hash_periodstat
 GROUP BY campaign, periodStart, periodEnd, __emitted_at, __table_name, __link, ManualAdCostStatHash, __id, __datetime
 
-
   

@@ -1,6 +1,7 @@
 {%- macro incremental(
     defaults_dict=etlcraft.etlcraft_defaults(), 
-    disable_incremental=False) -%}
+    disable_incremental=False,
+    limit0=none) -%}
 
 {#- задаём имя модели через имеющееся имя файла -#}
 {%- set model_name = this.name -%}
@@ -62,5 +63,8 @@ SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)
 {%- endif %} {# конец условия про наличие инкрементального поля с датой #}
 
 FROM {{ ref(table_pattern) }}
+{%- if limit0 -%}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

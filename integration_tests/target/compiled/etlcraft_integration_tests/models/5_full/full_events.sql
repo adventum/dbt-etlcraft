@@ -16,4 +16,4 @@ SELECT t1.*, link_registry_appprofilematching.*EXCEPT(__emitted_at, __table_name
 FROM t1 
 LEFT JOIN link_registry_appprofilematching USING (AppMetricaDeviceHash,CrmUserHash) 
 ) 
-SELECT COLUMNS('^[^.]+$') FROM t2
+SELECT COLUMNS('^[^.]+$') FROM t2 

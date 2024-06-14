@@ -12,7 +12,8 @@
     
    
     
-  
+  WITH final_query AS (
+
   
     SELECT * FROM (
 
@@ -546,5 +547,8 @@ FROM test.full_events
     splitByChar('_', __table_name)[7] = 'testaccount'
     and 
     splitByChar('_', __table_name)[6] = 'default'
-  
+  )
+SELECT *
+FROM final_query
+
   

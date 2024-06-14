@@ -16,6 +16,7 @@
                     tuple(toLowCardinality('CrmUserHash'), toDateTime(0),  CrmUserHash) as node_left
             from test.hash_events
             where nullIf(CrmUserHash, '') is not null
+            
             union all
         
         
@@ -27,6 +28,7 @@
                     tuple(toLowCardinality('YmClientHash'), toDateTime(0),  YmClientHash) as node_left
             from test.hash_events
             where nullIf(YmClientHash, '') is not null
+            
             union all
         
         
@@ -38,6 +40,7 @@
                     tuple(toLowCardinality('AppMetricaDeviceHash'), toDateTime(0),  AppMetricaDeviceHash) as node_left
             from test.hash_events
             where nullIf(AppMetricaDeviceHash, '') is not null
+            
     
         union all
     
@@ -50,6 +53,7 @@
                     tuple(toLowCardinality('AppMetricaDeviceHash'), toDateTime(0),  AppMetricaDeviceHash) as node_left
             from test.hash_registry_appprofilematching
             where nullIf(AppMetricaDeviceHash, '') is not null
+            
             union all
         
         
@@ -61,6 +65,7 @@
                     tuple(toLowCardinality('CrmUserHash'), toDateTime(0),  CrmUserHash) as node_left
             from test.hash_registry_appprofilematching
             where nullIf(CrmUserHash, '') is not null
+            
 
 
 

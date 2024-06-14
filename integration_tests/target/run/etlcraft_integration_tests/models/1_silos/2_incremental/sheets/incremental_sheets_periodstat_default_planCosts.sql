@@ -9,7 +9,5 @@
 
 SELECT * 
 
-FROM normalize_sheets_periodstat_default_planCosts
-
-
+FROM test.normalize_sheets_periodstat_default_planCosts
   

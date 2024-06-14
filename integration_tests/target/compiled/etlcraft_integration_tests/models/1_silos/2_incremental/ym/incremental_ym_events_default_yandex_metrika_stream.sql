@@ -3,5 +3,4 @@
 
 SELECT * REPLACE(toDate(__date, 'UTC') AS __date) 
 
-FROM normalize_ym_events_default_yandex_metrika_stream
-
+FROM test.normalize_ym_events_default_yandex_metrika_stream

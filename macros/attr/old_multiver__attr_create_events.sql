@@ -1,7 +1,8 @@
 {%- macro multiver__attr_create_events(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 
@@ -41,6 +42,9 @@ select
         __id,
         __datetime,
  from {{ ref('attr_prepare_with_qid') }}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 
 {% endmacro %}

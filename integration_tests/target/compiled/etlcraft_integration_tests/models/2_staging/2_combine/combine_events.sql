@@ -105,4 +105,3 @@ FROM test.join_ym_events
 )
 
 ) 
-

@@ -1,7 +1,8 @@
 {%- macro graph_edge(
   params = none,
   override_target_metadata=none,
-  stage_name=none
+  stage_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -41,5 +42,8 @@ with join_left as (
 select node_id_left, key_number as node_id_right, node_id_left as group_id, 1 as has_changed 
 from join_left x
 join {{ ref('graph_unique') }}  y on x.node_left = y.key_hash
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

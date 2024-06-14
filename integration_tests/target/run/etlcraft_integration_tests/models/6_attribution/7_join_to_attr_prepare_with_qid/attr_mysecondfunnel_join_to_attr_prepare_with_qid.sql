@@ -61,5 +61,4 @@ join test.attr_mysecondfunnel_create_missed_steps AS y
 
 
 
-
   

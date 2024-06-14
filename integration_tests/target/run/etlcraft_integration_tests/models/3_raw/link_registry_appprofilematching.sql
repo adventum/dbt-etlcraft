@@ -9,5 +9,4 @@ SELECT appmetricaDeviceId,crmUserId,cityName,__emitted_at,__table_name,__link,Ap
 FROM test.hash_registry_appprofilematching
 GROUP BY appmetricaDeviceId, crmUserId, cityName, __emitted_at, __table_name, __link, AppProfileMatchingHash, AppMetricaDeviceHash, CrmUserHash, __id, __datetime
 
-
   

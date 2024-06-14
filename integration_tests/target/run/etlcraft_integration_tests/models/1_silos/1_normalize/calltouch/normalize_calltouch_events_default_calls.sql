@@ -1,6 +1,6 @@
 
 
-  create view test.normalize_calltouch_events_default_calls 
+  create view test.normalize_calltouch_events_default_calls__dbt_tmp 
   
   as (
     SELECT

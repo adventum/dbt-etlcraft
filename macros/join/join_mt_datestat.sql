@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -114,7 +115,9 @@ SELECT
 FROM banners_statistics
 JOIN banners ON banners_statistics.banner_id = banners.id 
 JOIN campaigns ON banners.campaign_id = campaigns.id
-
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%-endif -%}
 {% endmacro %}

@@ -22,5 +22,4 @@ FROM test.join_sheets_periodstat
 
 ) 
 
-
   

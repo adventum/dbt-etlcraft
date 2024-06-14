@@ -73,5 +73,4 @@ join test.attr_myfirstfunnel_create_missed_steps AS y
 
 
 
-
   

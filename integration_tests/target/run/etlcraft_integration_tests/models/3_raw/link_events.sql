@@ -9,5 +9,4 @@ SELECT __date,__table_name,event_datetime,accountName,appmetricaDeviceId,mobileA
 FROM test.hash_events
 GROUP BY __date, __table_name, event_datetime, accountName, appmetricaDeviceId, mobileAdsId, crmUserId, promoCode, osName, cityName, adSourceDirty, utmSource, utmMedium, utmCampaign, utmTerm, utmContent, transactionId, utmHash, installationDeviceId, __emitted_at, __link, visitId, clientId, cityCode, AppInstallStatHash, AppEventStatHash, AppSessionStatHash, AppDeeplinkStatHash, VisitStatHash, AppMetricaDeviceHash, CrmUserHash, UtmHashHash, YmClientHash, __id, __datetime
 
-
   

@@ -1,7 +1,8 @@
 {%- macro attr_final_table(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -28,5 +29,8 @@ with
     )
     
 select * from out 
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%- endmacro %}

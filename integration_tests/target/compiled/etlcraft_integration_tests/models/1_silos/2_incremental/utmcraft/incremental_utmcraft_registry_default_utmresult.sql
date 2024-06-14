@@ -3,5 +3,4 @@
 
 SELECT * 
 
-FROM normalize_utmcraft_registry_default_utmresult
-
+FROM test.normalize_utmcraft_registry_default_utmresult

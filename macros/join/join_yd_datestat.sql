@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -76,6 +77,9 @@ SELECT
     __emitted_at,
     toLowCardinality('AdCostStat') AS __link 
 FROM cmps
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%-endif -%}
 {% endmacro %}

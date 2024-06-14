@@ -18,5 +18,4 @@ group by node_id_left
 
 
 
-
   
