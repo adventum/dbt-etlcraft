@@ -1,7 +1,8 @@
 {%- macro graph_glue(
   params = none,
   override_target_metadata=none,
-  stage_name=none
+  stage_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -26,5 +27,8 @@ select
     min(group_id) as qid
 from {{ ref('graph_edge') }}
 group by node_id_left
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

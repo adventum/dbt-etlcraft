@@ -1,7 +1,8 @@
 {%- macro graph_tuples(
   params = none,
   override_target_metadata=none,
-  stage_name=none
+  stage_name=none,
+  limit0=none
   ) -%}
 
 {# Извлекаем метаданные или используем метаданные по умолчанию #}
@@ -35,6 +36,10 @@
                     tuple(toLowCardinality('{{ col }}'), toDateTime(0),  {{ col }}) as node_left
             from {{ target.schema }}.{{ table }}
             where nullIf({{ col }}, '') is not null
+            {% if limit0 %}
+            LIMIT 0
+            {%- endif -%}
+
         {%- endset -%}
         
         {# Создаем таблицу с результатом запроса #}

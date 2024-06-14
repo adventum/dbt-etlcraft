@@ -4,10 +4,11 @@
     incremental_datetime_formula=none,
     disable_incremental_datetime_field=none,
     defaults_dict=etlcraft.etlcraft_defaults(), 
-    schema_pattern='airbyte_internal', 
+    schema_pattern=this.schema, 
     source_table=none, 
     override_target_model_name=none,
-    debug_column_names=False) -%}
+    debug_column_names=False,
+    limit0=none) -%}
 
 {#- schema_pattern=this.schema или 'airbyte_internal'-#}
 
@@ -110,6 +111,9 @@ SELECT
         toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
         NOW() AS __normalized_at
 FROM {{ source_table }}
+{%- if limit0 -%}
+LIMIT 0
+{%- endif -%}
 
 {%- endif -%} {# конец для if execute #}
 {%- endmacro -%}

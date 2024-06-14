@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -86,8 +87,10 @@ SELECT
     toUInt32(ymspageViews) AS pageViews,
     __emitted_at,
     toLowCardinality('VisitStat') AS __link 
-
 FROM events
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%-endif -%}
 {% endmacro %}

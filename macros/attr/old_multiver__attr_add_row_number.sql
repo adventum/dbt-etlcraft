@@ -1,7 +1,8 @@
 {%- macro multiver__attr_add_row_number(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 
@@ -25,5 +26,8 @@ select
     {% endfor %}
 
 from {{ ref('attr_create_events') }}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

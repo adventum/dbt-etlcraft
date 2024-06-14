@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -139,6 +140,9 @@ select
     left join ads on custom_report.AdId = ads.Id)
     
 select * except(landingPageName) from prepare
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%-endif -%}
 {% endmacro %}

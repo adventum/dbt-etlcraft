@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -35,6 +36,9 @@ SELECT
     toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('AppProfileMatching') AS __link 
 FROM {{ source_table }}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%- endif -%}
 {% endmacro %}

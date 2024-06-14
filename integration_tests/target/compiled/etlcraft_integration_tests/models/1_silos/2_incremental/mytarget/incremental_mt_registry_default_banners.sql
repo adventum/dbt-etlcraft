@@ -3,5 +3,4 @@
 
 SELECT * 
 
-FROM normalize_mt_registry_default_banners
-
+FROM test.normalize_mt_registry_default_banners

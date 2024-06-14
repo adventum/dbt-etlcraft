@@ -66,3 +66,4 @@ SELECT
     toLowCardinality('AdCostStat') AS __link 
 FROM cmps
 
+

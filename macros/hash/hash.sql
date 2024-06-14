@@ -3,7 +3,8 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none
+  date_to = none,
+  limit0=none
   ) -%}
 
 {#- ************************************************* части имени и материализация *********************************************** -#}
@@ -44,7 +45,7 @@
   {%- endif -%}
 {%- endif -%}
 
-{#- ************************************************* находим source_table *********************************************** -#}
+{#- ************************************************* находим table_pattern *********************************************** -#}
 
 {#- задаём паттерн, чтобы найти combine-таблицу нужного пайплайна -#}
 
@@ -53,13 +54,6 @@
 {%- else -%}
     {%- set table_pattern = 'combine_' ~ pipeline_name -%}
 {%- endif -%}
-
-{#- находим все таблицы, которые соответствут паттерну -#}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
-                                                              table_pattern=table_pattern) -%} 
-
-{#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
-{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
 
 {#- ************************************************* работа с metadata *********************************************** -#}
 
@@ -185,12 +179,15 @@ SELECT *,
 {#- добавляем хэши для отобранных сущностей -#}
     {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
 {% endfor -%}
-FROM {{ source_table }} 
+FROM {{ ref(table_pattern) }} 
 WHERE 
 {% for link in links_list %}
     {{ link ~ 'Hash' != ''}}{% if not loop.last %} AND {% endif -%}
 {% endfor %}
 )
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 -- SETTINGS short_circuit_function_evaluation=force_enable
 

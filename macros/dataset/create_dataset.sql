@@ -2,7 +2,8 @@
   funnel = none,
   conditions = none,
   override_target_metadata=none,
-  override_target_model_name=none
+  override_target_model_name=none,
+  limit0=none
   ) -%}
 
 {#- возможно стоит добавить pipeline в funnels из metadata -#}
@@ -43,6 +44,7 @@
 {%- set account_field = "splitByChar('_', __table_name)[7]" -%}
 
 {#- генерируем SQL-запрос для каждого condition, указанного пользователем, с нужными с условиями -#}
+WITH final_query AS (
 {% for condition in conditions %}
   {% if loop.last %}
     SELECT * FROM {{ source_table }} 
@@ -63,6 +65,11 @@
     UNION ALL
   {%- endif -%}  
 {%- endfor -%}
-
+)
+SELECT *
+FROM final_query
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

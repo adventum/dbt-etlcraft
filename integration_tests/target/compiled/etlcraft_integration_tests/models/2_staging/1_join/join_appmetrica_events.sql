@@ -411,7 +411,8 @@ FROM (
         )
 
         )
-)SELECT * 
+), final_union AS (
+SELECT * 
 FROM join_appmetrica_events_deeplinks
 UNION ALL
 SELECT * 
@@ -425,4 +426,8 @@ FROM join_appmetrica_events_screen_view
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts
+)
+SELECT *
+FROM final_union
+
 

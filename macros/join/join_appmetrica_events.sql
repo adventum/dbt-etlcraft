@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -363,7 +364,7 @@ FROM {{ source_table_sessions_starts }}
 )
 
 {#- теперь делаем  UNION записанных ранее CTE -#}
-
+, final_union AS (
 SELECT * 
 FROM join_appmetrica_events_deeplinks
 UNION ALL
@@ -378,6 +379,12 @@ FROM join_appmetrica_events_screen_view
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts
+)
+SELECT *
+FROM final_union
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%- endif -%}
 {% endmacro %}

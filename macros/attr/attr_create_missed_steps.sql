@@ -1,7 +1,8 @@
 {%- macro attr_create_missed_steps(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -70,5 +71,8 @@ select
     __if_missed,__step,
     row_number() over (partition by qid order by __datetime, __priority, __id) AS __rn
 from final
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

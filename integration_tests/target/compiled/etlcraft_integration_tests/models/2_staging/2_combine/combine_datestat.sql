@@ -92,4 +92,3 @@ FROM test.join_yd_datestat
 )
 
 ) 
-

@@ -3,7 +3,8 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none) 
+  date_to = none,
+  limit0=none) 
 -%}
 
 {#- задаём части имени - выясняем какой у нас pipeline: datestat/events/periodstat -#}
@@ -200,7 +201,9 @@ FROM t{{loop.index-1}}
 
 {%- endfor %} {# после завершения цикла берём t<кол-во имевшихся registry-таблиц> - т.е. из последнего CTE #}
 SELECT COLUMNS('^[^.]+$') FROM t{{registry_existing_tables|length}} 
-
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {#- SELECT COLUMNS('^[a-z|_][^2]')  помогало отбирать на лету все колонки по regexp - например все колонки кроме t2.<...>  -#}
 {#- SELECT COLUMNS('^[a-zA-z|_|0-9]*$') FROM отобрать все колонки, кроме тех, где есть точка 

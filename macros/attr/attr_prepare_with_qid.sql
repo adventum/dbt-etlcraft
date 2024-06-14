@@ -1,7 +1,8 @@
 {%- macro attr_prepare_with_qid(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -34,5 +35,8 @@ SELECT
 FROM {{ ref('full_events') }} AS x
 LEFT JOIN {{ ref('graph_qid') }} AS y
     USING (__datetime,__link, __id) -#}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

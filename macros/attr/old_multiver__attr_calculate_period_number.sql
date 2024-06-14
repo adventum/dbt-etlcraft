@@ -1,7 +1,8 @@
 {%- macro multiver__attr_calculate_period_number(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 select
@@ -16,5 +17,8 @@ select
     
 
 from {{ ref('attr_find_new_period') }}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

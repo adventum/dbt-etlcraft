@@ -17,5 +17,4 @@ from test.attr_mysecondfunnel_create_events
 
 
 
-
   

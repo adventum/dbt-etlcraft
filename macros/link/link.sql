@@ -3,7 +3,8 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none
+  date_to = none,
+  limit0=none
   ) 
 -%}
 
@@ -63,5 +64,8 @@ SELECT {% for c in source_columns -%}
 {%- endif %}{% if not loop.last %},{% endif %}{% endfor %} 
 FROM {{ ref(source_model_name) }}
 GROUP BY {{ group_by_fields | join(', ') }}
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

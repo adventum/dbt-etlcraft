@@ -1,7 +1,8 @@
 {%- macro attr_model(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 {%- set metadata = fromyaml(etlcraft.metadata()) -%}
@@ -83,6 +84,9 @@ SELECT
     {%  endif %} 
 {% endfor %}
 
- FROM target_count
+FROM target_count
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%- endmacro %}

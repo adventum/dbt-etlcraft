@@ -14,4 +14,4 @@ LEFT JOIN link_registry_utmhashregistry USING (UtmHashHash)
 SELECT * 
 FROM t1
 ) 
-SELECT COLUMNS('^[^.]+$') FROM t2
+SELECT COLUMNS('^[^.]+$') FROM t2 

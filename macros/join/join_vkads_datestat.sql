@@ -4,7 +4,8 @@
     relations_dict,
     date_from,
     date_to,
-    params
+    params,
+    limit0=none
     ) -%}
 
 {{ config(
@@ -83,7 +84,9 @@ SELECT
     toLowCardinality('AdCostStat') AS __link 
 FROM ad_plans
 JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
-
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {%-endif -%}
 {% endmacro %}

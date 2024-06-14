@@ -87,6 +87,6 @@ SELECT
     toUInt32(ymspageViews) AS pageViews,
     __emitted_at,
     toLowCardinality('VisitStat') AS __link 
-
 FROM events
+
 

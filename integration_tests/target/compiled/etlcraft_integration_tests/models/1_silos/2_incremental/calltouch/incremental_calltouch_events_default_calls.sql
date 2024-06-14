@@ -3,5 +3,4 @@
 
 SELECT * REPLACE(toDate(__date, 'UTC') AS __date) 
 
-FROM normalize_calltouch_events_default_calls
-
+FROM test.normalize_calltouch_events_default_calls

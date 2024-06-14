@@ -9,7 +9,5 @@
 
 SELECT * 
 
-FROM normalize_adjust_registry_default_events
-
-
+FROM test.normalize_adjust_registry_default_events
   

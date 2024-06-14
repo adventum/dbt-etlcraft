@@ -11,6 +11,7 @@ with
             using (qid, __datetime, __id, __link, __period_number, __if_missed, __priority)
     )
     
-select * from out
+select * from out 
+
 
 

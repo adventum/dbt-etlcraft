@@ -1,7 +1,8 @@
 {%- macro attr_join_to_attr_prepare_with_qid(
   params = none,
   override_target_metadata=none,
-  funnel_name=none
+  funnel_name=none,
+  limit0=none
   ) -%}
 
 {# 
@@ -74,5 +75,8 @@ END as adSourceDirty
 from {{ ref('attr_' ~funnel_name~ '_prepare_with_qid') }} AS x
 join {{ ref('attr_' ~funnel_name~ '_create_missed_steps') }} AS y
     using (qid, __datetime, __link, __id)
+{% if limit0 %}
+LIMIT 0
+{%- endif -%}
 
 {% endmacro %}

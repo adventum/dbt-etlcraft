@@ -3,7 +3,8 @@
   disable_incremental=none,
   override_target_model_name=none,
   date_from = none,
-  date_to = none
+  date_to = none,
+  limit0=none
   ) -%}
 
 {#- задаём части имени -#}
@@ -31,6 +32,8 @@
 {%- endif -%}
 
 {#- здесь перечислены параметры, которые д.б. такими же в каждом виде макроса join -#}
-{{ etlcraft[macro_name](sourcetype_name,pipeline_name,date_from,date_to,params)}}
+{{ etlcraft[macro_name](sourcetype_name,pipeline_name,date_from,date_to,params,limit0=none)}}
 
 {% endmacro %}
+
+

@@ -9,7 +9,5 @@
 
 SELECT * 
 
-FROM normalize_appmetrica_registry_default_profiles
-
-
+FROM test.normalize_appmetrica_registry_default_profiles
   
