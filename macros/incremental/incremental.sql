@@ -61,6 +61,6 @@ SELECT *
 SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)  
 {%- endif %} {# конец условия про наличие инкрементального поля с датой #}
 
-FROM {{ table_pattern }}
+FROM {{ ref(table_pattern) }}
 
 {% endmacro %}
