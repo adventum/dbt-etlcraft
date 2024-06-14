@@ -50,7 +50,11 @@
 {%- set numeric_types = ['UInt8', 'UInt16', 'UInt32', 'UInt64', 'UInt256', 
                         'Int8', 'Int16', 'Int32', 'Int64', 'Int128', 'Int256',
                         'Float8', 'Float16','Float32', 'Float64','Float128', 'Float256','Num'] -%} 
-
+{% if limit0 %}
+SELECT * 
+FROM {{ ref(source_model_name) }}
+LIMIT 0
+{% else %}
 {#- для каждой колонки таблицы, на которую будем ссылаться -#}
 SELECT {% for c in source_columns -%}
 {#- если тип данных колонки не числовой - добавляем её в список для будущей группировки -#}
@@ -64,8 +68,7 @@ SELECT {% for c in source_columns -%}
 {%- endif %}{% if not loop.last %},{% endif %}{% endfor %} 
 FROM {{ ref(source_model_name) }}
 GROUP BY {{ group_by_fields | join(', ') }}
-{% if limit0 %}
-LIMIT 0
+
 {%- endif -%}
 
 {% endmacro %}
