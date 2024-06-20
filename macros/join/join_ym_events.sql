@@ -18,8 +18,9 @@
 {%- if execute -%}
 {%- set sourcetype_name = 'ym' -%}
 {%- set pipeline_name = 'events' -%}
-{%- set stream_name = 'yandex_metrika_stream' -%}
-{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set stream_name = 'yandex_metrika_stream' -%} {# но может быть и иное название стрима, например, data_visits #}
+{# set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_' ~ stream_name ~ '$' #}
+{%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_'  -%}
 {%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
 {%- if not relations -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". 
