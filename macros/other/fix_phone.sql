@@ -1,8 +1,8 @@
-{%- macro check_phone_decimal(
+{%- macro fix_phone_decimal(
     field_name
 ) -%}
 
-{#- это вспомогательный макрос для макроса check_phone, здесь мы: -#}
+{#- это вспомогательный макрос для макроса fix_phone, здесь мы: -#}
 {#- заменяем все нечисловые символы на пустоту -#}
 {#- заменяем 9 одинаковых вхождений любой цифры на пустоту - чтобы убрать значения наподобие 7000000000 -#}
 
@@ -12,32 +12,32 @@ replaceRegexpAll(
 
 {%- endmacro -%}
 
-{%- macro check_phone(
+{%- macro fix_phone(
     field_name
 ) -%}
 
 {#- логика этого макроса -#}
 {#- сначала мы делаем предобработку значений в переданном столбце -#}
-{#- при помощи вспомогательного макроса check_phone_decimal -#}
+{#- при помощи вспомогательного макроса fix_phone_decimal -#}
 {#- затем мы проверяем условия → макрос действует по-разному для различных условий -#}
 
 {#- если после предобработки длина значения равна 10 цифрам -#}
 {#- то мы оставляем такое значение с предобработкой + к началу добавляем цифру 7 -#}
 CASE  
-WHEN length({{etlcraft.check_phone_decimal(field_name)}}) = 10 
-THEN concat('7', {{etlcraft.check_phone_decimal(field_name)}})
+WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 10 
+THEN concat('7', {{etlcraft.fix_phone_decimal(field_name)}})
 
 {#- если после предобработки длина значения равна 11 цифрам  и начинается с цифры 7 -#}
 {#- то мы оставляем такое значение с предобработкой и больше ничего с ним не делаем -#}
-WHEN length({{etlcraft.check_phone_decimal(field_name)}}) = 11 
-AND startsWith({{etlcraft.check_phone_decimal(field_name)}},'7')
-THEN {{etlcraft.check_phone_decimal(field_name)}}
+WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 11 
+AND startsWith({{etlcraft.fix_phone_decimal(field_name)}},'7')
+THEN {{etlcraft.fix_phone_decimal(field_name)}}
 
 {#- если после предобработки длина значения равна 11 цифрам  и начинается с цифры 8 -#}
 {#- то мы оставляем такое значение с предобработкой + заменяем начальную цифру 8 на 7 -#}
-WHEN length({{etlcraft.check_phone_decimal(field_name)}}) = 11 
-AND startsWith({{etlcraft.check_phone_decimal(field_name)}},'8')
-THEN replaceOne({{etlcraft.check_phone_decimal(field_name)}}, '8', '7')
+WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 11 
+AND startsWith({{etlcraft.fix_phone_decimal(field_name)}},'8')
+THEN replaceOne({{etlcraft.fix_phone_decimal(field_name)}}, '8', '7')
 
 {#- в остальных случаях вместо значения будет пустота -#}
 ELSE '' 
