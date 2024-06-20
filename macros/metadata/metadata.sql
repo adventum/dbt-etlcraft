@@ -45,9 +45,16 @@ entities:
   City:
     keys:
     - name: cityName
+  AppMetricaDevice:
+    glue: yes
+    keys:
+    - name: appmetricaDeviceId
   MobileAdsId:
     keys:
     - name: mobileAdsId
+  AppMetricaDeviceId:
+    keys:
+    - name: appmetricaDeviceId
   OsName:
     keys:
     - name: osName
@@ -57,6 +64,10 @@ entities:
   Transaction:
     keys:
     - name: transactionId
+  AppSession:
+    keys:
+    {# - name: appSessionId #}
+    - name: installationDeviceId
   PeriodStart:
     keys:
     - name: periodStart
@@ -103,12 +114,68 @@ links:
     - CityCode
     - AdSource
     - UtmParams
-
+  AppInstallStat:
+    pipeline: events
+    datetime_field: event_datetime
+    keys:
+    - name: event_datetime
+    main_entities:
+    - Account
+    - AppMetricaDevice
+    - MobileAdsId
+    - CrmUser
+    - OsName
+    - City
+    - AdSource
+    - UtmParams 
+    - UtmHash
+  AppEventStat:
+    pipeline: events
+    datetime_field: event_datetime
+    keys:
+    - name: event_datetime
+    main_entities:
+    - Account
+    - AppMetricaDevice
+    - MobileAdsId
+    - CrmUser
+    - Transaction
+    - PromoCode
+    - OsName
+    - City
+  AppSessionStat:
+    pipeline: events
+    datetime_field: event_datetime
+    keys:
+    - name: event_datetime
+    main_entities:
+    - Account
+    - AppSession
+    - AppMetricaDevice
+    - MobileAdsId
+    - CrmUser
+    - OsName
+    - City
+  AppDeeplinkStat:
+    pipeline: events
+    datetime_field: event_datetime
+    keys:
+    - name: event_datetime
+    main_entities:
+    - Account
+    - AppMetricaDevice
+    - MobileAdsId
+    - CrmUser
+    - OsName
+    - City
+    - AdSource
+    - UtmParams  
+    - UtmHash
   VisitStat:
     pipeline: events
-    datetime_field: __date 
+    datetime_field: event_datetime {# __date #}
     keys:
-    - name: __date
+    - name: event_datetime
     main_entities: 
     - Visit
     other_entities:
@@ -120,14 +187,28 @@ links:
     - AdSource
     - UtmParams  
     - UtmHash
-
+  AppProfileMatching:
+    pipeline: registry
+    {# datetime_field: toDateTime(0) #}
+    keys:
+    {# - name: toDateTime(0) #}
+    main_entities: 
+    - AppMetricaDevice
+    - CrmUser
 glue_models:
   hash_events:
     datetime_field: __datetime
     cols:
+    - AppEventStatHash
     - CrmUserHash
     - YmClientHash
-
+    - AppMetricaDeviceHash
+  hash_registry_appprofilematching:
+    datetime_field: toDateTime(0)
+    cols:
+    - AppProfileMatchingHash
+    - AppMetricaDeviceHash
+    - CrmUserHash
 steps:
   visits_step:
       - link: VisitStat
@@ -220,6 +301,7 @@ datasets:
   event_table:
     pipelines: events
     sources:
+    - appmetrica
     - ym
     preset: default
     accounts:
@@ -228,6 +310,7 @@ datasets:
   cost_table:
     pipelines: datestat
     sources:
+    - appmetrica
     - ym
     preset: default
     accounts:
