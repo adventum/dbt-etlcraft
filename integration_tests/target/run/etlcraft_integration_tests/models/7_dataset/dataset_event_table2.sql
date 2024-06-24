@@ -3,7 +3,7 @@
     
     
         
-        insert into test.dataset_event_table2__dbt_backup ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "UtmHashRegistryHash", "event_datetime", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "transactionId", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "visitId", "clientId", "cityCode", "pageViews", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "VisitStatHash", "AppMetricaDeviceHash", "CrmUserHash", "YmClientHash", "qid", "AppProfileMatchingHash")
+        insert into test.dataset_event_table2__dbt_backup ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link", "adGroupName", "adPhraseId", "AdCostStatHash", "UtmHashHash", "__id", "__datetime", "utm_base_url", "utm_utmSource", "utm_utmMedium", "utm_utmCampaign", "utm_project", "utm_utmContent", "utm_strategy", "utm_audience", "UtmHashRegistryHash", "event_datetime", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "transactionId", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "visitId", "clientId", "cityCode", "pageViews", "VisitStatHash", "AppInstallStatHash", "AppEventStatHash", "AppSessionStatHash", "AppDeeplinkStatHash", "YmClientHash", "AppMetricaDeviceHash", "CrmUserHash", "qid", "AppProfileMatchingHash")
   -- depends_on: test.full_datestat
 -- depends_on: test.attr_myfirstfunnel_final_table
 
@@ -86,14 +86,14 @@ SELECT
         toString('') as clientId ,
         toString('') as cityCode ,
         toUInt64(0) as pageViews ,
+        toString('') as VisitStatHash ,
         toString('') as AppInstallStatHash ,
         toString('') as AppEventStatHash ,
         toString('') as AppSessionStatHash ,
         toString('') as AppDeeplinkStatHash ,
-        toString('') as VisitStatHash ,
+        toString('') as YmClientHash ,
         toString('') as AppMetricaDeviceHash ,
         toString('') as CrmUserHash ,
-        toString('') as YmClientHash ,
         toUInt64(0) as qid ,
         toString('') as AppProfileMatchingHash 
 FROM test.full_datestat
@@ -171,14 +171,14 @@ SELECT
         toString("clientId") as clientId ,
         toString("cityCode") as cityCode ,
         toUInt64("pageViews") as pageViews ,
+        toString("VisitStatHash") as VisitStatHash ,
         toString("AppInstallStatHash") as AppInstallStatHash ,
         toString("AppEventStatHash") as AppEventStatHash ,
         toString("AppSessionStatHash") as AppSessionStatHash ,
         toString("AppDeeplinkStatHash") as AppDeeplinkStatHash ,
-        toString("VisitStatHash") as VisitStatHash ,
+        toString("YmClientHash") as YmClientHash ,
         toString("AppMetricaDeviceHash") as AppMetricaDeviceHash ,
         toString("CrmUserHash") as CrmUserHash ,
-        toString("YmClientHash") as YmClientHash ,
         toUInt64("qid") as qid ,
         toString("AppProfileMatchingHash") as AppProfileMatchingHash 
 FROM test.full_events
@@ -264,14 +264,14 @@ SELECT
         toString('') as clientId ,
         toString('') as cityCode ,
         toUInt64(0) as pageViews ,
+        toString('') as VisitStatHash ,
         toString('') as AppInstallStatHash ,
         toString('') as AppEventStatHash ,
         toString('') as AppSessionStatHash ,
         toString('') as AppDeeplinkStatHash ,
-        toString('') as VisitStatHash ,
+        toString('') as YmClientHash ,
         toString('') as AppMetricaDeviceHash ,
         toString('') as CrmUserHash ,
-        toString('') as YmClientHash ,
         toUInt64(0) as qid ,
         toString('') as AppProfileMatchingHash 
 FROM test.full_datestat
@@ -349,14 +349,14 @@ SELECT
         toString("clientId") as clientId ,
         toString("cityCode") as cityCode ,
         toUInt64("pageViews") as pageViews ,
+        toString("VisitStatHash") as VisitStatHash ,
         toString("AppInstallStatHash") as AppInstallStatHash ,
         toString("AppEventStatHash") as AppEventStatHash ,
         toString("AppSessionStatHash") as AppSessionStatHash ,
         toString("AppDeeplinkStatHash") as AppDeeplinkStatHash ,
-        toString("VisitStatHash") as VisitStatHash ,
+        toString("YmClientHash") as YmClientHash ,
         toString("AppMetricaDeviceHash") as AppMetricaDeviceHash ,
         toString("CrmUserHash") as CrmUserHash ,
-        toString("YmClientHash") as YmClientHash ,
         toUInt64("qid") as qid ,
         toString("AppProfileMatchingHash") as AppProfileMatchingHash 
 FROM test.full_events
@@ -442,14 +442,14 @@ SELECT
         toString('') as clientId ,
         toString('') as cityCode ,
         toUInt64(0) as pageViews ,
+        toString('') as VisitStatHash ,
         toString('') as AppInstallStatHash ,
         toString('') as AppEventStatHash ,
         toString('') as AppSessionStatHash ,
         toString('') as AppDeeplinkStatHash ,
-        toString('') as VisitStatHash ,
+        toString('') as YmClientHash ,
         toString('') as AppMetricaDeviceHash ,
         toString('') as CrmUserHash ,
-        toString('') as YmClientHash ,
         toUInt64(0) as qid ,
         toString('') as AppProfileMatchingHash 
 FROM test.full_datestat
@@ -527,14 +527,14 @@ SELECT
         toString("clientId") as clientId ,
         toString("cityCode") as cityCode ,
         toUInt64("pageViews") as pageViews ,
+        toString("VisitStatHash") as VisitStatHash ,
         toString("AppInstallStatHash") as AppInstallStatHash ,
         toString("AppEventStatHash") as AppEventStatHash ,
         toString("AppSessionStatHash") as AppSessionStatHash ,
         toString("AppDeeplinkStatHash") as AppDeeplinkStatHash ,
-        toString("VisitStatHash") as VisitStatHash ,
+        toString("YmClientHash") as YmClientHash ,
         toString("AppMetricaDeviceHash") as AppMetricaDeviceHash ,
         toString("CrmUserHash") as CrmUserHash ,
-        toString("YmClientHash") as YmClientHash ,
         toUInt64("qid") as qid ,
         toString("AppProfileMatchingHash") as AppProfileMatchingHash 
 FROM test.full_events

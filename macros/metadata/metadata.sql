@@ -1,4 +1,5 @@
-{%- macro metadata() -%}
+{%- macro metadata(features = etlcraft.get_features()) -%}
+
 entities:
   Account:
     keys:
@@ -15,7 +16,7 @@ entities:
     - name: utmMedium
     - name: utmCampaign
     - name: utmTerm
-    - name: utmContent
+    - name: utmContent    
   UtmHash:
     keys:
     - name: utmHash
@@ -45,16 +46,9 @@ entities:
   City:
     keys:
     - name: cityName
-  AppMetricaDevice:
-    glue: yes
-    keys:
-    - name: appmetricaDeviceId
   MobileAdsId:
     keys:
     - name: mobileAdsId
-  AppMetricaDeviceId:
-    keys:
-    - name: appmetricaDeviceId
   OsName:
     keys:
     - name: osName
@@ -64,16 +58,25 @@ entities:
   Transaction:
     keys:
     - name: transactionId
-  AppSession:
-    keys:
-    {# - name: appSessionId #}
-    - name: installationDeviceId
   PeriodStart:
     keys:
     - name: periodStart
   PeriodEnd:
     keys:
     - name: periodEnd
+{% if 'appmetrica' in features %}
+  AppMetricaDevice:
+    glue: yes
+    keys:
+    - name: appmetricaDeviceId
+  AppMetricaDeviceId:
+    keys:
+    - name: appmetricaDeviceId
+  AppSession:
+    keys:
+    {# - name: appSessionId #}
+    - name: installationDeviceId
+{% endif %}
 links: 
   ManualAdCostStat:
     pipeline: periodstat
@@ -114,6 +117,23 @@ links:
     - CityCode
     - AdSource
     - UtmParams
+  VisitStat:
+    pipeline: events
+    datetime_field: event_datetime {# __date #}
+    keys:
+    - name: event_datetime
+    main_entities: 
+    - Visit
+    other_entities:
+    - Account 
+    - YmClient
+    - PromoCode
+    - OsName
+    - City
+    - AdSource
+    - UtmParams  
+    - UtmHash
+{% if 'appmetrica' in features %}
   AppInstallStat:
     pipeline: events
     datetime_field: event_datetime
@@ -171,22 +191,6 @@ links:
     - AdSource
     - UtmParams  
     - UtmHash
-  VisitStat:
-    pipeline: events
-    datetime_field: event_datetime {# __date #}
-    keys:
-    - name: event_datetime
-    main_entities: 
-    - Visit
-    other_entities:
-    - Account 
-    - YmClient
-    - PromoCode
-    - OsName
-    - City
-    - AdSource
-    - UtmParams  
-    - UtmHash
   AppProfileMatching:
     pipeline: registry
     {# datetime_field: toDateTime(0) #}
@@ -195,6 +199,8 @@ links:
     main_entities: 
     - AppMetricaDevice
     - CrmUser
+{% endif %}
+
 glue_models:
   hash_events:
     datetime_field: __datetime
@@ -203,12 +209,15 @@ glue_models:
     - CrmUserHash
     - YmClientHash
     - AppMetricaDeviceHash
+{% if 'appmetrica' in features %}    
   hash_registry_appprofilematching:
     datetime_field: toDateTime(0)
     cols:
     - AppProfileMatchingHash
     - AppMetricaDeviceHash
     - CrmUserHash
+{% endif %}
+
 steps:
   visits_step:
       - link: VisitStat
