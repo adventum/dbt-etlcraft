@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_vkads_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_vkads_datestat__dbt_new_data_6b731b6a_9717_429e_b532_9ae47a2855c8 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "__emitted_at", "__link")
   -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
 -- depends_on: test.incremental_vkads_registry_default_ad_plans
                                                              
@@ -98,6 +98,11 @@ SELECT
     toFloat64(JSONExtractString(ad_plans_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'clicks')) AS clicks,
+    '' AS utmSource,
+    '' AS utmMedium,
+    '' AS utmCampaign,
+    '' AS utmTerm,
+    '' AS utmContent,
     ad_plans.__emitted_at AS __emitted_at,
     toLowCardinality('AdCostStat') AS __link 
 FROM ad_plans
@@ -106,4 +111,4 @@ JOIN ad_plans_statistics ON ad_plans.id = ad_plans_statistics.ad_plan_id
 
 
   
-    
+      

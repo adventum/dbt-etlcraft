@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_yd_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_yd_datestat__dbt_new_data_6b731b6a_9717_429e_b532_9ae47a2855c8 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_yd_datestat_default_custom_report
                                                              
   
@@ -56,11 +56,11 @@ SELECT
     CampaignType AS adGroupName,
     CampaignId AS adId,
     '' AS adPhraseId,
-    --'' AS utmSource,
-    --'' AS utmMedium,
-    --'' AS utmCampaign,
-    --'' AS utmTerm,
-    --'' AS utmContent,
+    '' AS utmSource,
+    '' AS utmMedium,
+    '' AS utmCampaign,
+    '' AS utmTerm,
+    '' AS utmContent,
     arrayElement(splitByChar('~', CampaignName), 2) AS utmHash,
     --'' AS adTitle1,
     --'' AS adTitle2,
@@ -76,4 +76,4 @@ FROM cmps
 
 
   
-    
+      

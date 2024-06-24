@@ -91,6 +91,11 @@ SELECT
     toFloat64(JSONExtractString(ad_plans_statistics.base, 'spent'))* 1.2 AS adCost,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'shows')) AS impressions,
     toInt32(JSONExtractString(ad_plans_statistics.base, 'clicks')) AS clicks,
+    '' AS utmSource,
+    '' AS utmMedium,
+    '' AS utmCampaign,
+    '' AS utmTerm,
+    '' AS utmContent,
     ad_plans.__emitted_at AS __emitted_at,
     toLowCardinality('AdCostStat') AS __link 
 FROM ad_plans
