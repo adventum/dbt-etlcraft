@@ -119,9 +119,9 @@ links:
     - UtmParams
   VisitStat:
     pipeline: events
-    datetime_field: event_datetime {# __date #}
+    datetime_field: __date {# event_datetime #}
     keys:
-    - name: event_datetime
+    - name: __date
     main_entities: 
     - Visit
     other_entities:
