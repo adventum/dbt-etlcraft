@@ -205,11 +205,11 @@ glue_models:
   hash_events:
     datetime_field: __datetime
     cols:
-    - AppEventStatHash
     - CrmUserHash
     - YmClientHash
-    - AppMetricaDeviceHash
-{% if 'appmetrica' in features %}    
+{% if 'appmetrica' in features %} 
+    - AppEventStatHash
+    - AppMetricaDeviceHash   
   hash_registry_appprofilematching:
     datetime_field: toDateTime(0)
     cols:
@@ -310,7 +310,9 @@ datasets:
   event_table:
     pipelines: events
     sources:
+{% if 'appmetrica' in features %} 
     - appmetrica
+{% endif %}
     - ym
     preset: default
     accounts:
@@ -319,7 +321,9 @@ datasets:
   cost_table:
     pipelines: datestat
     sources:
+{% if 'appmetrica' in features %} 
     - appmetrica
+{% endif %}
     - ym
     preset: default
     accounts:
