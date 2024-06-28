@@ -10,7 +10,7 @@
         select distinct
             table_schema as {{ adapter.quote("table_schema") }},
             table_name as {{ adapter.quote("table_name") }},
-            {{ dbt_utils.get_table_types_sql() }}
+            {{ etlcraft.get_table_types_sql() }}
         from information_schema.tables
         where match(table_schema, '{{ schema_pattern }}')
         and match(table_name, '{{ table_pattern }}')        
