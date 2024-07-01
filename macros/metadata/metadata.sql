@@ -119,7 +119,7 @@ links:
     - UtmParams
   VisitStat:
     pipeline: events
-    datetime_field: __date {# event_datetime #}
+    datetime_field: __date {# с event_datetime без appmetrica выдает ошибку #}
     keys:
     - name: __date
     main_entities: 

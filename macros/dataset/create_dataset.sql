@@ -39,9 +39,14 @@
 }}
 
 {#- задаём переменные для дальнейшего прописывания условий -#}
-{%- set source_field = "splitByChar('_', __table_name)[4]" -%}
-{%- set preset_field = "splitByChar('_', __table_name)[6]" -%}
-{%- set account_field = "splitByChar('_', __table_name)[7]" -%}
+{#- __table_name это поле, где указаны сырые данные, например: -#}
+{#- datacraft_clientname_raw__stream_appmetrica_default_accountid_events -#}
+{#- чтобы всё работало, в вызове модели account должен совпадать account_field -#}
+{#- и должны совпадать source_field, preset_field -#}
+{#- для этого сверяем здесь отсчёт - как делится актуальный __table_name на куски по разделителю - отсчёт начинаем с 1 -#}
+{%- set source_field = "splitByChar('_', __table_name)[6]" -%}
+{%- set account_field = "splitByChar('_', __table_name)[8]" -%}
+{%- set preset_field = "splitByChar('_', __table_name)[7]" -%}
 
 {#- генерируем SQL-запрос для каждого condition, указанного пользователем, с нужными с условиями -#}
 WITH final_query AS (
