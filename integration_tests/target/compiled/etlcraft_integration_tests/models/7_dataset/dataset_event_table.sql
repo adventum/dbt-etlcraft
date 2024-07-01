@@ -2,7 +2,6 @@
 -- depends_on: test.attr_myfirstfunnel_final_table
 
 
-
    
     
    
@@ -217,11 +216,11 @@ FROM test.attr_myfirstfunnel_final_table
 
 ) 
     WHERE 
-    splitByChar('_', __table_name)[4] = 'yd'
+    splitByChar('_', __table_name)[6] = 'yd'
     and 
-    splitByChar('_', __table_name)[7] = 'testaccount'
+    splitByChar('_', __table_name)[8] = 'accountid'
     and 
-    splitByChar('_', __table_name)[6] = 'default'
+    splitByChar('_', __table_name)[7] = 'default'
     UNION ALL
   
     SELECT * FROM (
@@ -431,11 +430,11 @@ FROM test.attr_myfirstfunnel_final_table
 
 ) 
     WHERE 
-    splitByChar('_', __table_name)[4] = 'appmetrica'
+    splitByChar('_', __table_name)[6] = 'appmetrica'
     and 
-    splitByChar('_', __table_name)[7] = 'testaccount'
+    splitByChar('_', __table_name)[8] = 'accountid'
     and 
-    splitByChar('_', __table_name)[6] = 'default'
+    splitByChar('_', __table_name)[7] = 'default'
     UNION ALL
   
     SELECT * FROM (
@@ -645,11 +644,11 @@ FROM test.attr_myfirstfunnel_final_table
 
 ) 
     WHERE 
-    splitByChar('_', __table_name)[4] = 'ym'
+    splitByChar('_', __table_name)[6] = 'ym'
     and 
-    splitByChar('_', __table_name)[7] = 'testaccount'
+    splitByChar('_', __table_name)[8] = 'accountid'
     and 
-    splitByChar('_', __table_name)[6] = 'default'
+    splitByChar('_', __table_name)[7] = 'default'
   )
 SELECT *
 FROM final_query

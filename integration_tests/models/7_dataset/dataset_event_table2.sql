@@ -5,19 +5,19 @@
     [{
     'pipeline':'datestat', 
     'source': 'yd',
-    'account': 'testaccount',
+    'account': 'accountid',
     'preset': 'default'
     },
     {
     'pipeline': 'events', 
     'source': 'appmetrica',
-    'account': 'testaccount',
+    'account': 'accountid',
     'preset': 'default'
     },
     {
     'pipeline':'events', 
     'source': 'ym',
-    'account': 'testaccount',
+    'account': 'accountid',
     'preset': 'default'
     }
      ]

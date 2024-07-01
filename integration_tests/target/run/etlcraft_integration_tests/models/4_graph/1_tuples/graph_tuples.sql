@@ -13,9 +13,9 @@
         
             select
                     tuple(toLowCardinality(__link), __datetime,  __id) as hash,
-                    tuple(toLowCardinality('CrmUserHash'), toDateTime(0),  CrmUserHash) as node_left
+                    tuple(toLowCardinality('YmClientHash'), toDateTime(0),  YmClientHash) as node_left
             from test.hash_events
-            where nullIf(CrmUserHash, '') is not null
+            where nullIf(YmClientHash, '') is not null
             
             union all
         
@@ -25,9 +25,9 @@
         
             select
                     tuple(toLowCardinality(__link), __datetime,  __id) as hash,
-                    tuple(toLowCardinality('YmClientHash'), toDateTime(0),  YmClientHash) as node_left
+                    tuple(toLowCardinality('AppEventStatHash'), toDateTime(0),  AppEventStatHash) as node_left
             from test.hash_events
-            where nullIf(YmClientHash, '') is not null
+            where nullIf(AppEventStatHash, '') is not null
             
             union all
         
