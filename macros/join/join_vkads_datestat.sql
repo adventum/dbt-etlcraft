@@ -72,7 +72,7 @@ SELECT * FROM {{ source_table_ad_plans }}
 SELECT
     toDate(ad_plans_statistics.__date) AS __date,
     toLowCardinality('*') AS reportType,
-    toLowCardinality(splitByChar('_', ad_plans.__table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', ad_plans.__table_name)[8]) AS accountName,
     toLowCardinality(ad_plans.__table_name) AS __table_name,
     'VK Ads' AS adSourceDirty,
     ad_plans.name AS adCampaignName,

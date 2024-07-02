@@ -88,7 +88,7 @@ SELECT * FROM {{ source_table_campaigns }}
 SELECT 
     toDate(banners_statistics.__date) AS __date,
     toLowCardinality('*') AS reportType,  
-    toLowCardinality(splitByChar('_', banners_statistics.__table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', banners_statistics.__table_name)[8]) AS accountName,
     toLowCardinality(banners_statistics.__table_name) AS __table_name,
     'MyTarget' AS adSourceDirty,
     --'' AS productName,
