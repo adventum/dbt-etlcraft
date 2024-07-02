@@ -104,7 +104,7 @@ select
         custom_report.__table_name as __table_name,
         toDate(custom_report.Date) as adCostDate,
         toLowCardinality('*') as reportType,
-        toLowCardinality(splitByChar('_', custom_report.__table_name)[5]) as accountName,
+        toLowCardinality(splitByChar('_', custom_report.__table_name)[8]) as accountName,
         'Yandex Direct Ads' as adSourceDirty,
         trim(normalizeUTF8NFKC(custom_report.CampaignName)) as adCampaignName,
         ads.Status as adCampaignStatus,
