@@ -41,7 +41,7 @@ WHERE toDate(__date) BETWEEN '2024-02-15' AND '2024-02-28')
 SELECT  
     toDate(__date) AS __date,
     toLowCardinality('*') AS reportType, 
-    toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     'Yandex Direct Ads' AS adSourceDirty,
     --'' AS productName,
