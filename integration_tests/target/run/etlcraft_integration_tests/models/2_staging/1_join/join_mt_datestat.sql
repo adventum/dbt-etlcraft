@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_mt_datestat__dbt_new_data_0aa9aeaf_5cd9_435f_8908_a9af65d9d477 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_mt_datestat__dbt_new_data_ad331357_6a84_4c95_8464_974832726b93 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_mt_datestat_default_banners_statistics
 -- depends_on: test.incremental_mt_registry_default_banners
 -- depends_on: test.incremental_mt_registry_default_campaigns
@@ -97,7 +97,7 @@ SELECT * FROM (
 SELECT 
     toDate(banners_statistics.__date) AS __date,
     toLowCardinality('*') AS reportType,  
-    toLowCardinality(splitByChar('_', banners_statistics.__table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', banners_statistics.__table_name)[8]) AS accountName,
     toLowCardinality(banners_statistics.__table_name) AS __table_name,
     'MyTarget' AS adSourceDirty,
     --'' AS productName,

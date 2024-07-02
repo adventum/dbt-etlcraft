@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_yd_datestat__dbt_new_data_0aa9aeaf_5cd9_435f_8908_a9af65d9d477 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_yd_datestat__dbt_new_data_ad331357_6a84_4c95_8464_974832726b93 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_yd_datestat_default_custom_report
                                                              
   
@@ -48,7 +48,7 @@ WHERE toDate(__date) BETWEEN '2024-02-15' AND '2024-02-28')
 SELECT  
     toDate(__date) AS __date,
     toLowCardinality('*') AS reportType, 
-    toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     'Yandex Direct Ads' AS adSourceDirty,
     --'' AS productName,

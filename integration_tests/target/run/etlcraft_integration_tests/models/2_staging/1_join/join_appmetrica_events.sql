@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_appmetrica_events__dbt_new_data_0aa9aeaf_5cd9_435f_8908_a9af65d9d477 ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link")
+        insert into test.join_appmetrica_events__dbt_new_data_ad331357_6a84_4c95_8464_974832726b93 ("__date", "__table_name", "event_datetime", "accountName", "appmetricaDeviceId", "mobileAdsId", "crmUserId", "promoCode", "osName", "cityName", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "amountSales", "registrationCardSessions", "registrationButtonClick", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "instantDiscountActivationSessions", "couponActivationSessions", "participationInLotterySessions", "pagesViews", "screenView", "installApp", "installs", "installationDeviceId", "__emitted_at", "__link")
   -- depends_on: test.incremental_appmetrica_events_default_deeplinks
 -- depends_on: test.incremental_appmetrica_events_default_events
 -- depends_on: test.incremental_appmetrica_events_default_installations
@@ -15,7 +15,7 @@ SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
     toDateTime(event_receive_datetime) AS event_datetime,
-    toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
@@ -85,7 +85,7 @@ FROM (
 ), union_events AS (
 SELECT
     __emitted_at,
-    splitByChar('_', __table_name)[6] AS accountName,
+    splitByChar('_', __table_name)[8] AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     city AS cityName,
     event_name AS eventName,
@@ -209,7 +209,7 @@ SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
     toDateTime(install_receive_datetime) AS event_datetime, 
-    toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
@@ -352,7 +352,7 @@ SELECT
     toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
     toDateTime(session_start_receive_datetime) AS event_datetime, 
-    toLowCardinality(splitByChar('_', __table_name)[6]) AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     profile_id AS crmUserId,
