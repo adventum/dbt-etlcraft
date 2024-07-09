@@ -19,7 +19,7 @@
 {# 
     Извлечение метаданных и шагов воронки для формирования событий.
 #}
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set funnels = metadata['funnels'] -%}
 {%- set step_name_list = funnels[funnel_name].steps -%}
 {%- set steps = metadata['steps'] -%}
