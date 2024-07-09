@@ -44,7 +44,7 @@
 {#- ************************************* отбор возможных и существующих таблиц registry ************************************* -#}
 
 {#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set links_list = [] -%}
 {%- set registry_possible_tables = [] -%}
 {%- set links = metadata['links'] -%}

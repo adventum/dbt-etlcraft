@@ -6,7 +6,7 @@
   ) -%}
 
 {# Извлекаем метаданные или используем метаданные по умолчанию #}
-{%- set metadata_dict = fromyaml(override_target_metadata or etlcraft.metadata()) -%}
+{%- set metadata_dict = fromyaml(override_target_metadata or etlcraft.metadata(override_target_metadata)) -%}
 {# Получаем модели склейки из метаданных #}
 {%- set glue_models = metadata_dict['glue_models'] -%}
 

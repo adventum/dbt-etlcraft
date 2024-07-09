@@ -59,7 +59,7 @@
 {#- ************************************************* работа с metadata *********************************************** -#}
 
 {#- задаём список всех линков -#}
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set links = metadata['links'] -%}
 {#- задаём списки, куда будем отбирать линки и сущности -#}
 {%- set links_list = [] -%}

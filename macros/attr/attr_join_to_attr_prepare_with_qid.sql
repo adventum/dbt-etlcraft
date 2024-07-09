@@ -8,7 +8,7 @@
 {# 
     Извлечение метаданных для определения типов моделей и их приоритетов.
 #}
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set funnels = metadata['funnels'] -%}
 {%- set attribution_models = metadata['attribution_models'] -%}
 {%- set model_list = funnels[funnel_name].models -%}
