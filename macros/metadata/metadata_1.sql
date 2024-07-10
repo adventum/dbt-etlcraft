@@ -1,4 +1,4 @@
-{%- macro metadata_1(features = etlcraft.get_features()) -%}
+{%- macro metadata_1(features) -%}
 
 entities:
   Account:
