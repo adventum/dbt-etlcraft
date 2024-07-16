@@ -1,4 +1,4 @@
-{%- macro metadata(override_target_metadata=none, vars=none) -%}
+{%- macro metadata(override_target_metadata=none) -%}
 
 {#- в этом макросе мы определяем, какая версия метадаты будет использоваться -#}
 
@@ -8,8 +8,8 @@
     {{ etlcraft[override_target_metadata](features = etlcraft.get_features()) }}
 
 {#- либо используется та метадата, название которой передаётся в Aiflow при запуске dbt run c vars -#}
-{%- elif vars -%}
-    {{ etlcraft['{{ var("override_target_metadata") }}'](features = etlcraft.get_features()) }}
+{%- elif not override_target_metadata -%}
+    {{ etlcraft[var("override_target_metadata")](features = etlcraft.get_features()) }}
 
 {#- либо, если ничего нигде не передаётся, то используется последняя версия метадаты -#}
 {%- else -%} 
