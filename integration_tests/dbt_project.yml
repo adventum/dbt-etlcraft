@@ -31,4 +31,4 @@ dispatch:
 
 
 vars:
-  override_target_metadata: metadata_1
+  metadata_name: metadata_1
