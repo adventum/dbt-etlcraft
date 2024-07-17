@@ -104,16 +104,30 @@
     {{ exceptions.raise_compiler_error('Normalize returned empty column list') }}
 {%- endif -%}
 
-{#- это самое важное - что мы видим в модели - SELECT итогового списка полей + технические поля из Airbyte -#}
+{#- в разных версиях Airbyte поле называется: _airbyte_extracted_at или _airbyte_emitted_at -#}
+{#- поэтому делаем проверку и условие - чтобы макрос работал с обоими вариантами -#}
+{% set is_airbyte_extracted_at %}
+SELECT _airbyte_extracted_at
+FROM {{ source_table }}
+LIMIT 1
+{% endset %}
+{% set result_extracted_at = run_query(is_airbyte_extracted_at) %}
+
+{#- это самое важное - что мы видим в модели - SELECT итогового списка полей + технические поля -#}
 SELECT
         {{ column_list | join(', \n        ') }},
         toLowCardinality(_dbt_source_relation) AS __table_name,  
+    {%- if result_extracted_at %}
         toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+    {%- else -%}
+        toDateTime32(substring(toString(_airbyte_emitted_at), 1, 19)) AS __emitted_at, 
+    {%- endif %}
         NOW() AS __normalized_at
 FROM {{ source_table }}
 {%- if limit0 -%}
 LIMIT 0
 {%- endif -%}
+
 
 {%- endif -%} {# конец для if execute #}
 {%- endmacro -%}
