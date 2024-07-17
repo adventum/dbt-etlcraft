@@ -64,8 +64,8 @@
         JSONExtractString(_airbyte_data, 'waitingConnect') AS waitingConnect, 
         JSONExtractString(_airbyte_data, 'yaClientId') AS yaClientId, 
         JSONExtractString(_airbyte_data, 'yandexDirect') AS yandexDirect,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

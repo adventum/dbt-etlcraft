@@ -5,8 +5,8 @@ SELECT
         JSONExtractString(_airbyte_data, 'id') AS id, 
         JSONExtractString(_airbyte_data, 'textblocks') AS textblocks, 
         JSONExtractString(_airbyte_data, 'urls') AS urls,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

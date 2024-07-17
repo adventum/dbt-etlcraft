@@ -7,8 +7,8 @@ SELECT
         JSONExtractString(_airbyte_data, 'updated_at') AS updated_at, 
         JSONExtractString(_airbyte_data, 'updated_by_id') AS updated_by_id, 
         JSONExtractString(_airbyte_data, 'utm_hashcode') AS utm_hashcode,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

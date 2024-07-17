@@ -118,8 +118,8 @@ SELECT
         JSONExtractString(_airbyte_data, 'store_reinstall') AS store_reinstall, 
         JSONExtractString(_airbyte_data, 'user_agent') AS user_agent, 
         JSONExtractString(_airbyte_data, 'wifi') AS wifi,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_emitted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 
@@ -133,8 +133,3 @@ FROM test.datacraft_clientname_raw__stream_appsflyer_default_accountid_in_app_ev
 )
 
 )
-
-
---"event_value":"{\"rent_id\":\"226738375\",\"car_id\":\"18793\",\"user_id\":\"1cf9c961e89019bac2cef4bebb421701\",\"device_lat_long\":\"\"}",
-
---Missing columns: '_airbyte_extracted_at' - в данных _airbyte_emitted_at - макрос normalize добавлена строка 112

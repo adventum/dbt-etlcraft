@@ -11,8 +11,8 @@ SELECT
         JSONExtractString(_airbyte_data, 'os_name') AS os_name, 
         JSONExtractString(_airbyte_data, 'profile_id') AS profile_id, 
         JSONExtractString(_airbyte_data, 'publisher_name') AS publisher_name,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

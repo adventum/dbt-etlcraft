@@ -28,8 +28,8 @@
         JSONExtractString(_airbyte_data, 'ym:s:UTMSource') AS ymsUTMSource, 
         JSONExtractString(_airbyte_data, 'ym:s:UTMTerm') AS ymsUTMTerm, 
         JSONExtractString(_airbyte_data, 'ym:s:visitID') AS ymsvisitID,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 
