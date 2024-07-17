@@ -4,10 +4,11 @@
     incremental_datetime_formula=none,
     disable_incremental_datetime_field=none,
     defaults_dict=etlcraft.etlcraft_defaults(), 
-    schema_pattern='airbyte_internal', 
+    schema_pattern=this.schema, 
     source_table=none, 
     override_target_model_name=none,
     debug_column_names=False,
+    old_airbyte=true,
     limit0=none) -%}
 
 {#- schema_pattern=this.schema или 'airbyte_internal'-#}
@@ -104,22 +105,15 @@
     {{ exceptions.raise_compiler_error('Normalize returned empty column list') }}
 {%- endif -%}
 
-{#- в разных версиях Airbyte поле называется: _airbyte_extracted_at или _airbyte_emitted_at -#}
-{#- поэтому делаем проверку и условие - чтобы макрос работал с обоими вариантами -#}
-{% set is_airbyte_extracted_at %}
-SELECT _airbyte_extracted_at
-FROM {{ source_table }}
-LIMIT 1
-{% endset %}
-{% set result_extracted_at = run_query(is_airbyte_extracted_at) %}
-
 {#- это самое важное - что мы видим в модели - SELECT итогового списка полей + технические поля -#}
 SELECT
         {{ column_list | join(', \n        ') }},
         toLowCardinality(_dbt_source_relation) AS __table_name,  
-    {%- if result_extracted_at %}
+    {#- в разных версиях Airbyte поле называется: _airbyte_extracted_at или _airbyte_emitted_at -#}
+    {#- поэтому делаем условие - чтобы макрос мог работать и с новым, и со старым Airbyte -#}
+    {%- if old_airbyte %}
         toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
-    {%- else -%}
+    {%- else %}
         toDateTime32(substring(toString(_airbyte_emitted_at), 1, 19)) AS __emitted_at, 
     {%- endif %}
         NOW() AS __normalized_at
