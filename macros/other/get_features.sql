@@ -2,9 +2,9 @@
 
 {#- это макрос, который получает список источников проекта из переменной и передаёт их в metadata -#}
 
-{% set features = features_list %} {# передаём через Airflow #}
-
-{# set features = ['ym', 'yd', 'appmetrica'] #} {# без Airflow напрямую записываем значения #}
+{#- передаём через Airflow: features_list -#}
+{#- без Airflow напрямую записываем значения, например: ['ym', 'yd', 'appmetrica'] -#}
+{% set features = ['ym', 'yd', 'appmetrica'] %} 
 
 {{ features }}
 

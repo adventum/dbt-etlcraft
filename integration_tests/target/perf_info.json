@@ -1,18 +1,28 @@
 {
-    "path_count": 350,
-    "parsed_path_count": 0,
-    "static_analysis_path_count": 0,
+    "path_count": 348,
+    "parsed_path_count": 52,
+    "static_analysis_path_count": 39,
     "static_analysis_parsed_path_count": 0,
     "is_partial_parse_enabled": true,
     "is_static_analysis_enabled": true,
-    "read_files_elapsed": 0.21634848100075033,
-    "load_all_elapsed": 0.27230009000049904,
+    "read_files_elapsed": 0.035731821990339085,
+    "load_macros_elapsed": 0.08843488300044555,
+    "parse_project_elapsed": 0.545233894008561,
+    "patch_sources_elapsed": 7.434005965478718e-06,
+    "process_manifest_elapsed": 0.0028969349950784817,
+    "load_all_elapsed": 0.7507871760026319,
     "projects": [
         {
             "project_name": "etlcraft_integration_tests",
-            "elapsed": 0.0,
-            "parsers": [],
-            "parsed_path_count": 0
+            "elapsed": 0.5449720399919897,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.5449636340053985,
+                    "parsed_path_count": 39
+                }
+            ],
+            "parsed_path_count": 39
         },
         {
             "project_name": "dbt_clickhouse",
@@ -40,7 +50,7 @@
         },
         {
             "project_name": "etlcraft",
-            "elapsed": 0.0,
+            "elapsed": 9.120121831074357e-07,
             "parsers": [],
             "parsed_path_count": 0
         }
