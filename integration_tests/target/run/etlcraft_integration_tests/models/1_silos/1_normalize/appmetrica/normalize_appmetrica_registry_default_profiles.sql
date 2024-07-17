@@ -9,8 +9,8 @@
         JSONExtractString(_airbyte_data, 'appmetrica_device_id') AS appmetrica_device_id, 
         JSONExtractString(_airbyte_data, 'city') AS city, 
         JSONExtractString(_airbyte_data, 'profile_id') AS profile_id,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

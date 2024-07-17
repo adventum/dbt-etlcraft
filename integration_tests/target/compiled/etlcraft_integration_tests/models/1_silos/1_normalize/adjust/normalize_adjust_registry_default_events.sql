@@ -8,8 +8,8 @@ SELECT
         JSONExtractString(_airbyte_data, 'section') AS section, 
         JSONExtractString(_airbyte_data, 'short_name') AS short_name, 
         JSONExtractString(_airbyte_data, 'tokens') AS tokens,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 

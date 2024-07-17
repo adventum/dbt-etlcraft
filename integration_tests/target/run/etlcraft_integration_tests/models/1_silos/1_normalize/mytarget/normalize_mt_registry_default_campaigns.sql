@@ -8,8 +8,8 @@
         JSONExtractString(_airbyte_data, '__productName') AS __productName, 
         JSONExtractString(_airbyte_data, 'id') AS id, 
         JSONExtractString(_airbyte_data, 'name') AS name,
-        toLowCardinality(_dbt_source_relation) AS __table_name,  
-        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, 
+        toLowCardinality(_dbt_source_relation) AS __table_name,
+        toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at,
         NOW() AS __normalized_at
 FROM (
 
