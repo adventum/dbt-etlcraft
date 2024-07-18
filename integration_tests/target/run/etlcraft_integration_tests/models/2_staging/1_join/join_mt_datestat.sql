@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_mt_datestat__dbt_new_data_2bf53b95_0650_46c0_bde3_29ac391b31f4 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_mt_datestat__dbt_tmp ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adTitle1", "adText", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_mt_datestat_default_banners_statistics
 -- depends_on: test.incremental_mt_registry_default_banners
 -- depends_on: test.incremental_mt_registry_default_campaigns
@@ -128,4 +128,4 @@ JOIN campaigns ON banners.campaign_id = campaigns.id
 
 
   
-      
+    

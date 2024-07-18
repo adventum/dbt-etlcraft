@@ -3,7 +3,7 @@
     
     
         
-        insert into test.combine_registry_appprofilematching__dbt_backup ("appmetricaDeviceId", "crmUserId", "cityName", "__emitted_at", "__table_name", "__link")
+        insert into test.combine_registry_appprofilematching__dbt_tmp ("appmetricaDeviceId", "crmUserId", "cityName", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.join_appmetrica_registry_appprofilematching
 SELECT * REPLACE(toLowCardinality(__table_name) AS __table_name)
 FROM (

@@ -1,20 +1,20 @@
 {
     "path_count": 227,
-    "parsed_path_count": 15,
+    "parsed_path_count": 13,
     "static_analysis_path_count": 0,
     "static_analysis_parsed_path_count": 0,
     "is_partial_parse_enabled": true,
     "is_static_analysis_enabled": true,
-    "read_files_elapsed": 0.053832472000067355,
-    "load_macros_elapsed": 0.12769557499996154,
-    "parse_project_elapsed": 6.233500062080566e-05,
-    "patch_sources_elapsed": 6.874000064271968e-06,
-    "process_manifest_elapsed": 0.0008386070003325585,
-    "load_all_elapsed": 0.23828539500027546,
+    "read_files_elapsed": 0.04574469900035183,
+    "load_macros_elapsed": 0.08516100300039398,
+    "parse_project_elapsed": 6.27389999863226e-05,
+    "patch_sources_elapsed": 7.414000720018521e-06,
+    "process_manifest_elapsed": 0.0006244659998628777,
+    "load_all_elapsed": 0.1739568010016228,
     "projects": [
         {
             "project_name": "etlcraft",
-            "elapsed": 2.484999640728347e-06,
+            "elapsed": 2.2240001271711662e-06,
             "parsers": [],
             "parsed_path_count": 0
         },
