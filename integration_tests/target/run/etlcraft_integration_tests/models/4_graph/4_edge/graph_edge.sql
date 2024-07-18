@@ -3,7 +3,7 @@
     
     
         
-        insert into test.graph_edge__dbt_tmp ("node_id_left", "node_id_right", "group_id", "has_changed")
+        insert into test.graph_edge__dbt_backup ("node_id_left", "node_id_right", "group_id", "has_changed")
   -- depends_on: test.graph_unique
 -- depends_on: test.graph_tuples
 

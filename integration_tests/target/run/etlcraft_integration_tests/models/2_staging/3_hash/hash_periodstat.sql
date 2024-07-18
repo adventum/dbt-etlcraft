@@ -3,7 +3,7 @@
     
     
         
-        insert into test.hash_periodstat__dbt_tmp ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
+        insert into test.hash_periodstat__dbt_backup ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link", "ManualAdCostStatHash", "__id", "__datetime")
   -- depends_on: test.combine_periodstat
 SELECT *,
   assumeNotNull(CASE  

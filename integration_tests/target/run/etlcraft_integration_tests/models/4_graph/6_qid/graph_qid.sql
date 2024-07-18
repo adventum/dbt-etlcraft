@@ -3,7 +3,7 @@
     
     
         
-        insert into test.graph_qid__dbt_tmp ("__link", "__datetime", "__id", "qid")
+        insert into test.graph_qid__dbt_backup ("__link", "__datetime", "__id", "qid")
   -- depends_on: test.graph_lookup
 -- depends_on: test.graph_glue
 

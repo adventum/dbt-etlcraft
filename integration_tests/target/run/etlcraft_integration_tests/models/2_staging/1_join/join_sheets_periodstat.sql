@@ -3,7 +3,7 @@
     
     
         
-        insert into test.join_sheets_periodstat__dbt_tmp ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
+        insert into test.join_sheets_periodstat__dbt_backup ("campaign", "cost", "periodStart", "periodEnd", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.incremental_sheets_periodstat_default_planCosts
 SELECT
     Campaign AS campaign,

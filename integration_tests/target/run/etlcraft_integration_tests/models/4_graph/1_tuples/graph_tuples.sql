@@ -3,7 +3,7 @@
     
     
         
-        insert into test.graph_tuples__dbt_tmp ("hash", "node_left")
+        insert into test.graph_tuples__dbt_backup ("hash", "node_left")
   -- depends_on: test.link_events
 
     
