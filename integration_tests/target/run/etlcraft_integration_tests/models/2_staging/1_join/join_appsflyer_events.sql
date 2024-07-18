@@ -3,7 +3,7 @@
     
     
         
-        insert into test.join_appsflyer_events__dbt_tmp ("touch_type", "touch_time", "install_time", "event_time", "event_name", "event_source", "partner", "media_source", "campaign", "site_id", "ad", "country_code", "city", "appsflyer_id", "custom_uid", "platform", "is_retargeting", "is_primary_attribution", "__emitted_at", "__table_name", "__link")
+        insert into test.join_appsflyer_events__dbt_backup ("touch_type", "touch_time", "install_time", "event_time", "event_name", "event_source", "partner", "media_source", "campaign", "site_id", "ad", "country_code", "city", "appsflyer_id", "custom_uid", "platform", "is_retargeting", "is_primary_attribution", "__emitted_at", "__table_name", "__link")
   -- depends_on: test.incremental_appsflyer_events_default_in_app_events
 SELECT
     toLowCardinality(attributed_touch_type) AS touch_type,

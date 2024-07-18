@@ -3,7 +3,7 @@
     
     
         
-        insert into test.graph_glue__dbt_tmp ("node_id_left", "qid")
+        insert into test.graph_glue__dbt_backup ("node_id_left", "qid")
   -- depends_on: test.graph_edge
 
 
