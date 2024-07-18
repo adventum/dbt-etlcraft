@@ -1,6 +1,7 @@
 {%- macro attr_create_events(
   params = none,
   override_target_metadata=none,
+  features_list=none,
   funnel_name=none,
   limit0=none
   ) -%}
@@ -19,7 +20,7 @@
 {# 
     Извлечение метаданных и шагов воронки для формирования событий.
 #}
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata, features_list)) -%}
 {%- set funnels = metadata['funnels'] -%}
 {%- set step_name_list = funnels[funnel_name].steps -%}
 {%- set steps = metadata['steps'] -%}

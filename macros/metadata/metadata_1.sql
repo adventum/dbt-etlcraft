@@ -1,4 +1,4 @@
-{%- macro metadata_1(features) -%}
+{%- macro metadata_1(features_list) -%}
 
 entities:
   Account:
@@ -64,7 +64,7 @@ entities:
   PeriodEnd:
     keys:
     - name: periodEnd
-{% if 'appmetrica' in features %}
+{% if 'appmetrica' in features_list %}
   AppMetricaDevice:
     glue: yes
     keys:
@@ -133,7 +133,7 @@ links:
     - AdSource
     - UtmParams  
     - UtmHash
-{% if 'appmetrica' in features %}
+{% if 'appmetrica' in features_list %}
   AppInstallStat:
     pipeline: events
     datetime_field: event_datetime
@@ -207,7 +207,7 @@ glue_models:
     cols:
     - CrmUserHash
     - YmClientHash
-{% if 'appmetrica' in features %} 
+{% if 'appmetrica' in features_list %} 
     - AppEventStatHash
     - AppMetricaDeviceHash   
   hash_registry_appprofilematching:
@@ -310,7 +310,7 @@ datasets:
   event_table:
     pipelines: events
     sources:
-{% if 'appmetrica' in features %} 
+{% if 'appmetrica' in features_list %} 
     - appmetrica
 {% endif %}
     - ym
@@ -321,7 +321,7 @@ datasets:
   cost_table:
     pipelines: datestat
     sources:
-{% if 'appmetrica' in features %} 
+{% if 'appmetrica' in features_list %} 
     - appmetrica
 {% endif %}
     - ym

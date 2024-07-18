@@ -13,5 +13,6 @@ with all_keys as
 
 select *, row_number() over() as key_number from all_keys
 
+LIMIT 0
 
 

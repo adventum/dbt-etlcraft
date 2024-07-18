@@ -1,6 +1,7 @@
 {%- macro attr_calculate_period_number(
   params = none,
   override_target_metadata=none,
+  features_list=none,
   funnel_name=none,
   limit0=none
   ) -%}

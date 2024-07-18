@@ -1,2 +1,2 @@
 -- depends_on: {{ ref('link_events') }}
-{{ etlcraft.graph() }}
+{{ etlcraft.graph(features_list=['ym','yd','appmetrica']) }}

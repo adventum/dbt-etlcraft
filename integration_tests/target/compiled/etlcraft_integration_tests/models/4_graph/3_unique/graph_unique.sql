@@ -5,5 +5,6 @@
 
 select * from test.graph_lookup
 
+LIMIT 0
 
 

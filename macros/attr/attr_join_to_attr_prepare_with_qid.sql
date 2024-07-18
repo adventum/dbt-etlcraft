@@ -1,6 +1,7 @@
 {%- macro attr_join_to_attr_prepare_with_qid(
   params = none,
   override_target_metadata=none,
+  features_list=none,
   funnel_name=none,
   limit0=none
   ) -%}
@@ -8,7 +9,7 @@
 {# 
     Извлечение метаданных для определения типов моделей и их приоритетов.
 #}
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata, features_list)) -%}
 {%- set funnels = metadata['funnels'] -%}
 {%- set attribution_models = metadata['attribution_models'] -%}
 {%- set model_list = funnels[funnel_name].models -%}
