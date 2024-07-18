@@ -28,7 +28,3 @@ clean-targets:         # directories to be removed by `dbt clean`
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['etlcraft', 'dbt_utils']
-
-
-vars:
-  metadata_name: metadata_1

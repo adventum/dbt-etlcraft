@@ -8,7 +8,6 @@
 
 WITH cmps AS (
 SELECT * FROM (
-    
 
         (
             select

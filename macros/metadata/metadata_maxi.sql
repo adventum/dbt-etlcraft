@@ -1,7 +1,5 @@
 {%- macro metadata_maxi(features) -%}
 
-{{log('Hello, I am macro metadata_maxi', true)}}
-
 entities:
   Account:
     keys:

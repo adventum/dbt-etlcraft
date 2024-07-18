@@ -9,7 +9,6 @@
 
 WITH events AS (
 SELECT * FROM (
-    
 
         (
             select
