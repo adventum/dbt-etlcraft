@@ -134,7 +134,7 @@ SELECT
         toString("_airbyte_ab_id") AS _airbyte_ab_id,
         toString("_airbyte_data") AS _airbyte_data,
         toString("_airbyte_emitted_at") AS _airbyte_emitted_at
-FROM test.datacraft_clientname_raw__stream_appsflyer_default_accountid_in_app_events
+FROM airbyte_internal.datacraft_clientname_raw__stream_appsflyer_default_accountid_in_app_events
 )
 
 )

@@ -7,7 +7,6 @@ SELECT
     toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('AppProfileMatching') AS __link 
 FROM (
-    
 
         (
             select

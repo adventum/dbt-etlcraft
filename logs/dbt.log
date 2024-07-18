@@ -635,3 +635,166 @@ Runtime Error
     > in macro find_incremental_datetime_field (macros/other/find_incremental_datetime_field.sql)
     > called by macro normalize (macros/normalize/normalize.sql)
     > called by test test_normalize (tests/test_normalize.sql)
+
+
+============================== 2024-07-18 10:57:43.607806 | 8a3b349f-61bf-40d7-881b-0fe64b8ae0e7 ==============================
+[0m10:57:43.607806 [info ] [MainThread]: Running with dbt=1.4.7
+[0m10:57:43.610720 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'config_dir': False, 'which': 'debug', 'indirect_selection': 'eager'}
+[0m10:57:43.611232 [debug] [MainThread]: Tracking: tracking
+[0m10:57:43.613520 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1c55bdc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1c559900>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1c55bcd0>]}
+[0m10:57:43.729814 [debug] [MainThread]: Executing "git --help"
+[0m10:57:43.734394 [debug] [MainThread]: STDOUT: "b"usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m10:57:43.734738 [debug] [MainThread]: STDERR: "b''"
+[0m10:57:43.738673 [debug] [MainThread]: Acquiring new clickhouse connection 'debug'
+[0m10:57:43.739064 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m10:57:44.054056 [debug] [MainThread]: dbt_clickhouse adapter: On debug: select 1 as id...
+[0m10:57:44.059196 [debug] [MainThread]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m10:57:44.060418 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1ccf6d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1ec54dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fab1cbba890>]}
+[0m10:57:44.060924 [debug] [MainThread]: Flushing usage events
+[0m10:57:44.652149 [debug] [MainThread]: Connection 'debug' was left open.
+[0m10:57:44.653069 [debug] [MainThread]: On debug: Close
+
+
+============================== 2024-07-18 10:57:49.291487 | 1fe236c6-295f-4e42-892a-84fb7edc3b4f ==============================
+[0m10:57:49.291487 [info ] [MainThread]: Running with dbt=1.4.7
+[0m10:57:49.293483 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'write_manifest': False, 'compile': False, 'which': 'parse', 'rpc_method': 'parse', 'indirect_selection': 'eager'}
+[0m10:57:49.293703 [debug] [MainThread]: Tracking: tracking
+[0m10:57:49.296045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34d094a170>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34ce3fbca0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34ce3fbb20>]}
+[0m10:57:49.296522 [info ] [MainThread]: Start parsing.
+[0m10:57:49.322562 [info ] [MainThread]: Dependencies loaded
+[0m10:57:49.323586 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m10:57:49.337966 [info ] [MainThread]: ManifestLoader created
+[0m10:57:49.394192 [debug] [MainThread]: Partial parsing enabled: 2 files deleted, 1 files added, 3 files changed.
+[0m10:57:49.394677 [debug] [MainThread]: Partial parsing: added file: etlcraft://macros/join/join_appsflyer_events.sql
+[0m10:57:49.394829 [debug] [MainThread]: Partial parsing: deleted file: etlcraft://tests/test_normalize.sql
+[0m10:57:49.394943 [debug] [MainThread]: Partial parsing: deleted file: etlcraft://tests/test_get_min_max_date.sql
+[0m10:57:49.395159 [debug] [MainThread]: Partial parsing: updated file: etlcraft://macros/normalize/normalize.sql
+[0m10:57:49.395872 [debug] [MainThread]: Partial parsing: updated file: etlcraft://macros/metadata/metadata.sql
+[0m10:57:49.396098 [debug] [MainThread]: Partial parsing: updated file: etlcraft://macros/other/get_features.sql
+[0m10:57:49.533546 [info ] [MainThread]: Manifest loaded
+[0m10:57:49.534211 [info ] [MainThread]: Manifest checked
+[0m10:57:49.534791 [info ] [MainThread]: Flat graph built
+[0m10:57:49.535241 [info ] [MainThread]: Manifest finished loading
+[0m10:57:49.535874 [info ] [MainThread]: Performance info: target/perf_info.json
+[0m10:57:49.536279 [info ] [MainThread]: Done.
+[0m10:57:49.536706 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34cdf1e200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34cdf1e770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f34cdf1cd30>]}
+[0m10:57:49.537106 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-07-18 10:57:56.430733 | a3812df3-e986-40db-a6ba-c228ba6a3e7b ==============================
+[0m10:57:56.430733 [info ] [MainThread]: Running with dbt=1.4.7
+[0m10:57:56.432685 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/natalia/.dbt', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
+[0m10:57:56.432966 [debug] [MainThread]: Tracking: tracking
+[0m10:57:56.435031 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb9fba90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afbfe9c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afc5cce50>]}
+[0m10:57:56.463630 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m10:57:56.511017 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m10:57:56.511432 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m10:57:56.519638 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a3812df3-e986-40db-a6ba-c228ba6a3e7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb533f10>]}
+[0m10:57:56.536691 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a3812df3-e986-40db-a6ba-c228ba6a3e7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb6ebfa0>]}
+[0m10:57:56.537682 [info ] [MainThread]: Found 0 models, 6 tests, 0 snapshots, 0 analyses, 546 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+[0m10:57:56.537982 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a3812df3-e986-40db-a6ba-c228ba6a3e7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb6fc040>]}
+[0m10:57:56.539528 [info ] [MainThread]: 
+[0m10:57:56.541871 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m10:57:56.542299 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a3812df3-e986-40db-a6ba-c228ba6a3e7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb6ebc70>]}
+[0m10:57:56.543061 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m10:57:56.543427 [info ] [MainThread]: 
+[0m10:57:56.550245 [debug] [Thread-1 (]: Began running node test.etlcraft.test_find_incremental_datetime_field
+[0m10:57:56.550905 [debug] [Thread-2 (]: Began running node test.etlcraft.test_get_column_count_in_subquery
+[0m10:57:56.552035 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_find_incremental_datetime_field'
+[0m10:57:56.553171 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_column_count_in_subquery'
+[0m10:57:56.553710 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_find_incremental_datetime_field
+[0m10:57:56.554256 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_get_column_count_in_subquery
+[0m10:57:56.570250 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_get_column_count_in_subquery"
+[0m10:57:56.591355 [debug] [Thread-1 (]: Writing injected SQL for node "test.etlcraft.test_find_incremental_datetime_field"
+[0m10:57:56.593049 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_find_incremental_datetime_field (compile): 2024-07-18 10:57:56.554678 => 2024-07-18 10:57:56.592785
+[0m10:57:56.593673 [debug] [Thread-1 (]: Began executing node test.etlcraft.test_find_incremental_datetime_field
+[0m10:57:56.594307 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_find_incremental_datetime_field (execute): 2024-07-18 10:57:56.594142 => 2024-07-18 10:57:56.594180
+[0m10:57:56.594731 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_column_count_in_subquery (compile): 2024-07-18 10:57:56.565265 => 2024-07-18 10:57:56.594638
+[0m10:57:56.597638 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_find_incremental_datetime_field
+[0m10:57:56.598346 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_get_column_count_in_subquery
+[0m10:57:56.599000 [debug] [Thread-1 (]: Began running node test.etlcraft.test_get_from_default_dict
+[0m10:57:56.599677 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_column_count_in_subquery (execute): 2024-07-18 10:57:56.599561 => 2024-07-18 10:57:56.599581
+[0m10:57:56.600663 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_from_default_dict'
+[0m10:57:56.602048 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_get_column_count_in_subquery
+[0m10:57:56.602876 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_get_from_default_dict
+[0m10:57:56.603793 [debug] [Thread-2 (]: Began running node test.etlcraft.test_get_relations_dist
+[0m10:57:56.614616 [debug] [Thread-1 (]: Writing injected SQL for node "test.etlcraft.test_get_from_default_dict"
+[0m10:57:56.615569 [debug] [Thread-2 (]: Acquiring new clickhouse connection 'test.etlcraft.test_get_relations_dist'
+[0m10:57:56.616255 [debug] [Thread-2 (]: Began compiling node test.etlcraft.test_get_relations_dist
+[0m10:57:56.638843 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:57:56.639556 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_get_from_default_dict (compile): 2024-07-18 10:57:56.604636 => 2024-07-18 10:57:56.639407
+[0m10:57:56.639945 [debug] [Thread-1 (]: Began executing node test.etlcraft.test_get_from_default_dict
+[0m10:57:56.640654 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_get_from_default_dict (execute): 2024-07-18 10:57:56.640498 => 2024-07-18 10:57:56.640527
+[0m10:57:56.641861 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_get_from_default_dict
+[0m10:57:56.642479 [debug] [Thread-1 (]: Began running node test.etlcraft.test_json_list_keys
+[0m10:57:56.643785 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_json_list_keys'
+[0m10:57:56.644298 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_json_list_keys
+[0m10:57:56.654090 [debug] [Thread-1 (]: Writing injected SQL for node "test.etlcraft.test_json_list_keys"
+[0m10:57:56.655505 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_json_list_keys (compile): 2024-07-18 10:57:56.644560 => 2024-07-18 10:57:56.655362
+[0m10:57:56.656035 [debug] [Thread-1 (]: Began executing node test.etlcraft.test_json_list_keys
+[0m10:57:56.656921 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_json_list_keys (execute): 2024-07-18 10:57:56.656752 => 2024-07-18 10:57:56.656787
+[0m10:57:56.658494 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_json_list_keys
+[0m10:57:56.658988 [debug] [Thread-1 (]: Began running node test.etlcraft.test_normalize_name
+[0m10:57:56.660730 [debug] [Thread-1 (]: Acquiring new clickhouse connection 'test.etlcraft.test_normalize_name'
+[0m10:57:56.661977 [debug] [Thread-1 (]: Began compiling node test.etlcraft.test_normalize_name
+[0m10:57:56.683039 [debug] [Thread-1 (]: Writing injected SQL for node "test.etlcraft.test_normalize_name"
+[0m10:57:56.684199 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_normalize_name (compile): 2024-07-18 10:57:56.662279 => 2024-07-18 10:57:56.684025
+[0m10:57:56.684672 [debug] [Thread-1 (]: Began executing node test.etlcraft.test_normalize_name
+[0m10:57:56.685065 [debug] [Thread-1 (]: Timing info for test.etlcraft.test_normalize_name (execute): 2024-07-18 10:57:56.684981 => 2024-07-18 10:57:56.685000
+[0m10:57:56.685949 [debug] [Thread-1 (]: Finished running node test.etlcraft.test_normalize_name
+[0m10:57:57.085992 [debug] [Thread-2 (]: dbt_clickhouse adapter: On test.etlcraft.test_get_relations_dist: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "dbt_local", "target_name": "dev", "node_id": "test.etlcraft.test_get_relations_dist"} */
+
+    SELECT 
+        table, 
+        groupArray(name) AS fields
+    
+    FROM (
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col1'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col2'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'incremental_testsourcetypename_testtemplatename' as table,
+    'test_col3'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col1'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col2'as name
+    UNION all
+    SELECT 
+    '' as database,
+    'normalize_testsourcetypename_testtemplatename' as table,
+    'test_col3'as name
+)
+    
+    WHERE database = '' AND table LIKE 'incremental_testsourcetypename_testtemplatename_%'
+    GROUP BY table
+
+...
+[0m10:57:57.098719 [debug] [Thread-2 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m10:57:57.100242 [debug] [Thread-2 (]: Writing injected SQL for node "test.etlcraft.test_get_relations_dist"
+[0m10:57:57.100988 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_relations_dist (compile): 2024-07-18 10:57:56.616588 => 2024-07-18 10:57:57.100868
+[0m10:57:57.101393 [debug] [Thread-2 (]: Began executing node test.etlcraft.test_get_relations_dist
+[0m10:57:57.101623 [debug] [Thread-2 (]: Timing info for test.etlcraft.test_get_relations_dist (execute): 2024-07-18 10:57:57.101553 => 2024-07-18 10:57:57.101570
+[0m10:57:57.102487 [debug] [Thread-2 (]: Finished running node test.etlcraft.test_get_relations_dist
+[0m10:57:57.104344 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:57:57.104652 [debug] [MainThread]: Connection 'test.etlcraft.test_normalize_name' was properly closed.
+[0m10:57:57.104795 [debug] [MainThread]: Connection 'test.etlcraft.test_get_relations_dist' was left open.
+[0m10:57:57.104964 [debug] [MainThread]: On test.etlcraft.test_get_relations_dist: Close
+[0m10:57:57.105505 [debug] [MainThread]: Command end result
+[0m10:57:57.117945 [info ] [MainThread]: Done.
+[0m10:57:57.118793 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb9fbc70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb59df00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0afb59e4d0>]}
+[0m10:57:57.119195 [debug] [MainThread]: Flushing usage events

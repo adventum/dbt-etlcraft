@@ -4,5 +4,5 @@
     'ctCallerId', 'ctClientId', 'ctGlobalId', 'successful', 'targetCall', 'uniqueCall', 'utmContent', 'yaClientId', 'attribution',
     'phoneNumber', 'sessionDate', 'subPoolName', 'utmCampaign', 'callbackCall', 'callbackInfo', 'callerNumber', 'phonesInText',
     'yandexDirect', 'googleAdWords', 'statusDetails', 'additionalTags', 'redirectNumber', 'uniqTargetCall', 'waitingConnect',
-    'callReferenceId', 'callClientUniqueId'], incremental_datetime_field='date',
-    schema_pattern=this.schema) }}
+    'callReferenceId', 'callClientUniqueId'], incremental_datetime_field='date'
+    ) }}

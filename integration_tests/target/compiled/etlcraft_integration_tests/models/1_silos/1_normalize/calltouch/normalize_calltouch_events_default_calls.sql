@@ -71,7 +71,7 @@ SELECT
         toString("_airbyte_data") AS _airbyte_data,
         toString("_airbyte_extracted_at") AS _airbyte_extracted_at,
         toInt32("_airbyte_loaded_at") AS _airbyte_loaded_at
-FROM test.datacraft_testValeriya_raw__stream_calltouch_default_accountid_calls
+FROM airbyte_internal.datacraft_testValeriya_raw__stream_calltouch_default_accountid_calls
 )
 
 )

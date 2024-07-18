@@ -10,7 +10,6 @@
 
 WITH banners_statistics AS (
 SELECT * FROM (
-    
 
         (
             select
@@ -37,7 +36,6 @@ WHERE toDate(__date) BETWEEN '2024-02-22' AND '2024-02-23'),
 
 banners AS (
 SELECT * FROM (
-    
 
         (
             select
@@ -64,7 +62,6 @@ SELECT * FROM (
 
 campaigns AS (
 SELECT * FROM (
-    
 
         (
             select

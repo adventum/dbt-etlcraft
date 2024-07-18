@@ -22,7 +22,6 @@ SELECT
     toLowCardinality(__table_name) AS __table_name,
     toLowCardinality('&&&') AS __link                                    
 FROM (
-    
 
         (
             select

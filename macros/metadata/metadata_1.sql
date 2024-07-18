@@ -1,7 +1,5 @@
 {%- macro metadata_1(features) -%}
 
-{{log('Hello, I am macro metadata_1', true)}}
-
 entities:
   Account:
     keys:
