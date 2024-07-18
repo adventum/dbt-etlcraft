@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_ym_default_accountid_yandex_metrika_stream;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

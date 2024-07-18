@@ -9,6 +9,7 @@ SELECT
     toLowCardinality('ManualAdCostStat') AS __link
 
 FROM (
+    
 
         (
             select

@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_adjust_default_accountid_events;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

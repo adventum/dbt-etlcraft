@@ -1,4 +1,5 @@
 -- depends_on: test.graph_qid
+-- depends_on: test.link_events
 -- depends_on: test.link_registry_appprofilematching
 -- depends_on: test.link_registry_utmhashregistry
 

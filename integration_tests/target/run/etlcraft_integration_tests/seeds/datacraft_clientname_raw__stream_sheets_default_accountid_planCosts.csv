@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_sheets_default_accountid_planCosts;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
