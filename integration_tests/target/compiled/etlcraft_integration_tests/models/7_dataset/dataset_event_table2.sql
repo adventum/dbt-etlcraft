@@ -1,4 +1,5 @@
 -- depends_on: test.full_datestat
+-- depends_on: test.full_events
 -- depends_on: test.attr_myfirstfunnel_final_table
 
 

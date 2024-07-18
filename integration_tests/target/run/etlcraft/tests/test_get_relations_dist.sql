@@ -7,8 +7,8 @@ select
 
 
 
-
-SELECT 'Unknown key' WHERE 1!=1
+ 
+SELECT 'Unknown key'
 
       
     ) dbt_internal_test

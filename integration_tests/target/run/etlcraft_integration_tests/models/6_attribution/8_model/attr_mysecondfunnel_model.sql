@@ -4,7 +4,7 @@
     
         
         insert into test.attr_mysecondfunnel_model__dbt_backup ("qid", "__datetime", "__id", "__priority", "__if_missed", "__link", "__period_number", "__mysecondfunnel_last_click_utmSource", "__mysecondfunnel_last_click_utmMedium", "__mysecondfunnel_last_click_utmCampaign", "__mysecondfunnel_last_click_utmTerm", "__mysecondfunnel_last_click_utmContent", "__mysecondfunnel_last_click_adSourceDirty")
-  -- depends_on: test.attr_myfirstfunnel_join_to_attr_prepare_with_qid
+  -- depends_on: test.attr_mysecondfunnel_join_to_attr_prepare_with_qid
 
 
 

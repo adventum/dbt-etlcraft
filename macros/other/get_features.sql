@@ -4,7 +4,7 @@
 
 {#- передаём через Airflow: features_list -#}
 {#- без Airflow напрямую записываем значения, например: ['ym', 'yd', 'appmetrica'] -#}
-{% set features = ['ym', 'yd', 'appmetrica'] %} 
+{% set features = features_list %} 
 
 {{ features }}
 
