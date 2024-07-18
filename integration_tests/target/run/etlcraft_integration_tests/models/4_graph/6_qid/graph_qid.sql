@@ -20,6 +20,7 @@ select
 from test.graph_glue  -- Объединение с таблицей graph_glue
 join test.graph_lookup on key_number = node_id_left  -- Соединение с таблицей graph_lookup
 
+LIMIT 0
 
 
 

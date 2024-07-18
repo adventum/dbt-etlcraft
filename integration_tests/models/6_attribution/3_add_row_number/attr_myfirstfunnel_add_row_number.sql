@@ -1,3 +1,3 @@
 -- depends_on: {{ ref('attr_myfirstfunnel_create_events') }}
-{{ etlcraft.attr() }}
+{{ etlcraft.attr(features_list=['ym','yd','appmetrica']) }}
 

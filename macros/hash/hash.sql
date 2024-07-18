@@ -3,6 +3,7 @@
   disable_incremental=none,
   override_target_model_name=none,
   override_target_metadata=none,
+  features_list=none,
   date_from = none,
   date_to = none,
   limit0=none
@@ -59,7 +60,7 @@
 {#- ************************************************* работа с metadata *********************************************** -#}
 
 {#- задаём список всех линков -#}
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata, features_list)) -%}
 {%- set links = metadata['links'] -%}
 {#- задаём списки, куда будем отбирать линки и сущности -#}
 {%- set links_list = [] -%}

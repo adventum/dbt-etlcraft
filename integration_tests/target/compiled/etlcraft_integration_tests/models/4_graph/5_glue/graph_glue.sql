@@ -9,5 +9,6 @@ select
 from test.graph_edge
 group by node_id_left
 
+LIMIT 0
 
 

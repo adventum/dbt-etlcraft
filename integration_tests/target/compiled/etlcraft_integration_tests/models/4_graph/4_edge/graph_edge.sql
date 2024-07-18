@@ -15,5 +15,6 @@ select node_id_left, key_number as node_id_right, node_id_left as group_id, 1 as
 from join_left x
 join test.graph_unique  y on x.node_left = y.key_hash
 
+LIMIT 0
 
 

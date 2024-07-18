@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_vkads_datestat__dbt_new_data_31c0131d_72bd_4972_82b3_838028fc766e ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "__emitted_at", "__link")
+        insert into test.join_vkads_datestat__dbt_new_data_8aceecf1_ba45_4ee2_b76b_17d0e32cc0e9 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adId", "adCost", "impressions", "clicks", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "__emitted_at", "__link")
   -- depends_on: test.incremental_vkads_datestat_default_ad_plans_statistics
 -- depends_on: test.incremental_vkads_registry_default_ad_plans
                                                              
