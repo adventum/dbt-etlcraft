@@ -1,4 +1,5 @@
 
+!target_for_demonstration/
 target/
 dbt_packages/
 logs/
