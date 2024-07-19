@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_mt_default_maxiretail_banners_statistics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
