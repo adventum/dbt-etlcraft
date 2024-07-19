@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_yd_datestat__dbt_new_data_d00f206f_3a10_4cf3_beb1_b14662f886e4 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
+        insert into test.join_yd_datestat__dbt_new_data_087659a2_aa28_455d_8cec_34f515445ad6 ("__date", "reportType", "accountName", "__table_name", "adSourceDirty", "adCampaignName", "adGroupName", "adId", "adPhraseId", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "utmHash", "adCost", "impressions", "clicks", "__emitted_at", "__link")
   -- depends_on: test.incremental_yd_datestat_default_custom_report
                                                              
   

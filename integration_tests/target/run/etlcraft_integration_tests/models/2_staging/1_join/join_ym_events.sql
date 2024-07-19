@@ -4,7 +4,7 @@
     
     
         
-        insert into test.join_ym_events__dbt_new_data_d00f206f_3a10_4cf3_beb1_b14662f886e4 ("__date", "__table_name", "visitId", "clientId", "promoCode", "osName", "cityName", "cityCode", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "registrationCardSessions", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "couponActivationSessions", "participationInLotterySessions", "pageViews", "__emitted_at", "__link")
+        insert into test.join_ym_events__dbt_new_data_087659a2_aa28_455d_8cec_34f515445ad6 ("__date", "__table_name", "visitId", "clientId", "promoCode", "osName", "cityName", "cityCode", "adSourceDirty", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent", "transactionId", "utmHash", "sessions", "addToCartSessions", "cartViewSessions", "checkoutSessions", "webSalesSessions", "sales", "registrationCardSessions", "linkingCardToPhoneNumberSessions", "registrationLendingPromotionsSessions", "registrationCashbackSessions", "couponActivationSessions", "participationInLotterySessions", "pageViews", "__emitted_at", "__link")
   -- depends_on: test.incremental_ym_events_default_yandex_metrika_stream
 
                                                              

@@ -4,7 +4,7 @@
     
     
         
-        insert into test.incremental_appmetrica_events_default_screen_view__dbt_new_data_d00f206f_3a10_4cf3_beb1_b14662f886e4 ("__date", "event_receive_datetime", "mobileAdsId", "accountName", "appmetricaDeviceId", "cityName", "osName", "crmUserId", "__table_name", "__emitted_at", "session_id", "screen_view")
+        insert into test.incremental_appmetrica_events_default_screen_view__dbt_new_data_087659a2_aa28_455d_8cec_34f515445ad6 ("__date", "event_receive_datetime", "mobileAdsId", "accountName", "appmetricaDeviceId", "cityName", "osName", "crmUserId", "__table_name", "__emitted_at", "session_id", "screen_view")
   -- depends_on: test.normalize_appmetrica_events_default_screen_view
 
 
