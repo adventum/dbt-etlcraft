@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.deeplinks_real;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

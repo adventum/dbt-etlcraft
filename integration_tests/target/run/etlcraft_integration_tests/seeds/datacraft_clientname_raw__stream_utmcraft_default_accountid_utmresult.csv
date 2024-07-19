@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_utmcraft_default_accountid_utmresult;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
