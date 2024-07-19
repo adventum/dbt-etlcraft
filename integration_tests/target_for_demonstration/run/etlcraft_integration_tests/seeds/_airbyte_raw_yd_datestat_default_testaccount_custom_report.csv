@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_yd_datestat_default_testaccount_custom_report;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

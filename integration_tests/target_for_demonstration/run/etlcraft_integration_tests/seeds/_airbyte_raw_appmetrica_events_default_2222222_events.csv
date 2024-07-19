@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_appmetrica_events_default_2222222_events;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

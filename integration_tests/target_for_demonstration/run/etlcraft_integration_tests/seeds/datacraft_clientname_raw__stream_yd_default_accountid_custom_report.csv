@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_yd_default_accountid_custom_report;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

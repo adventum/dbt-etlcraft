@@ -1,0 +1,24 @@
+
+    
+    
+    
+    create table test._airbyte_raw_ym_events_22222222_yandex_metrika_stream 
+   ("_airbyte_ab_id" String,"_airbyte_data" String,"_airbyte_emitted_at" String)
+    
+  engine = MergeTree()
+    
+      order by (tuple())
+    
+  ;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

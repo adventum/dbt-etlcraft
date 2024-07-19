@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test._airbyte_raw_ym_events_default_132944_yandex_metrika_stream;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

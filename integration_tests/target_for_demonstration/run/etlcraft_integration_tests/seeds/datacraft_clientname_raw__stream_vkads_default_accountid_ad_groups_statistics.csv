@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_clientname_raw__stream_vkads_default_accountid_ad_groups_statistics;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  

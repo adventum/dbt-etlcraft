@@ -1,0 +1,16 @@
+
+    
+    
+    truncate table test.datacraft_testOlga_raw__stream_avito_default_accountid_calls_by_time;
+    -- dbt seed --
+    
+  
+  
+
+  
+
+  
+
+
+;
+  
