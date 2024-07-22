@@ -1,4 +1,4 @@
-{%- macro metadata_1(features_list) -%}
+{%- macro metadata_1(features) -%}
 
 entities:
   Account:
@@ -9,7 +9,7 @@ entities:
     - name: productName
   AdSource:
     keys:
-    - name: adSourceDirty
+    - name: adSourceDirty   
   UtmParams:
     keys:
     - name: utmSource
@@ -32,10 +32,12 @@ entities:
   Ad:
     keys:
     - name: adId
+{% if 'ym' in features %}     
   YmClient:
     glue: yes
     keys:
     - name: clientId
+{% endif %}    
   CrmUser:
     glue: yes
     keys:
@@ -58,13 +60,15 @@ entities:
   Transaction:
     keys:
     - name: transactionId
+{% if 'sheets' in features %}     
   PeriodStart:
     keys:
     - name: periodStart
   PeriodEnd:
     keys:
     - name: periodEnd
-{% if 'appmetrica' in features_list %}
+{% endif %}     
+{% if 'appmetrica' in features %}
   AppMetricaDevice:
     glue: yes
     keys:
@@ -78,6 +82,7 @@ entities:
     - name: installationDeviceId
 {% endif %}
 links: 
+{% if 'sheets' in features %} 
   ManualAdCostStat:
     pipeline: periodstat
     keys:
@@ -85,6 +90,7 @@ links:
     main_entities:
     - PeriodStart
     - PeriodEnd
+{% endif %}    
   UtmHashRegistry:
     pipeline: registry
     {# datetime_field: toDateTime(0) #}
@@ -133,7 +139,7 @@ links:
     - AdSource
     - UtmParams  
     - UtmHash
-{% if 'appmetrica' in features_list %}
+{% if 'appmetrica' in features %}
   AppInstallStat:
     pipeline: events
     datetime_field: event_datetime
@@ -206,8 +212,10 @@ glue_models:
     datetime_field: __datetime
     cols:
     - CrmUserHash
+{% if 'ym' in features %} 
     - YmClientHash
-{% if 'appmetrica' in features_list %} 
+{% endif %}    
+{% if 'appmetrica' in features %} 
     - AppEventStatHash
     - AppMetricaDeviceHash   
   hash_registry_appprofilematching:
@@ -310,10 +318,12 @@ datasets:
   event_table:
     pipelines: events
     sources:
-{% if 'appmetrica' in features_list %} 
+{% if 'appmetrica' in features %} 
     - appmetrica
 {% endif %}
+{% if 'ym' in features %} 
     - ym
+{% endif %}
     preset: default
     accounts:
     - testaccount
@@ -321,10 +331,12 @@ datasets:
   cost_table:
     pipelines: datestat
     sources:
-{% if 'appmetrica' in features_list %} 
+{% if 'appmetrica' in features %} 
     - appmetrica
 {% endif %}
+{% if 'ym' in features %} 
     - ym
+{% endif %}
     preset: default
     accounts:
     - testaccount
