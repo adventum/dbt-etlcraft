@@ -1,4 +1,4 @@
-{%- macro metadata_maxi(features_list) -%}
+{%- macro metadata_maxi(features) -%}
 
 entities:
   Account:

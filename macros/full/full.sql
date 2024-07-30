@@ -3,7 +3,6 @@
   disable_incremental=none,
   override_target_model_name=none,
   override_target_metadata=none,
-  features_list=none,
   date_from = none,
   date_to = none,
   limit0=none) 
@@ -45,7 +44,7 @@
 {#- ************************************* отбор возможных и существующих таблиц registry ************************************* -#}
 
 {#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata, features_list)) -%}
+{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set links_list = [] -%}
 {%- set registry_possible_tables = [] -%}
 {%- set links = metadata['links'] -%}
