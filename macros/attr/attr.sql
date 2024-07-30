@@ -1,7 +1,6 @@
 {%- macro attr(
   params = none,
   override_target_metadata=none,
-  features_list=none,
   override_target_model_name=none,
   limit0=none
   ) -%}
@@ -17,7 +16,7 @@
 {%- set stage_name = 'attr_' ~ '_'.join(stage_name) -%}
 
 
-{{ etlcraft[stage_name](params,override_target_metadata,features_list,funnel_name)}}
+{{ etlcraft[stage_name](params,override_target_metadata,funnel_name)}}
 
 
 {% endmacro %}

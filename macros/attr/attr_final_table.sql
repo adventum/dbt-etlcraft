@@ -1,7 +1,6 @@
 {%- macro attr_final_table(
   params = none,
   override_target_metadata=none,
-  features_list=none,
   funnel_name=none,
   limit0=none
   ) -%}

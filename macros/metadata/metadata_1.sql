@@ -31,13 +31,11 @@ entities:
     - name: adGroupName
   Ad:
     keys:
-    - name: adId
-{% if 'ym' in features %}     
+    - name: adId    
   YmClient:
     glue: yes
     keys:
-    - name: clientId
-{% endif %}    
+    - name: clientId 
   CrmUser:
     glue: yes
     keys:
@@ -59,16 +57,13 @@ entities:
     - name: visitId
   Transaction:
     keys:
-    - name: transactionId
-{% if 'sheets' in features %}     
+    - name: transactionId  
   PeriodStart:
     keys:
     - name: periodStart
   PeriodEnd:
     keys:
     - name: periodEnd
-{% endif %}     
-{% if 'appmetrica' in features %}
   AppMetricaDevice:
     glue: yes
     keys:
@@ -78,24 +73,18 @@ entities:
     - name: appmetricaDeviceId
   AppSession:
     keys:
-    {# - name: appSessionId #}
     - name: installationDeviceId
-{% endif %}
 links: 
-{% if 'sheets' in features %} 
   ManualAdCostStat:
     pipeline: periodstat
     keys:
     - name: periodStart
     main_entities:
     - PeriodStart
-    - PeriodEnd
-{% endif %}    
+    - PeriodEnd  
   UtmHashRegistry:
     pipeline: registry
-    {# datetime_field: toDateTime(0) #}
     keys:
-    {# - name: toDateTime(0) #}
     main_entities:
     - UtmHash 
   AdCostStat:
@@ -125,7 +114,7 @@ links:
     - UtmParams
   VisitStat:
     pipeline: events
-    datetime_field: __date {# с event_datetime без appmetrica выдает ошибку #}
+    datetime_field: __date 
     keys:
     - name: __date
     main_entities: 
@@ -139,7 +128,6 @@ links:
     - AdSource
     - UtmParams  
     - UtmHash
-{% if 'appmetrica' in features %}
   AppInstallStat:
     pipeline: events
     datetime_field: event_datetime
@@ -199,23 +187,17 @@ links:
     - UtmHash
   AppProfileMatching:
     pipeline: registry
-    {# datetime_field: toDateTime(0) #}
     keys:
-    {# - name: toDateTime(0) #}
     main_entities: 
     - AppMetricaDevice
     - CrmUser
-{% endif %}
 
 glue_models:
   hash_events:
     datetime_field: __datetime
     cols:
     - CrmUserHash
-{% if 'ym' in features %} 
     - YmClientHash
-{% endif %}    
-{% if 'appmetrica' in features %} 
     - AppEventStatHash
     - AppMetricaDeviceHash   
   hash_registry_appprofilematching:
@@ -224,7 +206,6 @@ glue_models:
     - AppProfileMatchingHash
     - AppMetricaDeviceHash
     - CrmUserHash
-{% endif %}
 
 steps:
   visits_step:
@@ -318,12 +299,8 @@ datasets:
   event_table:
     pipelines: events
     sources:
-{% if 'appmetrica' in features %} 
     - appmetrica
-{% endif %}
-{% if 'ym' in features %} 
     - ym
-{% endif %}
     preset: default
     accounts:
     - testaccount
@@ -331,12 +308,8 @@ datasets:
   cost_table:
     pipelines: datestat
     sources:
-{% if 'appmetrica' in features %} 
     - appmetrica
-{% endif %}
-{% if 'ym' in features %} 
     - ym
-{% endif %}
     preset: default
     accounts:
     - testaccount
