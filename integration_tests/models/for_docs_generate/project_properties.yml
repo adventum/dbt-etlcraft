@@ -1,0 +1,20 @@
+version: 2
+
+exposures:
+
+  - name: test_dashboard
+    label: Тестовый дашборд                 # optional
+    type: dashboard                         # required
+    maturity: low                           # optional high, medium, low
+    url:                                    # optional
+    description: >                          # optional
+      Тестовый дашборд. Просто представим, что он существует. Здесь его описание.
+
+    depends_on:                             # expected
+      - ref('dataset_event_table')
+
+    owner:
+      name: adventum
+      email: analytics.adventum@gmail.com
+
+
