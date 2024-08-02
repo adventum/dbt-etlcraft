@@ -1,0 +1,53 @@
+version: 2
+
+macros:
+  - name: normalize
+    description: >
+      Макрос normalize - это первый шаг.
+    docs:
+      show: true 
+      node_color: "#873a39" 
+    arguments:
+      - name: fields
+        type: list of columns names
+        description: "Список передаваемых полей"
+
+      - name: incremental_datetime_field
+        type: column name
+        description: "Инрементальное поле с датой - здесь его можно указать напрямую. По умолчанию =none"
+
+      - name: incremental_datetime_formula
+        type: formula
+        description: "Формула поиска инкрементального поля с датой - здесь можно указать формулу напрямую. По умолчанию будет происхожить поиск через макрос etlcraft.get_from_default_dict. По умолчанию =none"
+
+      - name: disable_incremental_datetime_field
+        type: boolean
+        description: "Этот аргумент позволяет сразу указать, есть в этих данных инкрементальность или её нет. Например, для пайплайнов registry и periodstat этот аргумент в самом макросе normalize определяется как true, то есть для этих пайплайнов инкрементальности нет. Пользователь при необходимости может сам напрямую указать значение этого аргумента. По умолчанию =none"
+
+      - name: defaults_dict
+        type: dictionary from internal macro
+        description: "Это словарь дефолтных значений, он задаётся в макросе etlcraft.etlcraft_defaults(). Участвует при поиске инкрементальных формулы и поля - icnremental_datetime_formula, incremental_datetime_field - при работе других макросов. По умолчанию defaults_dict=etlcraft.etlcraft_defaults()"
+
+      - name: schema_pattern
+        type: schema's name
+        description: "В этом аргументе можно задать значение схемы (например, schema_pattern=this.schema). По умолчанию schema_pattern='airbyte_internal', так как мы берём сырые данные из Airbyte, а он их скачивает в такую схему."
+
+      - name: source_table
+        type: table's name
+        description: "В этом аргументе можно напрямую указать название таблицы с сырыми данными. Если этот аргумент не задан, поиск будет происходить при помощи макроса etlcraft.get_relations_by_re. По умолчанию =none"
+
+      - name: override_target_model_name
+        type: model's name
+        description: "Этот аргумент позволяет указать другое название модели (иначе this.name). Например, вы хотите создать кастомную модель с названием, не соответсвующим канонам использования etlcraft, скажем, my_test_model. Но такая модель по умолчанию не сработает - и вы можете написать в этом аргументе значение названия модели по канонам, например, такой подход используется в модели normalize_appmetrica_events_default_screen_view. По умолчанию=none."
+
+      - name: debug_column_names
+        type: list of column names
+        description: "Этот аргумент используется в блоке кода по транслитерации названий столбцов - утсановке пвевдонимов, и при сортировке итогового списка полей. По умолчанию=False."
+
+      - name: old_airbyte
+        type: boolean
+        description: "Этот аргумент указывает, какая версия Airbyte используется. Если это условно 'старая' версия, то поле с датой называется _airbyte_extracted_at. А если 'новая' версия, то это поле называется как _airbyte_emitted_at. При любой версии Airbyte в итоге это поле станет __emitted_at. По умолчанию=true."
+
+      - name: limit0
+        type: special
+        description: "Этот аргумент нужен для первоначального запуска проекта, когда нужно, чтобы модели скомпилировались (до того, как туда будут залиты даные). По умолчанию=none."

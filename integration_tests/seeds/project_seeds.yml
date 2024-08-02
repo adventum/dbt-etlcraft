@@ -1,0 +1,21 @@
+version: 2
+
+seeds:
+  - name: datacraft_clientname_raw__stream_adjust_default_accountid_cohorts
+    description: adjust_default_accountid_cohorts
+    #docs:
+    #  show: true 
+    #  node_color: "#873a39" 
+    columns:
+      - name: _airbyte_raw_id
+        description: техническое поле Airbyte - id строки
+        tags: ['adjust']
+      - name: _airbyte_data 
+        description: поле с данными, все колонки внутри одной json-строки
+        tags: ['adjust']
+      - name: _airbyte_extracted_at 
+        description: техническое поле Airbyte - время получения данных
+        tags: ['adjust']
+
+#  - name: ... # declare properties of additional seeds
+
