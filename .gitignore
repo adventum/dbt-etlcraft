@@ -3,4 +3,5 @@ dbt_packages/
 logs/
 target/
 
-.obsidian
+.obsidian/
+.vscode/
