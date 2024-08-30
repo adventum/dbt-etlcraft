@@ -18,20 +18,20 @@
 
 # Основные разделы
 
-[Методология](Методология.md)
+[Methodology](Methodology.md)
 
-[Пакет dbt](Пакет%20dbt.md)
+[dbt package](dbt%20package.md)
 
-[Airflow-провайдер](Airflow-провайдер.md)
+[Airflow provider](Airflow%20provider.md)
 
 # С чего начать?
 
-[Инструкции и HowTo](Инструкции%20и%20HowTo.md)
+[Instructions and HowTo](Instructions%20and%20HowTo.md)
 
-[Термины](Термины.md)
+[Terms](Terms.md)
 
 # Справочники и руководства
 
-[Список коннекторов](Список%20коннекторов.md)
+[List of connectors](List%20of%20connectors.md)
 
 [Tasks](Tasks.md)
