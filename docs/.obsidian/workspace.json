@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
+                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
                 "mode": "source",
                 "source": false
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
+                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +138,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
+                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md"
+                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md"
               }
             }
           }
@@ -183,9 +183,12 @@
   },
   "active": "1c56d8a8da2b83c9",
   "lastOpenFiles": [
+    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/generate_models.md",
+    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/base.md",
+    "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
+    "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/presets.md",
     "etlCraft/etlCraft Documentation/Airflow provider.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
     "etlCraft/etlCraft Documentation/Tasks.md",
     "etlCraft/etlCraft Documentation/dbt package.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/template_configs.md",
@@ -193,7 +196,6 @@
     "Templates/Term template.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Configuration.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/generate_models.md",
     "etlCraft/etlCraft Documentation.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Operators for Airbyte work.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/connectors.md",
@@ -207,8 +209,6 @@
     "etlCraft/etlCraft Documentation/Terms/Slug.md",
     "etlCraft/etlCraft Documentation/Terms/Name (config).md",
     "etlCraft/etlCraft Documentation/Terms/Model.md",
-    "etlCraft/etlCraft Documentation/Terms/Link.md",
-    "etlCraft/etlCraft Documentation/Terms/Id.md",
     "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs",
     "etlCraft/etlCraft Documentation/Airflow_provider/Configuration",
     "etlCraft/etlCraft Documentation/Terms",
