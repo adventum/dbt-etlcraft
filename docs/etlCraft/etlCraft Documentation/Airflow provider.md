@@ -19,9 +19,10 @@
 
 [Configuration](Configuration.md)
 
-[Description of DAGs](Description%20of%20DAGs.md)
-
 [How DAGs work](How%20DAGs%20work.md)
+```dataview
+table status as "Status", assignee as "Assignee", due as "Due" from "etlCraft/etlCraft Documentation/Desctiption of DAGs"
+```
 
 Интеграция с dataCraft
 
