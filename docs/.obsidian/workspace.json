@@ -8,24 +8,24 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1c56d8a8da2b83c9",
+            "id": "cade3125ac5302d0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
+                "file": "Airflow Providers/Airbyte Operators/README.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "cade3125ac5302d0",
+            "id": "3763c081f6be13be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/template_configs.md",
+                "file": "Airflow Providers/Airbyte Operators/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/Configuration.md",
+                "file": "Airflow Providers/Configs/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
+                "file": "Airflow Providers/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -84,7 +84,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "provi",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -121,7 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
+                "file": "Airflow Providers/Airbyte Operators/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +138,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
+                "file": "Airflow Providers/Airbyte Operators/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md"
+                "file": "Airflow Providers/Airbyte Operators/README.md"
               }
             }
           }
@@ -169,7 +169,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,43 +182,43 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1c56d8a8da2b83c9",
+  "active": "cade3125ac5302d0",
   "lastOpenFiles": [
-    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/generate_models.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/base.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/How DAGs work.md",
-    "etlCraft/etlCraft Documentation/Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/presets.md",
-    "etlCraft/etlCraft Documentation/Airflow provider.md",
-    "etlCraft/etlCraft Documentation/Tasks.md",
-    "etlCraft/etlCraft Documentation/dbt package.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs/template_configs.md",
-    "Templates/DAG Template.md",
-    "Templates/Term template.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration.md",
-    "etlCraft/etlCraft Documentation.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Operators for Airbyte work.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration/connectors.md",
-    "etlCraft/etlCraft Documentation/How to create a config for presets.md",
-    "etlCraft/etlCraft Documentation/Terms.md",
-    "etlCraft/etlCraft Documentation/Terms/Airbyte Source, Airbyte Destination, Airbyte Connection.md",
-    "etlCraft/etlCraft Documentation/List of connectors.md",
-    "Templates/Task Template.md",
-    "macros/get_from_default_dict.md",
-    "etlCraft/etlCraft Documentation/Terms/Source.md",
-    "etlCraft/etlCraft Documentation/Terms/Slug.md",
-    "etlCraft/etlCraft Documentation/Terms/Name (config).md",
-    "etlCraft/etlCraft Documentation/Terms/Model.md",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Description of DAGs",
-    "etlCraft/etlCraft Documentation/Airflow_provider/Configuration",
-    "etlCraft/etlCraft Documentation/Terms",
-    "etlCraft/etlCraft Documentation/Tasks",
-    "etlCraft/etlCraft Documentation/Airflow_provider",
-    "etlCraft/etlCraft Documentation",
-    "etlCraft",
-    "etlcraft/Документация по etlCraft/Airflow_provider/Конфигурация",
-    "etlcraft/Документация по etlCraft/Airflow_provider/Описание DAG'ов",
-    "etlcraft/Документация по etlCraft/Tasks"
+    "Airflow Providers/Airbyte Operators/AirbyteSyncSensor.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateSourceOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListSourceDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListJobsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateConnetctionOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateDestinationDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateDestinationOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateSourceDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListConnectionsOperator.md",
+    "Airflow Providers/Airbyte Operators/README.md",
+    "Airflow Providers/Airbyte Operators/AirbyteTriggerSyncOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListSourcesOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListWorkspaceOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListDestinationsOperator.md",
+    "Airflow Providers/Airbyte Operators/Untitled.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
+    "Terms/Airbyte Connection.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceDefinitionsOperator.md",
+    "Terms/Airbyte Destination.md",
+    "Airflow Providers/Airbyte Operators/AirbyteListDestinationDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteGeneralOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
+    "AirbyteListDestinationDefinitionsOperator.md",
+    "Terms/Airbyte Source.md",
+    "Connectors",
+    "Terms/Untitled",
+    "HowTo",
+    "Methodology",
+    "etlCraft/etlCraft Documentation/Airflow_provider/Untitled",
+    "Airflow Providers/Airbyte Operators",
+    "Airflow Providers/DAGs",
+    "Airflow Providers/Configs",
+    "Terms",
+    "Tasks"
   ]
 }

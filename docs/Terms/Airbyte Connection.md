@@ -1,5 +1,5 @@
 ---
-term_name: Airbyte Source, Airbyte Destination, Airbyte Connection
+term_name: Airbyte Source
 description: сущности внутри Airbyte, которые можно создать вручную или по API
 ---
 

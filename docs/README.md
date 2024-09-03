@@ -20,18 +20,18 @@
 
 [Methodology](Methodology.md)
 
-[dbt package](dbt%20package.md)
+[README](dbt%20Package/README.md)
 
-[Airflow provider](Airflow%20provider.md)
+[README](Airflow%20Providers/README.md)
 
 # С чего начать?
 
-[Instructions and HowTo](Instructions%20and%20HowTo.md)
+[README](HowTo/README.md)
 
-[Terms](Terms.md)
+[README](Terms/README.md)
 
 # Справочники и руководства
 
-[List of connectors](List%20of%20connectors.md)
+[README](Connectors/README.md)
 
-[Tasks](Tasks.md)
+[README](Tasks/README.md)

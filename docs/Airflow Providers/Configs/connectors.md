@@ -6,12 +6,12 @@
 
 Словарь состоит из двух частей: `source_definitions` и `destination_definitions`. В обоих разделах одинаковая структура:
 
-- `slug`  — идентификатор коннектора, его сокращенное название, взятое из [[Configuration#Список конфигов]]
+- `slug`  — идентификатор коннектора, его сокращенное название, взятое из [[Airflow Providers/Configs/README#Список конфигов]]
     
     [[Add slug validation check to connector creation DAG]]
     
 - `image` — название Docker-образа на DockerHub
-- `documentation`  — ссылка на этот Notion (раздел “[[Configuration#Список конфигов]]”), где даны инструкции, как подключить коннектор в Aibyte
+- `documentation`  — ссылка на этот Notion (раздел “[[Airflow Providers/Configs/README#Список конфигов]]”), где даны инструкции, как подключить коннектор в Aibyte
 
 [[Заменить в конфиге connectors name на slug]]
 
