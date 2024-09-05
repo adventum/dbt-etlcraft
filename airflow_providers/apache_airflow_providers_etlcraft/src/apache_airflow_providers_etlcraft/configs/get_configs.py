@@ -158,7 +158,7 @@ def get_configs(
                     match = re.search(pattern, variable_name)
                     if match:
                         suffixes.add(match.group(1))
-                print(f"Suffixes - {suffixes}")
+
                 # Обработка для каждого подконфига base,
                 # по итогу получается 1 конфиг base, состоящий их подконфигов
                 all_base_config = {}
@@ -172,8 +172,6 @@ def get_configs(
                         suffix, namespace, source_key, format_key,
                         path_key, entire_datacraft_variable
                     )
-
-                print(f"All base config - {all_base_config}")
 
                 # Добавление получившегося base в переменную {namespace}_base
                 Variable.update(f"{namespace}_base", all_base_config)
