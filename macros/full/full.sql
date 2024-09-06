@@ -2,11 +2,12 @@
   params=none,
   disable_incremental=none,
   override_target_model_name=none,
-  metadata=project_metadata(),
   links_in_project=none,
   date_from=none,
   date_to=none,
-  limit0=none) 
+  limit0=none,
+  metadata=project_metadata()
+  ) 
 -%}
 
 {%- set links_in_project =["ManualAdCostStat","UtmHashRegistry","AdCostStat","MediaplanStat","VisitStat",
