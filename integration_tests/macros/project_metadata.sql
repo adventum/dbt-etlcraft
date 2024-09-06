@@ -314,5 +314,5 @@ datasets:
     accounts:
     - testaccount
 {% endset %}
-  {{ return(fromyaml(metadata_dict)) }}    
+{{ return(fromyaml(metadata_dict)) }}    
 {%- endmacro -%}
