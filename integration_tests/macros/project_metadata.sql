@@ -1,5 +1,5 @@
-{%- macro metadata_1(features) -%}
-
+{% macro project_metadata() %}
+{% set metadata_dict %}
 entities:
   Account:
     keys:
@@ -191,7 +191,6 @@ links:
     main_entities: 
     - AppMetricaDevice
     - CrmUser
-
 glue_models:
   hash_events:
     datetime_field: __datetime
@@ -313,4 +312,6 @@ datasets:
     preset: default
     accounts:
     - testaccount
-{%- endmacro -%}
+{% endset %}
+  {{ return(fromyaml(metadata_dict)) }}    
+{% endmacro %}

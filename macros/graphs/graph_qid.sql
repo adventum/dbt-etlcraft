@@ -1,6 +1,5 @@
 {%- macro graph_qid(
-  params = none,
-  override_target_metadata=none,
+  params=none,
   stage_name=none,
   limit0=none
   ) -%}

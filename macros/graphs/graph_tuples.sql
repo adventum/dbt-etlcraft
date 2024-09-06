@@ -1,14 +1,13 @@
 {%- macro graph_tuples(
-  params = none,
-  override_target_metadata=none,
+  params=none,
   stage_name=none,
-  limit0=none
+  limit0=none,
+  metadata=project_metadata()
   ) -%}
 
-{# Извлекаем метаданные или используем метаданные по умолчанию #}
-{%- set metadata_dict = fromyaml(override_target_metadata or etlcraft.metadata(override_target_metadata)) -%}
-{# Получаем модели склейки из метаданных #}
-{%- set glue_models = metadata_dict['glue_models'] -%}
+{# здесь важна последовательность аргументов, metadata д.б. вконце, инчае всё ломается. Порядок аргументов задан в основном макросе graph #}
+
+{%- set glue_models = metadata['glue_models'] -%}
 
 {# Цикл по моделям склейки #}
 {%- for table, data in glue_models.items() -%}

@@ -1,5 +1,5 @@
 {%- macro incremental(
-    defaults_dict=etlcraft.etlcraft_defaults(), 
+    defaults_dict=fieldconfig(), 
     disable_incremental=False,
     limit0=none) -%}
 
@@ -59,10 +59,22 @@ SELECT *
         on_schema_change='fail'
     ) }}
 
+{#- проверяем, есть ли в таблице предыдущего шага данные или таблица пустая -#}
+{#- использум доп.макрос - запрос ниже даёт 1, если данные есть и 0, если данных нет -#}
+{#- {{ etlcraft.check_table_empty('test', 'normalize_mt_datestat_default_banners_statistics') }} пример с прописанными значениями -#}
+
+{#- set check_table_result = etlcraft.check_table_empty(this.schema, table_pattern) -#}
+
+
 SELECT * REPLACE({{ etlcraft.cast_date_field('__date') }} AS __date)  
 {%- endif %} {# конец условия про наличие инкрементального поля с датой #}
 
+{#- if check_table_result==1 -#}
 FROM {{ ref(table_pattern) }}
+{# else #}
+{#  FROM {{ this }} #}
+{# endif #}
+
 {%- if limit0 -%}
 LIMIT 0
 {%- endif -%}

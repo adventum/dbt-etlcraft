@@ -1,13 +1,13 @@
 {%- macro attr_create_missed_steps(
   params = none,
-  override_target_metadata=none,
   funnel_name=none,
   limit0=none
   ) -%}
 
 {# 
     Настройка материализации данных.
-    order_by=('qid', '__datetime','__link','__id') определяет порядок сортировки данных по идентификатору группы, дате, ссылке и идентификатору.
+    order_by=('qid', '__datetime','__link','__id') 
+    определяет порядок сортировки данных по идентификатору группы, дате, ссылке и идентификатору.
 #}
 {{
     config(
