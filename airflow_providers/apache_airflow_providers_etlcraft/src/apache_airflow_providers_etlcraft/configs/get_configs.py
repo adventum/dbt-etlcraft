@@ -47,13 +47,14 @@ def etlcraft_variable(variable_id_without_prefix: str, namespace: str, default_v
     return Variable.get(variable_id, default_var=default_value)
 
 
-def processing_single(
+def process_single(
     config_name: str,
     namespace: str,
     source_key: str,
     format_key: str,
     path_key: str,
-    entire_datacraft_variable: bool = False
+    entire_datacraft_variable: bool = False,
+    collected_base_load: dict[str: dict] = None
 ):
 
     # Сначала определяем source, format и path для конфигурации
@@ -77,16 +78,29 @@ def processing_single(
         if source == "file" and not path:
             path = f"configs/{config_name}"
 
+        # Если приходит конфиг base, то после того как он собрал свои подконфиги,
+        # он их выгружает по пути, указанным в метаконфиге path
+        if config_name == "base" and (source == "file" or source == "templated_file"):
+            path = Variable.get(path_key, default_var="")
+
         if not path.endswith(('.json', '.yml', '.yaml')):
             extension = ".json" if file_format == "json" else ".yml"
             path += extension
 
         try:
-            with open(path, 'r') as file:
-                if file_format == "json":
-                    config = json.load(file)
-                else:
-                    config = yaml.safe_load(file)
+            if config_name == "base":
+                # Выргрузка в указанный файл содержимого подконфигов
+                with open(path, 'w') as file:
+                    if file_format == "json":
+                        json.dump(collected_base_load, file)
+                    else:
+                        config = yaml.dump(collected_base_load, file)
+            else:
+                with open(path, 'r') as file:
+                    if file_format == "json":
+                        config = json.load(file)
+                    else:
+                        config = yaml.safe_load(file)
         except FileNotFoundError:
             raise EtlcraftConfigError(f"File '{path}' not found.")
 
@@ -106,6 +120,11 @@ def processing_single(
                 )
 
     elif source == "other_variable":
+
+        # Наполнение переменной, указанной в path_for_config_{namespace}_base, подконфигами base
+        if config_name == "base":
+            Variable.update(f"{path}", collected_base_load)
+
         other_variable_path = f"{path}"
         default_other_variable_path = f"{config_name}"
         config = Variable.get(other_variable_path, default_var=default_other_variable_path)
@@ -168,17 +187,28 @@ def get_configs(
                     format_key = f"format_for_config_{namespace}_{config_name}_{suffix}"
                     path_key = f"path_for_config_{namespace}_{config_name}_{suffix}"
 
-                    all_base_config[suffix] = processing_single(
+                    all_base_config[suffix] = process_single(
                         suffix, namespace, source_key, format_key,
                         path_key, entire_datacraft_variable
                     )
 
                 # Добавление получившегося base в переменную {namespace}_base
-                Variable.update(f"{namespace}_base", all_base_config)
+
+                source_base = f"source_for_config_{namespace}_base"
+                format_base = f"format_for_config_{namespace}_base"
+                path_base = f"path_for_config_{namespace}_base"
+
+                # Передача всех подконфигов base как единого словаря(all_base_config)
+                # для сохранения его в файле, или переменной(если source указан как other_variable),
+                # это зависит от переменной path_for_config_{namespace}_base в Админке Airflow
+                process_single(
+                    config_name, namespace, source_base, format_base,
+                    path_base, entire_datacraft_variable, all_base_config
+                )
 
                 return all_base_config
         else:
-            config = processing_single(
+            config = process_single(
                 config_name, namespace, source_key, format_key,
                 path_key, entire_datacraft_variable
             )
