@@ -1,5 +1,5 @@
-{%- macro metadata_1(features) -%}
-
+{%- macro project_metadata() -%}
+{% set metadata_dict %}
 entities:
   Account:
     keys:
@@ -313,4 +313,6 @@ datasets:
     preset: default
     accounts:
     - testaccount
+{% endset %}
+  {{ return(fromyaml(metadata_dict)) }}    
 {%- endmacro -%}
