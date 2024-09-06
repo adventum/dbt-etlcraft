@@ -13,43 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "3763c081f6be13be",
+            "id": "79e5a01c7f07a2b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "35368ab4bb39d07c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "dc2543e55f8069b8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/README.md",
+                "file": "HowTos/Installation.md",
                 "mode": "source",
                 "source": false
               }
@@ -84,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "provi",
+                "query": "import",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -121,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators/README.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators/README.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,16 +137,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators/README.md"
+                "file": "README.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,41 +160,41 @@
   },
   "active": "cade3125ac5302d0",
   "lastOpenFiles": [
-    "Airflow Providers/Airbyte Operators/AirbyteSyncSensor.md",
-    "Airflow Providers/Airbyte Operators/AirbyteUpdateSourceOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListSourceDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListJobsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteUpdateConnetctionOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteUpdateDestinationDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteUpdateDestinationOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteUpdateSourceDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListConnectionsOperator.md",
-    "Airflow Providers/Airbyte Operators/README.md",
-    "Airflow Providers/Airbyte Operators/AirbyteTriggerSyncOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListSourcesOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListWorkspaceOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListDestinationsOperator.md",
-    "Airflow Providers/Airbyte Operators/Untitled.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
-    "Terms/Airbyte Connection.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceDefinitionsOperator.md",
-    "Terms/Airbyte Destination.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListDestinationDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteGeneralOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
-    "AirbyteListDestinationDefinitionsOperator.md",
-    "Terms/Airbyte Source.md",
+    "HowTos/Quick start.md",
+    "README.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "dbt Package.md",
+    "HowTos/Installation.md",
+    "HowTo/README.md",
+    "HowTo",
+    "HowTos.md",
+    "Terms.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/DAGs.md",
+    "Connectors.md",
+    "Airflow Providers.md",
+    "Airflow Providers/DAGs/generate_models.md",
+    "Airflow Providers/DAGs/template_configs.md",
+    "Tasks/Turn the create_models_file function into a statement.md",
+    "Tasks/README.md",
+    "Tasks/Check the documentation to find out what {{% raw %}} and {{%endraw%}} are..md",
+    "Tasks/Attach a screenshot of the generated folder tree to the documentation.md",
+    "Tasks/Add slug validation check to connector creation DAG.md",
+    "Tasks/Поменять логику очистки файлов и папок.md",
+    "Tasks/Настроить получение адреса папки проекта dbt и папки с моделями из конфига basic_config.md",
+    "Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
+    "Tasks/Избавиться от prepare_files_data и скорректировать раздел Формат на шаге prepare.md",
+    "Tasks/Заменить в конфиге connectors name на slug.md",
+    "Templates/Airbyte Operator Template.md",
+    "Templates/Task Template.md",
     "Connectors",
     "Terms/Untitled",
-    "HowTo",
+    "HowTos",
     "Methodology",
     "etlCraft/etlCraft Documentation/Airflow_provider/Untitled",
     "Airflow Providers/Airbyte Operators",
     "Airflow Providers/DAGs",
     "Airflow Providers/Configs",
-    "Terms",
-    "Tasks"
+    "Terms"
   ]
 }

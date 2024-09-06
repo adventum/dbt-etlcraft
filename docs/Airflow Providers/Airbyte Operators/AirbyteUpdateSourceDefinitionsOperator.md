@@ -4,7 +4,7 @@ api_version: Устаревшее API
 ## Описание
 Обновляет имеющийся [[Коннектор|коннектор]].
 ## Аргументы
-- `airbyte_conn_id` (см. [[Airflow Providers/Airbyte Operators/README#Общие аргументы всех операторов|Общие аргументы]])
+- `airbyte_conn_id` (см. [[Airbyte Operators#Общие аргументы всех операторов|Общие аргументы]])
 - `id` или `name`— ID или название коннектора, который нужно обновить. Если передан аргумент `name`, то  становится обязательным аргумент `source_definition_list`. В этот аргумент нужно передать результат вызова оператора [[AirbyteListSourceDefinitionsOperator]].
 - `dockerImageTag` — ссылка на образ коннектора в репозитории Docker
 - `documentationUrl` — ссылка на документацию

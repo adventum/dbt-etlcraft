@@ -7,7 +7,7 @@
 
 Провайдер содержит:
 
-[README](Airflow%20Providers/Airbyte%20Operators/README.md)
+[Airbyte Operators](Airbyte%20Operators.md)
 
 - функции для сбора конфигурации
 - конструктор DAG’ов, позволяющий решить следующие задачи:
@@ -17,7 +17,9 @@
     - запускать обновление данных через Airbyte за нужные даты
     - запускать обработку через dbt
 
-[README](Airflow%20Providers/Configs/README.md)
+[Configs](Configs.md)
+
+#task Заменить README на понятные описания в ссылке
 
 [How DAGs work](How%20DAGs%20work.md)
 ```dataview
