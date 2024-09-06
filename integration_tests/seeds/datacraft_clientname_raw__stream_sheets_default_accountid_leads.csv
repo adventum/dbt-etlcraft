@@ -1,0 +1,6 @@
+"_airbyte_raw_id","_airbyte_data","_airbyte_extracted_at"
+"003b5949-0638-40d5-bd26-524931fd7ae1","{""Date"":""2024-01-01"",""Source"":""source_1"",""Product"":""product_1"",""Leads"":""125""}","2024-04-19 01:04:32.000 +0000"
+"00433b3d-3246-4766-948f-166badbc34ab","{""Date"":""2024-02-01"",""Source"":""source_1"",""Product"":""product_2"",""Leads"":""132""}","2024-04-19 01:04:34.000 +0000"
+"0094ccf7-b54f-4fb4-8219-a738e1ec60d9","{""Date"":""2024-01-01"",""Source"":""source_2"",""Product"":""product_1"",""Leads"":""117""}","2024-04-19 01:04:33.000 +0000"
+"00e97828-d65f-4197-bade-434f82dfed23","{""Date"":""2024-02-01"",""Source"":""source_2"",""Product"":""product_2"",""Leads"":""124""}","2024-04-19 01:04:33.000 +0000"
+"01073c14-6dc1-4fc9-b365-33466dbadd56","{""Date"":""2024-02-16"",""Source"":""source_1"",""Product"":""product_1"",""Leads"":""152""}","2024-04-19 01:04:32.000 +0000"
