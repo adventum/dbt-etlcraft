@@ -1,11 +1,11 @@
 {%- macro attr_model(
   params = none,
-  override_target_metadata=none,
   funnel_name=none,
-  limit0=none
+  limit0=none,
+  metadata=project_metadata()
   ) -%}
 
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
+
 {%- set funnels = metadata['funnels'] -%}
 {%- set attribution_models = metadata['attribution_models'] -%}
 {%- set model_list = funnels[funnel_name].models -%}
@@ -21,7 +21,8 @@
 
 {# 
     Настройка материализации данных.
-    order_by=('qid', '__datetime', '__id') определяет порядок сортировки данных по идентификатору группы, номеру периода, дате, приоритету и идентификатору.
+    order_by=('qid', '__datetime', '__id') 
+    определяет порядок сортировки данных по идентификатору группы, номеру периода, дате, приоритету и идентификатору.
 #}
 
 {{

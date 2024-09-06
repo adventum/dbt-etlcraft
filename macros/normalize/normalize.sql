@@ -3,7 +3,7 @@
     incremental_datetime_field=none, 
     incremental_datetime_formula=none,
     disable_incremental_datetime_field=none,
-    defaults_dict=etlcraft.etlcraft_defaults(), 
+    defaults_dict=fieldconfig(), 
     schema_pattern='airbyte_internal', 
     source_table=none, 
     override_target_model_name=none,
