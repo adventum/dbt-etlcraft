@@ -1,12 +1,16 @@
 {%- macro full(
-  params = none,
+  params=none,
   disable_incremental=none,
   override_target_model_name=none,
-  override_target_metadata=none,
-  date_from = none,
-  date_to = none,
+  metadata=project_metadata(),
+  links_in_project=none,
+  date_from=none,
+  date_to=none,
   limit0=none) 
 -%}
+
+{%- set links_in_project =["ManualAdCostStat","UtmHashRegistry","AdCostStat","MediaplanStat","VisitStat",
+"AppInstallStat","AppEventStat","AppSessionStat","AppDeeplinkStat","AppProfileMatching"] -%}
 
 {#- задаём части имени - выясняем какой у нас pipeline: datestat/events/periodstat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
@@ -44,7 +48,6 @@
 {#- ************************************* отбор возможных и существующих таблиц registry ************************************* -#}
 
 {#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
-{%- set metadata = fromyaml(etlcraft.metadata(override_target_metadata)) -%}
 {%- set links_list = [] -%}
 {%- set registry_possible_tables = [] -%}
 {%- set links = metadata['links'] -%}
@@ -125,12 +128,23 @@ FROM unnest_dates
 {#- здесь нет условия if, но, поскольку при вызове моделей у каждой свой pipeline_name, значения будут разными -#}
 {%- set pipeline_columns = [] -%} {# сюда будем отбирать колонки с сущностями каждого пайплайна #}
 {%- set links_list = [] -%}
-{%- set links = metadata['links'] -%}    
+{%- set links = metadata['links'] -%} {# отбираем из metadata раздел links целиком #}   
     {%- for link in links  -%}
       {%- do links_list.append(link) -%} 
     {%- endfor -%}
 
-{%- for link_name in links_list  -%}
+{#- отбираем общий список линков: то есть тех линков, которые есть и в metadata, и в проекте -#}
+{#- список линков, которые есть в проекте - передаётся из airflow -#}
+{%- set links_common =[] -%}
+{%- for link_name_metadata in links  -%}
+    {%- if link_name_metadata in links_in_project -%}
+        {%- do links_common.append(link_name_metadata) -%}
+    {%- endif -%}
+{%- endfor -%}
+
+{#- здесь берём поочередно каждый линк из общего списка и обращаемся с этим линком в раздел links из metadata -#}
+{#- и получаем нужные данные по линку - его пайплайн, сущности и тд -#}
+{%- for link_name in links_common -%}
     {%- set pipeline = links[link_name].get('pipeline') or [] -%}
     {%- if pipeline == pipeline_name -%}
         {%- set main_entities = links[link_name].get('main_entities') or [] -%}
