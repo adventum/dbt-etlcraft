@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "dbt package.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "dbt package.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "dbt package.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "dbt package.md"
               }
             }
           }
@@ -160,21 +160,22 @@
   },
   "active": "cade3125ac5302d0",
   "lastOpenFiles": [
-    "HowTos/Quick start.md",
-    "README.md",
+    "dbt package/array.md",
+    "dbt package.md",
     "Airflow Providers/Airbyte Operators.md",
-    "dbt Package.md",
+    "README.md",
+    "Airflow Providers/DAGs/template_configs.md",
+    "Airflow Providers/Configs.md",
+    "HowTos/Quick start.md",
     "HowTos/Installation.md",
     "HowTo/README.md",
     "HowTo",
     "HowTos.md",
     "Terms.md",
-    "Airflow Providers/Configs.md",
     "Airflow Providers/DAGs.md",
     "Connectors.md",
     "Airflow Providers.md",
     "Airflow Providers/DAGs/generate_models.md",
-    "Airflow Providers/DAGs/template_configs.md",
     "Tasks/Turn the create_models_file function into a statement.md",
     "Tasks/README.md",
     "Tasks/Check the documentation to find out what {{% raw %}} and {{%endraw%}} are..md",
@@ -186,7 +187,6 @@
     "Tasks/Избавиться от prepare_files_data и скорректировать раздел Формат на шаге prepare.md",
     "Tasks/Заменить в конфиге connectors name на slug.md",
     "Templates/Airbyte Operator Template.md",
-    "Templates/Task Template.md",
     "Connectors",
     "Terms/Untitled",
     "HowTos",
