@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "68c88a7e8c016512",
+    "id": "c99c0d2be8f9d9e3",
     "type": "split",
     "children": [
       {
-        "id": "ea4e73762b38c15c",
+        "id": "758c3510fc2b1936",
         "type": "tabs",
         "children": [
           {
-            "id": "4be064db77364aa0",
+            "id": "b1c3f85499089b19",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs/connectors.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "34a35c969ea6a2fc",
+    "id": "f6535b6c1493c628",
     "type": "split",
     "children": [
       {
-        "id": "7b380b3610a4a670",
+        "id": "8962f1c8b86ce170",
         "type": "tabs",
         "children": [
           {
-            "id": "d25176eb34e78d23",
+            "id": "e1cf3470be8a6886",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,12 +39,12 @@
             }
           },
           {
-            "id": "0af5e166ee603c0c",
+            "id": "dc3aad1a848680e2",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#task",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "398433271c398b5a",
+            "id": "570b101b23a8a096",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "22ccde28bd1633ce",
+    "id": "a6d1f19db64c4383",
     "type": "split",
     "children": [
       {
-        "id": "c181ba4e9dec9e80",
+        "id": "d09ba708f8ec7cc2",
         "type": "tabs",
         "children": [
           {
-            "id": "abb023612fd6404f",
+            "id": "bce94221456c1791",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Configs/connectors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +92,18 @@
             }
           },
           {
-            "id": "21a9b687cc5b0c6e",
+            "id": "8407eb7b8ad92f5b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Configs/connectors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "ae9f54ec66113030",
+            "id": "5f35f2d11b044d21",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,21 +114,19 @@
             }
           },
           {
-            "id": "ddd6ee1661efaf43",
+            "id": "fb3daecd3a7e8e7e",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Airflow Providers/Configs/connectors.md"
-              }
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,43 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4be064db77364aa0",
-  "lastOpenFiles": [
-    "Airflow Providers/Airbyte Operators/AirbyteListDestinationDefinitionsOperator.md",
-    "Airflow Providers/DAGs/create_connectors.md",
-    "Airflow Providers/DAGs/generate_models.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/DAGs/template_configs.md",
-    "Airflow Providers.md",
-    "Airflow Providers/How DAGs work.md",
-    "README.md",
-    "Airflow Providers/Airbyte Operators.md",
-    "Airflow Providers/Configs.md",
-    "Terms/DAG.md",
-    "DAG.md",
-    "Terms/Airbyte Connection.md",
-    "Airflow Providers/Configs/connectors.md",
-    "Tasks/Add slug validation check to connector creation DAG.md",
-    "Airflow Providers/Configs/presets.md",
-    "Airflow Providers/Configs/base.md",
-    "Templates/DAG Template.md",
-    "dbt Package/get_from_default_dict.md",
-    "dbt Package/normalize_name.md",
-    "dbt Package/normalize.md",
-    "dbt Package/like_query_cycle.md",
-    "dbt Package/json_list_keys.md",
-    "dbt Package/json_extract_string.md",
-    "dbt Package/incremental.md",
-    "dbt Package/graph.md",
-    "dbt Package",
-    "Terms",
-    "HowTos",
-    "Tasks",
-    "Airflow Providers/DAGs",
-    "Airflow Providers/Configs",
-    "Airflow Providers/Airbyte Operators",
-    "Airflow Providers",
-    "HowTo",
-    "Connectors"
-  ]
+  "active": "b1c3f85499089b19",
+  "lastOpenFiles": []
 }

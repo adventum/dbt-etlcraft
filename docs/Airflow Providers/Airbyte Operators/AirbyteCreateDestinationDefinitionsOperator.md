@@ -2,7 +2,7 @@
 api_version: Устаревшее API
 ---
 ## Описание
-Создает новый [[Коннектор|коннектор]].
+Создает новый [[Terms/DAG|коннектор]].
 ## Аргументы
 - `airbyte_conn_id` (см. [[Airbyte Operators#Общие аргументы всех операторов|Общие аргументы]])
 - `workspace_id` или `workspace_name` + `workspaces_list` (см. [[Airbyte Operators#Общие аргументы всех операторов|Общие аргументы]])

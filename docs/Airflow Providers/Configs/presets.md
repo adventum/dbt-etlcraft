@@ -1,7 +1,8 @@
-Описание: Конфигурации Airbyte Source, Destination и Connection, которые используются при создании нового источника
-Тип по умолчанию: `templated_file`
-Формат по умолчанию: `json`
-
+---
+description: Конфигурации Airbyte Source, Destination и Connection, которые используются при создании нового источника
+config_default_type: "`templated_file`"
+config_default_format: "`yaml`"
+---
 # Описание
 
 [[Написать инструкцию, как сформировать конфиг для presets]]
