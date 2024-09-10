@@ -1,3 +1,6 @@
+---
+step: 2_incremental
+---
 ## Incremental Table Macro
 
 This macro facilitates the creation and management of incremental tables in dbt, based on a specific naming pattern.

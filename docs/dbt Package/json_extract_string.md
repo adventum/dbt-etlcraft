@@ -1,3 +1,6 @@
+---
+step: other
+---
 # json_extract_string
 
 This macro is used to extract a string value from a JSON object in a SQL query. 

@@ -1,3 +1,6 @@
+---
+step: 1_normalize
+---
 # dbt `normalize` Macro Documentation
 
 The `normalize` macro is designed to normalize tables that are downloaded by Airbyte. This macro accepts three optional arguments:
