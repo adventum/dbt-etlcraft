@@ -1,5 +1,6 @@
 ---
-step: 2_incremental
+step: 1_silos
+sub_step: 2_incremental
 ---
 ## Incremental Table Macro
 

@@ -8,48 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4631e39647b92f27",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "70f2ce151b1021fe",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt package/array.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "7b7cdb35199c4727",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "152b45bb03446610",
             "type": "leaf",
             "pinned": true,
@@ -62,21 +20,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "d485f75be37b5177",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt package/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -203,21 +148,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d485f75be37b5177",
+  "active": "152b45bb03446610",
   "lastOpenFiles": [
-    "dbt package/graph.md",
+    "Airflow Providers/Configs.md",
+    "dbt package/README.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "dbt package/array.md",
     "dbt package/incremental.md",
+    "dbt package/normalize.md",
+    "dbt package/normalize_name.md",
+    "dbt package/graph.md",
     "dbt package/json_extract_string.md",
     "dbt package/json_list_keys.md",
     "dbt package/like_query_cycle.md",
-    "dbt package/normalize.md",
-    "dbt package/normalize_name.md",
-    "dbt package/array.md",
-    "dbt package/README.md",
     "dbt package/attr.md",
     "dbt Package.md",
-    "Airflow Providers/Configs.md",
-    "Airflow Providers/Airbyte Operators.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
     "Airflow Providers/Configs/base.md",

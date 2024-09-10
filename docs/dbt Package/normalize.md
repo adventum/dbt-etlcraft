@@ -1,5 +1,6 @@
 ---
-step: 1_normalize
+step: 1_silos
+sub_step: 1_normalize
 ---
 # dbt `normalize` Macro Documentation
 
