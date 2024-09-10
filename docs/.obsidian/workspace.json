@@ -20,8 +20,21 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "c0a887105f5bd829",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt package/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -148,20 +161,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "152b45bb03446610",
+  "active": "c0a887105f5bd829",
   "lastOpenFiles": [
-    "Airflow Providers/Configs.md",
-    "dbt package/README.md",
-    "Airflow Providers/Airbyte Operators.md",
-    "dbt package/array.md",
-    "dbt package/incremental.md",
-    "dbt package/normalize.md",
     "dbt package/normalize_name.md",
-    "dbt package/graph.md",
-    "dbt package/json_extract_string.md",
-    "dbt package/json_list_keys.md",
+    "dbt package/normalize.md",
     "dbt package/like_query_cycle.md",
+    "dbt package/json_list_keys.md",
+    "dbt package/json_extract_string.md",
+    "dbt package/incremental.md",
+    "dbt package/graph.md",
+    "dbt package/get_from_default_dict.md",
+    "dbt package/get_column_count_in_subquery.md",
+    "dbt package/dataset.md",
+    "dbt package/check_table_exists.md",
     "dbt package/attr.md",
+    "dbt package/array.md",
+    "dbt package/README.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/Airbyte Operators.md",
     "dbt Package.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
@@ -172,12 +189,8 @@
     "Terms.md",
     "Methodology.md",
     "Connectors.md",
-    "Airflow Providers.md",
     "dbt-etlcraft docs/Untitled.canvas",
-    "dbt-etlcraft docs/Welcome.md",
-    "dbt-etlcraft docs/2024-09-10.md",
     "dbt-etlcraft docs",
-    "HowTos/Quick start.md",
     "HowTo",
     "Connectors",
     "Terms/Untitled",

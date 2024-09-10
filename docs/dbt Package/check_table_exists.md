@@ -1,3 +1,6 @@
+---
+step: other
+---
 ## Documentation for the check_table_exists macro
 
 ```python

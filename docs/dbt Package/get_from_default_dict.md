@@ -1,3 +1,6 @@
+---
+step: other
+---
 # get_from_default_dict
 
 This macro takes a path (as a list of keys) and a dictionary as input and traverses the dictionary following the path. If it reaches the end of the path successfully, it returns the value at that location in the dictionary. If it encounters a key that isn't in the dictionary before reaching the end of the path, it returns a default value.
