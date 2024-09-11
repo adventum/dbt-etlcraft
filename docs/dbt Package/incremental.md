@@ -11,13 +11,11 @@ doc_status: ready
 ```dataview
 TABLE 
 category AS "Category", 
-step AS "Step", 
-sub_step AS "Substep",
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
 FROM "dbt package"
 WHERE file.name != "README" AND contains(in_main_macro, "incremental")
-SORT category DESC, step, sub_step
+SORT doc_status
 ```
 
 ## Summary
