@@ -1,39 +1,10 @@
 ---
+category: main
 step: 1_silos
 sub_step: 2_incremental
+doc_status:
 ---
-## Incremental Table Macro
 
-This macro facilitates the creation and management of incremental tables in dbt, based on a specific naming pattern.
-
-### Naming Convention
-
-The model using this macro must be named according to the following pattern:
-```
-incremental_{sourcetypename}_{templatename}_{streamname}
-```
-
-### Functionality
-
-The macro locates a corresponding table prefixed with `normalize_{sourcetypename}_{templatename}_{streamname}`, and executes a SELECT * operation on it. If an incremental datetime field (IDF) is determined by using the `find_incremental_datetime_field` macro (or if provided in argument), it makes an incremental model and casts the IDF to datetime using the `cast_datetime_field` macro. If the IDF is not found, the macro either materializes the corresponding normalized relation or serves as a proxy view for it.
-
-### How the Incremental Model Works
-
-- **Indexing:** The table is indexed by IDF (primary) and table_name (secondary).
-- **Pre-hook Deletion:** In a pre-hook operation, the macro deletes the rows from the current table where the dates of the IDF fields correspond to the dates in the normalized relation (taking the table name into account).
-- **Data Insertion:** All data from the normalized relation is inserted into the current table.
-
-### Example
-
-Imagine an incremental table A with data from table B (for dates 01.07-03.07) and table C (for dates 02.07-04.07). If the normalized relation has data from B and C for date 03.07-05.07, the macro will remove the old rows from A corresponding to B for 03.07 and C for 03.07 and 04.07. Then, the entire content of the normalized relation will be inserted into A.
-
-### Usage
-```sql
-{{ incremental_table(incremental_datetime_field=YOUR_DATETIME_FIELD) }}
-```
-Provide the `incremental_datetime_field` argument if a specific IDF is required. Otherwise, the macro will attempt to identify it automatically.
-
-**Перевод**
  
 ## Макрос Инкрементной Таблицы
 
@@ -65,3 +36,78 @@ Provide the `incremental_datetime_field` argument if a specific IDF is required.
 ```
 
 Предоставьте аргумент `incremental_datetime_field`, если требуется конкретное IDF. В противном случае макрос попытается определить его автоматически. 
+
+
+
+# macro `incremental`
+
+## Summary
+
+The `incremental` macro is designed to create incremental tables - that is, tables where data is historically accumulated. The basis for this step is the data obtained from the models of the `normalize` step.
+## Usage
+
+The name of the dbt model (= the name of the sql file in the models folder) must match the template: 
+`incremental_{sourcetype_name}_{pipeline_name}_{template_name}_{stream_name}`.
+
+For example, `incremental_appmetrica_events_default_deeplinks`.
+
+A macro is called inside this file like this:
+```sql
+{{ etlcraft.incremental() }}
+```
+
+From this step onwards, above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
+```sql
+-- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
+
+{{ etlcraft.incremental() }}
+```
+
+## Arguments
+
+This macro accepts the following arguments:
+
+1. `defaults_dict` (default: result of the fieldconfig() macro)
+2. `disable_incremental` (default: False)
+3. `limit0` (default: none)
+## Functionality
+
+## Example
+## Notes
+
+**Перевод**
+
+## Описание
+
+Макрос `incremental` предназначен для создания инкрементальных таблиц - то есть таких таблиц, где исторически накапливаются данные. Основой для данного шага являются данные, полученные из моделей шага `normalize`.
+## Применение
+
+Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
+`incremental_{название_источника}_{название_пайплайна}_{название_шаблона}_{название_потока}`.
+
+Например, `incremental_appmetrica_events_default_deeplinks`.
+
+Внутри этого файла вызывается макрос:
+
+```sql
+{{ etlcraft.incremental() }}
+```
+С этого шага и далее над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
+```sql
+-- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
+
+{{ etlcraft.incremental() }}
+```
+## Аргументы
+
+ Этот макрос принимает следующие аргументы:
+ 
+1. `defaults_dict` (по умолчанию: результат макроса fieldconfig())
+2. `disable_incremental` (по умолчанию False)
+3. `limit0` (по умолчанию: none)
+
+## Функциональность
+
+## Пример
+
+## Примечания

@@ -1,5 +1,9 @@
 ---
-step: other
+category: auxiliary
+step: 1_silos
+sub_step: 1_normalize
+in_main_macro: normalize
+doc_status: Pavel
 ---
 # get_from_default_dict
 

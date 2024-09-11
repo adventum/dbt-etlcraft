@@ -10,9 +10,15 @@
 
 
 ```dataview
-TABLE step AS "Step", sub_step AS "Substep" FROM "dbt package"
+TABLE 
+category AS "Category", 
+step AS "Step", 
+sub_step AS "Substep",
+in_main_macro AS "In Main Macro",
+doc_status AS "Doc Status"
+FROM "dbt package"
 WHERE file.name != "README"
-SORT step, sub_step
+SORT category DESC, step, sub_step
 ```
 
 
