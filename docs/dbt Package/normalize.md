@@ -53,7 +53,20 @@ This macro accepts the following arguments:
 ## Functionality
 
 ## Example
+
+A file in sql format in the models folder. File name is: `normalize_appmetrica_events_default_deeplinks`
+
+File Contents:
+```sql
+{{ etlcraft.normalize(
+fields=['__clientName','__productName','appmetrica_device_id','city',
+'deeplink_url_parameters','event_receive_datetime','google_aid',
+'ios_ifa','os_name','profile_id','publisher_name']
+) }}
+```
 ## Notes
+
+This is the first of the main macros.
 
 **Перевод**
 
@@ -160,4 +173,4 @@ fields=['__clientName','__productName','appmetrica_device_id','city',
 ```
 ## Примечания
 
-Это первый из “основных” макросов.
+Это первый из основных макросов.

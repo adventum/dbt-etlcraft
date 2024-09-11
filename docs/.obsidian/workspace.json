@@ -74,7 +74,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -140,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt package/incremental.md",
+                "file": "dbt package/normalize.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +157,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt package/incremental.md",
+                "file": "dbt package/normalize.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -180,7 +180,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt package/incremental.md"
+                "file": "dbt package/normalize.md"
               }
             }
           }
@@ -201,12 +201,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f32aaffebdb8af8b",
+  "active": "f75ce110ca384472",
   "lastOpenFiles": [
+    "dbt package/incremental.md",
     "dbt package/normalize.md",
     "dbt package/find_incremental_datetime_field.md",
     "dbt package/README.md",
-    "dbt package/incremental.md",
     "Templates/Macro Template.md",
     "dbt package/json_extract_string.md",
     "dbt package/get_from_default_dict.md",
