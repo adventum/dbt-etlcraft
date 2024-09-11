@@ -5,6 +5,19 @@ sub_step: 1_normalize
 doc_status: ready
 ---
 # macro `normalize`
+## List of auxiliary macros
+
+```dataview
+TABLE 
+category AS "Category", 
+step AS "Step", 
+sub_step AS "Substep",
+in_main_macro AS "In Main Macro",
+doc_status AS "Doc Status"
+FROM "dbt package"
+WHERE file.name != "README" AND contains(in_main_macro, "normalize")
+SORT category DESC, step, sub_step
+```
 
 ## Summary
 
@@ -129,9 +142,9 @@ This macro accepts the following arguments:
 - поле `__emitted_at` (в формате DateTime). В зависимости от значения аргумента `old_airbyte` макрос возьмёт либо поле `_airbyte_extracted_at` (если значение аргумента `True`, как задано по умолчанию), либо `_airbyte_emitted_at` (если значение `False`). Это поле содержит информацию о времени извлечения сырых данных.
 - поле `__normalized_at` (формируется через NOW()). Это поле содержит информацию о времени нормализации данных.
   
-  Все данные берутся из ранее созданной `source_table`.
+Все данные берутся из ранее созданной `source_table`.
   
-  Если активирован аргумент `limit0` (который по умолчанию установлен как `none`), то в конце запроса будет прописан LIMIT 0.
+Если активирован аргумент `limit0` (который по умолчанию установлен как `none`), то в конце запроса будет прописан LIMIT 0.
   
 ## Пример
 
