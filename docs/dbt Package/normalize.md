@@ -2,55 +2,162 @@
 step: 1_silos
 sub_step: 1_normalize
 ---
-# dbt `normalize` Macro Documentation
+# macro `normalize`
 
-The `normalize` macro is designed to normalize tables that are downloaded by Airbyte. This macro accepts three optional arguments:
+## Summary
 
-1. `included_fields` (default: empty list)
-2. `excluded_fields` (default: empty list)
-3. `defaults_dict` (default: result of `etlcraft_defaults()` macro)
-4. `schema_pattern` (default: `this.schema`)
-5. `source_table` (default: none)
-6. `override_target_model_name` (default: none)
+The `normalize` macro is designed to normalize tables that are downloaded by Airbyte.
 
-## Macro behavior
+## Usage
 
-The behavior of the `normalize` macro depends on the name of the model. The model name must follow the pattern `normalize_{sourcetypename}_{templatename}_{streamname}`. The macro extracts `sourcetypename`, `templatename`, and `streamname`, and creates a union of the tables `_airbyte_{sourcetypename}_{templatename}_%_{streamname}`. 
+The name of the dbt model (= the name of the sql file in the models folder) must match the template: 
+`normalize_{sourcetype_name}_{pipeline_name}_{template_name}_{stream_name}`.
 
-To facilitate testing, an argument called `override_target_model_name` is provided. When this argument is used, the macro behaves as if it were in a model with a name equal to the value of `override_target_model_name`.
+For example, `normalize_appmetrica_events_default_deeplinks`.
 
-If `source_table` argument is not provided, the macro utilizes `dbt_utils.union(dbt_utils.get_relations_by_re(schema_pattern, table_pattern)))` to get all the relevant tables where `table_pattern` is as above.
+A macro is called inside this file like this:
+```sql
+{{ etlcraft.normalize() }}
+```
+## Arguments
 
-These tables contain columns `_airbyte_ab_id`, `_airbyte_data` and `_airbyte_emitted_at`. `_airbyte_data` is a JSON field that contains the data to be normalized. The macro looks at the first line of the first column and detects the list of keys in the JSON field.
+This macro accepts the following arguments:
 
-Then the macro iterates over that list and for each key, adds a line to a column list of the SELECT query to be returned. The generated line uses the macro `json_extract_string(_airbyte_emitted_at, {key_name})` to get the corresponding key from the JSON field. It also contains an AS expression, that names the column as the `{key_name}`, but after transformation with the macro `normalize_name(key_name)` that removes spaces, transliterates Cyrillic symbols, etc.
+01. `fields` (required argument is a list of fields)
+02. `incremental_datetime_field` (default: none)
+03. `incremental_datetime_formula` (default: none)
+04. `disable_incremental_datetime_field` (default: none)
+05. `default_dist` (default: result of the fieldconfig() macro)
+06. `schema_pattern` (default: 'arbyte_internal')
+07. `source_table` (default: none)
+08. `override_target_model_name` (default: none)
+09. `debug_column_names` (default: False)
+10. `old_arbyte` (default: True)
+11. `limit 0` (default: none)
 
-When forming `column_list`, the macro adds fields from the `included_fields` argument, then `defaults_dict['sourcetypes'][source_type]['included_fields']`, then `defaults_dict['sourcetypes'][source_type]['streams'][stream_name]['included_fields']`. It then excludes fields from the `excluded_field` argument, then `defaults_dict['sourcetypes'][source_type]['excluded_fields']`, then `defaults_dict['sourcetypes'][source_type]['streams'][stream_name]['included_fields']`.
+## Functionality
 
+## Example
+## Notes
 
 **Перевод**
- 
-# Документация по макросу нормализации dbt
 
-Макрос нормализации предназначен для нормализации таблиц, загруженных Airbyte. Этот макрос принимает три необязательных аргумента:
+## Описание
 
-1. `included_fields` (по умолчанию: пустой список)
-2. `excluded_fields` (по умолчанию: пустой список)
-3. `defaults_dict` (по умолчанию: результат макроса etlcraft_defaults())
-4. `schema_pattern` (по умолчанию: this.schema)
-5. `source_table` (по умолчанию: отсутствует)
-6. `override_target_model_name` (по умолчанию: отсутствует) 
+Макрос `normalize` предназначен для нормализации таблиц, загруженных Airbyte.
 
-## Поведение макроса
+## Применение
 
-Поведение макроса нормализации зависит от имени модели. Имя модели должно соответствовать шаблону `normalize_{название_типа_источника}_{название_шаблона}_{название_потока}`. Макрос извлекает названия типа источника, шаблона и потока, и создает объединение таблиц `_airbyte_{название_типа_источника}_{название_шаблона}_%_{название_потока}`.
+Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
+`normalize_{название_источника}_{название_пайплайна}_{название_шаблона}_{название_потока}`.
+
+Например, `normalize_appmetrica_events_default_deeplinks`.
+
+Внутри этого файла вызывается макрос:
+
+```sql
+{{ etlcraft.normalize() }}
+```
+
+## Аргументы
+
+ Этот макрос принимает следующие аргументы:
+
+01. `fields` (обязательный аргумент - список полей)
+02. `incremental_datetime_field` (по умолчанию: none)
+03. `incremental_datetime_formula` (по умолчанию: none)
+04. `disable_incremental_datetime_field` (по умолчанию: none)
+05. `defaults_dict` (по умолчанию: результат макроса fieldconfig())
+06. `schema_pattern` (по умолчанию 'airbyte_internal')
+07. `source_table` (по умолчанию: none)
+08. `override_target_model_name` (по умолчанию: none)
+09. `debug_column_names` (по умолчанию False)
+10. `old_airbyte` (по умолчанию True)
+11. `limit0` (по умолчанию: none)
+
+
+## Функциональность - Паша
+
+Функционирование макроса нормализации зависит от имени модели. Имя модели должно соответствовать шаблону: `normalize_{название_источника}_{название_пайплайна}_{название_шаблона}_{название_потока}`. 
+
+Макрос извлекает названия источника, пайплайна, шаблона и потока, и создает объединение таблиц  из сырых данных, соответствующих паттерну: 
+`'[^_]+' ~ '_[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$'`
 
 Для облегчения тестирования предоставляется аргумент `override_target_model_name`. При использовании этого аргумента макрос работает так, как если бы находился в модели с именем, равным значению `override_target_model_name`.
 
-Если аргумент source_table не предоставлен, макрос использует `dbt_utils.union(dbt_utils.get_relations_by_re(schema_pattern, table_pattern))` для получения всех соответствующих таблиц, где `table_pattern` соответствует вышеупомянутому шаблону.
+Если аргумент `source_table` не предоставлен, макрос использует `dbt_utils.union(dbt_utils.get_relations_by_re(schema_pattern, table_pattern))` для получения всех соответствующих таблиц, где `table_pattern` соответствует вышеупомянутому шаблону.
 
-Эти таблицы содержат столбцы `_airbyte_ab_id`,` _airbyte_data` и `_airbyte_emitted_at`. `_airbyte_data` - это JSON-поле, которое содержит данные, подлежащие нормализации. Макрос смотрит на первую строку первого столбца и определяет список ключей в JSON-поле.
+Эти таблицы содержат столбцы `_airbyte_ab_id`,` _airbyte_data` и `_airbyte_emitted_at`. 
+
+`_airbyte_data` - это JSON-поле, которое содержит данные, подлежащие нормализации. Макрос смотрит на первую строку первого столбца и определяет список ключей в JSON-поле.
 
 Затем макрос перебирает этот список и для каждого ключа добавляет строку в список столбцов запроса `SELECT`, который должен быть возвращен. Сгенерированная строка использует макрос `json_extract_string(_airbyte_emitted_at, {key_name})` для извлечения соответствующего ключа из JSON-поля. Она также содержит выражение AS, которое называет столбец как `{key_name}`, но после преобразования с помощью макроса `normalize_name(key_name)`, который удаляет пробелы, транслитерирует кириллические символы, и т. д.
 
-При формировании списка столбцов макрос добавляет поля из аргумента `included_fields`, затем `defaults_dict['sourcetypes'][source_type]['included_fields']`, затем `defaults_dict['sourcetypes'][source_type]['streams'][stream_name]['included_fields']`. Затем он исключает поля из аргумента `excluded_field`, затем` defaults_dict['sourcetypes'][source_type]['excluded_fields']`, затем `defaults_dict['sourcetypes'][source_type]['streams'][stream_name]['included_fields']`. 
+## ФУНКЦИОНАЛЬНОСТЬ МОИМИ СЛОВАМИ
+
+Этот макрос должен начинать свою работу после выведения зависимостей. То есть после того, как прошёл первый этап формирования проекта - `dbt parse`, на котором создаётся `manifest`. После того, как `manifest` создан, в проекте уже смогут быть использованы внутренние ссылки - `ref`, которые необходимы для работы dbt-моделей.
+ 
+Поэтому макрос `normalize` обёрнут в условие `if execute` - иначе его работа может пройти впустую.
+
+Первым делом в макросе задаются части имени - либо из передаваемого аргумента (`override_target_model_name`), либо из имени файла (`this.name`). При использовании аргумента `override_target_model_name` макрос работает так, как если бы находился в модели с именем, равным значению `override_target_model_name`.
+
+.Длинное название, полученное тем или иным способом, разбивается на части по знаку нижнего подчёркивания. Например, название `normalize_appmetrica_events_default_deeplinks` разобьётся на 5 частей.
+
+Если имя модели не соответствует шаблону (не начинается с `normalize_`, или в нём не хватает частей) - макрос не идёт дальше и на этом шаге уже выводит для пользователя ошибку с кратким описанием проблемы.
+
+Далее макрос задаёт переменные источника, пайплайна, шаблона и потока. Для примера `normalize_appmetrica_events_default_deeplinks` это будет:
+- источник - `sourcetype_name` - appmetrica
+- пайплайн - `pipeline_name` - events
+- шаблон - `template_name` - default
+- поток - `stream_name` - deeplinks
+  
+После этого макрос собирает из этих частей паттерн для поиска соответствующих модели таблиц с “сырыми” данными.  Вот сам паттерн:
+
+ `'[^_]+' ~ '_[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$'`
+ 
+В него подставляются значения из переменных, и в итоге макрос сможет найти для примера с `normalize_appmetrica_events_default_deeplinks` данные из `datacraft_clientname_raw__stream_appmetrica_default_accountid_deeplinks` (потому что название “сырых” данных соответствует шаблону).
+
+Если пайплайн соответствует направлениям `registry` или `periodstat`, то автоматически задаётся аргумент `disable_incremental_datetime_field`, равный `True`. Это значит, что в таких данных нет инкрементального поля с датой, и для этих данных макрос не будет пытаться искать такое поле.
+
+Далее макрос будет искать “сырые” данные для модели, в которой он вызывается. Название таблицы-источника с нужными “сырыми” данными можно задать напрямую при вызове макроса - за это отвечает аргумент `source_table`. 
+
+Если параметр `source_table` при вызове макроса не задан, то мы ищем `relations` - то есть связи с необходимыми таблицами - при помощи собственного макроса `etlcraft.get_relations_by_re`. Он находится в файле `clickhouse-adapters`. Этот макрос помогает найти все таблицы, которые подходят под единый шаблон (например, все данные из `appmetrica` для какого-либо проекта).
+
+Внутри этого макроса есть аргумент `schema_pattern`, который можно задавать при вызове макроса `normalize`. Если сырые данные лежат в той же схеме, что и модель, то `schema_pattern=target.schema`.Если сырые данные идут из Airbyte новой версии, то они пишутся в отдельную схему `airbyte_internal`.Поэтому по умолчанию у нас задан `schema_pattern='airbyte_internal'`.
+
+Если что-то не так с поиском `relations` - макрос не пойдёт дальше и выдаст пользователю ошибку с описанием проблемы.
+                                                                 
+После того, как нужные “сырые” данные найдены, макрос собирает воедино все найденные таблицы через `UNION ALL`. Для этого используется макрос `etlcraft.custom_union_relations_source`, внутрь которого передаются ранее найденные `relations`.
+
+Далее для тех данных, у которых не указано отсутствие инкрементального поля с датой (то есть аргументы `incremental_datetime_formula` и `disable_incremental_datetime_field` оставлены как по умолчанию - `none`), происходит формулы для поля с датой - `incremental_datetime_formula`. Для поиска используется макрос `etlcraft.get_from_default_dict`, внутрь которого передаётся аргумент `defaults_dict`. Этот аргумент задан по умолчанию как результат вызова ещё одного макроса - `fieldconfig()`. Таким образом, по умолчанию весь происходит автоматически, пользователю ничего не нужно делать. Но при этом у пользователя есть возможность при необходимости воздействовать на поведение макроса.
+  
+Также макросом устанавливается `incremental_datetime_field` при помощи макроса `etlcraft.find_incremental_datetime_field()`.
+
+Далее происходит обработка полей. На вход макросу `normalize` передаётся список полей - `fields`. Для каждого элемента этого списка (кроме инкрементального поля с датой) происходит обработка - макрос создаём псевдоним, делая транслитерацию на английский при помощи макроса  `etlcraft.normalize_name()`. 
+
+При помощи макроса `etlcraft.json_extract_string()` устанавливаются значения названий полей из технического поля Airbyte `'_airbyte_data'`, если аргумент `debug_column_names` оставлен по умолчанию как `False`. Если аргумент `True`, то будет браться ранее созданный псевдоним. Полученный список полей сортируется по алфавиту.
+
+Инкрементальное поле с датой обрабатывается отдельно - и для всех случаев его название становится универсальным: `__date`. 
+
+Если в результате всех преобразований список полей получился пустым, макрос прервёт свою работу и выдаст пользователю краткое описание ошибки.
+
+Итоговый список полей далее передаётся в автоматически формулируемый SQL-запрос. Все поля перечисляются в блоке SELECT. Кроме колонок с данными в этот запрос ещё входят:
+- поле `__table_name` (обёрнутое в toLowCardinality()) - здесь указывается название таблицы, откуда были взяты данные
+- поле `__emitted_at` (в формате DateTime). В зависимости от значения аргумента `old_airbyte` макрос возьмёт либо поле `_airbyte_extracted_at` (если значение аргумента `True`, как задано по умолчанию), либо `_airbyte_emitted_at` (если значение `False`). Это поле содержит информацию о времени извлечения сырых данных.
+- поле `__normalized_at` (формируется через NOW()). Это поле содержит информацию о времени нормализации данных.
+  
+  Все данные берутся из ранее созданной `source_table`.
+  
+  Если активирован аргумент `limit0` (который по умолчанию установлен как `none`), то в конце запроса будет прописан LIMIT 0.
+  
+## Пример
+
+Файл в формате sql в папке models. Название файла `normalize_appmetrica_events_default_deeplinks`
+
+Содержимое файла:
+```sql
+{{ etlcraft.normalize(fields=['__clientName','__productName','appmetrica_device_id','city','deeplink_url_parameters','event_receive_datetime','google_aid','ios_ifa','os_name','profile_id','publisher_name']) }}
+```
+## Примечания
+
+
