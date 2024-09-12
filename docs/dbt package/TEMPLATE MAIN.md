@@ -30,7 +30,20 @@ This macro accepts the following arguments:
 ## Functionality
 
 ## Example
+
+A file in sql format in the models folder. File name: 
+`NAME`
+
+File Contents:
+```sql
+-- depends_on: {{ ref('SOMETHING') }}
+
+
+{{ etlcraft.MACRO() }}
+```
 ## Notes
+
+This is the … of the main macros.
 
 **Перевод**
 
