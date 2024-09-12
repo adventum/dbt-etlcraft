@@ -18,7 +18,7 @@ in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
 FROM "dbt package"
 WHERE file.name != "README"
-SORT category DESC, step, sub_step
+SORT doc_status DESC, category DESC, step, sub_step
 ```
 
 
