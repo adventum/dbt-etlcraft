@@ -52,13 +52,15 @@
           {
             "id": "be72093b6c1d535e",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt package/join.md",
+                "file": "dbt package/TEMPLATE MAIN.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           },
           {
@@ -67,14 +69,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt package/normalize.md",
+                "file": "dbt package/combine.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -140,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt package/join.md",
+                "file": "dbt package/combine.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt package/join.md",
+                "file": "dbt package/combine.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -180,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt package/join.md"
+                "file": "dbt package/combine.md"
               }
             }
           }
@@ -201,12 +203,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "be72093b6c1d535e",
+  "active": "23dca640c040d013",
   "lastOpenFiles": [
-    "dbt package/README.md",
-    "dbt package/join.md",
+    "dbt package/TEMPLATE MAIN.md",
+    "dbt package/combine.md",
+    "dbt package/combine.md",
     "dbt package/incremental.md",
+    "dbt package/TEMPLATE AUXILIARY.md",
     "dbt package/normalize.md",
+    "dbt package/join.md",
+    "dbt package/README.md",
+    "dbt package/attr.md",
+    "dbt package/combine 1.md",
+    "dbt package/Untitled.md",
+    "Templates/Macro Template.md",
+    "Templates/Untitled.md",
     "dbt package/join_ym_events.md",
     "dbt package/join_appmetrica_events.md",
     "dbt package/join_yd_datestat.md",
@@ -217,18 +228,9 @@
     "dbt package/join_mt_datestat.md",
     "dbt package/join_appsflyer_events.md",
     "dbt package/join_appmetrica_registry_appprofilematching.md",
-    "Templates/Macro Template.md",
     "dbt package/cast_date_field.md",
     "dbt package/find_incremental_datetime_field.md",
     "dbt package/check_table_empty.md",
-    "dbt package/json_extract_string.md",
-    "dbt package/get_from_default_dict.md",
-    "dbt package/custom_union_relations_source.md",
-    "dbt package/get_relations_by_re.md",
-    "dbt package/normalize_name.md",
-    "Airflow Providers/How DAGs work.md",
-    "Airflow Providers/Configs/base.md",
-    "dbt package/array.md",
     "dbt-etlcraft docs/Untitled.canvas",
     "dbt-etlcraft docs",
     "HowTo",
