@@ -205,6 +205,8 @@
   "lastOpenFiles": [
     "dbt package/incremental.md",
     "dbt package/join.md",
+    "dbt package/normalize.md",
+    "dbt package/README.md",
     "dbt package/join_ym_events.md",
     "dbt package/join_appmetrica_events.md",
     "dbt package/join_yd_datestat.md",
@@ -216,8 +218,6 @@
     "dbt package/join_appsflyer_events.md",
     "dbt package/join_appmetrica_registry_appprofilematching.md",
     "Templates/Macro Template.md",
-    "dbt package/normalize.md",
-    "dbt package/README.md",
     "dbt package/cast_date_field.md",
     "dbt package/find_incremental_datetime_field.md",
     "dbt package/check_table_empty.md",

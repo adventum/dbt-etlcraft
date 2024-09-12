@@ -21,5 +21,3 @@ WHERE file.name != "README"
 SORT doc_status DESC, category DESC, step, sub_step
 ```
 
-
-
