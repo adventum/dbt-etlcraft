@@ -57,12 +57,12 @@ If you have your own data source, or you need to tweak something in the code for
 ## Arguments
 
 This macro accepts the following arguments:
-1. params (default: none)
-2. disable_incremental (default: none)
-3. override_target_model_name (default: none)
-4. date_from (default: none)
-5. date_to (default: none)
-6. limit 0 (default: none)
+1. `params` (default: none)
+2. `disable_incremental` (default: none)
+3. `override_target_model_name` (default: none)
+4. `date_from` (default: none)
+5. `date_to` (default: none)
+6. `limit 0` (default: none)
 ## Functionality
 
 First, the macro considers the name of the model from the passed argument (
@@ -155,12 +155,12 @@ This is the third of the main macros.
 
 Этот макрос принимает следующие аргументы:
 
-1. params (по умолчанию: none)
-2.  disable_incremental (по умолчанию: none)
-3. override_target_model_name (по умолчанию: none)
-4. date_from (по умолчанию: none)
-5. date_to (по умолчанию: none)
-6. limit0 (по умолчанию: none)
+1. `params` (по умолчанию: none)
+2.  `disable_incremental` (по умолчанию: none)
+3. `override_target_model_name` (по умолчанию: none)
+4. `date_from` (по умолчанию: none)
+5. `date_to` (по умолчанию: none)
+6. `limit0` (по умолчанию: none)
 
 ## Функциональность
 

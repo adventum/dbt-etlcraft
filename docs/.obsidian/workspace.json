@@ -60,6 +60,30 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "d2df6b64089ebd09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt package/get_relations_by_re.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fab5a4aa7ac046a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt package/custom_union_relations.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
         "currentTab": 3
@@ -191,9 +215,12 @@
   },
   "active": "12547407924f3ef5",
   "lastOpenFiles": [
-    "dbt package/TEMPLATE MAIN.md",
+    "dbt package/custom_union_relations.md",
+    "dbt package/custom_union_relations_source.md",
     "dbt package/combine.md",
+    "dbt package/get_relations_by_re.md",
     "dbt package/join.md",
+    "dbt package/TEMPLATE MAIN.md",
     "dbt package/README.md",
     "dbt package/incremental.md",
     "Templates/Macro Template.md",
@@ -214,8 +241,6 @@
     "dbt package/join_appsflyer_events.md",
     "dbt package/join_appmetrica_registry_appprofilematching.md",
     "dbt package/cast_date_field.md",
-    "dbt package/find_incremental_datetime_field.md",
-    "dbt package/check_table_empty.md",
     "dbt-etlcraft docs/Untitled.canvas",
     "dbt-etlcraft docs",
     "HowTo",
