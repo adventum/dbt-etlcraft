@@ -50,7 +50,19 @@
             }
           },
           {
-            "id": "171394447b55d485",
+            "id": "be72093b6c1d535e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt package/join.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "23dca640c040d013",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -62,7 +74,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -128,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt package/README.md",
+                "file": "dbt package/join.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +157,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt package/README.md",
+                "file": "dbt package/join.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +180,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt package/README.md"
+                "file": "dbt package/join.md"
               }
             }
           }
@@ -189,15 +201,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "404c863694eebf80",
+  "active": "be72093b6c1d535e",
   "lastOpenFiles": [
     "dbt package/incremental.md",
+    "dbt package/join.md",
+    "dbt package/join_ym_events.md",
+    "dbt package/join_appmetrica_events.md",
+    "dbt package/join_yd_datestat.md",
+    "dbt package/join_yd_datestat_smart.md",
+    "dbt package/join_vkads_datestat.md",
+    "dbt package/join_utmcraft_registry_utmhashregistry.md",
+    "dbt package/join_sheets_periodstat.md",
+    "dbt package/join_mt_datestat.md",
+    "dbt package/join_appsflyer_events.md",
+    "dbt package/join_appmetrica_registry_appprofilematching.md",
+    "Templates/Macro Template.md",
     "dbt package/normalize.md",
     "dbt package/README.md",
     "dbt package/cast_date_field.md",
     "dbt package/find_incremental_datetime_field.md",
     "dbt package/check_table_empty.md",
-    "Templates/Macro Template.md",
     "dbt package/json_extract_string.md",
     "dbt package/get_from_default_dict.md",
     "dbt package/custom_union_relations_source.md",
@@ -206,17 +229,6 @@
     "Airflow Providers/How DAGs work.md",
     "Airflow Providers/Configs/base.md",
     "dbt package/array.md",
-    "dbt package/attr.md",
-    "dbt package/check_table_exists.md",
-    "Airflow Providers/Configs/presets.md",
-    "Airflow Providers/Configs/connectors.md",
-    "dbt package/graph.md",
-    "dbt package/like_query_cycle.md",
-    "dbt package/dataset.md",
-    "dbt package/get_column_count_in_subquery.md",
-    "dbt package/json_list_keys.md",
-    "Airflow Providers/Configs.md",
-    "Airflow Providers/Airbyte Operators.md",
     "dbt-etlcraft docs/Untitled.canvas",
     "dbt-etlcraft docs",
     "HowTo",

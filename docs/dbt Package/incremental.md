@@ -147,7 +147,7 @@ This is the second of the main macros.
 ```
 ## Аргументы
 
- Этот макрос принимает следующие аргументы:
+Этот макрос принимает следующие аргументы:
  
 1. `defaults_dict` (по умолчанию: результат макроса fieldconfig())
 2. `disable_incremental` (по умолчанию False)
