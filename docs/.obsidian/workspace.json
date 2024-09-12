@@ -203,10 +203,10 @@
   },
   "active": "be72093b6c1d535e",
   "lastOpenFiles": [
-    "dbt package/incremental.md",
-    "dbt package/join.md",
-    "dbt package/normalize.md",
     "dbt package/README.md",
+    "dbt package/join.md",
+    "dbt package/incremental.md",
+    "dbt package/normalize.md",
     "dbt package/join_ym_events.md",
     "dbt package/join_appmetrica_events.md",
     "dbt package/join_yd_datestat.md",

@@ -20,7 +20,7 @@ SORT doc_status
 
 ## Summary
 
-The 'join` macro is designed to connect different data streams from the same source.
+The `join` macro is designed to connect different data streams from the same source.
 
 ## Usage
 

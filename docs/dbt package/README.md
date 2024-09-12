@@ -11,11 +11,11 @@
 
 ```dataview
 TABLE 
+doc_status AS "Doc Status",
 category AS "Category", 
 step AS "Step", 
 sub_step AS "Substep",
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
+in_main_macro AS "In Main Macro"
 FROM "dbt package"
 WHERE file.name != "README"
 SORT doc_status DESC, category DESC, step, sub_step
