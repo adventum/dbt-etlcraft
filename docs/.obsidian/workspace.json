@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "23dca640c040d013",
+            "id": "12547407924f3ef5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -203,7 +203,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23dca640c040d013",
+  "active": "12547407924f3ef5",
   "lastOpenFiles": [
     "dbt package/TEMPLATE MAIN.md",
     "dbt package/combine.md",
