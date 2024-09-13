@@ -36,19 +36,7 @@
             }
           },
           {
-            "id": "fddea4f791a32115",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt package/join.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "12547407924f3ef5",
+            "id": "81aaa7f0cf5acc76",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -62,24 +50,26 @@
             }
           },
           {
-            "id": "d2df6b64089ebd09",
+            "id": "844ac61876d29249",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt package/get_relations_by_re.md",
+                "file": "dbt package/hash.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           },
           {
-            "id": "fab5a4aa7ac046a7",
+            "id": "f0054e7a55b2f808",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt package/custom_union_relations.md",
+                "file": "dbt package/incremental.md",
                 "mode": "source",
                 "source": false
               }
@@ -152,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt package/combine.md",
+                "file": "dbt package/hash.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt package/combine.md",
+                "file": "dbt package/hash.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -192,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt package/combine.md"
+                "file": "dbt package/hash.md"
               }
             }
           }
@@ -213,16 +203,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "12547407924f3ef5",
+  "active": "844ac61876d29249",
   "lastOpenFiles": [
+    "dbt package/incremental.md",
+    "dbt package/hash.md",
+    "dbt package/combine.md",
+    "dbt package/README.md",
+    "dbt Package.md",
+    "Connectors.md",
+    "Airflow Providers.md",
+    "Methodology.md",
+    "dbt package/TEMPLATE MAIN.md",
+    "dbt package/join.md",
     "dbt package/custom_union_relations.md",
     "dbt package/custom_union_relations_source.md",
-    "dbt package/combine.md",
     "dbt package/get_relations_by_re.md",
-    "dbt package/join.md",
-    "dbt package/TEMPLATE MAIN.md",
-    "dbt package/README.md",
-    "dbt package/incremental.md",
     "Templates/Macro Template.md",
     "dbt package/TEMPLATE AUXILIARY.md",
     "dbt package/normalize.md",
@@ -236,11 +231,6 @@
     "dbt package/join_yd_datestat_smart.md",
     "dbt package/join_vkads_datestat.md",
     "dbt package/join_utmcraft_registry_utmhashregistry.md",
-    "dbt package/join_sheets_periodstat.md",
-    "dbt package/join_mt_datestat.md",
-    "dbt package/join_appsflyer_events.md",
-    "dbt package/join_appmetrica_registry_appprofilematching.md",
-    "dbt package/cast_date_field.md",
     "dbt-etlcraft docs/Untitled.canvas",
     "dbt-etlcraft docs",
     "HowTo",
