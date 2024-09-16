@@ -1,5 +1,5 @@
 ---
-step_name: 0. Общие макросы
+step: other
 ---
 # array
 

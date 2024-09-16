@@ -1,3 +1,6 @@
+---
+step: 7_dataset
+---
 ## dataset macro documentation
 
 The dataset macro is used to create an SQL query that retrieves data from the master table with the ability to filter by table prefixes.

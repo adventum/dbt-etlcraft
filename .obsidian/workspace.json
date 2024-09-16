@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "68c88a7e8c016512",
+    "id": "ebd1a0014cdf75ab",
     "type": "split",
     "children": [
       {
-        "id": "ea4e73762b38c15c",
+        "id": "d33386f498ebd38f",
         "type": "tabs",
         "children": [
           {
-            "id": "4be064db77364aa0",
+            "id": "332627cd58e3773b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "34a35c969ea6a2fc",
+    "id": "9e890b21d6dd3e3c",
     "type": "split",
     "children": [
       {
-        "id": "7b380b3610a4a670",
+        "id": "92c959a739e57f57",
         "type": "tabs",
         "children": [
           {
-            "id": "d25176eb34e78d23",
+            "id": "73e13aa87090bda4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,12 +39,12 @@
             }
           },
           {
-            "id": "0af5e166ee603c0c",
+            "id": "81b61ff69d260b56",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "идемп",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,35 +54,33 @@
             }
           },
           {
-            "id": "398433271c398b5a",
+            "id": "4f197a9121f64c33",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "22ccde28bd1633ce",
+    "id": "e89ddab101037459",
     "type": "split",
     "children": [
       {
-        "id": "c181ba4e9dec9e80",
+        "id": "35843d13082d997a",
         "type": "tabs",
         "children": [
           {
-            "id": "abb023612fd6404f",
+            "id": "27593329a4aae0c3",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,19 +92,18 @@
             }
           },
           {
-            "id": "21a9b687cc5b0c6e",
+            "id": "dc009372b5d22342",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "ae9f54ec66113030",
+            "id": "b75b1dc98e9c72f1",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -121,20 +114,19 @@
             }
           },
           {
-            "id": "ddd6ee1661efaf43",
+            "id": "5ff683c0af915ff2",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Airflow Providers/Airbyte Operators.md"
-              }
+              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,43 +138,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4be064db77364aa0",
+  "active": "73e13aa87090bda4",
   "lastOpenFiles": [
-    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators.md",
-    "Airflow Providers/DAGs/create_connectors.md",
-    "Terms/DAG.md",
-    "Airflow Providers/Configs/connectors.md",
-    "dbt Package/README.md",
-    "Airflow Providers/Airbyte Operators/AirbyteListDestinationDefinitionsOperator.md",
-    "Airflow Providers/DAGs/generate_models.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/DAGs/template_configs.md",
-    "Airflow Providers.md",
-    "Airflow Providers/How DAGs work.md",
-    "README.md",
-    "Airflow Providers/Configs.md",
-    "DAG.md",
-    "Terms/Airbyte Connection.md",
-    "Tasks/Add slug validation check to connector creation DAG.md",
-    "Airflow Providers/Configs/presets.md",
-    "Airflow Providers/Configs/base.md",
-    "Templates/DAG Template.md",
-    "dbt Package/get_from_default_dict.md",
-    "dbt Package/normalize_name.md",
-    "dbt Package/normalize.md",
-    "dbt Package/like_query_cycle.md",
-    "dbt Package/json_list_keys.md",
-    "dbt Package/json_extract_string.md",
-    "dbt Package",
-    "Terms",
-    "HowTos",
-    "Tasks",
-    "Airflow Providers/DAGs",
-    "Airflow Providers/Configs",
-    "Airflow Providers/Airbyte Operators",
-    "Airflow Providers",
-    "HowTo",
-    "Connectors"
+    "docs/docs/Welcome.md",
+    "docs/docs"
   ]
 }

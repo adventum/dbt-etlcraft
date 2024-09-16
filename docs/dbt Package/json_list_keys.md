@@ -1,3 +1,6 @@
+---
+step: other
+---
 # json_list_keys
 
 This macro is used to list all keys in a JSON object in a SQL query.

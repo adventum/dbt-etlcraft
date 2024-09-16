@@ -1,3 +1,6 @@
+---
+step: other
+---
 # get_column_count_in_subquery
 
 The `get_column_count_in_subquery` macro takes a subquery (as a string) as an argument and returns the count of columns in that subquery.

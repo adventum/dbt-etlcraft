@@ -1,4 +1,6 @@
 ```dataview
-TABLE step_name AS "Шаг" FROM "dbt package"
-SORT step_name
+TABLE step AS "шаг" FROM "dbt package"
+WHERE file.name != "README"
 ```
+
+

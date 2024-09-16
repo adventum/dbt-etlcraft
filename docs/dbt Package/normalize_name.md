@@ -1,3 +1,7 @@
+---
+step: other
+---
+
 # normalize_name
 
 This macro takes a `name` as an argument and returns a version of it that can be used as a column name. The normalization process includes the following steps:
