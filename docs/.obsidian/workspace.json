@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "ea4e73762b38c15c",
+        "id": "e7bf6671c9221f58",
         "type": "tabs",
         "children": [
           {
-            "id": "4be064db77364aa0",
+            "id": "2198c71f8bd69e92",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
+                "file": "Airflow Providers/Configs/base.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4e18122aee1cbe82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs_status.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "идемп",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +78,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
+                "file": "docs_status.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md",
+                "file": "docs_status.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Airbyte Operators.md"
+                "file": "docs_status.md"
               }
             }
           }
@@ -134,46 +146,46 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "4be064db77364aa0",
+  "active": "4e18122aee1cbe82",
   "lastOpenFiles": [
-    "dbt Package/join_ym_events.md",
-    "dbt Package/join_yd_datestat_smart.md",
-    "dbt Package/join_yd_datestat.md",
-    "dbt Package/join_vkads_datestat.md",
-    "dbt Package/join_utmcraft_registry_utmhashregistry.md",
-    "dbt Package/join_sheets_periodstat.md",
-    "dbt Package/join_mt_datestat.md",
-    "dbt Package/join_appsflyer_events.md",
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
-    "dbt Package/join_appmetrica_events.md",
-    "dbt Package/join.md",
-    "dbt Package/hash.md",
-    "dbt Package/get_relations_by_re.md",
-    "dbt Package/find_incremental_datetime_field.md",
-    "dbt Package/custom_union_relations_source.md",
-    "dbt Package/custom_union_relations.md",
-    "dbt Package/combine.md",
-    "dbt Package/check_table_empty.md",
-    "dbt Package/cast_date_field.md",
-    "dbt Package/TEMPLATE MAIN.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
-    "Templates/Macro Template.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators.md",
+    "HowTos/How to create a config for presets.md",
+    "Airflow Providers/DAGs/template_configs.md",
+    "Airflow Providers/DAGs/generate_models.md",
     "Airflow Providers/DAGs/create_connectors.md",
-    "Terms/DAG.md",
+    "Airflow Providers/Configs/base.md",
+    "docs_status.md",
+    "Airflow Providers/DAGs.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "Airflow Providers/Configs/connectors.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/Configs/presets.md",
+    "dbt Package/incremental.md",
+    "Airflow Providers/How DAGs work.md",
+    "HowTos/Installation.md",
+    "HowTos/Quick start.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
+    "dbt Package/join_mt_datestat.md",
+    "dbt Package/join_sheets_periodstat.md",
+    "dbt Package/join_utmcraft_registry_utmhashregistry.md",
+    "dbt Package/join_vkads_datestat.md",
+    "dbt Package/join_yd_datestat.md",
+    "dbt Package/join_yd_datestat_smart.md",
+    "dbt Package/join_ym_events.md",
+    "dbt Package/json_extract_string.md",
+    "dbt Package/json_list_keys.md",
+    "dbt Package/like_query_cycle.md",
     "dbt Package",
     "Terms",
     "HowTos",

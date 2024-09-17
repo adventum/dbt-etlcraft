@@ -1,3 +1,12 @@
+---
+description: Коннекторы (докер-образы), которые нужно подключить в Airbyte
+config_default_type: "`templated_file`"
+config_default_format: "`yaml`"
+type: config
+doc_status: in progress
+---
+
+
 Описание: Коннекторы (докер-образы), которые нужно подключить в Airbyte
 Тип по умолчанию: templated_file
 Формат по умолчанию: yaml
