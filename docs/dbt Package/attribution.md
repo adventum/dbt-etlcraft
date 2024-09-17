@@ -1,10 +1,10 @@
 ---
 category: main
-step: 4_graph
+step: 6_attribution
 sub_step: 
-doc_status:
+doc_status: empty_template
 ---
-# macro `graph`
+# macro `[macro_name]`
 
 ## List of auxiliary macros
 

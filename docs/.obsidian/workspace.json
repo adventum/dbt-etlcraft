@@ -51,7 +51,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/dataset.md",
                 "mode": "source",
                 "source": false
               }
@@ -124,14 +124,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/dataset.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": true,
-                "unlinkedCollapsed": false
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -141,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/dataset.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/dataset.md"
               }
             }
           }
@@ -186,32 +186,32 @@
   },
   "active": "cdf9d67233405cae",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
-    "dbt Package/README.md",
-    "dbt Package/zero_date.md",
-    "dbt Package/link_hash.md",
-    "dbt Package/entity_hash.md",
-    "dbt Package/combine.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
-    "Airflow Providers/Configs/base.md",
-    "dbt Package/incremental.md",
-    "dbt Package/normalize.md",
-    "dbt Package/join.md",
+    "dbt Package/dataset_Pavel.md",
+    "dbt Package/dataset.md",
     "dbt Package/TEMPLATE MAIN.md",
-    "docs_status.md",
-    "HowTos/How to create a config for presets.md",
-    "Airflow Providers/DAGs/template_configs.md",
-    "Airflow Providers/DAGs/generate_models.md",
-    "Airflow Providers/DAGs/create_connectors.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/Airbyte Operators.md",
-    "Airflow Providers/Configs/connectors.md",
-    "Airflow Providers/Configs.md",
-    "Airflow Providers/Configs/presets.md",
-    "Airflow Providers/How DAGs work.md",
-    "HowTos/Installation.md",
-    "HowTos/Quick start.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
+    "dbt Package/attr_final_table.md",
+    "dbt Package/attr_model.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
+    "dbt Package/attr_create_missed_steps.md",
+    "dbt Package/attr_calculate_period_number.md",
+    "dbt Package/attr_add_row_number.md",
+    "dbt Package/attr_find_new_period.md",
+    "dbt Package/attr_create_events.md",
+    "dbt Package/attr_prepare.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/README.md",
+    "dbt Package/attribution.md",
+    "dbt Package/attr_Pavel.md",
+    "dbt Package/full.md",
+    "dbt Package/graph_qid.md",
+    "dbt Package/graph_glue.md",
+    "dbt Package/graph_edge.md",
+    "dbt Package/graph_unique.md",
+    "dbt Package/graph_lookup.md",
+    "dbt Package/graph_tuples.md",
+    "dbt Package/join_ym_events.md",
+    "dbt Package/graph.md",
+    "dbt Package/graph_Pavel.md",
     "dbt Package",
     "Terms",
     "HowTos",

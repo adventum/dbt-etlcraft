@@ -1,67 +1,102 @@
 ---
+category: main
 step: 7_dataset
+sub_step: 
+doc_status: empty_template
 ---
-## dataset macro documentation
+# macro `[macro_name]`
 
-The dataset macro is used to create an SQL query that retrieves data from the master table with the ability to filter by table prefixes.
+## List of auxiliary macros
 
-### Parameters
-
-- `table_prefixes` (optional): A string or list of table prefixes to filter the data by.
-
-### Usage example
-```sql
-{% macro dataset( table_prefixes = none) %}
-{{
-    config(
-        materialized='table',
-        order_by='toDate(__datetime)'
-        )
-     }}
-    SELECT
-        *
-    FROM {{ ref('master') }}
-    {% if table_prefixes is not none %}
-    WHERE
-        ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
-    {% endif %}
-{% endmacro %}
+```dataview
+TABLE 
+category AS "Category", 
+in_main_macro AS "In Main Macro",
+doc_status AS "Doc Status"
+FROM "dbt package"
+WHERE file.name != "README" AND contains(in_main_macro, "LOOK HERE")
+SORT doc_status
 ```
 
-This macro creates an SQL query that retrieves all columns from the master table. If table prefixes are specified in the table_prefixes parameter, the data will be filtered by these prefixes.
+
+## Summary
+
+## Usage
+
+The name of the dbt model (=the name of the sql file in the models folder) must match the template:
+`NAME_{pipeline_name}`.
+
+For example, `NAME`.
+
+A macro is called inside this file:
+
+```sql
+{{ etlcraft.NAME() }}
+```
+Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
+```sql
+SOMETHING
+```
+## Arguments
+
+This macro accepts the following arguments:
+
+## Functionality
+
+## Example
+
+A file in sql format in the models folder. File name: 
+`NAME`
+
+File Contents:
+```sql
+-- depends_on: {{ ref('SOMETHING') }}
+
+
+{{ etlcraft.MACRO() }}
+```
+## Notes
+
+This is the … of the main macros.
 
 **Перевод**
- 
-## Документация по макросу `dataset`
 
-Макрос `dataset` используется для создания SQL запроса, который извлекает данные из таблицы `master` с возможностью фильтрации по префиксам таблиц.
+## Описание
 
-### Параметры
+Макрос `[macro]` предназначен для 
+## Применение
 
-- `table_prefixes` (необязательный): Строка или список префиксов таблиц, по которым необходимо фильтровать данные.
+Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
+`MACRO_{название_источника}_{название_пайплайна}_{название_шаблона}_{название_потока}`.
 
-### Пример использования
+Например, `MACRO_NAME`.
+
+Внутри этого файла вызывается макрос:
 
 ```sql
-{% macro dataset( table_prefixes = none) %}
+{{ etlcraft.MACRO() }}
+```
+Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
+```sql
+-- depends_on: {{ ref('SOMETHING') }}
 
-{{
-    config(
-        materialized='table',
-        order_by='toDate(__datetime)'
-        )
-     }}
+{{ etlcraft.MACRO() }}
+```
+## Аргументы
 
-    SELECT
-        *
-    FROM {{ ref('master') }}
-    {% if table_prefixes is not none %}
-    WHERE
-        ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
-    {% endif %}
+Этот макрос принимает следующие аргументы:
 
-{% endmacro %}
+## Функциональность
 
+## Пример
+
+Файл в формате sql в папке models. Название файла `[NAME]`
+
+Содержимое файла:
+```sql
+SOMETHING INSIDE
 ```
 
-Данный макрос создает SQL запрос, который извлекает все столбцы из таблицы `master`. Если указаны префиксы таблиц в параметре `table_prefixes`, то данные будут фильтроваться по этим префиксам.
+## Примечания
+
+Это N-й из основных макросов.
