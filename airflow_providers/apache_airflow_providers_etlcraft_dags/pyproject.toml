@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "apache_airflow_providers_etlcraft"
+name = "apache_airflow_providers_etlcraft_dags"
 version = "0.0.1"
 authors = [
   { name="Adventum", email="n.sushchenko@adventum.ru" },
