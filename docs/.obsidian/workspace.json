@@ -32,8 +32,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e59e80caa7dfb9a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "cdf9d67233405cae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -99,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/hash.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/hash.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/hash.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -159,17 +184,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4e18122aee1cbe82",
+  "active": "cdf9d67233405cae",
   "lastOpenFiles": [
-    "dbt Package/combine.md",
     "dbt Package/hash.md",
-    "Airflow Providers/Configs/base.md",
     "dbt Package/README.md",
+    "dbt Package/zero_date.md",
+    "dbt Package/link_hash.md",
+    "dbt Package/entity_hash.md",
+    "dbt Package/combine.md",
+    "dbt Package/TEMPLATE AUXILIARY.md",
+    "Airflow Providers/Configs/base.md",
     "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "dbt Package/join.md",
     "dbt Package/TEMPLATE MAIN.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
     "docs_status.md",
     "HowTos/How to create a config for presets.md",
     "Airflow Providers/DAGs/template_configs.md",
@@ -184,9 +212,6 @@
     "HowTos/Installation.md",
     "HowTos/Quick start.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
-    "dbt Package/join_mt_datestat.md",
-    "dbt Package/join_sheets_periodstat.md",
-    "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package",
     "Terms",
     "HowTos",
