@@ -17,7 +17,7 @@ step AS "Step",
 sub_step AS "Substep",
 in_main_macro AS "In Main Macro"
 FROM "dbt Package"
-WHERE file.name != "README"
-SORT doc_status DESC, category DESC, step, sub_step
+WHERE (file.name!="README"AND file.name!="TEMPLATE MAIN") AND (category="main" OR category="sub_main")
+SORT step, sub_step, category DESC, doc_status 
 ```
 
