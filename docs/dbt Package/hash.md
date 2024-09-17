@@ -158,194 +158,21 @@ This is the fifth of the main macros.
 
 Далее макрос будет работать с `metadata`.
 
+Из метадаты будут отобраны названия всех линков проекта. Для каждого линка будут получены данные по нему - `pipeline`, `datetime_field`, `main_entities`, `other_entities`.
 
+Далее будут отбираться такие сущности, для которых либо условие `glue=yes`, либо эта сущность входит в `main_entities`. Сущности отбираются по этим двум условиям, затем полученный список становится уникальным.
 
-  
+Из уникального списка сущностей отбираем те, которые либо есть в списке сущностей `glue='yes'`, либо есть в разделе `registries`.
 
-{#- задаём список всех линков из metadata -#}
+Для моделей пайплайна `registry` отбираем линки и сущности отдельно, чтобы выводить модели по-отдельности для каждого источника данных.
 
-{%- set links = metadata['links'] -%} {# отбираем из metadata раздел links целиком #}
+Например, у модели пайплайна `registry` есть в названии линк A - макрос идёт в метадату и отбирает всю информацию по этому линку A. Для модели с другим линком - B - макрос отберёт информацию по линку B. 
 
-{%- set links_metadata_only_link_names = [] -%} {# отбираем из metadata только названия линков #}
+Далее все ранее полученные данные будут использоваться при генерировании SQL-запроса.
 
-{%- for link_name in links -%}
-
-    {%- do links_metadata_only_link_names.append(link_name) -%}
-
-{%- endfor -%}
-
-  
-
-{#- задаём списки, куда будем отбирать линки и сущности -#}
-
-{%- set links_list = [] -%}
-
-{%- set entities_list = [] -%}
-
-{%- set registry_main_entities_list = [] -%}
-
-{#- отбираем нужные линки и их сущности -#}
-
-{%- if pipeline_name !='registry' -%} {# or pipeline_name !='periodstat' #}
-
-{#- здесь берём поочередно каждый линк из списка и обращаемся с этим линком в раздел links из metadata -#}
-
-{#- и получаем нужные данные по линку - его пайплайн, сущности и тд -#}
-
-{%- for link_name in links_metadata_only_link_names -%}
-
-    {%- set link_pipeline = links[link_name].get('pipeline') -%}
-
-    {%- set datetime_field = links[link_name].get('datetime_field') -%}
-
-    {%- set main_entities = links[link_name].get('main_entities') or [] -%}
-
-    {%- set other_entities = links[link_name].get('other_entities') or [] -%}
-
-    {%- set entities = main_entities + other_entities -%}
-
-    {%- if link_pipeline == pipeline_name -%}
-
-        {%- do links_list.append(link_name) -%}
-
-        {%- for entity in entities -%}
-
-            {%- do entities_list.append(entity) -%}
-
-        {%- endfor -%}
-
-    {%- endif -%}
-
-    {%- for  main_entity in main_entities -%}
-
-        {%- if link_pipeline == 'registry' -%} {#  or link_pipeline == 'periodstat' #}
-
-            {%- do registry_main_entities_list.append(main_entity) -%}
-
-        {%- endif -%}
-
-    {%- endfor -%}
-
-{%- endfor -%}
-
-{%- endif -%}
-
-  
-
-{#- условие либо glue=yes, либо сущность из main_entities -#}
-
-  
-
-{#- находим сущности с glue=yes -#}
-
-{#- задаём список всех сущностей метадаты -#}
-
-{%- set metadata_entities = metadata['entities'] -%}
-
-{#- задаём список для сущностей, у которых найдём glue='yes' -#}
-
-{%- set metadata_entities_list = [] -%}
-
-{#- отбираем нужные сущности -#}
-
-{%- for entity_name in metadata_entities  -%}
-
-    {%- set entity_glue = metadata_entities[entity_name].get('glue') -%}
-
-    {%- if entity_glue -%}  {# по факту читается как True, поэтому пишем просто if #}
-
-        {%- do metadata_entities_list.append(entity_name) -%}
-
-    {%- endif -%}
-
-{%- endfor -%}
-
-  
-
-{#- делаем полученный список сущностей уникальным -#}
-
-{%- set unique_entities_list = entities_list|unique|list -%}
-
-  
-  
-
-{#- из уникального списка сущностей отбираем те, которые
-
-    либо есть в списке сущностей glue='yes', либо есть в разделе registries -#}
-
-{%- set final_entities_list = [] -%}
-
-{%- for unique_entity in unique_entities_list  -%}
-
-    {%- if unique_entity in registry_main_entities_list or unique_entity in metadata_entities_list -%}
-
-        {%- do final_entities_list.append(unique_entity) -%}
-
-    {%- endif -%}
-
-{%- endfor -%}
-
-  
-
-{#- ********************************************* работа с metadata для пайплайна registry *************************************** -#}
-
-  
-
-{#- для моделей пайплайна registry отбираем линки и сущности отдельно,
-
-чтобы выводить модели по-отдельности для каждого источника данных -#}
-
-{%- if pipeline_name == 'registry'-%} {#  or pipeline_name == 'periodstat' #}
-
-  
-
-{%- set links_list = [] -%}
-
-{%- set links = metadata['links'] -%}
-
-{%- for link in links  -%}
-
-  {%- set lower_link_name = link|lower -%} {# приводим к нижнему регистру  #}
-
-  {%- if lower_link_name == link_name -%} {# сравниваем линк в нижнем регистре с линком из названия модели #}
-
-    {%- do links_list.append(link) -%} {# если они совпадают, отбираем этот линк #}
-
-  {%- endif -%}
-
-{%- endfor -%}
-
-  
-
-{#- для этого линка отбираем связанные с ним сущности -#}
-
-{%- set final_entities_list = [] -%}
-
-{%- for link_name in links_list  -%}
-
-    {%- set main_entities = links[link_name].get('main_entities') or [] -%}
-
-    {%- set other_entities = links[link_name].get('other_entities') or [] -%}
-
-    {%- set entities = main_entities + other_entities -%}
-
-    {%- for entity in entities -%}
-
-        {%- do final_entities_list.append(entity) -%}
-
-    {%- endfor -%}
-
-{%- endfor -%}
-
-{#- делаем полученные списки уникальными -#}
-
-{%- set links_list = links_list|unique|list -%}
-
-{%- set final_entities_list = final_entities_list|unique|list -%}
-
-{%- endif -%}
-
-  
+Макрос обращается к ранее найденной при помощи паттерна таблице-источнику  и берёт оттуда данные. Макрос добавляет: 
+- хэши для отобранных линков при помощи вспомогательного макроса `link_hash` 
+- хэши для отобранных сущностей при помощи вспомогательного макроса `entity_hash`
   
 
 {#- **************************************************** SQL-запрос ********************************************************* -#}
@@ -396,29 +223,6 @@ FROM (
 
   
 
-SELECT *,
-
-{% for link in links_list %}
-
-{#- добавляем хэши для отобранных линков -#}
-
-    {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
-
-{% endfor %}
-
-{% if final_entities_list and links_list %},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
-
-{% for entity in final_entities_list %}
-
-{#- добавляем хэши для отобранных сущностей -#}
-
-    {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
-
-{% endfor -%}
-
-FROM {{ ref(table_pattern) }}
-
-WHERE
 
 {% for link in links_list %}
 
