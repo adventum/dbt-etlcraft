@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/TEMPLATE MAIN.md",
+                "file": "dbt Package/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE MAIN.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE MAIN.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE MAIN.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -160,8 +160,8 @@
   },
   "active": "4e18122aee1cbe82",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE AUXILIARY.md",
     "dbt Package/TEMPLATE MAIN.md",
+    "dbt Package/TEMPLATE AUXILIARY.md",
     "dbt Package/README.md",
     "docs_status.md",
     "HowTos/How to create a config for presets.md",

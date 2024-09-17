@@ -6,7 +6,7 @@
 - Arguments - Аргументы
 - Functionality - Функциональность
 - Example - Пример
-- Notes - Примечания
+- Notes - Примечания   
 
 
 ```dataview
