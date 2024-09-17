@@ -37,7 +37,7 @@
 ## Функция `get_configs(...)`
 Функция формирует и возвращает словарь, содержащий выбранные конфиги.
 ```
-import airflow.providers.etlcraft as etlcraft
+import airflow_providers_etlcraft as etlcraft
 get_configs(['base', 'presets'], 'myspace')
 ```
 ### Аргументы
