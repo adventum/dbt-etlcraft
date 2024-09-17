@@ -8,31 +8,32 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2198c71f8bd69e92",
+            "id": "4e18122aee1cbe82",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Configs/base.md",
+                "file": "dbt Package/hash.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           },
           {
-            "id": "4e18122aee1cbe82",
+            "id": "357f6afc074b1c6c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "dbt Package/combine.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,14 +99,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/combine.md",
+                "file": "dbt Package/hash.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -115,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/combine.md",
+                "file": "dbt Package/hash.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/combine.md"
+                "file": "dbt Package/hash.md"
               }
             }
           }
@@ -160,11 +161,13 @@
   },
   "active": "4e18122aee1cbe82",
   "lastOpenFiles": [
+    "dbt Package/combine.md",
     "dbt Package/hash.md",
+    "Airflow Providers/Configs/base.md",
+    "dbt Package/README.md",
     "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "dbt Package/join.md",
-    "dbt Package/README.md",
     "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/TEMPLATE AUXILIARY.md",
     "docs_status.md",
@@ -172,7 +175,6 @@
     "Airflow Providers/DAGs/template_configs.md",
     "Airflow Providers/DAGs/generate_models.md",
     "Airflow Providers/DAGs/create_connectors.md",
-    "Airflow Providers/Configs/base.md",
     "Airflow Providers/DAGs.md",
     "Airflow Providers/Airbyte Operators.md",
     "Airflow Providers/Configs/connectors.md",
@@ -185,7 +187,6 @@
     "dbt Package/join_mt_datestat.md",
     "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
-    "dbt Package/join_vkads_datestat.md",
     "dbt Package",
     "Terms",
     "HowTos",
