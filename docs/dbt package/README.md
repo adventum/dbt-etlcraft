@@ -16,7 +16,7 @@ category AS "Category",
 step AS "Step", 
 sub_step AS "Substep",
 in_main_macro AS "In Main Macro"
-FROM "dbt package"
+FROM "dbt Package"
 WHERE file.name != "README"
 SORT doc_status DESC, category DESC, step, sub_step
 ```
