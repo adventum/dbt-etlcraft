@@ -13,7 +13,7 @@ TABLE
 category AS "Category", 
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
-FROM "dbt package"
+FROM "dbt Package"
 WHERE file.name != "README" AND contains(in_main_macro, "incremental")
 SORT doc_status
 ```

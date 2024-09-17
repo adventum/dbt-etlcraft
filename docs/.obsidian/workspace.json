@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/combine.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/combine.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/combine.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/combine.md"
               }
             }
           }
@@ -160,9 +160,13 @@
   },
   "active": "4e18122aee1cbe82",
   "lastOpenFiles": [
+    "dbt Package/hash.md",
+    "dbt Package/incremental.md",
+    "dbt Package/normalize.md",
+    "dbt Package/join.md",
+    "dbt Package/README.md",
     "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/TEMPLATE AUXILIARY.md",
-    "dbt Package/README.md",
     "docs_status.md",
     "HowTos/How to create a config for presets.md",
     "Airflow Providers/DAGs/template_configs.md",
@@ -174,7 +178,6 @@
     "Airflow Providers/Configs/connectors.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers/Configs/presets.md",
-    "dbt Package/incremental.md",
     "Airflow Providers/How DAGs work.md",
     "HowTos/Installation.md",
     "HowTos/Quick start.md",
@@ -183,9 +186,6 @@
     "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package/join_vkads_datestat.md",
-    "dbt Package/join_yd_datestat.md",
-    "dbt Package/join_yd_datestat_smart.md",
-    "dbt Package/join_ym_events.md",
     "dbt Package",
     "Terms",
     "HowTos",
