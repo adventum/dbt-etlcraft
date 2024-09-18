@@ -14,73 +14,30 @@ category AS "Category",
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
 FROM "dbt package"
-WHERE file.name != "README" AND contains(in_main_macro, "LOOK HERE")
+WHERE file.name != "README" AND contains(in_main_macro, "link")
 SORT doc_status
 ```
 
-
-## Summary
-
-## Usage
-
-The name of the dbt model (=the name of the sql file in the models folder) must match the template:
-`NAME_{pipeline_name}`.
-
-For example, `NAME`.
-
-A macro is called inside this file:
-
-```sql
-{{ etlcraft.NAME() }}
-```
-Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
-```sql
-SOMETHING
-```
-## Arguments
-
-This macro accepts the following arguments:
-
-## Functionality
-
-## Example
-
-A file in sql format in the models folder. File name: 
-`NAME`
-
-File Contents:
-```sql
--- depends_on: {{ ref('SOMETHING') }}
-
-
-{{ etlcraft.MACRO() }}
-```
-## Notes
-
-This is the … of the main macros.
-
-**Перевод**
-
 ## Описание
 
-Макрос `[macro]` предназначен для 
+Макрос `link` предназначен для 
 ## Применение
 
 Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
-`MACRO_{название_источника}_{название_пайплайна}_{название_шаблона}_{название_потока}`.
+`link_{название_пайплайна}`.
 
-Например, `MACRO_NAME`.
+Например, `link_events`.
 
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.MACRO() }}
+{{ etlcraft.link() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
--- depends_on: {{ ref('SOMETHING') }}
+-- depends_on: {{ ref('hash_events') }}
 
-{{ etlcraft.MACRO() }}
+{{ etlcraft.link() }}
 ```
 ## Аргументы
 

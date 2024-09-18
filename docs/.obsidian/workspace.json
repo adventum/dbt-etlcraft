@@ -8,6 +8,34 @@
         "type": "tabs",
         "children": [
           {
+            "id": "e59e80caa7dfb9a3",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "f1b65984ac15585b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/link.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
             "id": "4e18122aee1cbe82",
             "type": "leaf",
             "pinned": true,
@@ -22,43 +50,19 @@
             }
           },
           {
-            "id": "357f6afc074b1c6c",
+            "id": "cfb74c6ac2fd828e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/combine.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e59e80caa7dfb9a3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "cdf9d67233405cae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/TEMPLATE MAIN.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -124,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/link.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/link.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/link.md"
               }
             }
           }
@@ -184,11 +188,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cdf9d67233405cae",
+  "active": "f1b65984ac15585b",
   "lastOpenFiles": [
+    "dbt Package/hash.md",
+    "dbt Package/link.md",
+    "dbt Package/README.md",
+    "dbt Package/TEMPLATE MAIN.md",
+    "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset.md",
     "dbt Package/dataset_Pavel.md",
-    "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/attr_final_table.md",
     "dbt Package/attr_model.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
@@ -199,7 +207,6 @@
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_prepare.md",
     "dbt Package/join_appmetrica_events.md",
-    "dbt Package/README.md",
     "dbt Package/attribution.md",
     "dbt Package/attr_Pavel.md",
     "dbt Package/full.md",
@@ -209,9 +216,6 @@
     "dbt Package/graph_unique.md",
     "dbt Package/graph_lookup.md",
     "dbt Package/graph_tuples.md",
-    "dbt Package/join_ym_events.md",
-    "dbt Package/graph.md",
-    "dbt Package/graph_Pavel.md",
     "dbt Package",
     "Terms",
     "HowTos",
