@@ -46,6 +46,42 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8248ce3dcfdf584f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/TEMPLATE MAIN.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b0dc6882d3374a0f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/normalize.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8ab84ba61f5466fe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/link.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
         "currentTab": 1
@@ -176,17 +212,18 @@
   },
   "active": "0c8528fe8c837fa2",
   "lastOpenFiles": [
-    "dbt Package/link.md",
-    "dbt Package/graph.md",
     "dbt Package/README.md",
-    "dbt Package/join.md",
+    "dbt Package/link.md",
     "dbt Package/normalize.md",
+    "dbt Package/TEMPLATE MAIN.md",
+    "dbt Package/graph.md",
+    "dbt Package/calc_graph.md",
+    "dbt Package/TEMPLATE AUXILIARY.md",
+    "dbt Package/join.md",
     "dbt Package/incremental.md",
     "dbt Package/hash.md",
     "dbt Package/combine.md",
     "dbt Package/get_columns_in_relation.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
-    "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset.md",
     "dbt Package/dataset_Pavel.md",
@@ -201,7 +238,6 @@
     "dbt Package/attr_prepare.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/attribution.md",
-    "dbt Package/attr_Pavel.md",
     "dbt Package",
     "Terms",
     "HowTos",

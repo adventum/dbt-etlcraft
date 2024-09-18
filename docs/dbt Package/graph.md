@@ -2,11 +2,11 @@
 category: main
 step: 4_graph
 sub_step: 
-doc_status:
+doc_status: ready
 ---
 # macro `graph`
 
-## List of auxiliary macros
+## Список используемых вспомогательных макросов
 
 ```dataview
 TABLE 
