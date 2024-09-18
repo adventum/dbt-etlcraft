@@ -3,6 +3,7 @@ category: main
 step: 3_raw
 sub_step: 
 doc_status: ready
+language: rus
 ---
 # macro `link`
 

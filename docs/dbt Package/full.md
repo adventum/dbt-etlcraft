@@ -3,6 +3,7 @@ category: main
 step: 5_full
 sub_step: 
 doc_status: empty_template
+language: rus
 ---
 # macro `full`
 
@@ -57,6 +58,9 @@ SORT doc_status
 6. `limit0` (по умолчанию: none)
 7. `metadata` (по умолчанию: результат макроса `project_metadata()`)
 ## Функциональность
+
+
+
 
 ## Пример
 

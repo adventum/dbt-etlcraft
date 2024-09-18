@@ -3,6 +3,7 @@ category: main
 step: 4_graph
 sub_step: 
 doc_status: ready
+language: rus
 ---
 # macro `graph`
 
