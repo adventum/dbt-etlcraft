@@ -1,12 +1,44 @@
-**Шаги и подшаги** записаны в соответствии с внутренней документацией: https://docs.google.com/spreadsheets/d/17L2DaVe9fkugxNb99yqwg9e5r3wZ1ia7S_RBx3ZHh9A/edit?gid=494885188#gid=494885188
+**Шаги и подшаги** - основной путь данных:
+
+| **step**      | **sub_step**                    |
+| ------------- | ------------------------------- |
+| 1_silos       | 1_normalize                     |
+|               | 2_incremental                   |
+|               |                                 |
+| 2_staging     | 1_join                          |
+|               | 2_combine                       |
+|               | 3_hash                          |
+|               |                                 |
+| 3_raw         | link                            |
+|               |                                 |
+| 4_graph       | 1_tuples                        |
+|               | 2_lookup                        |
+|               | 3_unique                        |
+|               | 4_edge                          |
+|               | 5_glue                          |
+|               | 6_qid                           |
+|               |                                 |
+| 5_full        | full                            |
+|               |                                 |
+| 6_attribution | 1_prepare                       |
+|               | 2_create_events                 |
+|               | 3_add_row_number                |
+|               | 4_find_new_period               |
+|               | 5_calculate_period_number       |
+|               | 6_create_missed_steps           |
+|               | 7_join_to_attr_prepare_with_qid |
+|               | 8_model                         |
+|               | 9_final_table                   |
+|               |                                 |
+| 7_dataset     |                                 |
 
 **Единая структура описания макросов (от общего - к  частному):**
-- Summary - Описание
-- Usage - Использование
-- Arguments - Аргументы
-- Functionality - Функциональность
-- Example - Пример
-- Notes - Примечания   
+- Описание
+- Использование
+- Аргументы
+- Функциональность
+- Пример
+- Примечания   
 
 **Макросы можно условно поделить на несколько категорий**:
 
