@@ -58,8 +58,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ea85dd0095bdfbc1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/english_version/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -125,7 +138,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/english_version/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,7 +155,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/english_version/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -165,7 +178,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/english_version/README.md"
               }
             }
           }
@@ -185,10 +198,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "ea85dd0095bdfbc1",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
+    "dbt Package/english_version/normalize.md",
+    "dbt Package/english_version/README.md",
     "dbt Package/README.md",
+    "dbt Package/hash.md",
     "dbt Package/graph.md",
     "dbt Package/english_version/hash.md",
     "dbt Package/combine.md",
@@ -197,7 +212,6 @@
     "dbt Package/incremental.md",
     "dbt Package/english_version/join.md",
     "dbt Package/join.md",
-    "dbt Package/english_version/normalize.md",
     "dbt Package/normalize.md",
     "dbt Package/full.md",
     "dbt Package/english_version",
@@ -213,7 +227,6 @@
     "dbt Package/attr_model.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_create_missed_steps.md",
-    "dbt Package/attr_calculate_period_number.md",
     "dbt Package",
     "Terms",
     "HowTos",
