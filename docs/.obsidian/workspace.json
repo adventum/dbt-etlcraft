@@ -46,21 +46,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "226ec3192d5cd948",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/normalize.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/normalize.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/normalize.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/normalize.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -186,14 +173,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "226ec3192d5cd948",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/README.md",
     "dbt Package/graph.md",
+    "dbt Package/english_version/normalize.md",
+    "dbt Package/normalize.md",
+    "dbt Package/README.md",
     "dbt Package/full.md",
+    "dbt Package/english_version",
     "dbt Package/link.md",
     "dbt Package/hash.md",
-    "dbt Package/normalize.md",
     "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/calc_graph.md",
     "dbt Package/TEMPLATE AUXILIARY.md",
@@ -213,7 +202,6 @@
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_prepare.md",
-    "dbt Package/join_appmetrica_events.md",
     "dbt Package",
     "Terms",
     "HowTos",
@@ -222,7 +210,6 @@
     "Airflow Providers/Configs",
     "Airflow Providers/Airbyte Operators",
     "Airflow Providers",
-    "HowTo",
-    "Connectors"
+    "HowTo"
   ]
 }
