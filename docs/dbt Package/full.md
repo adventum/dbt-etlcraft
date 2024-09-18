@@ -1,65 +1,22 @@
 ---
 category: main
-step: 
+step: 5_full
 sub_step: 
-doc_status:
+doc_status: empty_template
 ---
-# macro `[macro_name]`
+# macro `full`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
 ```dataview
 TABLE 
 category AS "Category", 
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
-FROM "dbt package"
-WHERE file.name != "README" AND contains(in_main_macro, "LOOK HERE")
+FROM "dbt Package"
+WHERE file.name != "README" AND contains(in_main_macro, "full")
 SORT doc_status
 ```
-
-
-## Summary
-
-## Usage
-
-The name of the dbt model (=the name of the sql file in the models folder) must match the template:
-`NAME_{pipeline_name}`.
-
-For example, `NAME`.
-
-A macro is called inside this file:
-
-```sql
-{{ etlcraft.NAME() }}
-```
-Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
-```sql
-SOMETHING
-```
-## Arguments
-
-This macro accepts the following arguments:
-
-## Functionality
-
-## Example
-
-A file in sql format in the models folder. File name: 
-`NAME`
-
-File Contents:
-```sql
--- depends_on: {{ ref('SOMETHING') }}
-
-
-{{ etlcraft.MACRO() }}
-```
-## Notes
-
-This is the … of the main macros.
-
-**Перевод**
 
 ## Описание
 
@@ -99,4 +56,4 @@ SOMETHING INSIDE
 
 ## Примечания
 
-Это N-й из основных макросов.
+Это восьмой из основных макросов.

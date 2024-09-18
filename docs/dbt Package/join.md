@@ -2,7 +2,7 @@
 category: main
 step: 2_staging
 sub_step: 1_join
-doc_status: ready
+doc_status: ready + eng
 ---
 # macro `join`
 
@@ -13,7 +13,7 @@ TABLE
 category AS "Category", 
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
-FROM "dbt package"
+FROM "dbt Package"
 WHERE file.name != "README" AND contains(in_main_macro, "join")
 SORT doc_status
 ```

@@ -1,11 +1,11 @@
 ---
 category: auxiliary
-step: 
+step: 3_raw
 sub_step: 
-in_main_macro: 
-doc_status:
+in_main_macro: link
+doc_status: empty_template
 ---
-# macro `[macro_name]`
+# macro `get_columns_in_relation`
 
 ## Описание
 

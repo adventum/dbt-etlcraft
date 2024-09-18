@@ -1,11 +1,11 @@
 ---
 category: auxiliary
-step: 
-sub_step: 
-in_main_macro: 
-doc_status:
+step: 2_staging
+sub_step: 3_hash
+in_main_macro: hash
+doc_status: empty_template
 ---
-# macro `[macro_name]`
+# macro `[entity_hash]`
 
 ## Описание
 

@@ -1,11 +1,11 @@
 ---
 category: auxiliary
-step: 
-sub_step: 
-in_main_macro: 
-doc_status:
+step: 4_graph
+sub_step: 5_glue, 6_qid
+in_main_macro: graph
+doc_status: empty_template
 ---
-# macro `[macro_name]`
+# macro `calc_graph`
 
 ## Описание
 

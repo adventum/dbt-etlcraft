@@ -1,12 +1,12 @@
 ---
 category: main
-step: 
+step: 6_attribution
 sub_step: 
-doc_status:
+doc_status: empty_template
 ---
 # macro `[macro_name]`
 
-## ## Список используемых вспомогательных макросов
+## List of auxiliary macros
 
 ```dataview
 TABLE 
