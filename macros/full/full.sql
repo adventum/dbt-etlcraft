@@ -2,16 +2,12 @@
   params=none,
   disable_incremental=none,
   override_target_model_name=none,
-  links_in_project=none,
   date_from=none,
   date_to=none,
   limit0=none,
   metadata=project_metadata()
   ) 
 -%}
-
-{%- set links_in_project =["ManualAdCostStat","UtmHashRegistry","AdCostStat","MediaplanStat","VisitStat",
-"AppInstallStat","AppEventStat","AppSessionStat","AppDeeplinkStat","AppProfileMatching"] -%}
 
 {#- задаём части имени - выясняем какой у нас pipeline: datestat/events/periodstat -#}
 {%- set model_name_parts = (override_target_model_name or this.name).split('_') -%}
@@ -134,18 +130,9 @@ FROM unnest_dates
       {%- do links_list.append(link) -%} 
     {%- endfor -%}
 
-{#- отбираем общий список линков: то есть тех линков, которые есть и в metadata, и в проекте -#}
-{#- список линков, которые есть в проекте - передаётся из airflow -#}
-{%- set links_common =[] -%}
-{%- for link_name_metadata in links  -%}
-    {%- if link_name_metadata in links_in_project -%}
-        {%- do links_common.append(link_name_metadata) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-{#- здесь берём поочередно каждый линк из общего списка и обращаемся с этим линком в раздел links из metadata -#}
+{#- здесь берём поочередно каждый линк из списка и обращаемся с этим линком в раздел links из metadata -#}
 {#- и получаем нужные данные по линку - его пайплайн, сущности и тд -#}
-{%- for link_name in links_common -%}
+{%- for link_name in links_list -%}
     {%- set pipeline = links[link_name].get('pipeline') or [] -%}
     {%- if pipeline == pipeline_name -%}
         {%- set main_entities = links[link_name].get('main_entities') or [] -%}
