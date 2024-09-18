@@ -5,7 +5,7 @@ import re
 from airflow.models import Variable
 from airflow.utils.db import create_session
 
-from .exceptions import EtlcraftConfigError
+from ..exceptions import EtlcraftConfigError
 
 
 default_value_mapping = {

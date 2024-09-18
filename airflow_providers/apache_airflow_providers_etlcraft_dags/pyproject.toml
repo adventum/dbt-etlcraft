@@ -19,3 +19,8 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/adventum/dbt-etlcraft"
+
+dependencies = [
+    "apache-airflow>=2.9.3, <3.0",
+    "apache_airflow_providers_etlcraft_defaults"
+]
