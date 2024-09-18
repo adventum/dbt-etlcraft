@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "f1b65984ac15585b",
+            "id": "0c8528fe8c837fa2",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/link.md",
+                "file": "dbt Package/graph.md",
                 "mode": "source",
                 "source": false
               },
@@ -36,38 +36,12 @@
             }
           },
           {
-            "id": "4e18122aee1cbe82",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/hash.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "cfb74c6ac2fd828e",
+            "id": "53aac59e85300712",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/TEMPLATE MAIN.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3e92e87e57992fa4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/get_columns_in_relation.md",
+                "file": "dbt Package/join.md",
                 "mode": "source",
                 "source": false
               }
@@ -140,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/link.md",
+                "file": "dbt Package/graph.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/link.md",
+                "file": "dbt Package/graph.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -180,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/link.md"
+                "file": "dbt Package/graph.md"
               }
             }
           }
@@ -200,13 +174,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f1b65984ac15585b",
+  "active": "0c8528fe8c837fa2",
   "lastOpenFiles": [
-    "dbt Package/get_columns_in_relation.md",
-    "dbt Package/link.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
-    "dbt Package/hash.md",
+    "dbt Package/join.md",
+    "dbt Package/graph.md",
     "dbt Package/README.md",
+    "dbt Package/link.md",
+    "dbt Package/normalize.md",
+    "dbt Package/incremental.md",
+    "dbt Package/hash.md",
+    "dbt Package/combine.md",
+    "dbt Package/get_columns_in_relation.md",
+    "dbt Package/TEMPLATE AUXILIARY.md",
     "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset.md",
@@ -223,11 +202,6 @@
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/attribution.md",
     "dbt Package/attr_Pavel.md",
-    "dbt Package/full.md",
-    "dbt Package/graph_qid.md",
-    "dbt Package/graph_glue.md",
-    "dbt Package/graph_edge.md",
-    "dbt Package/graph_unique.md",
     "dbt Package",
     "Terms",
     "HowTos",

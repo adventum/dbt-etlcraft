@@ -2,7 +2,7 @@
 category: main
 step: 2_staging
 sub_step: 2_combine
-doc_status: ready
+doc_status: ready + eng
 ---
 # macro `combine`
 

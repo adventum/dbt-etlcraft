@@ -2,7 +2,7 @@
 category: main
 step: 1_silos
 sub_step: 1_normalize
-doc_status: ready
+doc_status: ready + eng
 ---
 # macro `normalize`
 ## List of auxiliary macros

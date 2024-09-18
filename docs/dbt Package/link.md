@@ -2,7 +2,7 @@
 category: main
 step: 3_raw
 sub_step: 
-doc_status:
+doc_status: ready
 ---
 # macro `link`
 

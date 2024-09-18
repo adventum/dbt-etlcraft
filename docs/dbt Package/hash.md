@@ -2,7 +2,7 @@
 category: main
 step: 2_staging
 sub_step: 3_hash
-doc_status: ready
+doc_status: ready + eng
 ---
 # macro `hash`
 

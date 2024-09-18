@@ -2,7 +2,7 @@
 category: main
 step: 1_silos
 sub_step: 2_incremental
-doc_status: ready
+doc_status: ready + eng
 ---
 # macro `incremental`
 
