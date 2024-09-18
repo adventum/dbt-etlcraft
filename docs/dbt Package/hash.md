@@ -47,7 +47,7 @@ SORT doc_status
 1. `params` (по умолчанию: none)
 2.  `disable_incremental` (по умолчанию: none)
 3. `override_target_model_name` (по умолчанию: none)
-4. `metadata` (по умолчанию: результат макроса project_metadata())
+4. `metadata` (по умолчанию: результат макроса `project_metadata()`)
 5. `date_from` (по умолчанию: none)
 6. `date_to` (по умолчанию: none)
 7. `limit0` (по умолчанию: none)

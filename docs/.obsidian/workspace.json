@@ -36,31 +36,19 @@
             }
           },
           {
-            "id": "4682dd4649faac93",
+            "id": "5e0308f61b01c55e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/english_version/combine.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "34a12b265d1cc210",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
+                "file": "dbt Package/hash.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -126,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
+                "file": "dbt Package/full.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
+                "file": "dbt Package/full.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE AUXILIARY rus.md"
+                "file": "dbt Package/full.md"
               }
             }
           }
@@ -186,17 +174,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "34a12b265d1cc210",
+  "active": "96f3068be7a3f458",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/full.md",
-    "dbt Package/english_version/combine.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
-    "dbt Package/graph.md",
-    "dbt Package/hash.md",
-    "dbt Package/english_version/README.md",
     "dbt Package/README.md",
+    "dbt Package/full.md",
+    "dbt Package/hash.md",
+    "dbt Package/link.md",
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/english_version/combine.md",
+    "dbt Package/graph.md",
+    "dbt Package/english_version/README.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/english_version/hash.md",
     "dbt Package/combine.md",
@@ -206,7 +195,6 @@
     "dbt Package/join.md",
     "dbt Package/normalize.md",
     "dbt Package/english_version",
-    "dbt Package/link.md",
     "dbt Package/calc_graph.md",
     "dbt Package/get_columns_in_relation.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
