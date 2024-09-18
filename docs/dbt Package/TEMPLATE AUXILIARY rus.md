@@ -3,7 +3,8 @@ category: auxiliary
 step: 
 sub_step: 
 in_main_macro: 
-doc_status:
+doc_status: 
+language: rus
 ---
 # macro `[macro_name]`
 

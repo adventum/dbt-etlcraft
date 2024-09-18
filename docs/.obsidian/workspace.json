@@ -36,42 +36,31 @@
             }
           },
           {
-            "id": "142fb1c60271cb1d",
+            "id": "4682dd4649faac93",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph.md",
+                "file": "dbt Package/english_version/combine.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "bbe70f303e5da290",
+            "id": "34a12b265d1cc210",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/hash.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e5fdc6c19b4ca39e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/english_version/README.md",
+                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -137,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/TEMPLATE AUXILIARY rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -177,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/TEMPLATE AUXILIARY rus.md"
               }
             }
           }
@@ -197,27 +186,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "34a12b265d1cc210",
   "lastOpenFiles": [
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/full.md",
+    "dbt Package/english_version/combine.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/graph.md",
+    "dbt Package/hash.md",
     "dbt Package/english_version/README.md",
     "dbt Package/README.md",
-    "dbt Package/hash.md",
     "dbt Package/english_version/normalize.md",
-    "dbt Package/graph.md",
     "dbt Package/english_version/hash.md",
     "dbt Package/combine.md",
-    "dbt Package/english_version/combine.md",
     "dbt Package/english_version/incremental.md",
     "dbt Package/incremental.md",
     "dbt Package/english_version/join.md",
     "dbt Package/join.md",
     "dbt Package/normalize.md",
-    "dbt Package/full.md",
     "dbt Package/english_version",
     "dbt Package/link.md",
-    "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/calc_graph.md",
-    "dbt Package/TEMPLATE AUXILIARY.md",
     "dbt Package/get_columns_in_relation.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset.md",
@@ -225,7 +215,6 @@
     "dbt Package/attr_final_table.md",
     "dbt Package/attr_model.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
-    "dbt Package/attr_create_missed_steps.md",
     "dbt Package",
     "Terms",
     "HowTos",
