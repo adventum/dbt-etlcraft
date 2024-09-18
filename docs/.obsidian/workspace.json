@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/join.md",
+                "file": "dbt Package/link.md",
                 "mode": "source",
                 "source": false
               }
@@ -176,10 +176,10 @@
   },
   "active": "0c8528fe8c837fa2",
   "lastOpenFiles": [
-    "dbt Package/join.md",
+    "dbt Package/link.md",
     "dbt Package/graph.md",
     "dbt Package/README.md",
-    "dbt Package/link.md",
+    "dbt Package/join.md",
     "dbt Package/normalize.md",
     "dbt Package/incremental.md",
     "dbt Package/hash.md",

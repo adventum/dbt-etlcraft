@@ -14,7 +14,7 @@ category AS "Category",
 in_main_macro AS "In Main Macro",
 doc_status AS "Doc Status"
 FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "LOOK HERE")
+WHERE file.name != "README" AND contains(in_main_macro, "graph")
 SORT doc_status
 ```
 
@@ -49,17 +49,41 @@ SORT doc_status
 
 Этот макрос принимает следующие аргументы:
 
+1. `params` (по умолчанию: none)
+2. `override_target_model_name` (по умолчанию: none)
+3. `limit0` (по умолчанию: none)
 ## Функциональность
+
+Технически сам макрос `graph` - регулировщик. Он направляет работу под-макросов типа `graph_` по шагам. 
+
+Под-макросами являются:
+1. graph_tuples
+2. graph_lookup
+3. graph_unique
+4. graph_edge
+5. graph_glue
+6. graph_qid
+
+Кроме них, есть ещё вспомогательный макрос `calc_graph`, который используется на шагах `graph_glue` и `graph_qid`.
+
+Технически действие самого макроса `graph`(регулировщика) реализуется так: 
+
+сначала макрос считает имя модели - либо из передаваемого аргумента (  
+`override_target_model_name`), либо из имени файла (`this.name`). При использовании аргумента `override_target_model_name` макрос работает так, как если бы находился в модели с именем, равным значению `override_target_model_name`.
+
+Затем макрос вызывает нужный шаг макроса `graph` в зависимости от считанного имени модели.
 
 ## Пример
 
-Файл в формате sql в папке models. Название файла `[NAME]`
+Файл в формате sql в папке models. Название файла `graph_tuples`
 
 Содержимое файла:
 ```sql
-SOMETHING INSIDE
+-- depends_on: {{ ref('link_events') }}
+
+{{ etlcraft.graph() }}
 ```
 
 ## Примечания
 
-Это N-й из основных макросов.
+Это седьмой из основных макросов.
