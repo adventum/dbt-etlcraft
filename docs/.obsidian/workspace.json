@@ -60,6 +60,18 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "3e92e87e57992fa4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_columns_in_relation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
         "currentTab": 1
@@ -190,8 +202,10 @@
   },
   "active": "f1b65984ac15585b",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
+    "dbt Package/get_columns_in_relation.md",
     "dbt Package/link.md",
+    "dbt Package/TEMPLATE AUXILIARY.md",
+    "dbt Package/hash.md",
     "dbt Package/README.md",
     "dbt Package/TEMPLATE MAIN.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
@@ -214,8 +228,6 @@
     "dbt Package/graph_glue.md",
     "dbt Package/graph_edge.md",
     "dbt Package/graph_unique.md",
-    "dbt Package/graph_lookup.md",
-    "dbt Package/graph_tuples.md",
     "dbt Package",
     "Terms",
     "HowTos",
