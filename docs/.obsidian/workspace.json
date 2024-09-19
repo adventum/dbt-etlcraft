@@ -35,8 +35,7 @@
               "pinned": true
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -162,17 +161,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "002c9a7ff60d33dc",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/join_mt_datestat.md",
-    "dbt Package/get_min_max_date.md",
-    "dbt Package/README.md",
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
-    "dbt Package/join_appsflyer_events.md",
-    "dbt Package/get_relations_by_re.md",
-    "dbt Package/join_appmetrica_events.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_sheets_periodstat.md",
+    "dbt Package/README.md",
+    "dbt Package/join_mt_datestat.md",
+    "dbt Package/join_appsflyer_events.md",
+    "dbt Package/join_appmetrica_registry_appprofilematching.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/get_min_max_date.md",
+    "dbt Package/get_relations_by_re.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/english_version/README.md",
     "dbt Package/combine.md",
     "dbt Package/join.md",

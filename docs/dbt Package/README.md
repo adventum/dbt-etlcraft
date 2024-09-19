@@ -87,9 +87,9 @@ SORT main_number
 ```dataview
 TABLE 
 doc_status AS "Doc Status",
+in_main_macro AS "In Main Macro",
 step AS "Step", 
-sub_step AS "Substep",
-in_main_macro AS "In Main Macro"
+sub_step AS "Substep"
 FROM "dbt Package"
 WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN rus"
 AND file.name!="TEMPLATE SUB_MAIN rus") 
@@ -102,9 +102,9 @@ SORT step, sub_step, doc_status DESC
 ```dataview
 TABLE 
 doc_status AS "Doc Status",
+in_main_macro AS "In Main Macro",
 step AS "Step", 
-sub_step AS "Substep",
-in_main_macro AS "In Main Macro"
+sub_step AS "Substep"
 FROM "dbt Package"
 WHERE (file.name!="README" AND file.name!="TEMPLATE AUXILIARY rus") 
 AND (category="auxiliary") AND language!="eng"
