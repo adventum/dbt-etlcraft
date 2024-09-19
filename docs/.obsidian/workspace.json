@@ -36,12 +36,12 @@
             }
           },
           {
-            "id": "bb72281e6f7f021c",
+            "id": "3af4ed5418b1ac6c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/hash.md",
+                "file": "dbt Package/clickhouse__check_table_exists.md",
                 "mode": "source",
                 "source": false
               }
@@ -176,8 +176,10 @@
   },
   "active": "96f3068be7a3f458",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
+    "dbt Package/clickhouse__check_table_exists.md",
     "dbt Package/full.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/hash.md",
     "dbt Package/graph.md",
     "dbt Package/README.md",
     "dbt Package/english_version/README.md",
@@ -189,7 +191,6 @@
     "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/english_version/combine.md",
     "dbt Package/english_version/normalize.md",
@@ -202,7 +203,6 @@
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset_Pavel.md",
     "dbt Package/attr_final_table.md",
-    "dbt Package/attr_model.md",
     "dbt Package",
     "Terms",
     "HowTos",

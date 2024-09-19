@@ -74,50 +74,13 @@ SORT doc_status
 
 - для пайплайна `periodstat` - материализация `incremental` и разбиение метрик по дням + добавление имеющихся таблиц пайплайна `registry`
 
+Следующий этап работы макроса -  отбор возможных и существующих таблиц пайплайна `registry`.
 
-  
+Сначала в макросе создаётся список возможных таблиц пайплайна `registry` - это нужно для всех пайплайнов. Для создания такого списка макрос обращается к `metadata` (она передаётся через аргумент и по умолчанию `metadata` = результат макроса `project_metadata()`).
 
-{#- ************************************* отбор возможных и существующих таблиц registry ************************************* -#}
+Далее макрос при помощи вспомогательного макроса [[clickhouse__check_table_exists]] будет отбирать те таблицы пайплайна `registry`, которые в действительности существуют.
 
-  
 
-{#- создаём список возможных таблиц registry - это нужно для всех пайплайнов -#}
-
-{%- set links_list = [] -%}
-
-{%- set registry_possible_tables = [] -%}
-
-{%- set links = metadata['links'] -%}
-
-{%- for link_name in links  -%}
-
-  {%- set lower_link_name = link_name|lower -%} {# приводим к нижнему регистру  #}
-
-  {%- do links_list.append(lower_link_name) -%}
-
-  {%- set table_name = 'link_registry_' ~ lower_link_name -%} {# создаём вариант имени registry-таблицы #}
-
-  {%- do registry_possible_tables.append(table_name) -%}
-
-{%- endfor -%}
-
-  
-
-{#- отбираем те из них, которые существуют -#}
-
-{%- set registry_existing_tables = [] -%}
-
-{%- for table_ in registry_possible_tables -%}
-
-    {%- set table_exists = etlcraft.clickhouse__check_table_exists(source_table=table_, database=this.schema) -%}
-
-    {%- if table_exists == 1 -%}
-
-    {%- do registry_existing_tables.append(table_) -%}
-
-    {%- endif -%}
-
-{%- endfor -%}
 
   
 
