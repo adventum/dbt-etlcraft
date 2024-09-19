@@ -36,27 +36,31 @@
             }
           },
           {
-            "id": "7f032823b3b3b674",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "11915b6af96303b6",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "dbt Package/attr_Pavel.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "f22f368a6e5e725a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/graph.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
             }
           }
         ],
@@ -188,13 +192,14 @@
   },
   "active": "336084b127e17e57",
   "lastOpenFiles": [
-    "dbt Package/attr_Pavel.md",
-    "dbt Package/graph.md",
-    "dbt Package/attr_calculate_period_number.md",
-    "dbt Package/attr.md",
     "dbt Package/README.md",
-    "dbt Package/hash.md",
+    "dbt Package/attr.md",
+    "dbt Package/graph.md",
+    "dbt Package/attr_Pavel.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/attr_calculate_period_number.md",
+    "dbt Package/hash.md",
     "dbt Package/link.md",
     "dbt Package/full.md",
     "dbt Package/combine.md",
@@ -213,7 +218,6 @@
     "dbt Package/english_version/normalize.md",
     "dbt Package/english_version/hash.md",
     "dbt Package/english_version/incremental.md",
-    "dbt Package/english_version/join.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
