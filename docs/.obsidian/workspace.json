@@ -34,8 +34,23 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "abb998ff8b4062c2",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/join_sheets_periodstat.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -101,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/join_sheets_periodstat.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/join_sheets_periodstat.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/join_sheets_periodstat.md"
               }
             }
           }
@@ -161,17 +176,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "abb998ff8b4062c2",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/join_sheets_periodstat.md",
-    "dbt Package/README.md",
-    "dbt Package/join_mt_datestat.md",
-    "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
+    "dbt Package/get_relations_by_re.md",
+    "dbt Package/join_sheets_periodstat.md",
+    "dbt Package/join_mt_datestat.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/README.md",
+    "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/get_min_max_date.md",
-    "dbt Package/get_relations_by_re.md",
     "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/english_version/README.md",
     "dbt Package/combine.md",
