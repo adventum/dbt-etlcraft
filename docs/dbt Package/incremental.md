@@ -4,6 +4,7 @@ step: 1_silos
 sub_step: 2_incremental
 doc_status: ready
 language: rus
+main_number: "02"
 ---
 # macro `incremental`
 

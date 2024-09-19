@@ -4,6 +4,7 @@ step: 3_raw
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "06"
 ---
 # macro `link`
 

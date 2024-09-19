@@ -4,6 +4,7 @@ step: 2_staging
 sub_step: 1_join
 doc_status: ready
 language: rus
+main_number: "03"
 ---
 # macro `join`
 

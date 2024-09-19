@@ -4,6 +4,7 @@ step: 7_dataset
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "10"
 ---
 # macro `create_dataset`
 

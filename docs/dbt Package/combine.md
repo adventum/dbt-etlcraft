@@ -4,6 +4,7 @@ step: 2_staging
 sub_step: 2_combine
 doc_status: ready
 language: rus
+main_number: "04"
 ---
 # macro `combine`
 

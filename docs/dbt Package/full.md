@@ -4,6 +4,7 @@ step: 5_full
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "08"
 ---
 # macro `full`
 

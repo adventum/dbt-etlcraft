@@ -4,6 +4,7 @@ step: 1_silos
 sub_step: 1_normalize
 doc_status: ready
 language: rus
+main_number: "01"
 ---
 # macro `normalize`
 ## Список используемых вспомогательных макросов
