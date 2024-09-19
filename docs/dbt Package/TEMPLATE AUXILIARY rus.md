@@ -1,11 +1,12 @@
 ---
 category: auxiliary
-step: 3_raw
+step: 
 sub_step: 
-in_main_macro: link, full
-doc_status: empty_template
+in_main_macro: 
+doc_status: 
+language: rus
 ---
-# macro `get_columns_in_relation`
+# macro `[macro_name]`
 
 ## Описание
 

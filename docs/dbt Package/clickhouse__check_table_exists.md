@@ -1,11 +1,12 @@
 ---
 category: auxiliary
-step: 
+step: 5_full
 sub_step: 
-in_main_macro: 
-doc_status:
+in_main_macro: full
+doc_status: empty_template
+language: rus
 ---
-# macro `[macro_name]`
+# macro `clickhouse__check_table_exists`
 
 ## Описание
 
