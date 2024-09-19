@@ -186,7 +186,6 @@ FROM unnest_dates
 
 )
 ```
-
 **5) отбор полей pipeline_columns для каждого пайплайна**
   
 На этом шаге нет условия if, но, поскольку при вызове моделей у каждой свой pipeline_name, значения будут разными.
@@ -202,11 +201,13 @@ FROM unnest_dates
 'AccountHash', 'AppMetricaDeviceHash', 'MobileAdsIdHash', 'CrmUserHash', 'OsNameHash', 'CityHash', 'AdSourceHash', 'UtmParamsHash', 'UtmHashHash', 'TransactionHash', 'PromoCodeHash', 'AppSessionHash', 'VisitHash', 'YmClientHash'
 ```
 
-  
+  **6) последовательное обогащение основного запроса данными из таблиц пайплайна `registry`**
 
-{#-  ********************************* цикл для последовательных джойнов таблиц registry  **************************************  -#}
+На этом шаге в макросе происходит цикл для последовательных джойнов таблиц пайплайна `registry`.
 
-  
+
+
+
 
 {#- теперь основу - т.е. CTE t0 для каждого пайплайна - будем поочерёдно обогащать данными из registry-таблиц,
 
