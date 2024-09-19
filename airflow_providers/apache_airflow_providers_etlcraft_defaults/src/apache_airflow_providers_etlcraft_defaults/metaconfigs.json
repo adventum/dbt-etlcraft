@@ -1,0 +1,30 @@
+{
+    "connectors": {
+        "source": "templated_file",
+        "format": "yaml"
+    },
+    "presets": {
+        "source": "templated_file",
+        "format": "json"
+    },
+    "datasources": {
+        "source": "datacraft_variable",
+        "format": "json"
+    },
+    "metadata": {
+        "source": "templated_file",
+        "format": "yaml"
+    },
+    "events": {
+        "source": "templated_file",
+        "format": "yaml"
+    },
+    "attributions": {
+        "source": "datacraft_variable",
+        "format": "json"
+    },
+    "base": {
+        "source": "templated_file",
+        "format": "yaml"        
+    }
+}
