@@ -186,75 +186,26 @@ FROM unnest_dates
 
 )
 ```
-
-
+**5) отбор полей pipeline_columns для каждого пайплайна**
   
+На этом шаге нет условия if, но, поскольку при вызове моделей у каждой свой pipeline_name, значения будут разными.
 
-{#- ******************************  для каждого пайплайна отбор полей pipeline_columns   ********************************** -#}
+Макрос задаёт переменную `pipeline_columns`, в которую будет отбирать колонки с сущностями каждого пайплайна.
 
-  
+Далее на этом шаге макрос обращается к `metadata`, отбирает линки и получает все необходимые для дальнейшей работы данные по каждому нужному линку.
 
-{#- здесь нет условия if, но, поскольку при вызове моделей у каждой свой pipeline_name, значения будут разными -#}
+Ранее созданная переменная `pipeline_columns` заполняется теми сущностями (`entities`) из метадаты, которые соответствуют пайплайну модели и её линкам. Каждое название сущности дополняется окончанием `Hash`, и таким образом в этой переменной в процессе работы макроса оказывается уникальный список захэшированных названий колонок сущностей.
 
-{%- set pipeline_columns = [] -%} {# сюда будем отбирать колонки с сущностями каждого пайплайна #}
+Например, для пайплайна `events` такой список (`pipeline_columns`) может выглядеть следующим образом:
+```sql
+'AccountHash', 'AppMetricaDeviceHash', 'MobileAdsIdHash', 'CrmUserHash', 'OsNameHash', 'CityHash', 'AdSourceHash', 'UtmParamsHash', 'UtmHashHash', 'TransactionHash', 'PromoCodeHash', 'AppSessionHash', 'VisitHash', 'YmClientHash'
+```
 
-{%- set links_list = [] -%}
+  **6) последовательное обогащение основного запроса данными из таблиц пайплайна `registry`**
 
-{%- set links = metadata['links'] -%} {# отбираем из metadata раздел links целиком #}  
+На этом шаге в макросе происходит цикл для последовательных джойнов таблиц пайплайна `registry`.
 
-    {%- for link in links  -%}
 
-      {%- do links_list.append(link) -%}
-
-    {%- endfor -%}
-
-  
-
-{#- здесь берём поочередно каждый линк из списка и обращаемся с этим линком в раздел links из metadata -#}
-
-{#- и получаем нужные данные по линку - его пайплайн, сущности и тд -#}
-
-{%- for link_name in links_list -%}
-
-    {%- set pipeline = links[link_name].get('pipeline') or [] -%}
-
-    {%- if pipeline == pipeline_name -%}
-
-        {%- set main_entities = links[link_name].get('main_entities') or [] -%}
-
-        {%- set other_entities = links[link_name].get('other_entities') or [] -%}
-
-        {%- set entities = main_entities + other_entities -%}
-
-        {%- for entity in entities -%}
-
-            {%- do pipeline_columns.append(entity ~ 'Hash') -%}
-
-        {%- endfor -%}
-
-    {%- endif -%}
-
-{%- endfor -%}
-
-{#- делаем полученный список уникальным -#}
-
-{%- set pipeline_columns = pipeline_columns|unique|list -%}
-
-  
-
-{#- SELECT {{ pipeline_columns }} например для events выводит
-
-SELECT ['AccountHash', 'AppMetricaDeviceHash', 'MobileAdsIdHash', 'CrmUserHash', 'OsNameHash', 'CityHash',
-
-'AdSourceHash', 'UtmParamsHash', 'UtmHashHash', 'TransactionHash', 'PromoCodeHash',
-
-'AppSessionHash', 'VisitHash', 'YmClientHash'] -#}
-
-  
-
-{#-  ********************************* цикл для последовательных джойнов таблиц registry  **************************************  -#}
-
-  
 
 {#- теперь основу - т.е. CTE t0 для каждого пайплайна - будем поочерёдно обогащать данными из registry-таблиц,
 
