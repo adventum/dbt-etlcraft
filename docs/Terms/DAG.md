@@ -1,6 +1,8 @@
 ---
 term_name: DAG
 description: Программа для Airflow, содержащая задачи для выполнения и связи между ними
+type: term
+doc_status: empty
 ---
 
 #task Термин DAG: Подробное описание термина и примеры 

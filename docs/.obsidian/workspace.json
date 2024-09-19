@@ -20,15 +20,26 @@
               },
               "pinned": true
             }
+<<<<<<< HEAD
           },
           {
             "id": "82d7aae3a3b33526",
+=======
+<<<<<<< HEAD
+          },
+          {
+            "id": "96f3068be7a3f458",
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "dbt Package/join_appmetrica_events.md",
+=======
+                "file": "dbt Package/full.md",
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
                 "mode": "source",
                 "source": false
               },
@@ -36,11 +47,16 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "3b43ac9300d163d4",
+=======
+            "id": "11b481cfb8568c21",
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "dbt Package/get_relations_by_re.md",
                 "mode": "source",
                 "source": false
@@ -54,13 +70,26 @@
               "type": "markdown",
               "state": {
                 "file": "dbt Package/link.md",
+=======
+                "file": "docs_status.md",
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
                 "mode": "source",
                 "source": false
               }
             }
+<<<<<<< HEAD
           }
         ],
         "currentTab": 1
+=======
+          }
+        ],
+        "currentTab": 2
+=======
+          }
+        ]
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
       }
     ],
     "direction": "vertical"
@@ -126,7 +155,15 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "dbt Package/join_appmetrica_events.md",
+=======
+<<<<<<< HEAD
+                "file": "docs_status.md",
+=======
+                "file": "dbt Package/README.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +180,15 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "dbt Package/join_appmetrica_events.md",
+=======
+<<<<<<< HEAD
+                "file": "docs_status.md",
+=======
+                "file": "dbt Package/README.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +211,15 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "dbt Package/join_appmetrica_events.md"
+=======
+<<<<<<< HEAD
+                "file": "docs_status.md"
+=======
+                "file": "dbt Package/README.md"
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
               }
             }
           }
@@ -178,15 +231,26 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
+<<<<<<< HEAD
   "active": "82d7aae3a3b33526",
+=======
+<<<<<<< HEAD
+  "active": "11b481cfb8568c21",
+  "lastOpenFiles": [
+    "dbt Package/create_dataset.md",
+    "Terms/Untitled.md",
+    "docs_status.md",
+=======
+  "active": "e59e80caa7dfb9a3",
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
   "lastOpenFiles": [
     "Terms/Untitled.md",
     "dbt Package/link.md",
@@ -207,13 +271,48 @@
     "dbt Package/incremental.md",
     "dbt Package/create_dataset.md",
     "dbt Package/custom_union_relations.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
     "Terms/Stream.md",
+    "Terms/Source.md",
+    "Terms/Slug.md",
     "Terms/Pipeline.md",
+<<<<<<< HEAD
+    "Terms/Name (config).md",
+    "Terms/Model.md",
+    "Terms/Link.md",
+    "Terms/Id.md",
+    "Terms/Entity.md",
+    "Terms/Direct integration.md",
+    "Terms/DAG.md",
+    "Terms/Connector.md",
+    "Terms/Airbyte Workspace.md",
+    "Terms/Airbyte Source.md",
+    "Terms/Airbyte Destination.md",
+    "Terms/Airbyte Connection.md",
+    "HowTos/How to create a config for presets.md",
+    "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/attr.md",
+    "Airflow Providers/Configs/presets.md",
+    "HowTos/Installation.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
+=======
     "dbt Package/attr_Pavel.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/cast_date_field.md",
+<<<<<<< HEAD
+=======
+    "dbt Package/clickhouse__check_table_exists.md",
+    "dbt Package/get_columns_in_relation.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/english_version/README.md",
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/english_version/combine.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
+>>>>>>> 5a2c03610b53ef0e3a15e998502e10cfd5147c58
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
