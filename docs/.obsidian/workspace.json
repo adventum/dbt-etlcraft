@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "dcea04f4c6da9830",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "002c9a7ff60d33dc",
             "type": "leaf",
             "pinned": true,
@@ -43,20 +29,6 @@
               "type": "markdown",
               "state": {
                 "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "91413d6c6e246e40",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_appmetrica_registry_appprofilematching.md",
                 "mode": "source",
                 "source": false
               },
@@ -130,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_appsflyer_events.md"
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
               }
             }
           }
@@ -190,34 +162,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dcea04f4c6da9830",
+  "active": "002c9a7ff60d33dc",
   "lastOpenFiles": [
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
-    "dbt Package/get_relations_by_re.md",
-    "dbt Package/join_appsflyer_events.md",
-    "dbt Package/english_version/README.md",
+    "dbt Package/join_mt_datestat.md",
+    "dbt Package/get_min_max_date.md",
     "dbt Package/README.md",
+    "dbt Package/join_appmetrica_registry_appprofilematching.md",
+    "dbt Package/join_appsflyer_events.md",
+    "dbt Package/get_relations_by_re.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/english_version/README.md",
     "dbt Package/combine.md",
     "dbt Package/join.md",
     "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr.md",
-    "dbt Package/join_appmetrica_events.md",
     "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/full.md",
     "dbt Package/graph.md",
     "dbt Package/hash.md",
     "dbt Package/create_dataset.md",
     "dbt Package/custom_union_relations.md",
-    "Terms/Stream.md",
-    "Terms/Pipeline.md",
-    "dbt Package/attr_Pavel.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
