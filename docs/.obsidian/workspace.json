@@ -188,6 +188,7 @@
   },
   "active": "82d7aae3a3b33526",
   "lastOpenFiles": [
+    "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/get_relations_by_re.md",
@@ -213,7 +214,6 @@
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/cast_date_field.md",
-    "dbt Package/clickhouse__check_table_exists.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
