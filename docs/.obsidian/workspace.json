@@ -20,8 +20,47 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "82d7aae3a3b33526",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/join_appmetrica_events.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "3b43ac9300d163d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_relations_by_re.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "254c405e7a11201e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/link.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/join_appmetrica_events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/join_appmetrica_events.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/join_appmetrica_events.md"
               }
             }
           }
@@ -147,18 +186,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "82d7aae3a3b33526",
   "lastOpenFiles": [
-    "dbt Package/attr.md",
+    "dbt Package/link.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/get_relations_by_re.md",
     "dbt Package/README.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/normalize.md",
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/attr.md",
     "dbt Package/full.md",
     "dbt Package/graph.md",
-    "dbt Package/link.md",
     "dbt Package/hash.md",
     "dbt Package/combine.md",
     "dbt Package/join.md",
     "dbt Package/incremental.md",
-    "dbt Package/normalize.md",
     "dbt Package/create_dataset.md",
     "dbt Package/custom_union_relations.md",
     "Terms/Stream.md",
@@ -169,12 +214,6 @@
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/cast_date_field.md",
     "dbt Package/clickhouse__check_table_exists.md",
-    "dbt Package/get_columns_in_relation.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
-    "dbt Package/english_version/README.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/english_version/combine.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
