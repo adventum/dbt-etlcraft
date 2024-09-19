@@ -36,31 +36,21 @@
             }
           },
           {
-            "id": "09ced6c37221be43",
+            "id": "002c9a7ff60d33dc",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "e36f6b02c539ccea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
-                "mode": "source",
-                "source": false
-              }
+              },
+              "pinned": true
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -186,13 +176,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e36f6b02c539ccea",
+  "active": "dcea04f4c6da9830",
   "lastOpenFiles": [
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_appsflyer_events.md",
+    "dbt Package/README.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/join_appmetrica_events.md",
-    "dbt Package/join_appsflyer_events.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/README.md",
     "dbt Package/get_relations_by_re.md",
     "Terms/Untitled.md",
     "dbt Package/link.md",

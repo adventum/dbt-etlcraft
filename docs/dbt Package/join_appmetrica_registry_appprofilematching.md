@@ -7,7 +7,7 @@ doc_status: ready
 ---
 # macro `join_appmetrica_registry_appprofilematching`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
 ```dataview
 TABLE 
