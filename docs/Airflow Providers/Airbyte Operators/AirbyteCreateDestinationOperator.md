@@ -1,5 +1,9 @@
 ---
 api_version: Официальное API
+description: 
+type: operator
+doc_status: ready
+status: не готово
 ---
 ## Описание
 Создает новый [[Airbyte Destination]].

@@ -1,5 +1,9 @@
 ---
 api_version: Устаревшее API
+description: 
+type: operator
+doc_status: ready
+status: не готово
 ---
 ## Описание
 Обновляет имеющийся [[Terms/DAG|коннектор]].
