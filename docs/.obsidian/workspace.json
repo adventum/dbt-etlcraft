@@ -176,6 +176,7 @@
   },
   "active": "11b481cfb8568c21",
   "lastOpenFiles": [
+    "dbt Package/create_dataset.md",
     "Terms/Untitled.md",
     "docs_status.md",
     "Terms/Stream.md",
@@ -201,7 +202,6 @@
     "HowTos/Installation.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
-    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",

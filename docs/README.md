@@ -21,7 +21,7 @@
 
 Благодаря **etlCraft**  построение базового хранилища делается двумя строчками кода:
 ```python
-from apache_airflow_providers_etlcraft import DagBuilder
+from apache_airflow_providers_etlcraft_dags import DagBuilder
 DagBuilder.create_dags()
 ```
 которые инициализирует все инструменты стека и настраивают ежедневный сбор и обработку данных. Все части системы, построенной на основе **etlCraft**, пользователь может легко настроить под себя.
