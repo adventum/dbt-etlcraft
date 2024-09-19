@@ -1,11 +1,12 @@
 ---
 category: auxiliary
-step: 3_raw
+step: 5_full
 sub_step: 
-in_main_macro: link, full
+in_main_macro: full
 doc_status: empty_template
+language: rus
 ---
-# macro `get_columns_in_relation`
+# macro `clickhouse__check_table_exists`
 
 ## Описание
 
