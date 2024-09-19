@@ -48,17 +48,44 @@
   
 - **auxiliary**: это вспомогательные макросы. Они выполняют какую-то одну специальную техническую задачу, которую нужно решить в процессе исполнения “основного” макроса. Например, задать нормализовать имя столбцов, или задать “пустую” дату, если это необходимо.
 
+## main - основные макросы
 
 ```dataview
 TABLE 
 doc_status AS "Doc Status",
-category AS "Category", 
+main_number AS "Number", 
+step AS "Step", 
+sub_step AS "Substep"
+FROM "dbt Package"
+WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN rus") 
+AND (category="main") AND language!="eng"
+SORT main_number
+```
+
+## sub_main - подвиды основных макросов
+
+```dataview
+TABLE 
+doc_status AS "Doc Status",
 step AS "Step", 
 sub_step AS "Substep",
 in_main_macro AS "In Main Macro"
 FROM "dbt Package"
 WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN rus") 
-AND (category="main") AND language!="eng"
-SORT step, sub_step, category DESC, doc_status 
+AND (category="sub_main") AND language!="eng"
+SORT step, sub_step, doc_status 
 ```
 
+## auxiliary - вспомогательные макросы
+
+```dataview
+TABLE 
+doc_status AS "Doc Status",
+step AS "Step", 
+sub_step AS "Substep",
+in_main_macro AS "In Main Macro"
+FROM "dbt Package"
+WHERE (file.name!="README" AND file.name!="TEMPLATE AUXILIARY rus") 
+AND (category="auxiliary") AND language!="eng"
+SORT step, sub_step, doc_status 
+```

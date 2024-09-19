@@ -20,6 +20,7 @@
               },
               "pinned": true
             }
+<<<<<<< HEAD
           },
           {
             "id": "96f3068be7a3f458",
@@ -49,6 +50,10 @@
           }
         ],
         "currentTab": 2
+=======
+          }
+        ]
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
       }
     ],
     "direction": "vertical"
@@ -114,7 +119,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "docs_status.md",
+=======
+                "file": "dbt Package/README.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +140,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "docs_status.md",
+=======
+                "file": "dbt Package/README.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +167,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "docs_status.md"
+=======
+                "file": "dbt Package/README.md"
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
               }
             }
           }
@@ -174,15 +191,33 @@
       "command-palette:Открыть палитру команд": false
     }
   },
+<<<<<<< HEAD
   "active": "11b481cfb8568c21",
   "lastOpenFiles": [
     "dbt Package/create_dataset.md",
     "Terms/Untitled.md",
     "docs_status.md",
+=======
+  "active": "e59e80caa7dfb9a3",
+  "lastOpenFiles": [
+    "dbt Package/attr.md",
+    "dbt Package/README.md",
+    "dbt Package/full.md",
+    "dbt Package/graph.md",
+    "dbt Package/link.md",
+    "dbt Package/hash.md",
+    "dbt Package/combine.md",
+    "dbt Package/join.md",
+    "dbt Package/incremental.md",
+    "dbt Package/normalize.md",
+    "dbt Package/create_dataset.md",
+    "dbt Package/custom_union_relations.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
     "Terms/Stream.md",
     "Terms/Source.md",
     "Terms/Slug.md",
     "Terms/Pipeline.md",
+<<<<<<< HEAD
     "Terms/Name (config).md",
     "Terms/Model.md",
     "Terms/Link.md",
@@ -202,6 +237,20 @@
     "HowTos/Installation.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
     "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
+=======
+    "dbt Package/attr_Pavel.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
+    "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/attr_calculate_period_number.md",
+    "dbt Package/cast_date_field.md",
+    "dbt Package/clickhouse__check_table_exists.md",
+    "dbt Package/get_columns_in_relation.md",
+    "dbt Package/TEMPLATE AUXILIARY rus.md",
+    "dbt Package/english_version/README.md",
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/english_version/combine.md",
+>>>>>>> c9779c402525fc1985ff5332152404f824121316
     "dbt Package/english_version",
     "dbt Package",
     "Terms",

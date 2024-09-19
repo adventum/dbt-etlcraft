@@ -4,6 +4,7 @@ step: 6_attribution
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "09"
 ---
 # macro `attr`
 
