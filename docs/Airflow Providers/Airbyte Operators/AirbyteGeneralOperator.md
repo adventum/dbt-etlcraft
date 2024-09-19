@@ -1,5 +1,9 @@
 ---
 api_version: Официальное API или устаревшее API в зависимости от флага `use_legacy`
+description: 
+type: operator
+doc_status: ready
+status: не готово
 ---
 ## Описание
 Вызывает выбранный пользователь метод API с переданными параметрами запроса.
