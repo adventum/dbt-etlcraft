@@ -48,7 +48,7 @@
   
 - **auxiliary**: это вспомогательные макросы. Они выполняют какую-то одну специальную техническую задачу, которую нужно решить в процессе исполнения “основного” макроса. Например, задать нормализовать имя столбцов, или задать “пустую” дату, если это необходимо.
 
-## main
+## main - основные макросы
 
 ```dataview
 TABLE 
@@ -62,7 +62,7 @@ AND (category="main") AND language!="eng"
 SORT step, sub_step, category DESC, doc_status 
 ```
 
-## sub_main
+## sub_main - подвиды основных макросов
 
 ```dataview
 TABLE 
@@ -76,7 +76,7 @@ AND (category="sub_main") AND language!="eng"
 SORT step, sub_step, doc_status 
 ```
 
-## auxiliary
+## auxiliary - вспомогательные макросы
 
 ```dataview
 TABLE 
