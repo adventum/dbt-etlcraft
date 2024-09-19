@@ -207,73 +207,18 @@ FROM unnest_dates
 
 Чтобы джойны могли отработать, в макросе создаётся переменная `fields_list`. В неё будут отбираться поля для будущего `USING(...)` в блоке `JOIN`.
 
-Макрос перебирает таблицы в ранее отобранном списке существующих таблиц пайплайна `registry` (см. шаг 3) отбор возможных и существующих таблиц пайплайна `registry`**)
+Макрос перебирает таблицы в ранее отобранном списке существующих таблиц пайплайна `registry` (см. шаг 3). В названии этих `registry`-таблиц последняя часть названия - это линк.
+
+Макрос обращается на этом этапе к `metadata`. И для каждого линка из названия `registry`-таблиц макрос отбирает нужную для дальнейшей работы информацию об этом линке из `metadata`.
+
+Далее  в переменную `fields_list` добавляются названия отобранных для задействованных линков сущностей (`entities`) . К названиям сущностей добавялются окончания `Hash` (так же, как это происходило для наполнения переменной `pipeline_columns`).
+
+После этого макрос создаёт переменную `existing_fields_list`. В неё отбираются только те значения из `fields_list, которые есть в `pipeline_columns`.
 
 
 
 
 
-
-
-
-
-
-
-{%- for r in registry_existing_tables -%}  
-
-    {%- set fields_list = [] -%} {# создаём список, куда будем отбирать поля для будущего USING(...) #}
-
-    {%- set links_list = [] -%}
-
-    {%- set links = metadata['links'] -%}
-
-    {%- for link in links  -%}
-
-      {%- if link|lower == r.split('_')[-1]  -%} {# приводим к нижнему регистру и сравниваем с линком из названия модели #}
-
-        {%- do links_list.append(link) -%} {# если они совпадают, отбираем этот линк #}
-
-      {%- endif -%}
-
-    {%- endfor -%}
-
-    {#- для этого линка отбираем связанные с ним сущности -#}
-
-    {%- for link_name in links_list  -%}
-
-        {%- set main_entities = links[link_name].get('main_entities') or [] -%}
-
-                                  {#-  {%- set other_entities = links[link_name].get('other_entities') or [] -%} -#}
-
-                                  {#-  {%- set entities = main_entities + other_entities -%} -#}
-
-        {%- for entity in main_entities -%}
-
-            {%- do fields_list.append(entity ~ 'Hash') -%} {# сохраняем имя поля с этой сущностью для будущего USING(...) #}
-
-        {%- endfor -%}
-
-    {%- endfor -%}
-
-    {#- делаем полученный список уникальным -#}
-
-    {%- set fields_list = fields_list|unique|list -%}
-
-  
-
-    {#- отбираем только те значения fields_list, которые есть в pipeline_columns -#}
-
-    {%- set existing_fields_list = [] -%}
-
-    {%- for f in fields_list -%}
-
-        {%- if f in pipeline_columns|unique|list -%}
-
-            {%- do existing_fields_list.append(f) -%}
-
-        {%- endif -%}
-
-    {%- endfor -%}
 
   
 
