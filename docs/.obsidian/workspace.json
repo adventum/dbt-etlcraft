@@ -20,23 +20,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "96f3068be7a3f458",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/full.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/full.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/full.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/full.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -162,23 +147,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "96f3068be7a3f458",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
+    "dbt Package/link.md",
     "dbt Package/full.md",
+    "dbt Package/README.md",
+    "dbt Package/graph.md",
+    "dbt Package/combine.md",
+    "dbt Package/hash.md",
+    "dbt Package/join.md",
+    "dbt Package/incremental.md",
+    "dbt Package/cast_date_field.md",
+    "dbt Package/normalize.md",
     "dbt Package/clickhouse__check_table_exists.md",
     "dbt Package/get_columns_in_relation.md",
-    "dbt Package/join.md",
     "dbt Package/TEMPLATE AUXILIARY rus.md",
-    "dbt Package/graph.md",
-    "dbt Package/README.md",
     "dbt Package/english_version/README.md",
     "dbt Package/attribution.md",
     "dbt Package/dataset.md",
-    "dbt Package/link.md",
-    "dbt Package/combine.md",
-    "dbt Package/incremental.md",
-    "dbt Package/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/english_version/combine.md",
@@ -190,7 +176,6 @@
     "dbt Package/calc_graph.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/dataset_Pavel.md",
-    "dbt Package/attr_final_table.md",
     "dbt Package",
     "Terms",
     "HowTos",

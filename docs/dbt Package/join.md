@@ -94,6 +94,18 @@ SORT doc_status
 
 Когда имя макроса, куда стоит перенаправить данные, определено, макрос join вызывает его.
 
+На данный момент в etlcraft реализованы следующие под-макросы шага `join`:
+- [[join_appmetrica_events]]
+- [[join_appmetrica_registry_appprofilematching]]
+- [[join_appsflyer_events]]
+- [[join_mt_datestat]]
+- [[join_sheets_periodstat]]
+- [[join_vkads_datestat]]
+- [[join_utmcraft_registry_utmhashregistry]]
+- [[join_yd_datestat]]
+- [[join_yd_datestat_smart]]
+- [[join_ym_events]]
+
 ## Пример
 
 Файл в формате sql в папке models. Название файла: 
