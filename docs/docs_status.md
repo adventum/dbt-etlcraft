@@ -22,3 +22,9 @@ table type as "Тип", doc_status as "Статус документации", s
 ```dataview
 table type as "Тип", doc_status as "Статус документации"  from "HowTos" 
 ```
+
+
+# Статус Terms
+```dataview
+table type as "Тип", doc_status as "Статус документации"  from "Terms" 
+```

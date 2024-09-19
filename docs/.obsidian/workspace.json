@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "336084b127e17e57",
+            "id": "96f3068be7a3f458",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "dbt Package/full.md",
                 "mode": "source",
                 "source": false
               },
@@ -36,31 +36,19 @@
             }
           },
           {
-            "id": "7f032823b3b3b674",
+            "id": "11b481cfb8568c21",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "11915b6af96303b6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/attr_Pavel.md",
+                "file": "docs_status.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -126,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "docs_status.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "docs_status.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/attr.md"
+                "file": "docs_status.md"
               }
             }
           }
@@ -178,42 +166,42 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "336084b127e17e57",
+  "active": "11b481cfb8568c21",
   "lastOpenFiles": [
-    "dbt Package/attr_Pavel.md",
-    "dbt Package/graph.md",
-    "dbt Package/attr_calculate_period_number.md",
-    "dbt Package/attr.md",
-    "dbt Package/README.md",
-    "dbt Package/hash.md",
+    "Terms/Untitled.md",
+    "docs_status.md",
+    "Terms/Stream.md",
+    "Terms/Source.md",
+    "Terms/Slug.md",
+    "Terms/Pipeline.md",
+    "Terms/Name (config).md",
+    "Terms/Model.md",
+    "Terms/Link.md",
+    "Terms/Id.md",
+    "Terms/Entity.md",
+    "Terms/Direct integration.md",
+    "Terms/DAG.md",
+    "Terms/Connector.md",
+    "Terms/Airbyte Workspace.md",
+    "Terms/Airbyte Source.md",
+    "Terms/Airbyte Destination.md",
+    "Terms/Airbyte Connection.md",
+    "HowTos/How to create a config for presets.md",
     "dbt Package/attr_prepare_with_qid.md",
-    "dbt Package/link.md",
-    "dbt Package/full.md",
-    "dbt Package/combine.md",
-    "dbt Package/join.md",
-    "dbt Package/incremental.md",
-    "dbt Package/cast_date_field.md",
-    "dbt Package/normalize.md",
-    "dbt Package/clickhouse__check_table_exists.md",
-    "dbt Package/get_columns_in_relation.md",
-    "dbt Package/TEMPLATE AUXILIARY rus.md",
-    "dbt Package/english_version/README.md",
-    "dbt Package/dataset.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/english_version/combine.md",
-    "dbt Package/english_version/normalize.md",
-    "dbt Package/english_version/hash.md",
-    "dbt Package/english_version/incremental.md",
-    "dbt Package/english_version/join.md",
+    "dbt Package/attr.md",
+    "Airflow Providers/Configs/presets.md",
+    "HowTos/Installation.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
