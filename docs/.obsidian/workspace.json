@@ -34,23 +34,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "abb998ff8b4062c2",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_sheets_periodstat.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -116,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_sheets_periodstat.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_sheets_periodstat.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_sheets_periodstat.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -176,13 +161,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "abb998ff8b4062c2",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/get_relations_by_re.md",
-    "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_mt_datestat.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/README.md",
     "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_events.md",
