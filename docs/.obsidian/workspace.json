@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "336084b127e17e57",
+            "id": "7cdbb6ced3e22cc0",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "dbt Package/create_dataset.md",
                 "mode": "source",
                 "source": false
               },
@@ -36,31 +36,15 @@
             }
           },
           {
-            "id": "11915b6af96303b6",
+            "id": "a7993bd3a91a4d70",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_Pavel.md",
+                "file": "dbt Package/full.md",
                 "mode": "source",
                 "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "f22f368a6e5e725a",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/graph.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
+              }
             }
           }
         ],
@@ -130,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "dbt Package/create_dataset.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/attr.md",
+                "file": "dbt Package/create_dataset.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/attr.md"
+                "file": "dbt Package/create_dataset.md"
               }
             }
           }
@@ -190,12 +174,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "336084b127e17e57",
+  "active": "7cdbb6ced3e22cc0",
   "lastOpenFiles": [
-    "Terms/Stream.md",
-    "Terms/Pipeline.md",
+    "dbt Package/full.md",
+    "dbt Package/create_dataset.md",
     "dbt Package/README.md",
     "dbt Package/attr.md",
+    "Terms/Stream.md",
+    "Terms/Pipeline.md",
     "dbt Package/graph.md",
     "dbt Package/attr_Pavel.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
@@ -203,7 +189,6 @@
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/hash.md",
     "dbt Package/link.md",
-    "dbt Package/full.md",
     "dbt Package/combine.md",
     "dbt Package/join.md",
     "dbt Package/incremental.md",
@@ -213,7 +198,6 @@
     "dbt Package/get_columns_in_relation.md",
     "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/english_version/README.md",
-    "dbt Package/dataset.md",
     "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/english_version/combine.md",
