@@ -22,12 +22,12 @@ SORT doc_status
 ## Описание
 
 Макрос `graph` предназначен для графовой склейки данных. Он реализуется в несколько шагов:
-- graph_tuples
-- graph_lookup
-- graph_unique
-- graph_edge
-- graph_glue
-- graph_qid
+1. graph_tuples
+2. graph_lookup
+3. graph_unique
+4. graph_edge
+5. graph_glue
+6. graph_qid
 ## Применение
 
 Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
@@ -58,14 +58,14 @@ SORT doc_status
 Технически сам макрос `graph` - регулировщик. Он направляет работу под-макросов типа `graph_` по шагам. 
 
 Под-макросами являются:
-1. graph_tuples
-2. graph_lookup
-3. graph_unique
-4. graph_edge
-5. graph_glue
-6. graph_qid
+1. [[graph_tuples]]
+2. [[graph_lookup]]
+3. [[graph_unique]]
+4. [[graph_edge]]
+5. [[graph_glue]]
+6. [[graph_qid]]
 
-Кроме них, есть ещё вспомогательный макрос `calc_graph`, который используется на шагах `graph_glue` и `graph_qid`.
+Кроме них, есть ещё вспомогательный макрос [[calc_graph]], который используется на шагах `graph_glue` и `graph_qid`.
 
 Технически действие самого макроса `graph`(регулировщика) реализуется так: 
 
