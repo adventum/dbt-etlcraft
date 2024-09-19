@@ -72,9 +72,10 @@ step AS "Step",
 sub_step AS "Substep",
 in_main_macro AS "In Main Macro"
 FROM "dbt Package"
-WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN rus") 
+WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN rus"
+AND file.name!="TEMPLATE SUB_MAIN rus") 
 AND (category="sub_main") AND language!="eng"
-SORT step, sub_step, doc_status 
+SORT step, sub_step, doc_status DESC 
 ```
 
 ## auxiliary - вспомогательные макросы
