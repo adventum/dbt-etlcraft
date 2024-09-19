@@ -2,7 +2,7 @@
 category: auxiliary
 step: 3_raw
 sub_step: 
-in_main_macro: link
+in_main_macro: link, full
 doc_status: empty_template
 ---
 # macro `get_columns_in_relation`
