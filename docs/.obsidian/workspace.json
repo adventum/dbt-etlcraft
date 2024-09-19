@@ -50,15 +50,21 @@
             }
           },
           {
-            "id": "db4727905cadd246",
+            "id": "91413d6c6e246e40",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/join_appmetrica_registry_appprofilematching.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -124,6 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "dbt Package/join_appsflyer_events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,6 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "dbt Package/join_appsflyer_events.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +169,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "dbt Package/join_appsflyer_events.md"
+              }
             }
           }
         ]
@@ -180,8 +190,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "db4727905cadd246",
+  "active": "dcea04f4c6da9830",
   "lastOpenFiles": [
+    "dbt Package/join_appmetrica_registry_appprofilematching.md",
+    "dbt Package/get_relations_by_re.md",
+    "dbt Package/join_appsflyer_events.md",
     "dbt Package/english_version/README.md",
     "dbt Package/README.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
@@ -191,10 +204,7 @@
     "dbt Package/normalize.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr.md",
-    "dbt Package/join_appsflyer_events.md",
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/join_appmetrica_events.md",
-    "dbt Package/get_relations_by_re.md",
     "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/TEMPLATE MAIN rus.md",
