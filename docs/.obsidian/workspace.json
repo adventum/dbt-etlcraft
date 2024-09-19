@@ -48,9 +48,17 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "db4727905cadd246",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -116,7 +124,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +140,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_appsflyer_events.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,9 +161,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "dbt Package/join_appsflyer_events.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -176,34 +180,34 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dcea04f4c6da9830",
+  "active": "db4727905cadd246",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/join_appsflyer_events.md",
+    "dbt Package/english_version/README.md",
     "dbt Package/README.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/combine.md",
+    "dbt Package/join.md",
+    "dbt Package/incremental.md",
+    "dbt Package/normalize.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
+    "dbt Package/attr.md",
+    "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/get_relations_by_re.md",
     "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/TEMPLATE AUXILIARY rus.md",
-    "dbt Package/attr.md",
     "dbt Package/full.md",
     "dbt Package/graph.md",
     "dbt Package/hash.md",
-    "dbt Package/combine.md",
-    "dbt Package/join.md",
-    "dbt Package/incremental.md",
     "dbt Package/create_dataset.md",
     "dbt Package/custom_union_relations.md",
     "Terms/Stream.md",
     "Terms/Pipeline.md",
     "dbt Package/attr_Pavel.md",
-    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
-    "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
