@@ -59,8 +59,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/create_dataset.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/create_dataset.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/create_dataset.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -186,10 +185,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7cdbb6ced3e22cc0",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/full.md",
     "dbt Package/create_dataset.md",
+    "dbt Package/full.md",
     "dbt Package/custom_union_relations.md",
     "dbt Package/README.md",
     "dbt Package/attr.md",

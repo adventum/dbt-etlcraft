@@ -2,7 +2,7 @@
 category: main
 step: 7_dataset
 sub_step: 
-doc_status: empty_template
+doc_status: ready
 language: rus
 ---
 # macro `create_dataset`
