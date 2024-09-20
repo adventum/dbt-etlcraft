@@ -34,8 +34,33 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "d050772b1bd70078",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Airflow Providers/Configs/attributions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "eb3260affce0ce55",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Airflow Providers/Configs.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -101,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "Airflow Providers/Configs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "Airflow Providers/Configs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "Airflow Providers/Configs.md"
               }
             }
           }
@@ -153,22 +178,28 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "eb3260affce0ce55",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/attributions.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/Configs/events.md",
+    "Airflow Providers/Configs/metadata.md",
+    "Airflow Providers/Configs/datasources.md",
+    "Airflow Providers/Configs/connectors.md",
+    "dbt Package/README.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/get_relations_by_re.md",
     "dbt Package/join_mt_datestat.md",
-    "dbt Package/README.md",
     "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/get_min_max_date.md",
@@ -183,12 +214,6 @@
     "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/full.md",
-    "dbt Package/graph.md",
-    "dbt Package/hash.md",
-    "dbt Package/create_dataset.md",
-    "dbt Package/custom_union_relations.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
