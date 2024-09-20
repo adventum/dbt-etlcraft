@@ -3,7 +3,7 @@ category: sub_main
 step: 2_staging
 sub_step: 1_join
 in_main_macro: join
-doc_status: empty_template
+doc_status: ready
 ---
 # macro `join_utmcraft_registry_utmhashregistry`
 
@@ -35,6 +35,17 @@ SORT doc_status
     limit0=none
 ```
 ## Функциональность
+
+Макрос обрабатывает данные стрима `utmresult` из источника `utmcraft`. Данные о профилях относятся к общей справочной информации - то есть к пайплайну `registry`.
+
+Для вышеуказанного стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+
+Далее полученные данные макрос обрабатывает (происходит переименование полей, для некоторых столбцов вводится LowCardinality).
+
+Для этой таблицы задаётся её линк (это будет использоваться на будущих шагах):
+- `'UtmHashRegistry' AS __link`
+
+Если аргумент `limit0` активирован, то в конце SQL-запроса будет добавлено `LIMIT 0`.
 
 ## Пример
 
