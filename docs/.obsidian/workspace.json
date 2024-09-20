@@ -36,20 +36,6 @@
             }
           },
           {
-            "id": "9bc2daa0b21bc6b2",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_vkads_datestat.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "d3ff102c7e22a926",
             "type": "leaf",
             "state": {
@@ -60,9 +46,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "eb78e8918445777c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/join_utmcraft_registry_utmhashregistry.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -128,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_vkads_datestat.md",
+                "file": "dbt Package/join_utmcraft_registry_utmhashregistry.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_vkads_datestat.md",
+                "file": "dbt Package/join_utmcraft_registry_utmhashregistry.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_vkads_datestat.md"
+                "file": "dbt Package/join_utmcraft_registry_utmhashregistry.md"
               }
             }
           }
@@ -188,14 +186,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9bc2daa0b21bc6b2",
+  "active": "eb78e8918445777c",
   "lastOpenFiles": [
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_utmcraft_registry_utmhashregistry.md",
+    "dbt Package/README.md",
+    "dbt Package/join_vkads_datestat.md",
     "dbt Package/join_mt_datestat.md",
     "dbt Package/get_relations_by_re.md",
-    "dbt Package/join_vkads_datestat.md",
     "dbt Package/join_appsflyer_events.md",
-    "dbt Package/README.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "Airflow Providers/Configs/metadata.md",
     "Airflow Providers/Configs/events.md",
     "Airflow Providers/Configs/datasources.md",
@@ -215,7 +214,6 @@
     "Terms/Untitled.md",
     "dbt Package/link.md",
     "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
