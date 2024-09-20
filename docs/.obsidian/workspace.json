@@ -34,7 +34,6 @@
               },
               "pinned": true
             }
-<<<<<<< HEAD
           },
           {
             "id": "d050772b1bd70078",
@@ -59,10 +58,9 @@
                 "source": false
               }
             }
-=======
->>>>>>> 9fcb1a96a99351d9b5b9f4606d6beecd7c3191b7
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -128,11 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
                 "file": "HowTos/How to create a config for presets.md",
-=======
-                "file": "dbt Package/README.md",
->>>>>>> 9fcb1a96a99351d9b5b9f4606d6beecd7c3191b7
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,11 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
                 "file": "HowTos/How to create a config for presets.md",
-=======
-                "file": "dbt Package/README.md",
->>>>>>> 9fcb1a96a99351d9b5b9f4606d6beecd7c3191b7
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,11 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-<<<<<<< HEAD
                 "file": "HowTos/How to create a config for presets.md"
-=======
-                "file": "dbt Package/README.md"
->>>>>>> 9fcb1a96a99351d9b5b9f4606d6beecd7c3191b7
               }
             }
           }
@@ -192,32 +178,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "eb3260affce0ce55",
   "lastOpenFiles": [
-<<<<<<< HEAD
+    "Airflow Providers/Configs/presets.md",
+    "HowTos/How to create a config for presets.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers/Configs/attributions.md",
     "Airflow Providers/Configs/events.md",
-=======
->>>>>>> 9fcb1a96a99351d9b5b9f4606d6beecd7c3191b7
     "Airflow Providers/Configs/metadata.md",
-    "Airflow Providers/Configs/events.md",
     "Airflow Providers/Configs/datasources.md",
-    "Airflow Providers/Configs/attributions.md",
+    "Airflow Providers/Configs/connectors.md",
+    "dbt Package/README.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/get_relations_by_re.md",
     "dbt Package/join_mt_datestat.md",
-    "dbt Package/README.md",
     "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/get_min_max_date.md",
@@ -230,10 +214,6 @@
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr.md",
     "Terms/Untitled.md",
-    "dbt Package/link.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/full.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
