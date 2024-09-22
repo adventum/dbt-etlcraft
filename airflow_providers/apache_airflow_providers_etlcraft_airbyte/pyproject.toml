@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "apache_airflow_providers_etlcraft_airbyte"
-version = "0.0.1"
+name = "apache-airflow-providers-etlcraft-airbyte"
+version = "0.1.0"
 authors = [
   { name="Adventum", email="n.sushchenko@adventum.ru" },
 ]
@@ -16,9 +16,12 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
-[project.urls]
-Homepage = "https://github.com/adventum/dbt-etlcraft"
 
 dependencies = [
-    "apache-airflow>=2.9.3, <3.0"
+    "apache-airflow>=2.8.0, <3.0",
+    "apache-airflow-providers-airbyte >= 3.8.1, <4.0.0",
+    "pydantic >= 2.7.0, <3"
 ]
+
+[project.urls]
+Homepage = "https://github.com/adventum/dbt-etlcraft"

@@ -1,0 +1,1 @@
+Пакет `airflow-providers-etlcraft-airbyte` позволяет вызывать различные методы API Airbyte как задачи в Airflow.
