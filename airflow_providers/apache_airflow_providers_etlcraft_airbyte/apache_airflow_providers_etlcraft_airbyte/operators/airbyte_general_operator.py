@@ -1,10 +1,7 @@
-from typing import TYPE_CHECKING
-
-from airflow.models import BaseOperator
+import base64
+from airflow.models import BaseOperator, Connection
 from airflow.providers.airbyte.hooks.airbyte import AirbyteHook
-
-if TYPE_CHECKING:
-    from airflow.utils.context import Context
+from airflow.utils.context import Context
 
 
 class AirByteGeneralOperator(BaseOperator):
@@ -42,10 +39,13 @@ class AirByteGeneralOperator(BaseOperator):
             airbyte_conn_id=self.airbyte_conn_id,
             api_version=self.api_version,
         )
+        conn: Connection = hook.get_connection(self.airbyte_conn_id)
+        token: str = base64.b64encode(
+            bytes(f"{conn.login}:{conn.password}", "utf-8")
+        ).decode("utf-8")
 
-        # Run automatically handles authentication
         return hook.run(
             endpoint=f"api/{self.api_version}/{self.endpoint}",
             data=self.request_params,
-            headers={"accept": "application/json"},
+            headers={"accept": "application/json", "Authorization": f"Basic {token}"},
         ).json()

@@ -1,12 +1,8 @@
-from typing import TYPE_CHECKING
-
 from ..models import SourceDefinitionSpec
 from .airbyte_general_operator import (
     AirByteGeneralOperator,
 )
-
-if TYPE_CHECKING:
-    from airflow.utils.context import Context
+from airflow.utils.context import Context
 
 
 class AirbyteListSourceDefinitionsOperator(AirByteGeneralOperator):
@@ -25,7 +21,7 @@ class AirbyteListSourceDefinitionsOperator(AirByteGeneralOperator):
         )
         self._workspace_id = workspace_id
 
-    def execute(self, context: "Context") -> list[SourceDefinitionSpec] | None:
+    def execute(self, context: Context) -> list[SourceDefinitionSpec] | None:
         resp: dict[str, any] = super().execute(context)
         res: list[SourceDefinitionSpec] = [
             SourceDefinitionSpec.model_validate(spec)
