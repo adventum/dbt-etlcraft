@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph_Pavel.md",
+                "file": "dbt Package/graph_tuples.md",
                 "mode": "source",
                 "source": false
               },
@@ -87,8 +87,7 @@
               }
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -154,7 +153,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/graph_qid.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +170,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/graph_qid.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +193,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/graph_qid.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -214,18 +213,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e2d01dc08256c20d",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/graph_tuples.md",
+    "dbt Package/graph_Pavel.md",
+    "dbt Package/README.md",
+    "dbt Package/graph_qid.md",
     "dbt Package/graph_unique.md",
     "dbt Package/calc_graph.md",
-    "dbt Package/graph_qid.md",
-    "dbt Package/graph_Pavel.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/graph_glue.md",
-    "dbt Package/README.md",
     "dbt Package/graph_edge.md",
     "dbt Package/graph_lookup.md",
-    "dbt Package/graph_tuples.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/graph.md",
     "dbt Package/join_ym_events.md",
