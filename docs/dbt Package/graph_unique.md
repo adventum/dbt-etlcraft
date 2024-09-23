@@ -27,9 +27,7 @@ SORT doc_status
 Этот макрос принимает следующие аргументы:
 ```sql
   params=none,
-
   stage_name=none,
-
   limit0=none
 ```
 ## Функциональность

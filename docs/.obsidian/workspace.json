@@ -72,9 +72,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "7a9bbf259f3e67dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/graph_edge.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -140,7 +152,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/graph_unique.md",
+                "file": "dbt Package/graph_edge.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +169,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/graph_unique.md",
+                "file": "dbt Package/graph_edge.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -180,7 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/graph_unique.md"
+                "file": "dbt Package/graph_edge.md"
               }
             }
           }
@@ -200,13 +212,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d65f9a55e3bd143b",
+  "active": "7a9bbf259f3e67dc",
   "lastOpenFiles": [
-    "dbt Package/graph_lookup.md",
-    "dbt Package/README.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/graph_unique.md",
+    "dbt Package/graph_edge.md",
     "dbt Package/graph_Pavel.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/README.md",
+    "dbt Package/graph_lookup.md",
     "dbt Package/graph_tuples.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/graph.md",
@@ -227,7 +240,6 @@
     "Airflow Providers/Configs/events.md",
     "Airflow Providers/Configs/datasources.md",
     "Airflow Providers/Configs/attributions.md",
-    "dbt Package/english_version/README.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
