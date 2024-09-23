@@ -61,8 +61,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -128,7 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +144,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +167,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -188,13 +187,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "824a5e0842516fa0",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/attr_create_missed_steps.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
-    "dbt Package/README.md",
     "dbt Package/attr_Pavel.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/attr_create_missed_steps.md",
+    "dbt Package/README.md",
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_add_row_number.md",
