@@ -50,18 +50,19 @@
             }
           },
           {
-            "id": "77330fa81f6624e2",
+            "id": "af6898564aeb8a7b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_join_to_attr_prepare_with_qid.md",
+                "file": "dbt Package/attr_model.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -127,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/attr_model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/attr_model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/attr_model.md"
               }
             }
           }
@@ -187,13 +188,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "af6898564aeb8a7b",
   "lastOpenFiles": [
-    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_Pavel.md",
+    "dbt Package/attr_model.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/attr_create_missed_steps.md",
     "dbt Package/README.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
+    "dbt Package/attr_create_missed_steps.md",
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_add_row_number.md",
@@ -214,7 +216,6 @@
     "dbt Package/get_utmhash.md",
     "dbt Package/get_adsourcedirty.md",
     "dbt Package/get_relations_by_re.md",
-    "dbt Package/get_min_max_date.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
