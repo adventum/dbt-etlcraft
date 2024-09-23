@@ -3,7 +3,7 @@ category: sub_main
 step: 4_graph
 sub_step: 1_tuples
 in_main_macro: graph
-doc_status: empty_template
+doc_status: ready
 ---
 # macro `graph_tuples`
 

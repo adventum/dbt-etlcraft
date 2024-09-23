@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "002c9a7ff60d33dc",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "35da1bc126340772",
             "type": "leaf",
             "pinned": true,
@@ -47,18 +33,6 @@
                 "source": false
               },
               "pinned": true
-            }
-          },
-          {
-            "id": "cd475578290ef506",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/graph.md",
-                "mode": "source",
-                "source": false
-              }
             }
           },
           {
@@ -76,19 +50,33 @@
             }
           },
           {
-            "id": "b036ab1b688367de",
+            "id": "a1c7a065b39f8508",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/graph_lookup.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "824a5e0842516fa0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/join_appmetrica_events.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -154,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/graph_tuples.md",
+                "file": "dbt Package/graph_lookup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/graph_tuples.md",
+                "file": "dbt Package/graph_lookup.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/graph_tuples.md"
+                "file": "dbt Package/graph_lookup.md"
               }
             }
           }
@@ -214,14 +202,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "95b1c2217cc45282",
+  "active": "a1c7a065b39f8508",
   "lastOpenFiles": [
-    "dbt Package/join_appmetrica_events.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/graph_tuples.md",
+    "dbt Package/graph_lookup.md",
     "dbt Package/graph_Pavel.md",
-    "dbt Package/graph.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/README.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/graph.md",
     "dbt Package/join_ym_events.md",
     "dbt Package/get_utmhash.md",
     "dbt Package/get_adsourcedirty.md",
@@ -241,7 +230,6 @@
     "Airflow Providers/Configs/attributions.md",
     "dbt Package/english_version/README.md",
     "dbt Package/combine.md",
-    "dbt Package/join.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
