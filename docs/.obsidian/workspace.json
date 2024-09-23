@@ -36,26 +36,12 @@
             }
           },
           {
-            "id": "64b5bfcbd2bea7cb",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_yd_datestat.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "f5b2328775bd9dbc",
+            "id": "9279dda6a62cd76f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/get_min_max_date.md",
+                "file": "dbt Package/join_yd_datestat_smart.md",
                 "mode": "source",
                 "source": false
               }
@@ -128,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_yd_datestat.md",
+                "file": "dbt Package/join_yd_datestat_smart.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_yd_datestat.md",
+                "file": "dbt Package/join_yd_datestat_smart.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_yd_datestat.md"
+                "file": "dbt Package/join_yd_datestat_smart.md"
               }
             }
           }
@@ -188,17 +174,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "64b5bfcbd2bea7cb",
+  "active": "9279dda6a62cd76f",
   "lastOpenFiles": [
-    "dbt Package/join_mt_datestat.md",
-    "dbt Package/join_yd_datestat.md",
     "dbt Package/README.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_yd_datestat.md",
+    "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/get_min_max_date.md",
     "dbt Package/get_relations_by_re.md",
+    "dbt Package/join_mt_datestat.md",
     "dbt Package/join_sheets_periodstat.md",
-    "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/join_ym_events.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/join_vkads_datestat.md",
