@@ -38,17 +38,19 @@
           {
             "id": "64b5bfcbd2bea7cb",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "dbt Package/join_yd_datestat.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           },
           {
-            "id": "ef523934e6c9de48",
+            "id": "197058f25be0af1a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -58,21 +60,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "f22cbd08e9981fba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/join_ym_events.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -138,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_ym_events.md",
+                "file": "dbt Package/join_yd_datestat_smart.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_ym_events.md",
+                "file": "dbt Package/join_yd_datestat_smart.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -178,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_ym_events.md"
+                "file": "dbt Package/join_yd_datestat_smart.md"
               }
             }
           }
@@ -198,13 +188,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f22cbd08e9981fba",
+  "active": "197058f25be0af1a",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/join_ym_events.md",
     "dbt Package/README.md",
-    "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/join_yd_datestat.md",
+    "dbt Package/join_yd_datestat_smart.md",
+    "dbt Package/join_ym_events.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package/get_relations_by_re.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
