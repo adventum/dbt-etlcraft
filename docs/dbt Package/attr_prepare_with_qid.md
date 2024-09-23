@@ -3,7 +3,7 @@ category: sub_main
 step: 6_attribution
 sub_step: 1_prepare
 in_main_macro: attr
-doc_status: empty_template
+doc_status: ready
 ---
 # macro `attr_prepare_with_qid`
 
@@ -32,6 +32,11 @@ SORT doc_status
 ```
 ## Функциональность
 
+Сначала в макросе задаётся настройка материализации данных: устанавливается порядок сортировки данных по идентификатору группы, дате, ссылке и идентификатору.
+
+Далее происходит выборка данных из таблицы `full_events` с добавлением идентификаторов группы из ранее созданной таблицы `graph_qid`.
+
+Если аргумент `limit0` активирован, то в конце SQL-запроса будет добавлено `LIMIT 0`.
 ## Пример
 
 Файл в формате sql в папке models. Название файла `attr_myfirstfunnel_prepare_with_qid`

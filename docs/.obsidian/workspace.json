@@ -50,21 +50,19 @@
             }
           },
           {
-            "id": "f83f7899539cebec",
+            "id": "3850c569e7df66f9",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md",
+                "file": "dbt Package/attr_create_events.md",
                 "mode": "source",
                 "source": false
-              },
-              "pinned": true
+              }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -130,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/attr_prepare_with_qid.md"
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
               }
             }
           }
@@ -190,12 +188,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f83f7899539cebec",
+  "active": "824a5e0842516fa0",
   "lastOpenFiles": [
-    "dbt Package/attr_Pavel.md",
     "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/attr_create_events.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/README.md",
+    "dbt Package/combine.md",
+    "dbt Package/attr_Pavel.md",
     "dbt Package/graph_tuples.md",
     "dbt Package/calc_graph.md",
     "dbt Package/graph_qid.md",
@@ -216,8 +216,6 @@
     "dbt Package/join_mt_datestat.md",
     "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
-    "dbt Package/join_vkads_datestat.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
