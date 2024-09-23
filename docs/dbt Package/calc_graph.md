@@ -4,6 +4,7 @@ step: 4_graph
 sub_step: 5_glue, 6_qid
 in_main_macro: graph
 doc_status: empty_template
+in_sub_main_macro: graph_glue, graph_qid
 ---
 # macro `calc_graph`
 

@@ -62,31 +62,33 @@
             }
           },
           {
-            "id": "a6a8fb0378fbeb38",
+            "id": "e2d01dc08256c20d",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph_lookup.md",
+                "file": "dbt Package/graph_qid.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           },
           {
-            "id": "7a9bbf259f3e67dc",
+            "id": "8c877edfca23cce4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph_edge.md",
+                "file": "dbt Package/calc_graph.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -152,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/graph_edge.md",
+                "file": "dbt Package/graph_qid.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/graph_edge.md",
+                "file": "dbt Package/graph_qid.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -192,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/graph_edge.md"
+                "file": "dbt Package/graph_qid.md"
               }
             }
           }
@@ -212,13 +214,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7a9bbf259f3e67dc",
+  "active": "e2d01dc08256c20d",
   "lastOpenFiles": [
     "dbt Package/graph_unique.md",
-    "dbt Package/graph_edge.md",
+    "dbt Package/calc_graph.md",
+    "dbt Package/graph_qid.md",
     "dbt Package/graph_Pavel.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/graph_glue.md",
     "dbt Package/README.md",
+    "dbt Package/graph_edge.md",
     "dbt Package/graph_lookup.md",
     "dbt Package/graph_tuples.md",
     "dbt Package/join_appmetrica_events.md",
@@ -237,9 +242,6 @@
     "dbt Package/join_vkads_datestat.md",
     "dbt Package/join_appsflyer_events.md",
     "Airflow Providers/Configs/metadata.md",
-    "Airflow Providers/Configs/events.md",
-    "Airflow Providers/Configs/datasources.md",
-    "Airflow Providers/Configs/attributions.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
