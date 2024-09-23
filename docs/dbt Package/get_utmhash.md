@@ -5,9 +5,9 @@ sub_step: 1_join
 in_main_macro: 
 doc_status: empty_template
 language: rus
-in_sub_main_macro: join_mt_datestat, join_yd_datestat, join_yd_datestat_smart, join_ym_events
+in_sub_main_macro: join_ym_events
 ---
-# macro `[macro_name]`
+# macro `get_utmhash`
 
 ## Описание
 

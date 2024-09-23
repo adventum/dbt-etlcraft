@@ -4,7 +4,7 @@ step: 1_silos
 sub_step: 1_normalize
 in_main_macro: normalize, combine
 doc_status: empty_template
-in_sub_main_macro: join_appmetrica_events, join_appmetrica_registry_appprofilematching, join_appsflyer_events, join_mt_datestat, join_sheets_periodstat, join_vkads_datestat, join_utmcraft_registry_utmhashregistry, join_yd_datestat, join_yd_datestat_smart
+in_sub_main_macro: join_appmetrica_events, join_appmetrica_registry_appprofilematching, join_appsflyer_events, join_mt_datestat, join_sheets_periodstat, join_vkads_datestat, join_utmcraft_registry_utmhashregistry, join_yd_datestat, join_yd_datestat_smart, join_ym_events
 ---
 # macro `get_relations_by_re`
 
