@@ -2,7 +2,7 @@
 category: sub_main
 step: 2_staging
 sub_step: 1_join
-in_main_macro: join
+in_main_macro: attr
 doc_status: empty_template
 ---
 # macro `MACRO_NAME`
@@ -20,7 +20,7 @@ SORT doc_status
 ```
 ## Описание
 
-Это … шаг макроса `graph`. 
+Это … шаг макроса `attr`. 
 
 ## Аргументы
 

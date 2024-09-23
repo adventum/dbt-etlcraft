@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "35da1bc126340772",
+            "id": "bdd9b3e22a22e47d",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph_tuples.md",
+                "file": "dbt Package/attr_Pavel.md",
                 "mode": "source",
                 "source": false
               },
@@ -50,44 +50,21 @@
             }
           },
           {
-            "id": "d65f9a55e3bd143b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/graph_unique.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e2d01dc08256c20d",
+            "id": "f83f7899539cebec",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/graph_qid.md",
+                "file": "dbt Package/attr_prepare_with_qid.md",
                 "mode": "source",
                 "source": false
               },
               "pinned": true
             }
-          },
-          {
-            "id": "8c877edfca23cce4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/calc_graph.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -153,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/attr_prepare_with_qid.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -170,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/attr_prepare_with_qid.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -193,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/attr_prepare_with_qid.md"
               }
             }
           }
@@ -213,15 +190,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "f83f7899539cebec",
   "lastOpenFiles": [
-    "dbt Package/graph_tuples.md",
-    "dbt Package/graph_Pavel.md",
+    "dbt Package/attr_Pavel.md",
+    "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/README.md",
+    "dbt Package/graph_tuples.md",
+    "dbt Package/calc_graph.md",
     "dbt Package/graph_qid.md",
     "dbt Package/graph_unique.md",
-    "dbt Package/calc_graph.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/graph_Pavel.md",
     "dbt Package/graph_glue.md",
     "dbt Package/graph_edge.md",
     "dbt Package/graph_lookup.md",
@@ -239,8 +218,6 @@
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/join_vkads_datestat.md",
-    "dbt Package/join_appsflyer_events.md",
-    "Airflow Providers/Configs/metadata.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
