@@ -50,17 +50,15 @@
             }
           },
           {
-            "id": "a76f8a596dac3ab5",
+            "id": "d54301956a7e5781",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_add_row_number.md",
+                "file": "dbt Package/attr_find_new_period.md",
                 "mode": "source",
                 "source": false
-              },
-              "pinned": true
+              }
             }
           }
         ],
@@ -130,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/attr_add_row_number.md",
+                "file": "dbt Package/attr_find_new_period.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/attr_add_row_number.md",
+                "file": "dbt Package/attr_find_new_period.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/attr_add_row_number.md"
+                "file": "dbt Package/attr_find_new_period.md"
               }
             }
           }
@@ -190,12 +188,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a76f8a596dac3ab5",
+  "active": "d54301956a7e5781",
   "lastOpenFiles": [
     "dbt Package/attr_Pavel.md",
-    "dbt Package/attr_add_row_number.md",
-    "dbt Package/README.md",
+    "dbt Package/attr_find_new_period.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/README.md",
+    "dbt Package/attr_add_row_number.md",
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/combine.md",
@@ -217,7 +216,6 @@
     "dbt Package/join_yd_datestat.md",
     "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/join_mt_datestat.md",
-    "dbt Package/join_sheets_periodstat.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
