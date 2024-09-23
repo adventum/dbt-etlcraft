@@ -19,8 +19,12 @@ class SourceDefinitionSpec(BaseModel):
     protocolVersion: str | None = None
     custom: bool | None = None
     supportLevel: SupportLevelEnum | None = None
-    releaseStage: ReleaseStageEnum
-    releaseDate: datetime
-    sourceType: SourceTypeEnum
-
-    # TODO: add more operators description
+    releaseStage: ReleaseStageEnum | None = None
+    releaseDate: datetime | None = None
+    sourceType: SourceTypeEnum | None = None
+    resourceRequirements: dict | None = None
+    maxSecondsBetweenMessages: int | None = None
+    lastPublished: datetime | None = None
+    cdkVersion: str | None = None
+    metrics: dict | None = None
+    language: str | None = None

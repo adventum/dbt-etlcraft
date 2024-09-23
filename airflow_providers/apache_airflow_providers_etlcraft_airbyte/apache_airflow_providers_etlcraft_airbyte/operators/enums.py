@@ -5,6 +5,7 @@ class SupportLevelEnum(StrEnum):
     community = "community"
     certified = "certified"
     archived = "archived"
+    none = "none"
 
 
 class ReleaseStageEnum(StrEnum):

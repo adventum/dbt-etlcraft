@@ -16,7 +16,8 @@ class AirbyteListSourceDefinitionsOperator(AirByteGeneralOperator):
         super().__init__(
             airbyte_conn_id=airbyte_conn_id,
             endpoint="source_definitions/list_for_workspace",
-            request_params={"workspace_id": workspace_id},
+            request_params={"workspaceId": workspace_id},
+            use_legacy=True,
             **kwargs,
         )
         self._workspace_id = workspace_id

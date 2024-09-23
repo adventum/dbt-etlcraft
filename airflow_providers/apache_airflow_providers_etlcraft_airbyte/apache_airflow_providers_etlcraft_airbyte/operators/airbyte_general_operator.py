@@ -46,6 +46,6 @@ class AirByteGeneralOperator(BaseOperator):
 
         return hook.run(
             endpoint=f"api/{self.api_version}/{self.endpoint}",
-            data=self.request_params,
+            json=self.request_params,
             headers={"accept": "application/json", "Authorization": f"Basic {token}"},
         ).json()
