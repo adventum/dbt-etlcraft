@@ -50,19 +50,19 @@
             }
           },
           {
-            "id": "727ceeb3e7e2a0a4",
+            "id": "77330fa81f6624e2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_calculate_period_number.md",
+                "file": "dbt Package/attr_join_to_attr_prepare_with_qid.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -128,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/attr_calculate_period_number.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/attr_calculate_period_number.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/attr_calculate_period_number.md"
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
               }
             }
           }
@@ -188,12 +188,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "727ceeb3e7e2a0a4",
+  "active": "824a5e0842516fa0",
   "lastOpenFiles": [
-    "dbt Package/attr_Pavel.md",
-    "dbt Package/attr_calculate_period_number.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/attr_create_missed_steps.md",
+    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/README.md",
+    "dbt Package/attr_Pavel.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/attr_calculate_period_number.md",
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_add_row_number.md",
     "dbt Package/attr_create_events.md",
@@ -214,8 +216,6 @@
     "dbt Package/get_adsourcedirty.md",
     "dbt Package/get_relations_by_re.md",
     "dbt Package/get_min_max_date.md",
-    "dbt Package/join_yd_datestat.md",
-    "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
