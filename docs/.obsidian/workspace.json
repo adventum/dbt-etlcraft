@@ -50,19 +50,21 @@
             }
           },
           {
-            "id": "3850c569e7df66f9",
+            "id": "a76f8a596dac3ab5",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/attr_create_events.md",
+                "file": "dbt Package/attr_add_row_number.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -128,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/attr_add_row_number.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/attr_add_row_number.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
+                "file": "dbt Package/attr_add_row_number.md"
               }
             }
           }
@@ -188,14 +190,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "824a5e0842516fa0",
+  "active": "a76f8a596dac3ab5",
   "lastOpenFiles": [
-    "dbt Package/attr_prepare_with_qid.md",
-    "dbt Package/attr_create_events.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/README.md",
-    "dbt Package/combine.md",
     "dbt Package/attr_Pavel.md",
+    "dbt Package/attr_add_row_number.md",
+    "dbt Package/README.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/attr_create_events.md",
+    "dbt Package/attr_prepare_with_qid.md",
+    "dbt Package/combine.md",
     "dbt Package/graph_tuples.md",
     "dbt Package/calc_graph.md",
     "dbt Package/graph_qid.md",
@@ -215,7 +218,6 @@
     "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/join_mt_datestat.md",
     "dbt Package/join_sheets_periodstat.md",
-    "dbt Package/join_utmcraft_registry_utmhashregistry.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
