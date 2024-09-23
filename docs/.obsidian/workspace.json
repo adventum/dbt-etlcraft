@@ -50,19 +50,19 @@
             }
           },
           {
-            "id": "197058f25be0af1a",
+            "id": "f5b2328775bd9dbc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/join_yd_datestat_smart.md",
+                "file": "dbt Package/get_min_max_date.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -128,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/join_yd_datestat_smart.md",
+                "file": "dbt Package/join_yd_datestat.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/join_yd_datestat_smart.md",
+                "file": "dbt Package/join_yd_datestat.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/join_yd_datestat_smart.md"
+                "file": "dbt Package/join_yd_datestat.md"
               }
             }
           }
@@ -188,26 +188,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "197058f25be0af1a",
+  "active": "64b5bfcbd2bea7cb",
   "lastOpenFiles": [
-    "dbt Package/README.md",
+    "dbt Package/join_mt_datestat.md",
     "dbt Package/join_yd_datestat.md",
+    "dbt Package/README.md",
+    "dbt Package/get_min_max_date.md",
+    "dbt Package/get_relations_by_re.md",
+    "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_yd_datestat_smart.md",
     "dbt Package/join_ym_events.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/join_utmcraft_registry_utmhashregistry.md",
-    "dbt Package/get_relations_by_re.md",
     "dbt Package/join_appmetrica_registry_appprofilematching.md",
-    "dbt Package/join_mt_datestat.md",
     "dbt Package/join_vkads_datestat.md",
     "dbt Package/join_appsflyer_events.md",
     "Airflow Providers/Configs/metadata.md",
     "Airflow Providers/Configs/events.md",
     "Airflow Providers/Configs/datasources.md",
     "Airflow Providers/Configs/attributions.md",
-    "dbt Package/join_sheets_periodstat.md",
     "dbt Package/join_appmetrica_events.md",
-    "dbt Package/get_min_max_date.md",
     "dbt Package/TEMPLATE AUXILIARY rus.md",
     "dbt Package/english_version/README.md",
     "dbt Package/combine.md",
