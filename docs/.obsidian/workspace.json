@@ -34,8 +34,21 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "596f5e2874162586",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "HowTos/How to create a config for presets.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -101,13 +114,13 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "HowTos/How to create a config for presets.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
+                "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
@@ -118,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "HowTos/How to create a config for presets.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "HowTos/How to create a config for presets.md"
               }
             }
           }
@@ -153,20 +166,33 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "596f5e2874162586",
   "lastOpenFiles": [
+    "docs_status.md",
+    "Airflow Providers/Configs/datasources.md",
+    "HowTos/How to create a config for presets.md",
+    "Terms/Link.md",
+    "Terms/Entity.md",
+    "Terms/Airbyte Connection.md",
+    "image1.png",
+    "Airflow Providers.md",
+    "Airflow Providers/DAGs/install_connectors.md",
+    "Airflow Providers/DAGs/create_connections.md",
+    "Airflow Providers/Configs/metadata.md",
+    "Airflow Providers/Configs/presets.md",
+    "Airflow Providers/Configs/attributions.md",
+    "dbt Package/README.md",
     "dbt Package/attr_Pavel.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/attr_final_table.md",
-    "dbt Package/README.md",
     "dbt Package/attr_model.md",
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_create_missed_steps.md",
@@ -177,18 +203,6 @@
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/combine.md",
     "dbt Package/graph_tuples.md",
-    "dbt Package/calc_graph.md",
-    "dbt Package/graph_qid.md",
-    "dbt Package/graph_unique.md",
-    "dbt Package/graph_Pavel.md",
-    "dbt Package/graph_glue.md",
-    "dbt Package/graph_edge.md",
-    "dbt Package/graph_lookup.md",
-    "dbt Package/join_appmetrica_events.md",
-    "dbt Package/graph.md",
-    "dbt Package/join_ym_events.md",
-    "dbt Package/get_utmhash.md",
-    "dbt Package/get_adsourcedirty.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
