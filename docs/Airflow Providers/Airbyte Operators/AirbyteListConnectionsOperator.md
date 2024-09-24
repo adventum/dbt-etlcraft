@@ -14,8 +14,7 @@ api_version: Официальное API
 - `destinationId`
 - `status`
 - `schedule`
-- `nonBreakingSchemaUpdatesBehavior`
+- `nonBreakingChangesPreference`
 - `namespaceDefinition`
 - `namespaceFormat`
 - `prefix`
-- `configurations`

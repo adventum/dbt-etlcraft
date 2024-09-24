@@ -44,3 +44,16 @@ class ConnectionSpec(Model):
     namespaceDefinition: NamespaceDefinitionEnum | None = None
     namespaceFormat: str | None = None
     prefix: str | None = None
+
+
+class DestinationDefinitionSpec(Model):
+    destinationDefinitionId: str
+    name: str
+    dockerRepository: str
+    dockerImageTag: str
+    documentationUrl: str | None = None
+
+
+class DestinationSpec(Model):
+    destinationId: str
+    name: str

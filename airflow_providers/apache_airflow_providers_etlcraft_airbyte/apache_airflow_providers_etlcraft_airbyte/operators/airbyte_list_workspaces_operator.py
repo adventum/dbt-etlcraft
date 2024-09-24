@@ -11,7 +11,13 @@ class AirbyteListWorkspacesOperator(AirByteGeneralOperator):
     :param airbyte_conn_id: Required. Airbyte connection id
     """
 
-    def __init__(self, airbyte_conn_id: str, use_legacy: bool = False, **kwargs):
+    def __init__(
+        self,
+        airbyte_conn_id: str,
+        # use_legacy: bool = False,
+        use_legacy: bool = True,  # TODO: new api is not supported yet
+        **kwargs,
+    ):
         super().__init__(
             airbyte_conn_id=airbyte_conn_id,
             endpoint="workspaces/list",

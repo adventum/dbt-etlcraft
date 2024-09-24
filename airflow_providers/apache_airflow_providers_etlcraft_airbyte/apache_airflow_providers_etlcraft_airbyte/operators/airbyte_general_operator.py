@@ -21,7 +21,8 @@ class AirByteGeneralOperator(BaseOperator):
         endpoint_new: str | None = None,
         method: str = "POST",
         request_params: dict[str, any] | None = None,
-        use_legacy: bool = False,
+        # use_legacy: bool = False,
+        use_legacy: bool = True,  # TODO: new api is not supported yet
         **kwargs,
     ):
         super().__init__(**kwargs)

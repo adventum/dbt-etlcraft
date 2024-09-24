@@ -1,4 +1,4 @@
-from ..models import ConnectionSpec, WorkspaceSpec
+from ..models import DestinationSpec, WorkspaceSpec
 from .airbyte_general_operator import (
     AirByteGeneralOperator,
 )
@@ -7,9 +7,9 @@ from airflow.utils.context import Context
 from ..utils import get_workspace
 
 
-class AirbyteListConnectionsOperator(AirByteGeneralOperator):
+class AirbyteListDestinationsOperator(AirByteGeneralOperator):
     """
-    List AirByte existing connections
+    List AirByte existing destinations
     :param airbyte_conn_id: Required. Airbyte connection id
     :param workspace_id: AirByte workspace id.
     """
@@ -27,23 +27,23 @@ class AirbyteListConnectionsOperator(AirByteGeneralOperator):
         self._workspace_id = get_workspace(workspace_id, workspace_name, workspaces)
         super().__init__(
             airbyte_conn_id=airbyte_conn_id,
-            endpoint="connections/list",
+            endpoint="destinations/list",
             request_params={"workspaceId": self._workspace_id},
             use_legacy=use_legacy,
             **kwargs,
         )
 
-    def execute_new(self, context: Context) -> list[ConnectionSpec] | None:
+    def execute_new(self, context: Context) -> list[DestinationSpec] | None:
         raise NotImplementedError()
 
-    def execute_legacy(self, context: Context) -> list[ConnectionSpec] | None:
+    def execute_legacy(self, context: Context) -> list[DestinationSpec] | None:
         resp: dict[str, any] = super().execute(context)
-        res: list[ConnectionSpec] = [
-            ConnectionSpec.model_validate(spec) for spec in resp["connections"]
+        res: list[DestinationSpec] = [
+            DestinationSpec.model_validate(spec) for spec in resp["destinations"]
         ]
         return res
 
-    def execute(self, context: Context) -> list[ConnectionSpec] | None:
+    def execute(self, context: Context) -> list[DestinationSpec] | None:
         if self.use_legacy:
             return self.execute_legacy(context)
         else:
