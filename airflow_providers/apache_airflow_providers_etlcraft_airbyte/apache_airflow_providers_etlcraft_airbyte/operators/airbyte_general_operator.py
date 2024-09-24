@@ -18,6 +18,7 @@ class AirByteGeneralOperator(BaseOperator):
         self,
         airbyte_conn_id: str,
         endpoint: str,
+        endpoint_new: str | None = None,
         method: str = "POST",
         request_params: dict[str, any] | None = None,
         use_legacy: bool = False,
@@ -25,27 +26,31 @@ class AirByteGeneralOperator(BaseOperator):
     ):
         super().__init__(**kwargs)
         self.airbyte_conn_id = airbyte_conn_id
-        self.endpoint = endpoint
+        self.endpoint_legacy = endpoint
+        self.endpoint_new = endpoint_new if endpoint_new else endpoint
         self.method = method
         self.request_params = request_params
         self.use_legacy = use_legacy
         self.api_version = "v1"
 
-        # TODO: new version can't be tested yet
-        self.use_legacy = True
+    def execute(self, context: Context) -> any:
+        if self.use_legacy:
+            hook = AirbyteHook(
+                airbyte_conn_id=self.airbyte_conn_id,
+                api_version=self.api_version,
+            )
+            conn: Connection = hook.get_connection(self.airbyte_conn_id)
+            token: str = base64.b64encode(
+                bytes(f"{conn.login}:{conn.password}", "utf-8")
+            ).decode("utf-8")
 
-    def execute(self, context: Context) -> dict[str, any]:
-        hook = AirbyteHook(
-            airbyte_conn_id=self.airbyte_conn_id,
-            api_version=self.api_version,
-        )
-        conn: Connection = hook.get_connection(self.airbyte_conn_id)
-        token: str = base64.b64encode(
-            bytes(f"{conn.login}:{conn.password}", "utf-8")
-        ).decode("utf-8")
-
-        return hook.run(
-            endpoint=f"api/{self.api_version}/{self.endpoint}",
-            json=self.request_params,
-            headers={"accept": "application/json", "Authorization": f"Basic {token}"},
-        ).json()
+            return hook.run(
+                endpoint=f"api/{self.api_version}/{self.endpoint_legacy}",
+                json=self.request_params,
+                headers={
+                    "accept": "application/json",
+                    "Authorization": f"Basic {token}",
+                },
+            ).json()
+        else:
+            raise NotImplementedError()

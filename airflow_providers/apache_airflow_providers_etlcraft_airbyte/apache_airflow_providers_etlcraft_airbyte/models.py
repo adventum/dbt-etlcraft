@@ -1,12 +1,17 @@
-from datetime import datetime
-
 from pydantic import BaseModel
 
-from .operators.enums import (
-    SupportLevelEnum,
-    ReleaseStageEnum,
-    SourceTypeEnum,
+from .enums import (
+    NamespaceDefinitionEnum,
+    TimeUnitEnum,
+    ConnectionStatusEnum,
+    NonBreakingChangesPreferenceEnum,
 )
+
+
+class Model(BaseModel, extra="ignore"):
+    """BaseModel that ignores extra fields"""
+
+    ...
 
 
 class SourceDefinitionSpec(BaseModel):
@@ -15,16 +20,27 @@ class SourceDefinitionSpec(BaseModel):
     dockerRepository: str
     dockerImageTag: str
     documentationUrl: str | None = None
-    icon: str | None = None
-    protocolVersion: str | None = None
-    custom: bool | None = None
-    supportLevel: SupportLevelEnum | None = None
-    releaseStage: ReleaseStageEnum | None = None
-    releaseDate: datetime | None = None
-    sourceType: SourceTypeEnum | None = None
-    resourceRequirements: dict | None = None
-    maxSecondsBetweenMessages: int | None = None
-    lastPublished: datetime | None = None
-    cdkVersion: str | None = None
-    metrics: dict | None = None
-    language: str | None = None
+
+
+class WorkspaceSpec(Model):
+    workspaceId: str
+    name: str
+    slug: str
+
+
+class ScheduleSpec(Model):
+    units: int
+    timeUnit: TimeUnitEnum
+
+
+class ConnectionSpec(Model):
+    connectionId: str
+    name: str
+    sourceId: str
+    destinationId: str
+    status: ConnectionStatusEnum
+    schedule: ScheduleSpec | None = None
+    nonBreakingChangesPreference: NonBreakingChangesPreferenceEnum | None = None
+    namespaceDefinition: NamespaceDefinitionEnum | None = None
+    namespaceFormat: str | None = None
+    prefix: str | None = None
