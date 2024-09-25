@@ -109,5 +109,5 @@ sub_step AS "Substep"
 FROM "dbt Package"
 WHERE (file.name!="README" AND file.name!="TEMPLATE AUXILIARY rus") 
 AND (category="auxiliary") AND language!="eng"
-SORT step, sub_step, doc_status 
+SORT doc_status DESC, step, sub_step
 ```

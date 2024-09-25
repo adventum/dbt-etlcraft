@@ -41,14 +41,25 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/custom_union_relations.md",
+                "file": "dbt Package/normalize_name.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0e339ff27470f547",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/english_version/README.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -114,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/custom_union_relations.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/custom_union_relations.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/custom_union_relations.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -174,8 +185,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f88f14cdd44cd431",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/normalize_name.md",
+    "dbt Package/custom_union_relations.md",
+    "dbt Package/english_version/normalize_name.md",
+    "dbt Package/english_version/README.md",
+    "dbt Package/english_version/normalize.md",
     "dbt Package/README.md",
     "dbt Package/custom_union_relations_source.md",
     "dbt Package/TEMPLATE AUX rus.md",
@@ -197,11 +213,6 @@
     "dbt Package/attr_model.md",
     "dbt Package/attr_final_table.md",
     "dbt Package/attr_prepare_with_qid.md",
-    "dbt Package/graph_qid.md",
-    "dbt Package/graph_glue.md",
-    "dbt Package/graph_edge.md",
-    "dbt Package/graph_unique.md",
-    "dbt Package/graph_lookup.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",

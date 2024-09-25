@@ -83,3 +83,17 @@ AND (category="main") AND language="eng"
 SORT step, sub_step, category DESC, doc_status 
 ```
 
+## auxiliary 
+
+```dataview
+TABLE 
+doc_status AS "Doc Status",
+category AS "Category", 
+step AS "Step", 
+sub_step AS "Substep",
+in_main_macro AS "In Main Macro"
+FROM "dbt Package"
+WHERE (file.name!="README" ) 
+AND (category="auxiliary") AND language="eng"
+SORT step, sub_step, category DESC, doc_status 
+```
