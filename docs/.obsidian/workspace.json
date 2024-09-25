@@ -34,44 +34,6 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "469d1ac953e54619",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/TEMPLATE AUX rus.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "08bf835bf71662a3",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/json_extract_string.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "1fc61755407cb624",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/english_version/json_extract_string.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ]
       }
@@ -201,15 +163,15 @@
   },
   "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/english_version/README.md",
+    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/english_version/json_extract_string.md",
-    "dbt Package/normalize_name.md",
+    "dbt Package/json_extract_string.md",
     "dbt Package/README.md",
+    "dbt Package/normalize_name.md",
     "dbt Package/english_version/get_from_default_dict.md",
     "dbt Package/get_from_default_dict.md",
-    "dbt Package/json_extract_string.md",
-    "dbt Package/english_version/README.md",
     "dbt Package/english_version/normalize_name.md",
-    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/custom_union_relations_source.md",
     "dbt Package/custom_union_relations.md",
     "dbt Package/english_version/normalize.md",
