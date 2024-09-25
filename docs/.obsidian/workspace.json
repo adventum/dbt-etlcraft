@@ -41,7 +41,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/TEMPLATE AUX rus.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d00d24ee2e9ab6d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_from_default_dict.md",
                 "mode": "source",
                 "source": false
               }
@@ -114,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/TEMPLATE AUX rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
+                "file": "dbt Package/TEMPLATE AUX rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
+                "file": "dbt Package/TEMPLATE AUX rus.md"
               }
             }
           }
@@ -176,11 +188,12 @@
   },
   "active": "4f8592ec965c5a1b",
   "lastOpenFiles": [
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/custom_union_relations_source.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/get_from_default_dict.md",
     "dbt Package/README.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/custom_union_relations_source.md",
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/array.md",
     "Airflow Providers/DAGs/install_connectors.md",
@@ -195,7 +208,6 @@
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_model.md",
     "dbt Package/attr_final_table.md",
-    "dbt Package/get_from_default_dict.md",
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/graph_qid.md",
     "dbt Package/graph_glue.md",

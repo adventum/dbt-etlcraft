@@ -5,7 +5,7 @@ sub_step: 1_normalize
 in_main_macro: normalize
 doc_status: empty_template
 ---
-# macro `MACRO_NAME`
+# macro `custom_union_relations_source`
 
 ## ## Список используемых вспомогательных макросов
 
@@ -20,7 +20,7 @@ SORT doc_status
 ```
 ## Описание
 
-Это … шаг макроса `attr`. 
+
 
 ## Аргументы
 
@@ -32,7 +32,7 @@ SOMETHING
 
 
 
-Если аргумент `limit0` активирован, то в конце SQL-запроса будет добавлено `LIMIT 0`.
+
 ## Пример
 
 Файл в формате sql в папке models. Название файла `[NAME]`
