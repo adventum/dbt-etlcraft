@@ -72,21 +72,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "63a0ee683ab7ad9a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/english_version/get_from_default_dict.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -152,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/english_version/README.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,7 +156,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/english_version/README.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -192,7 +179,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/english_version/README.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -212,18 +199,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0e339ff27470f547",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/english_version/get_from_default_dict.md",
-    "dbt Package/english_version/normalize_name.md",
-    "dbt Package/english_version/README.md",
-    "dbt Package/json_extract_string.md",
     "dbt Package/english_version/json_extract_string.md",
-    "dbt Package/README.md",
-    "dbt Package/TEMPLATE AUX rus.md",
-    "dbt Package/get_from_default_dict.md",
-    "dbt Package/custom_union_relations_source.md",
     "dbt Package/normalize_name.md",
+    "dbt Package/README.md",
+    "dbt Package/english_version/get_from_default_dict.md",
+    "dbt Package/get_from_default_dict.md",
+    "dbt Package/json_extract_string.md",
+    "dbt Package/english_version/README.md",
+    "dbt Package/english_version/normalize_name.md",
+    "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/custom_union_relations_source.md",
     "dbt Package/custom_union_relations.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
