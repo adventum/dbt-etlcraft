@@ -22,18 +22,33 @@
             }
           },
           {
-            "id": "51a94bf49d477579",
+            "id": "ed0aa4b73c2ad710",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/custom_union_relations_source.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "4f8592ec965c5a1b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/join_appmetrica_events.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -99,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/TEMPLATE SUB_MAIN rus.md"
               }
             }
           }
@@ -159,16 +174,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "4f8592ec965c5a1b",
   "lastOpenFiles": [
+    "dbt Package/TEMPLATE MAIN eng.md",
+    "dbt Package/custom_union_relations_source.md",
+    "dbt Package/TEMPLATE MAIN rus.md",
+    "dbt Package/README.md",
+    "dbt Package/TEMPLATE SUB_MAIN rus.md",
+    "dbt Package/join_appmetrica_events.md",
+    "dbt Package/array.md",
     "Airflow Providers/DAGs/install_connectors.md",
     "Airflow Providers/DAGs/create_connections.md",
     "Airflow Providers/DAGs/create_connectors.md",
-    "dbt Package/TEMPLATE SUB_MAIN rus.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/join_appmetrica_events.md",
     "dbt Package/join.md",
-    "dbt Package/README.md",
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_add_row_number.md",
     "dbt Package/attr_find_new_period.md",
@@ -177,7 +195,6 @@
     "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/attr_model.md",
     "dbt Package/attr_final_table.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/get_from_default_dict.md",
     "dbt Package/attr_prepare_with_qid.md",
     "dbt Package/graph_qid.md",
@@ -185,8 +202,6 @@
     "dbt Package/graph_edge.md",
     "dbt Package/graph_unique.md",
     "dbt Package/graph_lookup.md",
-    "dbt Package/graph_tuples.md",
-    "dbt Package/join_appmetrica_registry_appprofilematching.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
