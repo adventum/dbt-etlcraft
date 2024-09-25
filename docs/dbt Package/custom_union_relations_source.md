@@ -35,9 +35,3 @@ SOMETHING
 
 ## Пример
 
-Файл в формате sql в папке models. Название файла `[NAME]`
-
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
