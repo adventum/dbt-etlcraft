@@ -34,6 +34,18 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "98a25e7ece9d48a1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/custom_union_relations_source.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -163,16 +175,17 @@
   },
   "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/custom_union_relations_source.md",
+    "dbt Package/README.md",
     "dbt Package/english_version/README.md",
+    "dbt Package/dataset_Pavel.md",
     "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/english_version/json_extract_string.md",
     "dbt Package/json_extract_string.md",
-    "dbt Package/README.md",
     "dbt Package/normalize_name.md",
     "dbt Package/english_version/get_from_default_dict.md",
     "dbt Package/get_from_default_dict.md",
     "dbt Package/english_version/normalize_name.md",
-    "dbt Package/custom_union_relations_source.md",
     "dbt Package/custom_union_relations.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
@@ -188,7 +201,6 @@
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_calculate_period_number.md",
     "dbt Package/attr_create_missed_steps.md",
-    "dbt Package/attr_join_to_attr_prepare_with_qid.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
