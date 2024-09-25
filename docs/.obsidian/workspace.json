@@ -22,17 +22,63 @@
             }
           },
           {
-            "id": "0e339ff27470f547",
+            "id": "7ec5a520ea2ee434",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/english_version/README.md",
+                "file": "dbt Package/get_from_default_dict.md",
                 "mode": "source",
                 "source": false
-              },
-              "pinned": true
+              }
+            }
+          },
+          {
+            "id": "3bca628b02d0cd84",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/TEMPLATE AUX rus.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a128c4135f7e6908",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/custom_union_relations_source.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1e25843a3f8ab216",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_from_default_dict.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "00eef48f9aac1e3c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_from_default_dict.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -163,17 +209,18 @@
   },
   "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/english_version/README.md",
-    "dbt Package/custom_union_relations_source.md",
-    "dbt Package/custom_union_relations.md",
+    "dbt Package/get_from_default_dict.md",
     "dbt Package/README.md",
-    "dbt Package/dataset_Pavel.md",
+    "dbt Package/find_incremental_datetime_field.md",
+    "dbt Package/custom_union_relations_source.md",
     "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/english_version/README.md",
+    "dbt Package/custom_union_relations.md",
+    "dbt Package/dataset_Pavel.md",
     "dbt Package/english_version/json_extract_string.md",
     "dbt Package/json_extract_string.md",
     "dbt Package/normalize_name.md",
     "dbt Package/english_version/get_from_default_dict.md",
-    "dbt Package/get_from_default_dict.md",
     "dbt Package/english_version/normalize_name.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
@@ -188,7 +235,6 @@
     "dbt Package/attr_add_row_number.md",
     "dbt Package/attr_find_new_period.md",
     "dbt Package/attr_calculate_period_number.md",
-    "dbt Package/attr_create_missed_steps.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",

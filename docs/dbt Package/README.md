@@ -104,6 +104,7 @@ TABLE
 doc_status AS "Doc Status",
 in_main_macro AS "In Main Macro",
 in_sub_main_macro AS "In Sub-Main Macro",
+in_aux_macro AS "In Auxiliary Macro",
 step AS "Step", 
 sub_step AS "Substep"
 FROM "dbt Package"
