@@ -103,6 +103,7 @@ SORT step, sub_step, doc_status DESC
 TABLE 
 doc_status AS "Doc Status",
 in_main_macro AS "In Main Macro",
+in_sub_main_macro AS "In Sub-Main Macro",
 step AS "Step", 
 sub_step AS "Substep"
 FROM "dbt Package"
