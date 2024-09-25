@@ -161,9 +161,9 @@
   },
   "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "Airflow Providers/DAGs/create_connectors.md",
     "Airflow Providers/DAGs/install_connectors.md",
     "Airflow Providers/DAGs/create_connections.md",
+    "Airflow Providers/DAGs/create_connectors.md",
     "dbt Package/TEMPLATE SUB_MAIN rus.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/join_appmetrica_events.md",

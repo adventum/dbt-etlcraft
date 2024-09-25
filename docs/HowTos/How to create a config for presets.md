@@ -8,6 +8,7 @@ doc_status: in progress
 ## I Получаем данные о соединениях
 
 #### 1. Заходим в Airbyte и выбираем нужное соединение (Connection)
+
 #### ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfYR8cC5sohOe8GyaPFCBpqdcNZ0vsxyzk-O1W5lMf1tdkVUa-PHyQXebHdbI2LQSkz3YUlyCDpR0jt_uRyWNNiQa6vhzEP8aBBz4lUU7rJkIG2DVKyGsaFe8ky99e29tqutXHV_SwsHmtMVqlVkyds3nEL?key=WLrhqU9b79UJM2CtoA6d9A)
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe2b_SRpcwH3HRO2XQvXdGwOXFjphM4Wa7hN8mC9j41iSwdUVRC36CtS1jZrGcGr7ci3GFCYS3BnESoVIiu0X8bLqGfeRw2Wr2xxrVnFzxwdW1_rjpFL44-vuUnE4cQ0VqPG2UFH6Zg1ONciYiBNzrTceSn?key=WLrhqU9b79UJM2CtoA6d9A)
@@ -45,13 +46,13 @@ doc_status: in progress
 
 То есть вся конфиденциальная информация.
 
-Также заменяем на звёздочки "sourceDefinitionId", т.к. этот id будет генерироваться DAG-ом в Airflow. #task уточнить: так ли это до сих пор?
+Также заменяем на звёздочки "sourceDefinitionId", т.к. этот id будет генерироваться DAG-ом в Airflow. 
 #### 2. Необходимо добавить для каждого уникального пресета:
 
 -  раздел entities 
 	Entities (сущности) - реальные бизнес-концепции, такие как клиенты, транзакции, продукты, рекламные кампании и т.д.. Подробнее о сущностях можно почитать [тут](https://github.com/adventum/dbt-etlcraft/wiki/4.-%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-metadata.sql) или [[Entity|тут]]. Посмотреть список сущностей для источников можно [тут](https://docs.google.com/spreadsheets/d/17L2DaVe9fkugxNb99yqwg9e5r3wZ1ia7S_RBx3ZHh9A/edit?gid=928479100#gid=928479100).
 
-#task добавить в документацию табличку соответствия сущностей и источников???
+#task добавить в документацию табличку соответствия сущностей и источников??? - по каждому источнику будет документация, туда можно добавить сущности, потом можно будет отследить, собрав в табличку   
 #task убрать все ссылки на wiki и таблички в шитсах, когда будут готовы соответствующие разделы в obsidian 
 
 -  раздел links. 
@@ -64,7 +65,7 @@ doc_status: in progress
 
 Соответствие пайплайнов можно посмотреть [тут](https://docs.google.com/spreadsheets/d/17L2DaVe9fkugxNb99yqwg9e5r3wZ1ia7S_RBx3ZHh9A/edit?gid=1025378649#gid=1025378649).
 
-#task добавить в документацию табличку с соответствием???
+#task добавить в документацию табличку с соответствием??? -нет, достаточно просто описания пайплайнов как в wiki на гитхабе 
 
 **Пример пресета с добавлением разделов `entities`, `links` и `pipeline`:**
 ```
