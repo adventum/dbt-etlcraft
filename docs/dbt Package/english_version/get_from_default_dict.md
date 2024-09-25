@@ -6,7 +6,8 @@ in_main_macro: normalize
 doc_status: ready
 language: eng
 ---
-# get_from_default_dict
+# macro `get_from_default_dict`
+## Summary
 
 This macro takes a path (as a list of keys) and a dictionary as input and traverses the dictionary following the path. If it reaches the end of the path successfully, it returns the value at that location in the dictionary. If it encounters a key that isn't in the dictionary before reaching the end of the path, it returns a default value.
 
@@ -16,7 +17,7 @@ This macro takes a path (as a list of keys) and a dictionary as input and traver
 - `path`: A list of keys representing the path to traverse in the dictionary. The keys should be provided in the order they are to be accessed.
 - `default_return`: (Optional) The value to return if the end of the path can't be reached. If not provided, an empty string is returned.
 
-## Usage
+## Functionality
 
 ```dbt
 {% set result = get_from_default_dict(['key1', 'key2'], my_dict) %}
@@ -24,7 +25,7 @@ This macro takes a path (as a list of keys) and a dictionary as input and traver
 
 This will traverse `my_dict` by first going to `key1` and then `key2`. If `key2` exists within the dictionary located at `key1`, it returns the value there. Otherwise, it returns an empty string (or the value provided in `default_return`).
 
-## Example
+Example:
 
 Given the following dictionary:
 

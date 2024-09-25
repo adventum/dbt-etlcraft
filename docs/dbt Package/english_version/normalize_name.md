@@ -12,17 +12,15 @@ language: eng
 
 This macro takes a `name` as an argument and returns a version of it that can be used as a column name. 
 
-## Usage
-
-```sql
-{{ etlcraft.normalize_name(name) }}
-```
-
 ## Arguments
 
 01. `name` (required argument - the name to be normalized, in string format)
 
 ## Functionality
+
+```sql
+{{ etlcraft.normalize_name(name) }}
+```
 
 This macro takes a `name` as an argument and returns a version of it that can be used as a column name. The normalization process includes the following steps:
 
@@ -30,7 +28,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 2. Transliterate any Cyrillic letters to their Latin equivalents.
 3. Remove non-alphanumeric symbols.
 
-## Example
+ Example:
 
 ```sql
 -- Normalize a column name
