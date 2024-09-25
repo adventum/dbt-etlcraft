@@ -34,6 +34,18 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "469d1ac953e54619",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/TEMPLATE AUX rus.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
         "currentTab": 1
@@ -164,16 +176,16 @@
   },
   "active": "0e339ff27470f547",
   "lastOpenFiles": [
-    "dbt Package/english_version/get_from_default_dict.md",
     "dbt Package/get_from_default_dict.md",
     "dbt Package/README.md",
-    "dbt Package/custom_union_relations_source.md",
+    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/english_version/README.md",
+    "dbt Package/english_version/get_from_default_dict.md",
+    "dbt Package/custom_union_relations_source.md",
     "dbt Package/normalize_name.md",
     "dbt Package/custom_union_relations.md",
     "dbt Package/english_version/normalize_name.md",
     "dbt Package/english_version/normalize.md",
-    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/TEMPLATE MAIN eng.md",
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/join_appmetrica_events.md",
