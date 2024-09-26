@@ -3,5 +3,28 @@ category: auxiliary
 step: 1_silos
 sub_step: 2_incremental
 in_main_macro: incremental
-doc_status: empty_template
+doc_status: ready
 ---
+
+# macro `cast_date_field`
+
+## Описание
+
+Этот макрос приводит передаваемое в аргументе поле к формату Date.
+
+## Аргументы
+
+Этот макрос принимает следующие аргументы:
+```sql
+f 
+```
+## Функциональность
+
+Этот макрос имеет следующие варианты:
+- clickhouse
+- postgres
+
+Макрос берёт передаваемый аргумент - в данном случае аргумент записан как `f` (в этом аргументе передаётся поле с датой), и приводит это поле к формату `Date`:
+```sql
+toDate({{ f }}, 'UTC')
+```

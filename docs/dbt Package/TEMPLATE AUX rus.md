@@ -1,6 +1,7 @@
 ---
 doc_status: empty_template
 ---
+
 # macro `MACRO_NAME`
 
 ## Описание
