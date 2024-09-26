@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/Pavel's additional macros and docs/README.md",
+                "file": "dbt Package/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/Pavel's additional macros and docs/README.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/Pavel's additional macros and docs/README.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/Pavel's additional macros and docs/README.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -172,11 +172,11 @@
   },
   "active": "1f06acde20825c7b",
   "lastOpenFiles": [
+    "dbt Package/Pavel's additional macros and docs/README.md",
     "docs_status.md",
     "Airflow Providers/Configs/events.md",
     "Tasks/README.md",
     "Airflow Providers/Configs/metadata.md",
-    "dbt Package/Pavel's additional macros and docs/README.md",
     "dbt Package/Pavel's additional macros and docs/like_query_cycle.md",
     "dbt Package/Pavel's additional macros and docs/json_list_keys.md",
     "dbt Package/Pavel's additional macros and docs/get_column_count_in_subquery.md",
