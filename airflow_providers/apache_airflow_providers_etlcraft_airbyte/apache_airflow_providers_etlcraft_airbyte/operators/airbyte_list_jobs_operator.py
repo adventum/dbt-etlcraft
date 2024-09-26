@@ -1,4 +1,5 @@
-from ..models import SourceDefinitionSpec, ConnectionSpec
+from ..enums import JobStatusEnum
+from ..models import ConnectionSpec, AirByteJobSpec
 from .airbyte_general_operator import (
     AirByteGeneralOperator,
 )
@@ -23,24 +24,15 @@ class AirbyteListJobsOperator(AirByteGeneralOperator):
         connection_id: str | None = None,
         connection_name: str | None = None,
         connections: list[ConnectionSpec] | None = None,
-        statuses: list[str] | None = None,
+        statuses: list[JobStatusEnum] | None = None,
         **kwargs,
     ):
         # TODO: description is not clear
-        self._statuses = (
-            statuses
-            if statuses
-            else [
-                "check_connection_source",
-                "check_connection_destination",
-                "discover_schema",
-                "get_spec",
-                "sync",
-                "reset",
-            ]
+        self._statuses: list[JobStatusEnum] = (
+            statuses if statuses else [JobStatusEnum.pending, JobStatusEnum.running]
         )
-        self._connection_id = get_connection(
-            connection_id, connection_name, connections
+        self._connection_id: str | None = get_connection(
+            connection_id, connection_name, connections, allow_none=True
         )
         super().__init__(
             airbyte_conn_id=airbyte_conn_id,
@@ -50,10 +42,17 @@ class AirbyteListJobsOperator(AirByteGeneralOperator):
             **kwargs,
         )
 
-    def execute(self, context: Context) -> list[SourceDefinitionSpec] | None:
+    def execute(self, context: Context) -> list[AirByteJobSpec] | None:
         resp: dict[str, any] = super().execute(context)
-        res: list[SourceDefinitionSpec] = [
-            SourceDefinitionSpec.model_validate(spec)
-            for spec in resp["sourceDefinitions"]
-        ]
+        res: list[AirByteJobSpec] = []
+        for job in resp["jobs"]:
+            job_spec = AirByteJobSpec(
+                jobId=job["job"]["id"],
+                status=job["job"]["status"],
+                jobType=job["job"]["configType"],
+                connectionId=job["job"]["connectionId"],
+            )
+            if self._connection_id and job_spec.connectionId != self._connection_id:
+                continue
+            res.append(job_spec)
         return res

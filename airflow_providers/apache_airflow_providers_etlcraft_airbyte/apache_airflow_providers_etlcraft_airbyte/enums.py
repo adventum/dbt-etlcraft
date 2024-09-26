@@ -26,3 +26,12 @@ class NonBreakingChangesPreferenceEnum(StrEnum):
     disable = "disable"
     propagate_columns = "propagate_columns"
     propagate_fully = "propagate_fully"
+
+
+class JobStatusEnum(StrEnum):
+    pending = "pending"
+    running = "running"
+    incomplete = "incomplete"
+    failed = "failed"
+    succeeded = "succeeded"
+    canceled = "canceled"

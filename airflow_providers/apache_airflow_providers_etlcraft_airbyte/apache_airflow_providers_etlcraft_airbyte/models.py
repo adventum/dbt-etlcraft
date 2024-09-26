@@ -5,6 +5,7 @@ from .enums import (
     TimeUnitEnum,
     ConnectionStatusEnum,
     NonBreakingChangesPreferenceEnum,
+    JobStatusEnum,
 )
 
 
@@ -57,3 +58,16 @@ class DestinationDefinitionSpec(Model):
 class DestinationSpec(Model):
     destinationId: str
     name: str
+
+
+class AirByteJobSpec(Model):
+    jobId: str
+    status: JobStatusEnum
+    jobType: str
+    connectionId: str
+
+
+class SourceSpec(Model):
+    sourceId: str
+    name: str
+    connectionConfiguration: dict
