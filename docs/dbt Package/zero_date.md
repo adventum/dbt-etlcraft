@@ -5,25 +5,17 @@ sub_step: 3_hash
 in_main_macro: hash
 doc_status: empty_template
 ---
-# macro `[zero_date]`
+# macro `zero_date`
 
 ## Описание
 
-## Применение
 
 ## Аргументы
 
 Этот макрос принимает следующие аргументы:
-
+```sql
+SOMETHING
+```
 ## Функциональность
 
-## Пример
 
-Файл в формате sql в папке models. Название файла `[NAME]`
-
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
-
-## Примечания
