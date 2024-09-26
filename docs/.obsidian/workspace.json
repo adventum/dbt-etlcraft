@@ -34,30 +34,19 @@
             }
           },
           {
-            "id": "4e60b9e1c6cc365c",
+            "id": "7f8757e44a0520ed",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/link_hash.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2a5be4761796b708",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/entity_hash.md",
+                "file": "dbt Package/full.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -123,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/full.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/full.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/full.md"
               }
             }
           }
@@ -183,12 +172,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "7f8757e44a0520ed",
   "lastOpenFiles": [
+    "dbt Package/link.md",
+    "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/get_columns_in_relation.md",
+    "dbt Package/README.md",
     "dbt Package/link_hash.md",
     "dbt Package/entity_hash.md",
-    "dbt Package/README.md",
-    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/get_utmhash.md",
     "dbt Package/get_min_max_date.md",
     "dbt Package/get_adsourcedirty.md",
@@ -209,8 +200,6 @@
     "dbt Package/english_version/normalize_name.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE MAIN rus.md",
-    "dbt Package/join_appmetrica_events.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
