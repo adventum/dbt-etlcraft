@@ -32,9 +32,20 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "aa1f7f3c002e648a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/get_relations_by_re.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/TEMPLATE AUX rus.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/TEMPLATE AUX rus.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/TEMPLATE AUX rus.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -160,11 +171,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3bca628b02d0cd84",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
-    "dbt Package/zero_date.md",
-    "dbt Package/README.md",
+    "dbt Package/get_relations_by_re.md",
     "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/README.md",
+    "dbt Package/zero_date.md",
     "dbt Package/get_from_default_dict.md",
     "dbt Package/custom_union_relations_source.md",
     "dbt Package/find_incremental_datetime_field.md",
@@ -187,7 +199,6 @@
     "dbt Package/join.md",
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_add_row_number.md",
-    "dbt Package/attr_find_new_period.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
