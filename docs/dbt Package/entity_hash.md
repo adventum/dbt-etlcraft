@@ -3,27 +3,22 @@ category: auxiliary
 step: 2_staging
 sub_step: 3_hash
 in_main_macro: hash
-doc_status: empty_template
+doc_status: ready
 ---
-# macro `[entity_hash]`
+# macro `entity_hash`
 
 ## Описание
 
-## Применение
+Этот макрос создаёт хэш-поле сущности (`entity`).
 
 ## Аргументы
 
 Этот макрос принимает следующие аргументы:
-
+```sql
+entity_name, metadata_dict, alias=''
+```
 ## Функциональность
 
-## Пример
+Макрос обращается к `metadata`, и получает ключи сущности.
 
-Файл в формате sql в папке models. Название файла `[NAME]`
-
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
-
-## Примечания
+После ряда обработок для сущности  макрос создаёт хэш-поле при помощи `hex(MD5(...))`. Создаваемое поле будет называться либо значением из `alias`, либо названием самой сущности с окончанием `Hash`.

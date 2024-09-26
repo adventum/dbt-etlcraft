@@ -34,18 +34,19 @@
             }
           },
           {
-            "id": "6fc993e5cebdcc66",
+            "id": "3a928adcd318976f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/get_utmhash.md",
+                "file": "dbt Package/entity_hash.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -111,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/entity_hash.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
+                "file": "dbt Package/entity_hash.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/README.md"
+                "file": "dbt Package/entity_hash.md"
               }
             }
           }
@@ -171,11 +172,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e59e80caa7dfb9a3",
+  "active": "3a928adcd318976f",
   "lastOpenFiles": [
-    "dbt Package/get_utmhash.md",
-    "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/README.md",
+    "dbt Package/entity_hash.md",
+    "dbt Package/TEMPLATE AUX rus.md",
+    "dbt Package/get_utmhash.md",
     "dbt Package/get_min_max_date.md",
     "dbt Package/get_adsourcedirty.md",
     "dbt Package/check_table_empty.md",
@@ -198,7 +200,6 @@
     "dbt Package/TEMPLATE MAIN rus.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/array.md",
-    "Airflow Providers/DAGs/install_connectors.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
