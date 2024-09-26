@@ -1,5 +1,6 @@
 ---
 step: other
+doc_status: Pavel
 ---
 ## Documentation for the check_table_exists macro
 

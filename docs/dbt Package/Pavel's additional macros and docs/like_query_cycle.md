@@ -1,5 +1,6 @@
 ---
 step: other
+doc_status: Pavel
 ---
 This macro likequerycycle allows you to create SQL queries using the LIKE operator to search for substrings in the specified value.
 

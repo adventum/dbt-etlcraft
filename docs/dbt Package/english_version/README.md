@@ -49,15 +49,6 @@ The Dbt Package contains 10 basic data processing steps. Each step is one of the
 |               |                                 |
 | 7_dataset     |                                 |
 
-## Unified macro description structure
-
-- Summary 
-- Usage 
-- Arguments
-- Functionality 
-- Example 
-- Notes
-
 ## Categories of macros
 
 - **main**: these are the “main” or main macros.  Globally, these macros pave the way from raw data to final tables. In particular, they provide the implementation of the basic steps for data transformation. There are 7 such steps in total.

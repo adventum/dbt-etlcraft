@@ -85,13 +85,13 @@ If something is wrong with the search for `relations`, the macro will not go fur
                                                                  
 After the necessary “raw” data is found, the macro gathers together all the found tables through the `UNION ALL`. To do this, the macro `etlcraft.custom_union_relations_source` is used, into which previously found `relations` are passed.
 
-Next, for those data that does not specify the absence of an incremental field with a date (that is, the arguments `incremental_datetime_formula` and `disable_incremental_datetime_field` are left as default - `none`), the formulas for the field with a date are `incremental_datetime_formula`. The `etlcraft.get_from_default_dict` macro is used for the search, into which the `defaults_dict` argument is passed. This argument is set by default as the result of calling another macro - `fieldconfig()`. Thus, by default, everything happens automatically, the user does not need to do anything. But at the same time, the user has the opportunity, if necessary, to influence the behavior of the macro.
+Next, for those data that does not specify the absence of an incremental field with a date (that is, the arguments `incremental_datetime_formula` and `disable_incremental_datetime_field` are left as default - `none`), the formulas for the field with a date are `incremental_datetime_formula`. The [[get_from_default_dict]] macro is used for the search, into which the `defaults_dict` argument is passed. This argument is set by default as the result of calling another macro - `fieldconfig()`. Thus, by default, everything happens automatically, the user does not need to do anything. But at the same time, the user has the opportunity, if necessary, to influence the behavior of the macro.
   
 The macro also sets the `incremental_datetime_field` using the `etlcraft` macro `find_incremental_datetime_field()`.
 
-Next, the fields are processed. A list of fields is passed to the input to the `normalize` macro - `fields`. For each element of this list (except for the incremental field with the date), processing takes place - we create an alias macro, making transliteration into English using the macro `etlcraft.normalize_name()`. 
+Next, the fields are processed. A list of fields is passed to the input to the `normalize` macro - `fields`. For each element of this list (except for the incremental field with the date), processing takes place - we create an alias macro, making transliteration into English using the macro [[normalize_name]]. 
 
-Using the `etlcraft` macro `json_extract_string()` sets the values of the field names from the Airbyte technical field `"_airbyte_data"` if the `debug_column_names` argument is left as `False` by default. If the argument is `True`, the previously created alias will be taken. The resulting list of fields is sorted alphabetically.
+Using the `etlcraft` macro [[json_extract_string]] sets the values of the field names from the Airbyte technical field `"_airbyte_data"` if the `debug_column_names` argument is left as `False` by default. If the argument is `True`, the previously created alias will be taken. The resulting list of fields is sorted alphabetically.
 
 The incremental date field is processed separately - and for all cases its name becomes universal: `__date`. 
 
