@@ -32,21 +32,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "50c071a48293c4b0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/zero_date.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -112,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/zero_date.md",
+                "file": "dbt Package/TEMPLATE AUX rus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/zero_date.md",
+                "file": "dbt Package/TEMPLATE AUX rus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/zero_date.md"
+                "file": "dbt Package/TEMPLATE AUX rus.md"
               }
             }
           }
@@ -172,8 +160,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "50c071a48293c4b0",
+  "active": "3bca628b02d0cd84",
   "lastOpenFiles": [
+    "dbt Package/zero_date.md",
     "dbt Package/README.md",
     "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/get_from_default_dict.md",
@@ -199,7 +188,6 @@
     "dbt Package/attr_create_events.md",
     "dbt Package/attr_add_row_number.md",
     "dbt Package/attr_find_new_period.md",
-    "dbt Package/attr_calculate_period_number.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
