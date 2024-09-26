@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e7bf6671c9221f58",
+        "id": "c9918bca5f91376c",
         "type": "tabs",
         "children": [
           {
-            "id": "e59e80caa7dfb9a3",
+            "id": "6518e554b30313f5",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -20,31 +20,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "33284daddf7897ca",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "graph",
-              "state": {},
-              "pinned": true
-            }
-          },
-          {
-            "id": "1f06acde20825c7b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -170,8 +147,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1f06acde20825c7b",
+  "active": "6518e554b30313f5",
   "lastOpenFiles": [
+    "dbt Package/README.md",
     "dbt Package/Pavel's additional macros and docs/README.md",
     "docs_status.md",
     "Airflow Providers/Configs/events.md",
@@ -186,7 +164,6 @@
     "dbt Package/english_version/README.md",
     "dbt Package/english_version/normalize.md",
     "dbt Package/english_version/json_extract_string.md",
-    "dbt Package/README.md",
     "dbt Package/english_version/get_from_default_dict.md",
     "dbt Package/get_from_default_dict.md",
     "dbt Package/Pavel's additional macros and docs",
