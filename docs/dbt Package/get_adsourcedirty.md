@@ -2,30 +2,25 @@
 category: auxiliary
 step: 2_staging
 sub_step: 1_join
-in_main_macro: 
-doc_status: empty_template
 language: rus
 in_sub_main_macro: join_ym_events
+doc_status: ready
 ---
 # macro `get_adsourcedirty`
 
 ## Описание
 
-## Применение
+Этот макрос нужен для работы с данными utm-меток - при помощи передаваемых аргументов макрос возвращает название источника перехода.
 
 ## Аргументы
 
 Этот макрос принимает следующие аргументы:
-
+```sql
+utm_source='utmSource', utm_medium='utmMedium'
+```
 ## Функциональность
 
-## Пример
-
-Файл в формате sql в папке models. Название файла `[NAME]`
-
-Содержимое файла:
+Действие макроса - если `utm_source` не пустой, он соединит передаваемые значения аргументов:
 ```sql
-SOMETHING INSIDE
+lower(if(length({{ utm_source }}) > 0, concat({{ utm_source }}, ' / ', {{ utm_medium }}), null))
 ```
-
-## Примечания
