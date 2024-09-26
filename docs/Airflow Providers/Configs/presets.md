@@ -1,7 +1,7 @@
 ---
 description: Конфигурации Airbyte Source, Destination и Connection, которые используются при создании нового источника
 config_default_type: "`templated_file`"
-config_default_format: "`yaml`"
+config_default_format: "`json`"
 type: config
 doc_status: in progress
 ---
