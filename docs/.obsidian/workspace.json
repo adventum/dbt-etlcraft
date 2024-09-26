@@ -45,8 +45,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/clickhouse__check_table_exists.md",
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/clickhouse__check_table_exists.md",
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt Package/clickhouse__check_table_exists.md"
+                "file": "dbt Package/README.md"
               }
             }
           }
@@ -172,11 +171,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b85f990af807c15",
+  "active": "e59e80caa7dfb9a3",
   "lastOpenFiles": [
+    "dbt Package/clickhouse__check_table_exists.md",
     "dbt Package/check_table_empty.md",
     "dbt Package/README.md",
-    "dbt Package/clickhouse__check_table_exists.md",
     "dbt Package/TEMPLATE AUX rus.md",
     "dbt Package/calc_graph.md",
     "dbt Package/full.md",
