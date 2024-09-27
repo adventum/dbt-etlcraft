@@ -20,8 +20,19 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "f47d9ac1e66d025f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +98,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +114,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,9 +135,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "dbt Package/README.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -147,9 +154,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6518e554b30313f5",
+  "active": "f47d9ac1e66d025f",
   "lastOpenFiles": [
     "dbt Package/README.md",
+    "Airflow Providers/Configs/add_attr_model_in_dataCraft_example.jpg",
+    "dbt Package/Pavel's additional macros and docs/check_table_exists.md",
     "dbt Package/Pavel's additional macros and docs/README.md",
     "docs_status.md",
     "Airflow Providers/Configs/events.md",
@@ -159,7 +168,6 @@
     "dbt Package/Pavel's additional macros and docs/json_list_keys.md",
     "dbt Package/Pavel's additional macros and docs/get_column_count_in_subquery.md",
     "dbt Package/Pavel's additional macros and docs/dataset.md",
-    "dbt Package/Pavel's additional macros and docs/check_table_exists.md",
     "dbt Package/Pavel's additional macros and docs/array.md",
     "dbt Package/english_version/README.md",
     "dbt Package/english_version/normalize.md",
@@ -175,7 +183,6 @@
     "dbt Package/calc_graph.md",
     "dbt Package/full.md",
     "dbt Package/link.md",
-    "dbt Package/get_columns_in_relation.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
