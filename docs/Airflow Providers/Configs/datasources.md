@@ -3,7 +3,7 @@ description: Источники данных, на каждый из котор�
 config_default_type: "`datacraft_variable`"
 config_default_format: "`json`"
 type: config
-doc_status: empty
+doc_status: in progress
 ---
 # Описание
 
