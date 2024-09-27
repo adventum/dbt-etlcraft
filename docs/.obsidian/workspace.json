@@ -149,6 +149,7 @@
   },
   "active": "6518e554b30313f5",
   "lastOpenFiles": [
+    "dbt Package/Pavel's additional macros and docs/check_table_exists.md",
     "dbt Package/README.md",
     "dbt Package/Pavel's additional macros and docs/README.md",
     "docs_status.md",
@@ -159,7 +160,6 @@
     "dbt Package/Pavel's additional macros and docs/json_list_keys.md",
     "dbt Package/Pavel's additional macros and docs/get_column_count_in_subquery.md",
     "dbt Package/Pavel's additional macros and docs/dataset.md",
-    "dbt Package/Pavel's additional macros and docs/check_table_exists.md",
     "dbt Package/Pavel's additional macros and docs/array.md",
     "dbt Package/english_version/README.md",
     "dbt Package/english_version/normalize.md",
