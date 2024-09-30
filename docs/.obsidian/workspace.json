@@ -31,8 +31,7 @@
               "pinned": true
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "dbt Package/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "dbt Package/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "dbt Package/README.md"
+              }
             }
           }
         ]
@@ -154,35 +157,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f47d9ac1e66d025f",
+  "active": "6518e554b30313f5",
   "lastOpenFiles": [
+    "dbt Package/join_appmetrica_events.md",
     "dbt Package/README.md",
+    "docs_status.md",
+    "dbt Package.md",
+    "Airflow Providers/DAGs/create_connections.md",
+    "Airflow Providers/DAGs/template_configs.md",
+    "Airflow Providers/DAGs/install_connectors.md",
+    "Airflow Providers/DAGs/generate_models.md",
+    "Airflow Providers/How DAGs work.md",
+    "Airflow Providers/DAGs.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "Airflow Providers/Configs/datasources.md",
+    "Airflow Providers/Configs/events.md",
+    "Airflow Providers/Configs/metadata.md",
+    "Airflow Providers/Airbyte Operators/AirbyteUpdateSourceOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteGeneralOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateSourceDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateDestinationDefinitionsOperator.md",
+    "Airflow Providers/Airbyte Operators/AirbyteCreateConnetctionOperator.md",
     "Airflow Providers/Configs/add_attr_model_in_dataCraft_example.jpg",
     "dbt Package/Pavel's additional macros and docs/check_table_exists.md",
     "dbt Package/Pavel's additional macros and docs/README.md",
-    "docs_status.md",
-    "Airflow Providers/Configs/events.md",
     "Tasks/README.md",
-    "Airflow Providers/Configs/metadata.md",
     "dbt Package/Pavel's additional macros and docs/like_query_cycle.md",
-    "dbt Package/Pavel's additional macros and docs/json_list_keys.md",
-    "dbt Package/Pavel's additional macros and docs/get_column_count_in_subquery.md",
-    "dbt Package/Pavel's additional macros and docs/dataset.md",
-    "dbt Package/Pavel's additional macros and docs/array.md",
-    "dbt Package/english_version/README.md",
-    "dbt Package/english_version/normalize.md",
-    "dbt Package/english_version/json_extract_string.md",
-    "dbt Package/english_version/get_from_default_dict.md",
-    "dbt Package/get_from_default_dict.md",
     "dbt Package/Pavel's additional macros and docs",
-    "Templates/Macro Template.md",
-    "dbt Package/clickhouse__check_table_exists.md",
-    "dbt Package/TEMPLATE MAIN eng.md",
-    "dbt Package/TEMPLATE AUX rus.md",
-    "dbt Package/check_table_empty.md",
-    "dbt Package/calc_graph.md",
-    "dbt Package/full.md",
-    "dbt Package/link.md",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
