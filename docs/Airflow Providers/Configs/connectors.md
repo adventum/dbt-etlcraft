@@ -8,7 +8,11 @@ doc_status: in progress
 
 # Описание
 
-Словарь состоит из двух частей: `source_definitions` (определение коннектора источника данных ) и `destination_definitions` (определение коннектора для места назначения). В обоих разделах одинаковая структура:
+Словарь состоит из двух частей: 
+- `source_definitions`  - определение коннекторов для источников данных
+- и `destination_definitions` - определение коннекторов для мест назначения. 
+
+В обоих разделах одинаковая структура:
 
 - `slug`  — идентификатор, 
 	- соответствующий краткому названию источника данных для `source_definitions`, взятое из [[Connectors]] 
@@ -16,8 +20,8 @@ doc_status: in progress
     
     [[Add slug validation check to connector creation DAG]]
     
-- `image` — название Docker-образа на DockerHub для `source_definitions` и название места назначения для `destination_definitions` #task уточнить определение
-- `documentation`  — ссылка на раздел “[[Connectors]]”, где даны инструкции, как подключить коннектор в Aibyte #task будет внутри ссылка на документацию по каждому коннектору (пока нет этой документации)
+- `image` — название Docker-образа на DockerHub
+- `documentation`  — ссылка на раздел “[[Connectors]]”, где даны инструкции, как подключить коннектор в Aibyte
 
 
 [[Заменить в конфиге connectors name на slug]]
