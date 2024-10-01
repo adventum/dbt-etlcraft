@@ -2,7 +2,7 @@
 term_name: Сущность
 description: ""
 type: term
-doc_status: empty
+doc_status: in progress
 ---
 **Entity** - сущность.
 
@@ -14,6 +14,7 @@ doc_status: empty
 
 Описание сущностей приводится в конфиге [[metadata]] и используется при обработке данных на этапе [[dbt Package/hash|hash]] (подробнее см. [[dbt Package]] и [[entity_hash]]).
 
+**Пример раздела entities в [[metadata]]**:
 ```
 entities: # словарь сущностей
   Account: # сущность "Аккаунт"
