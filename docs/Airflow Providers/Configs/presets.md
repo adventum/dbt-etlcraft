@@ -3,7 +3,7 @@ description: Конфигурации Airbyte Source, Destination и Connection,
 config_default_type: "`templated_file`"
 config_default_format: "`json`"
 type: config
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
 # Описание
 

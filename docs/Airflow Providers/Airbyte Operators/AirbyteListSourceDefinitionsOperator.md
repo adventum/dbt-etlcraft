@@ -3,7 +3,7 @@ api_version: Устаревшее API
 description: 
 type: operator
 doc_status: ready
-status: не готово
+status: ready (нужен тест?)
 ---
 ## Описание
 Возвращает информацию по имеющимся [[Terms/DAG|коннекторам]] для [[Airbyte Source]].

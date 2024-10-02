@@ -3,7 +3,7 @@ description: Содержит описания и формулы сегмент�
 config_default_type: "`templated_file`"
 config_default_format: "`yaml`"
 type: config
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
 
 # Описание
