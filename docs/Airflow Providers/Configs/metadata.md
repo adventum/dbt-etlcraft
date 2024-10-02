@@ -7,10 +7,16 @@ doc_status: in progress
 ---
 # Описание
 
+Конфиг `metadata` необходим для формирования формулы, по которой рассчитывается хэш (hash) - уникальный ключ, а также для проведения графовой склейки. Задействован на слоях hash, link и graph (подробнее [[dbt Package/README|dbt Package]]) и позволяет упростить sql-запросы и использовать макросы.
 
-Эти данные добавляются в проект с помощью DAG’а [[template_configs]].
+Конфиг содержит три раздела: 
+1) `entities` - описание сущностей (подробнее [[Entity]])
+2) `links` - описание линков (подробнее [[Terms/Link|Link]])
+3) `glue_models` - описание данных, необходимых для проведения графовой склейки 
+
+В пакете **etlCraft** в папке `templated_configs` содержится базовая версия данного конфига, при необходимости его можно кастомизировать. Для работы с конфигами типа `templated_file` (см. [[Airflow Providers/Configs#Типы конфигов|Типы конфигов]]) существует специальный DAG -  [[template_configs]]. 
 # Пример
-```
+```yaml
 entities:
   Account:
     keys:
@@ -203,9 +209,9 @@ links:
     - AppMetricaDevice
     - CrmUser
 glue_models:
-  hash_events:
-    datetime_field: __datetime
-    cols:
+  hash_events: # hash-таблица, которая участвует в склейке 
+    datetime_field: __datetime # название основного поля дат в этой hash-таблице
+    cols: # список колонок, необходимых для графовой склейки (колонки, с помощью которых можно идентифицировать пользователя)
     - CrmUserHash
     - YmClientHash
     - AppEventStatHash

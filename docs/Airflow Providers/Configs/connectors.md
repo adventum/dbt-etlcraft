@@ -5,7 +5,6 @@ config_default_format: "`yaml`"
 type: config
 doc_status: in progress
 ---
-
 # Описание
 
 Словарь состоит из двух частей: 
@@ -23,6 +22,7 @@ doc_status: in progress
 - `image` — название Docker-образа на DockerHub
 - `documentation`  — ссылка на раздел “[[Connectors]]”, где даны инструкции, как подключить коннектор в Aibyte
 
+Данные из этого конфига используются для добавления в Airbyte нужных коннекторов. Это осуществляется с помощью DAG’a [[install_connectors]].
 
 [[Заменить в конфиге connectors name на slug]]
 
