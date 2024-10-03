@@ -1,6 +1,6 @@
 ---
-dag_name: create_connectors
-description: создаёт Airbyte Connections на основе данных из конфига connectors.
+dag_name: install_connectors
+description: устанавливает коннекторы в Airbyte на основе данных из конфига connectors.
 status: разработка не начата
 doc_status: in progress
 type: dag
@@ -11,6 +11,7 @@ type: dag
 
 **Решаемая задача:** создаёт Airbyte Connections на основе данных из конфига [[Airflow Providers/Configs/connectors|connectors]].
 
+#task тут всё неправильно описано, нужно полностью переписать
 # Обзор
 
 При запуске DAG создаёт Airbyte Connectors на основе входных данных. При этом обеспечивается [идемпотентность](https://ru.wikipedia.org/wiki/%D0%98%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C). То есть если DAG  вызвать несколько раз подряд с одними и теми же аргументами, нужное действие будет выполнено один раз. Например, если несколько раз попытаться создать Airbyte Connection с одним и тем же именем, оно будет создано только в одном экземпляре.

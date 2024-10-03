@@ -36,7 +36,7 @@ DagBuilder.create_dags()
 [[Quick start|Быстрый старт]]
 ## Основные разделы
 1. [[Methodology|Методология]]
-2. [[dbt package|Пакет dbt]]
+2. [[dbt Package/README|Пакет dbt]]
 3. [[Airflow Providers|Провайдеры Airflow]]
 ## Дополнительные материалы
 [[Terms.md|Термины и определения]]

@@ -1,6 +1,6 @@
 ---
 term_name: Airbyte Workspace
-description: 
+description: Рабочее пространство Airbyte
 type: term
 doc_status: ready (нужно ревью)
 ---
