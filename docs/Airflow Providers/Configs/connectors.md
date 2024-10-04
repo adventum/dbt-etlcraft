@@ -14,7 +14,7 @@ doc_status: ready (нужно ревью)
 В обоих разделах одинаковая структура:
 
 - `slug`  — идентификатор, 
-	- соответствующий краткому названию источника данных для `source_definitions`, взятое из [[Connectors]] 
+	- соответствующий [[Source|краткому названию источника данных]] для `source_definitions`, взятое из [[Connectors]] 
 	- и для `destination_definitions` соответствующий названию базы данных, куда коннектором будут выгружаться данные
     
     [[Add slug validation check to connector creation DAG]]
