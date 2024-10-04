@@ -8,6 +8,16 @@ table type as "Тип", doc_status as "Статус документации"  f
 table type as "Тип", doc_status as "Статус документации", status as "Статус разработки"  from "Airflow Providers/DAGs" 
 ```
 
+# Статус HowTos
+```dataview
+table type as "Тип", doc_status as "Статус документации"  from "HowTos" 
+```
+
+# Статус Terms
+```dataview
+table type as "Тип", doc_status as "Статус документации"  from "Terms" 
+```
+
 # Статус по операторам
 ```dataview
 table type as "Тип", doc_status as "Статус документации", status as "Статус разработки"  from "Airflow Providers/Airbyte Operators" 
@@ -18,13 +28,3 @@ table type as "Тип", doc_status as "Статус документации", s
 table type as "Тип", doc_status as "Статус документации", status as "Статус разработки"   from "dbt Package" 
 ```
 
-# Статус HowTos
-```dataview
-table type as "Тип", doc_status as "Статус документации"  from "HowTos" 
-```
-
-
-# Статус Terms
-```dataview
-table type as "Тип", doc_status as "Статус документации"  from "Terms" 
-```

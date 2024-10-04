@@ -1,8 +1,8 @@
 ---
 term_name: Сущность
-description: ""
+description: Бизнес-концепция
 type: term
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
 **Entity** - сущность.
 

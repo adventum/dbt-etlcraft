@@ -2,7 +2,7 @@
 term_name: Airbyte Connection
 description: сущности внутри Airbyte, которые можно создать вручную или по API
 type: term
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
 **Airbyte Connection** (соединение) —  это сущность внутри Airbyte, благодаря которой осуществляется связь между источником данных ([[Airbyte Source|Source]]) и целевым хранилищем ([[Airbyte Destination|Destination]]). 
 
@@ -37,7 +37,7 @@ doc_status: in progress
 
 О том как создавать соединение вручную [тут](https://docs.airbyte.com/using-airbyte/getting-started/set-up-a-connection).
 
-С помощью **dataCraftCore** Airbyte Connection можно создавать автоматически с помощью DAG’а [[create_connections]].
+С помощью **dataCraft Core** Airbyte Connection можно создавать автоматически с помощью DAG’а [[create_connections]].
 
 ### Наименование соединения в Airbyte 
 

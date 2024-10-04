@@ -19,4 +19,4 @@ doc_status: ready (нужно ревью)
 В интерфейсе Airbyte, чтобы посмотреть доступные коннекторы или добавить собственный, необходимо перейти в раздел `Settings`:
 ![[list_of_connectors_example.jpg]]
 
-В **dataCraftCore** добавление новых и обновление существующих коннекторов автоматизировано и осуществляется DAG’ом [[install_connectors]] на основе конфига [[Airflow Providers/Configs/connectors|connectors]].
+В **dataCraft Core** добавление новых и обновление существующих коннекторов автоматизировано и осуществляется DAG’ом [[install_connectors]] на основе конфига [[Airflow Providers/Configs/connectors|connectors]].
