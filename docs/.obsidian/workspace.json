@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Model.md",
+                "file": "Connectors.md",
                 "mode": "source",
                 "source": false
               }
@@ -118,7 +118,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 275.5
+    "width": 343.5
   },
   "right": {
     "id": "22ccde28bd1633ce",
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Model.md",
+                "file": "Connectors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Model.md",
+                "file": "Connectors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Model.md"
+                "file": "Connectors.md"
               }
             }
           }
@@ -197,34 +197,34 @@
   },
   "active": "d546b0b75fae7160",
   "lastOpenFiles": [
+    "Terms/Model.md",
+    "Connectors.md",
+    "Airflow Providers/Configs/dimensions.md",
+    "dbt Package/attr.md",
+    "Terms/Pipeline.md",
+    "Terms/Entity.md",
+    "Terms/Airbyte Source.md",
+    "Terms/Airbyte Destination.md",
+    "docs_status.md",
+    "Airbyte Connectors/profitbase.md",
+    "Terms.md",
+    "README.md",
+    "dbt Package/README.md",
+    "dbt Package.md",
+    "Configs.md",
+    "Methodology.md",
+    "Airflow Providers/DAGs.md",
+    "DAG.md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "Airflow Providers.md",
+    "Tasks/Attach a screenshot of the generated folder tree to the documentation.md",
+    "Tasks/Заменить в конфиге connectors name на slug.md",
+    "Tasks/Написать инструкцию, как сформировать конфиг для presets.md",
     "Terms/Stream.md",
     "Terms/Source.md",
-    "Terms/Slug.md",
-    "Airflow Providers/Configs/connectors.md",
-    "Terms/Preset.md",
-    "Terms/Pipeline.md",
-    "dbt Package/full.md",
-    "docs_status.md",
-    "Airflow Providers/Configs/dimensions.md",
-    "Terms/Name (config).md",
-    "Airflow Providers/Configs/event_segments.md",
-    "Airflow Providers/Configs/attributions.md",
-    "Airflow Providers/Configs/datasources.md",
-    "Terms/Шаблон.md",
     "Terms/airbyte_stream_example.jpg",
-    "dbt Package/README.md",
-    "dbt Package/normalize.md",
-    "Terms/Model.md",
-    "dbt Package/join.md",
-    "Terms/Link.md",
-    "Terms/Entity.md",
-    "Terms/Airbyte Connection.md",
-    "Terms/Airbyte Source.md",
-    "Terms/Airbyte Connector.md",
-    "Terms/Airbyte Destination.md",
-    "Airflow Providers/DAGs/create_connections.md",
     "Terms/list_of_connectors_example.jpg",
-    "Connectors.md",
     "Terms/airbyte_new_destination_example_2.jpg",
     "Terms/airbyte_new_destination_example_1.jpg",
     "Airbyte Connectors",
