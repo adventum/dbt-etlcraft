@@ -25,14 +25,14 @@ SORT doc_status
 Макрос `create_dataset` предназначен для создания финальной таблицы с учётом пожеланий клиента.
 ## Применение
 
-Имя dbt-модели (=имя файла в формате sql в папке models) для данного макроса не должно соответствовать какому-либо строгому шаблону. Модель можно назвать свободным образом по желанию клиента, но, соблюдая стиль etlcraft, можно рекомендовать название,
+Имя dbt-модели (=имя файла в формате sql в папке models) для данного макроса не должно соответствовать какому-либо строгому шаблону. Модель можно назвать свободным образом по желанию клиента, но, соблюдая стиль datacraft, можно рекомендовать название,
 
 например, `dataset_event_table`.
 
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.create_dataset() }}
+{{ datacraft.create_dataset() }}
 ```
 Особенность этого макроса в том, что он не опирается на название файла, в котором он вызывается. Но взамен он требует передачи информации от клиента в аргументы `funnel` и `conditions`.
 
@@ -42,7 +42,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('attr_myfirstfunnel_final_table') }}
 
-{{ etlcraft.create_dataset(
+{{ datacraft.create_dataset(
 
     funnel = 'myfirstfunnel',
 
@@ -234,7 +234,7 @@ FROM final_query
 
 -- depends_on: {{ ref('attr_myfirstfunnel_final_table') }}
 
-{{ etlcraft.create_dataset(
+{{ datacraft.create_dataset(
 
     funnel = 'myfirstfunnel',
 

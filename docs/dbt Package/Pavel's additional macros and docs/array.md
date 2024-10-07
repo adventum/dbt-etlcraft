@@ -12,7 +12,7 @@ The `array` macro is a dbt utility macro used to create an SQL array from an arr
 ## Signature
 
 ```sql
-{% macro etlcraft.array(arr) %}
+{% macro datacraft.array(arr) %}
 ```
 ## Arguments
 `arr` : An array object that you want to transform into an SQL array. The array object should be in Python list format, e.g., `['item1', 'item2', 'item3']`.
@@ -36,7 +36,7 @@ This macro is also dispatched, meaning that it uses the dbt adapter pattern to s
 
 ## Сигнатура
 ```sql
-{% macro etlcraft.array(arr) %}
+{% macro datacraft.array(arr) %}
 ```
 
 ## Аргументы

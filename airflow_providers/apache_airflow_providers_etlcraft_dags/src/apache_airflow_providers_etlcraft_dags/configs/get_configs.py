@@ -1,8 +1,8 @@
 import yaml
 import json
 from collections import namedtuple
-from apache_airflow_providers_etlcraft_dags.exceptions import EtlcraftConfigError
-from apache_airflow_providers_etlcraft_defaults import get_etlcraft_defaults
+from apache_airflow_providers_datacraft_dags.exceptions import EtlcraftConfigError
+from apache_airflow_providers_datacraft_defaults import get_datacraft_defaults
 from airflow.models import Variable
 import pathlib
 from enum import Enum
@@ -81,7 +81,7 @@ def get_single_config(config_name: str, metaconfig: Metaconfig, base_config=None
         case Source.templated_file:
             filepath = pathlib.Path(metaconfig.path)
             if not (filepath.exists() and filepath.is_file()):                
-                content = get_etlcraft_defaults(config_name, metaconfig.format, metaconfig.path, base_config)
+                content = get_datacraft_defaults(config_name, metaconfig.format, metaconfig.path, base_config)
             else:
                 content = filepath.read_text()
             return parse_by_format(content, metaconfig.format)

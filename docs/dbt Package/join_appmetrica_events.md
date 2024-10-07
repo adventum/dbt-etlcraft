@@ -40,7 +40,7 @@ SORT doc_status
 
 Макрос объединяет данные разных стримов, относящихся к источнику `appmetrica` и к пайплайну `events`.
 
-Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к datacraft).
 
 Далее для каждого стрима макрос создаёт его CTE (`common table expression`) с одинаковым набором полей и их расположением.
 
@@ -77,5 +77,5 @@ SORT doc_status
 
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```

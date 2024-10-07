@@ -1,5 +1,5 @@
 {%- macro get_table_types_sql() -%}
-  {{ return(adapter.dispatch('get_table_types_sql', 'etlcraft')()) }}
+  {{ return(adapter.dispatch('get_table_types_sql', 'datacraft')()) }}
 {%- endmacro -%}
 
 {% macro default__get_table_types_sql() %}

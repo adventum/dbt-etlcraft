@@ -1,5 +1,5 @@
 {% macro cast_date_field(f) -%}
-  {{ adapter.dispatch('cast_date_field', 'etlcraft')(f) }}
+  {{ adapter.dispatch('cast_date_field', 'datacraft')(f) }}
 {%- endmacro %}
 
 {% macro clickhouse__cast_date_field(f) -%}

@@ -45,5 +45,5 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('attr_myfirstfunnel_create_events') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```

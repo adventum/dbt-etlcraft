@@ -23,7 +23,7 @@ doc_status: ready
 ```sql
 SELECT
   order_id,
-  {{ etlcraft.json_extract_string('metadata', 'customer_id') }} as customer_id,
+  {{ datacraft.json_extract_string('metadata', 'customer_id') }} as customer_id,
   order_date
 FROM
   orders

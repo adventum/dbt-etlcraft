@@ -1,5 +1,5 @@
-{% macro etlcraft_defaults() %}
-{% set etlcraft_defaults_dict %}
+{% macro datacraft_defaults() %}
+{% set datacraft_defaults_dict %}
 sourcetypes:
   example:
     included_fields:
@@ -30,5 +30,5 @@ sourcetypes:
   calltouch:
     incremental_datetime_formula: replaceRegexpOne(replaceRegexpOne(date, '\\s+(\\d):', ' 0\\1:'), '(\\d{2})\\/(\\d{2})\\/(\\d{4})', '\\3-\\2-\\1') 
 {% endset %}
-  {{ return(fromyaml(etlcraft_defaults_dict)) }}
+  {{ return(fromyaml(datacraft_defaults_dict)) }}
 {% endmacro %}

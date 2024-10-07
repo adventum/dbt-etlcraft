@@ -42,7 +42,7 @@ SORT doc_status
 - `ad_plans_statistics`
 - `ad_plans`
 
-Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к datacraft).
 
 При помощи дополнительного макроса [[get_min_max_date]] в макросе задаются переменные 
 `date_from` и `date_to`, которые участвуют в отборе данных.
@@ -66,5 +66,5 @@ ad_plans.id = ad_plans_statistics.ad_plan_id
 
 -- depends_on: {{ ref('incremental_vkads_registry_default_ad_plans') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```

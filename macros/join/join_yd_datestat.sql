@@ -19,7 +19,7 @@
 {%- set sourcetype_name = 'yd' -%}
 {%- set pipeline_name = 'datestat' -%}
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+'  -%}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
+{%- set relations = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
 {%- if not relations -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -30,7 +30,7 @@
 {%- endif -%}
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
-  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% set min_max_date_dict = datacraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
   {% endif %}

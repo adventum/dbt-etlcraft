@@ -34,7 +34,7 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
@@ -48,7 +48,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 Технически макрос `join` - регулировщик. Поскольку данные в разных источниках организованы по-разному, внутри для каждого источника будет действовать своя разновидность макроса `join`, внутри которой и происходит основная работа с данными.
 
@@ -95,7 +95,7 @@ SORT doc_status
 
 Когда имя макроса, куда стоит перенаправить данные, определено, макрос join вызывает его.
 
-На данный момент в etlcraft реализованы следующие под-макросы шага `join`:
+На данный момент в datacraft реализованы следующие под-макросы шага `join`:
 - [[join_appmetrica_events]]
 - [[join_appmetrica_registry_appprofilematching]]
 - [[join_appsflyer_events]]
@@ -124,7 +124,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 ## Примечания
 

@@ -15,7 +15,7 @@ doc_status: ready
 
 Этот макрос принимает следующие аргументы:
 ```sql
-column_list, relation, defaults_dict=etlcraft.etlcraft_defaults(), do_not_throw=False
+column_list, relation, defaults_dict=datacraft.datacraft_defaults(), do_not_throw=False
 ```
 ## Функциональность
 

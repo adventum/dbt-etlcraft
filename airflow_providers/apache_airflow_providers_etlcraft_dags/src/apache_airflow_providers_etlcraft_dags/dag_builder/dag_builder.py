@@ -1,4 +1,4 @@
-from apache_airflow_providers_etlcraft_dags import get_configs
+from apache_airflow_providers_datacraft_dags import get_configs
 from datetime import datetime
 
 

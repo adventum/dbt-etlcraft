@@ -17,7 +17,7 @@ Suppose you have a table `orders` with a JSON column `metadata` and you want to 
 ```sql
 SELECT
   order_id,
-  {{ etlcraft.json_list_keys('metadata') }} as json_keys,
+  {{ datacraft.json_list_keys('metadata') }} as json_keys,
   order_date
 FROM
   orders
@@ -44,7 +44,7 @@ This macro returns a SQL snippet that can be used in a SELECT statement to list 
 ```sql
 SELECT
   order_id,
-  {{ etlcraft.json_list_keys('metadata') }} as json_keys,
+  {{ datacraft.json_list_keys('metadata') }} as json_keys,
   order_date
 FROM
   orders

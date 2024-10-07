@@ -1,7 +1,7 @@
 -- depends_on: {{ ref('full_datestat') }}
 -- depends_on: {{ ref('full_events') }}
 -- depends_on: {{ ref('attr_myfirstfunnel_final_table') }}
-{{ etlcraft.create_dataset(
+{{ datacraft.create_dataset(
     conditions =
     [{
     'pipeline':'datestat', 

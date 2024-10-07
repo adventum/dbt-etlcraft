@@ -56,5 +56,5 @@ SORT doc_status
 
 -- depends_on: {{ ref('attr_myfirstfunnel_create_missed_steps') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```

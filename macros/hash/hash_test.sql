@@ -14,7 +14,7 @@
 ) }}
 
 
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(datacraft.metadata()) -%}
 {%- set entities_list = [] -%}
 {% set registries = metadata['registries'] %} 
 

@@ -31,7 +31,7 @@ For example, `normalize_appmetrica_events_default_deeplinks`.
 
 A macro is called inside this file like this:
 ```sql
-{{ etlcraft.normalize() }}
+{{ datacraft.normalize() }}
 ```
 ## Arguments
 
@@ -77,21 +77,21 @@ If the pipeline corresponds to the directions `registry` or `periodstat`, then t
 
 Next, the macro will search for “raw” data for the model in which it is called. The name of the source table with the necessary “raw” data can be set directly when calling the macro - the `source_table` argument is responsible for this. 
 
-If the `source_table` parameter is not set when calling the macro, then we search for `relations` - that is, links to the necessary tables - using our own macro `etlcraft.get_relations_by_re`. It is located in the `clickhouse-adapters` file. This macro helps you find all the tables that fit a single template (for example, all the data from `appmetrica` for any project).
+If the `source_table` parameter is not set when calling the macro, then we search for `relations` - that is, links to the necessary tables - using our own macro `datacraft.get_relations_by_re`. It is located in the `clickhouse-adapters` file. This macro helps you find all the tables that fit a single template (for example, all the data from `appmetrica` for any project).
 
 Inside this macro there is an argument `schema_pattern`, which can be set when calling the macro `normalize`. If the raw data is in the same schema as the model, then `schema_pattern=target.schema`.If the raw data comes from the new version of Airbyte, then they are written to a separate scheme `airbyte_internal`.Therefore, by default we have `schema_pattern='airbyte_internal` set.
 
 If something is wrong with the search for `relations`, the macro will not go further and will give the user an error describing the problem.
                                                                  
-After the necessary “raw” data is found, the macro gathers together all the found tables through the `UNION ALL`. To do this, the macro `etlcraft.custom_union_relations_source` is used, into which previously found `relations` are passed.
+After the necessary “raw” data is found, the macro gathers together all the found tables through the `UNION ALL`. To do this, the macro `datacraft.custom_union_relations_source` is used, into which previously found `relations` are passed.
 
 Next, for those data that does not specify the absence of an incremental field with a date (that is, the arguments `incremental_datetime_formula` and `disable_incremental_datetime_field` are left as default - `none`), the formulas for the field with a date are `incremental_datetime_formula`. The [[get_from_default_dict]] macro is used for the search, into which the `defaults_dict` argument is passed. This argument is set by default as the result of calling another macro - `fieldconfig()`. Thus, by default, everything happens automatically, the user does not need to do anything. But at the same time, the user has the opportunity, if necessary, to influence the behavior of the macro.
   
-The macro also sets the `incremental_datetime_field` using the `etlcraft` macro `find_incremental_datetime_field()`.
+The macro also sets the `incremental_datetime_field` using the `datacraft` macro `find_incremental_datetime_field()`.
 
 Next, the fields are processed. A list of fields is passed to the input to the `normalize` macro - `fields`. For each element of this list (except for the incremental field with the date), processing takes place - we create an alias macro, making transliteration into English using the macro [[normalize_name]]. 
 
-Using the `etlcraft` macro [[json_extract_string]] sets the values of the field names from the Airbyte technical field `"_airbyte_data"` if the `debug_column_names` argument is left as `False` by default. If the argument is `True`, the previously created alias will be taken. The resulting list of fields is sorted alphabetically.
+Using the `datacraft` macro [[json_extract_string]] sets the values of the field names from the Airbyte technical field `"_airbyte_data"` if the `debug_column_names` argument is left as `False` by default. If the argument is `True`, the previously created alias will be taken. The resulting list of fields is sorted alphabetically.
 
 The incremental date field is processed separately - and for all cases its name becomes universal: `__date`. 
 
@@ -112,7 +112,7 @@ A file in sql format in the models folder. File name is: `normalize_appmetrica_e
 
 File Contents:
 ```sql
-{{ etlcraft.normalize(
+{{ datacraft.normalize(
 fields=['__clientName','__productName','appmetrica_device_id','city',
 'deeplink_url_parameters','event_receive_datetime','google_aid',
 'ios_ifa','os_name','profile_id','publisher_name']

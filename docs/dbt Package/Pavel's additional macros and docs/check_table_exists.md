@@ -6,7 +6,7 @@ doc_status: Pavel
 
 ```python
 {% macro check_table_exists(source_table = 'master',database = 'marts') -%}
-  {{ adapter.dispatch('check_table_exists', 'etlcraft')(source_table,database) }}
+  {{ adapter.dispatch('check_table_exists', 'datacraft')(source_table,database) }}
 {%- endmacro %}
 ```
 
@@ -54,7 +54,7 @@ This check_table_exists macro allows you to check the existence of a table in a 
 
 ```python
 {% macro check_table_exists(source_table = 'master',database = 'marts') -%}
-  {{ adapter.dispatch('check_table_exists', 'etlcraft')(source_table,database) }}
+  {{ adapter.dispatch('check_table_exists', 'datacraft')(source_table,database) }}
 {%- endmacro %}
 
 ```

@@ -38,7 +38,7 @@ SORT doc_status
 
 Макрос обрабатывает данные стрима `planCosts` из источника `sheets`. Предполагается, что такие данные относятся к пайплайну `periodstat`.
 
-Для вышеуказанного стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+Для вышеуказанного стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к datacraft).
 
 Далее полученные данные макрос обрабатывает (происходит переименование полей, для некоторых столбцов вводится LowCardinality).
 
@@ -55,5 +55,5 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('incremental_sheets_periodstat_default_planCosts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```

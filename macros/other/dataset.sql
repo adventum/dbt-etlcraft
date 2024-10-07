@@ -12,7 +12,7 @@
     FROM {{ ref('master') }}
     {% if table_prefixes is not none %}
     WHERE 
-        ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
+        ({{ datacraft.like_query_cycle(table_prefixes,'__table_name') }})
     {% endif %}    
 
 {% endmacro %}

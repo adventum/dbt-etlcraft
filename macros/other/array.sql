@@ -1,5 +1,5 @@
 {% macro array(arr) -%}
-  {{ adapter.dispatch('array', 'etlcraft')(arr) }}
+  {{ adapter.dispatch('array', 'datacraft')(arr) }}
 {%- endmacro %}
 
 {% macro default__array(arr) -%}

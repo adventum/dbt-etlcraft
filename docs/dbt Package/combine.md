@@ -33,7 +33,7 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
@@ -41,7 +41,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('join_ym_events') }}
 
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 ## Аргументы
 
@@ -130,7 +130,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('join_ym_events') }}
 
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 
 ## Примечания

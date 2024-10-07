@@ -31,14 +31,14 @@ For example, `incremental_appmetrica_events_default_deeplinks`.
 
 A macro is called inside this file like this:
 ```sql
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 
 From this step onwards, above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
 ```sql
 -- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
 
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 
 ## Arguments
@@ -117,7 +117,7 @@ File Contents:
 ```sql
 -- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
 
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 ## Notes
 

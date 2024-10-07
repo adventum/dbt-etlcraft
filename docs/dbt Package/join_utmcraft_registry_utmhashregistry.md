@@ -38,7 +38,7 @@ SORT doc_status
 
 Макрос обрабатывает данные стрима `utmresult` из источника `utmcraft`. Данные о профилях относятся к общей справочной информации - то есть к пайплайну `registry`.
 
-Для вышеуказанного стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+Для вышеуказанного стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к datacraft).
 
 Далее полученные данные макрос обрабатывает (происходит переименование полей, для некоторых столбцов вводится LowCardinality).
 
@@ -55,5 +55,5 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('incremental_utmcraft_registry_default_utmresult') }}
 
-{{ etlcraft.join(disable_incremental=True) }}
+{{ datacraft.join(disable_incremental=True) }}
 ```

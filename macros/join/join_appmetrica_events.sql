@@ -22,7 +22,7 @@
 
 {#- для каждого стрима собираем инкрементал-таблицы и создаём свой source_table_<...> -#}
 {%- set table_pattern_deeplinks = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'deeplinks' ~ '$' -%}
-{%- set relations_deeplinks = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_deeplinks) -%}   
+{%- set relations_deeplinks = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_deeplinks) -%}   
 {%- if not relations_deeplinks -%} 
     {{ exceptions.raise_compiler_error('No relations_deeplinks. 
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_deeplinks"') }}
@@ -34,7 +34,7 @@
 {%- endif -%}
 
 {%- set table_pattern_events = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'events' ~ '$' -%}
-{%- set relations_events = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
+{%- set relations_events = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
 {%- if not relations_events -%} 
     {{ exceptions.raise_compiler_error('No relations_events.
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_events"') }}
@@ -46,7 +46,7 @@
 {%- endif -%}
 
 {%- set table_pattern_install = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'installations' ~ '$' -%}
-{%- set relations_install = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_install) -%}   
+{%- set relations_install = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_install) -%}   
   {%- if not relations_install -%} 
         {{ exceptions.raise_compiler_error('No relations_install.
         No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_installations"') }}
@@ -58,7 +58,7 @@
   {%- endif -%}
 
 {%- set table_pattern_screen_view = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'screen_view' ~ '$' -%}
-{%- set relations_screen_view = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_screen_view) -%}   
+{%- set relations_screen_view = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_screen_view) -%}   
   {%- if not relations_screen_view -%} 
         {{ exceptions.raise_compiler_error('No relations_screen_view.
         No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_screen_view"') }}
@@ -70,7 +70,7 @@
   {%- endif -%}
 
 {%- set table_pattern_sessions_starts = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'sessions_starts' ~ '$' -%}
-{%- set relations_sessions_starts = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_sessions_starts) -%}   
+{%- set relations_sessions_starts = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_sessions_starts) -%}   
   {%- if not relations_sessions_starts -%} 
         {{ exceptions.raise_compiler_error('No relations_sessions_starts.
         No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_sessions_starts"') }}
@@ -96,14 +96,14 @@ SELECT
     '' AS promoCode, --
     os_name AS osName,
     city AS cityName,
-    assumeNotNull(coalesce({{ etlcraft.get_adsourcedirty() }}, publisher_name, '')) AS adSourceDirty,
+    assumeNotNull(coalesce({{ datacraft.get_adsourcedirty() }}, publisher_name, '')) AS adSourceDirty,
     extract(deeplink_url_parameters, 'utm_source=([^&]*)') AS utmSource,
     extract(deeplink_url_parameters, 'utm_medium=([^&]*)') AS utmMedium,
     extract(deeplink_url_parameters, 'utm_campaign=([^&]*)') AS utmCampaign,
     extract(deeplink_url_parameters, 'utm_term=([^&]*)') AS utmTerm,
     extract(deeplink_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     '' AS transactionId,
-    {{ etlcraft.get_utmhash('__', ['utmCampaign', 'utmContent']) }} AS utmHash,
+    {{ datacraft.get_utmhash('__', ['utmCampaign', 'utmContent']) }} AS utmHash,
     0 AS sessions, --
     0 AS addToCartSessions,
     0 AS cartViewSessions,
@@ -238,14 +238,14 @@ SELECT
     '' AS promoCode,
     os_name AS osName,
     city AS cityName,
-    if(match(click_url_parameters, 'organic'), 'Органическая установка', assumeNotNull(coalesce({{ etlcraft.get_adsourcedirty() }}, publisher_name, ''))) AS adSourceDirty,
+    if(match(click_url_parameters, 'organic'), 'Органическая установка', assumeNotNull(coalesce({{ datacraft.get_adsourcedirty() }}, publisher_name, ''))) AS adSourceDirty,
     extract(click_url_parameters, 'utm_source=([^&]*)') AS utmSource,
     extract(click_url_parameters, 'utm_medium=([^&]*)') AS utmMedium,
     extract(click_url_parameters, 'utm_campaign=([^&]*)') AS utmCampaign,
     extract(click_url_parameters, 'utm_term=([^&]*)') AS utmTerm,
     extract(click_url_parameters, 'utm_content=([^&]*)') AS utmContent,
     '' AS transactionId,
-    {{ etlcraft.get_utmhash('__', ['utmContent', 'utmCampaign']) }} AS utmHash,
+    {{ datacraft.get_utmhash('__', ['utmContent', 'utmCampaign']) }} AS utmHash,
     0 AS sessions,
     0 AS addToCartSessions,
     0 AS cartViewSessions,

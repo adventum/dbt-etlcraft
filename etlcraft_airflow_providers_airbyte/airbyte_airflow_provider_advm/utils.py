@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from airflow.models import Variable
 
 
-def etlcraft_variable(variable_id_without_prefix: str, namespace="etlcraft", default_value=None) -> str:
+def datacraft_variable(variable_id_without_prefix: str, namespace="datacraft", default_value=None) -> str:
     variable_id = f"{namespace}_{variable_id_without_prefix}"
     try:
         return Variable.get(variable_id)

@@ -33,7 +33,7 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
@@ -45,7 +45,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('link_registry_utmhashregistry') }}
 
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 ## Аргументы
 
@@ -248,7 +248,7 @@ FROM unnest_dates
 
 -- depends_on: {{ ref('link_registry_utmhashregistry') }}
 
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 
 ## Примечания

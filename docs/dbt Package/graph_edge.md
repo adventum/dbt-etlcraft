@@ -51,5 +51,5 @@ SORT doc_status
 
 -- depends_on: {{ ref('graph_tuples') }}
 
-{{ etlcraft.graph() }}
+{{ datacraft.graph() }}
 ```

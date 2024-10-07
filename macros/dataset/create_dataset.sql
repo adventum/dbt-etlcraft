@@ -28,7 +28,7 @@
 {%- endfor -%}
 
 {#- передаём полученный список relations сюда, и получаем таблицу, с которой будем работать -#}
-{% set source_table = '(' ~ etlcraft.custom_union_relations(relations=relation_list) ~ ')' %} 
+{% set source_table = '(' ~ datacraft.custom_union_relations(relations=relation_list) ~ ')' %} 
 
 {#- делаем материализацию table -#}
 {{

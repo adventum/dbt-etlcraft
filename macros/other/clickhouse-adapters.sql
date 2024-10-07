@@ -1,16 +1,16 @@
 {% macro get_relations_by_re(schema_pattern, table_pattern, database=target.database) -%}
-  {{ return(adapter.dispatch('get_relations_by_re', 'etlcraft')(schema_pattern, table_pattern, database)) }}
+  {{ return(adapter.dispatch('get_relations_by_re', 'datacraft')(schema_pattern, table_pattern, database)) }}
 {%- endmacro %}
 
 {% macro get_tables_by_re_sql(schema_pattern, table_pattern, database=target.database) -%}
-  {{ adapter.dispatch('get_tables_by_re_sql', 'etlcraft')(schema_pattern, table_pattern, database) }}
+  {{ adapter.dispatch('get_tables_by_re_sql', 'datacraft')(schema_pattern, table_pattern, database) }}
 {%- endmacro %}
 
 {% macro clickhouse__get_tables_by_re_sql(schema_pattern, table_pattern, database=target.database) %}
         select distinct
             table_schema as {{ adapter.quote("table_schema") }},
             table_name as {{ adapter.quote("table_name") }},
-            {{ etlcraft.get_table_types_sql() }}
+            {{ datacraft.get_table_types_sql() }}
         from information_schema.tables
         where match(table_schema, '{{ schema_pattern }}')
         and match(table_name, '{{ table_pattern }}')        
@@ -50,7 +50,7 @@
 {% macro clickhouse__get_relations_by_re(schema_pattern, table_pattern, database=target.database) %}
     {%- call statement('get_tables', fetch_result=True) %}
 
-      {{ etlcraft.get_tables_by_re_sql(schema_pattern, table_pattern, database) }}
+      {{ datacraft.get_tables_by_re_sql(schema_pattern, table_pattern, database) }}
 
     {%- endcall -%}
 

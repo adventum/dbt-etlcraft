@@ -22,7 +22,7 @@
 
 {%- set stream_name_ad_plans_statistics = 'ad_plans_statistics' -%}
 {%- set table_pattern_ad_plans_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_ad_plans_statistics ~ '$' -%}
-{%- set relations_ad_plans_statistics = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans_statistics) -%}   
+{%- set relations_ad_plans_statistics = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans_statistics) -%}   
 {%- if not relations_ad_plans_statistics -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_ad_plans_statistics ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -34,7 +34,7 @@
 
 {%- set stream_name_ad_plans = 'ad_plans' -%}
 {%- set table_pattern_ad_plans = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_ad_plans ~ '$' -%}
-{%- set relations_ad_plans = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans) -%}   
+{%- set relations_ad_plans = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ad_plans) -%}   
 {%- if not relations_ad_plans -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_ad_plans ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -45,7 +45,7 @@
 {%- endif -%}  
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
-  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% set min_max_date_dict = datacraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
   {% endif %}  

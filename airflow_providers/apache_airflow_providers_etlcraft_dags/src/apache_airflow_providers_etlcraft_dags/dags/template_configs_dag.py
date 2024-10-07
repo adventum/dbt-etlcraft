@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 import yaml
 
-import apache_airflow_providers_etlcraft as etlcraft
+import apache_airflow_providers_datacraft as datacraft
 
 from datetime import datetime
 
@@ -12,7 +12,7 @@ from airflow.models import DAG
 
 from airflow.operators.python_operator import PythonOperator
 
-from airflow_providers.apache_airflow_providers_etlcraft_dags.src.apache_airflow_providers_etlcraft_dags.exceptions import EtlcraftConfigError
+from airflow_providers.apache_airflow_providers_datacraft_dags.src.apache_airflow_providers_datacraft_dags.exceptions import EtlcraftConfigError
 
 
 """В панеле администратора должна быть переменная dbt_project_directory, в которой будет путь до 
@@ -72,7 +72,7 @@ def check_file(config_name: str, file_format: str, base_path: str = "", metaconf
 
     else:
         # Пример templated_file_path если есть base_path, но нет metaconfig_path
-        # /path_to_etlcraft/templated_configs/connectors.yml
+        # /path_to_datacraft/templated_configs/connectors.yml
         templated_file_path = (f"{base_path}{'/' if base_path else ''}"
                                f"templated_files/{config_name}"
                                f"{'/' if metaconfig_path else ''}{metaconfig_path}.{file_format}")
@@ -216,7 +216,7 @@ def generate_tasks(config_names: list[str], namespace: str, **kwargs):
 # Определение DAG
 params = {
     "config_names": ['connectors', 'other_variable', 'presets'],
-    "namespace": "etlcraft"
+    "namespace": "datacraft"
 }
 
 default_args = {

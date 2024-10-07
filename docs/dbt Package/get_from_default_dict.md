@@ -54,29 +54,29 @@ in_aux_macro: find_incremental_datetime_field
 В этом примере будет возвращено  `'red'`:
 
 ```dbt
-{% set result = etlcraft.get_from_default_dict(['fruit', 'color'], my_dict) %}
+{% set result = datacraft.get_from_default_dict(['fruit', 'color'], my_dict) %}
 ```
 
 В этом примере будет возвращено  `'Labrador'`:
 
 ```dbt
-{% set result = etlcraft.get_from_default_dict(['animal', 'details', 'breed'], my_dict) %}
+{% set result = datacraft.get_from_default_dict(['animal', 'details', 'breed'], my_dict) %}
 ```
 
 В этом примере будет возвращено  `'Washington'`:
 
 ```dbt
-{% set result = etlcraft.get_from_default_dict(['fruit', 'details', 'origin'], my_dict) %}
+{% set result = datacraft.get_from_default_dict(['fruit', 'details', 'origin'], my_dict) %}
 ```
 
 В этом примере будет возвращено  `'dog'`:
 
 ```dbt
-{% set result = etlcraft.get_from_default_dict(['animal', 'type'], my_dict) %}
+{% set result = datacraft.get_from_default_dict(['animal', 'type'], my_dict) %}
 ```
 
 В этом примере будет возвращена пустая строка (since there is no `'taste'` key under `'fruit'`):
 
 ```dbt
-{% set result = etlcraft.get_from_default_dict(['fruit', 'taste'], my_dict) %}
+{% set result = datacraft.get_from_default_dict(['fruit', 'taste'], my_dict) %}
 ```

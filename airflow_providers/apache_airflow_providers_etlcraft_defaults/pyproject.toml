@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "apache_airflow_providers_etlcraft_defaults"
+name = "apache_airflow_providers_datacraft_defaults"
 version = "0.0.1"
 authors = [
   { name="Adventum", email="n.sushchenko@adventum.ru" },
@@ -17,7 +17,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 [project.urls]
-Homepage = "https://github.com/adventum/dbt-etlcraft"
+Homepage = "https://github.com/adventum/dbt-datacraft"
 
 dependencies ="apache-airflow>=2.9.3, <3.0 Jinja2 PyYAML"
 

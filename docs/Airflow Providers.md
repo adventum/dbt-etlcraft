@@ -1,13 +1,13 @@
 
 # Airflow-провайдеры
 ## Обзор
-В **etlCraft** есть два провайдера для Apache Airflow:
-- [[#apache_airflow_providers_etlcraft_airbyte]] — содержит операторы для вызова методов API Airbyte, может использоваться независимо от второго пакета
-- [[#apache_airflow_providers_etlcraft_dags]] — содержит заготовки для [[Terms/DAG|DAG]]’ов, которые могут подготовить все инструменты для сбора и обработки данных.
-- [[#apache_airflow_providers_etlcraft_defaults]] — содержит список [[Configs|конфигов]] и способы их получения.
-## `apache_airflow_providers_etlcraft_airbyte`
+В **dataCraft Core** есть два провайдера для Apache Airflow:
+- [[#apache_airflow_providers_datacraft_airbyte]] — содержит операторы для вызова методов API Airbyte, может использоваться независимо от второго пакета
+- [[#apache_airflow_providers_datacraft_dags]] — содержит заготовки для [[Terms/DAG|DAG]]’ов, которые могут подготовить все инструменты для сбора и обработки данных.
+- [[#apache_airflow_providers_datacraft_defaults]] — содержит список [[Configs|конфигов]] и способы их получения.
+## `apache_airflow_providers_datacraft_airbyte`
 ### Описание
-Пакет `airflow_providers_etlcraft_airbyte` позволяет вызывать различные методы API Airbyte как задачи в Airflow. Оператор `AirbyteGeneralOperator` дает возможность выполнить произвольный вызов API. Остальные операторы вызывают конкретные методы, но при этом в отличие от API дают возможность работать не с ID, а с именами объектов. Например, для создания [[Airbyte Source]] требуется указать ID [[Airbyte Workspace]]. В операторе вместо этого можно указать его имя. Чтобы преобразовать имя в ID, потребуется передать дополнительный аргумент, который получается с помощью другого оператора (в данном случае [[AirbyteListWorkspaceOperator]]. Если имя уникальное, оператор сам подставит в вызов API нужный ID, если нет — вернет ошибку.
+Пакет `airflow_providers_datacraft_airbyte` позволяет вызывать различные методы API Airbyte как задачи в Airflow. Оператор `AirbyteGeneralOperator` дает возможность выполнить произвольный вызов API. Остальные операторы вызывают конкретные методы, но при этом в отличие от API дают возможность работать не с ID, а с именами объектов. Например, для создания [[Airbyte Source]] требуется указать ID [[Airbyte Workspace]]. В операторе вместо этого можно указать его имя. Чтобы преобразовать имя в ID, потребуется передать дополнительный аргумент, который получается с помощью другого оператора (в данном случае [[AirbyteListWorkspaceOperator]]. Если имя уникальное, оператор сам подставит в вызов API нужный ID, если нет — вернет ошибку.
 ### Версии API
 На момент написания, есть две версии API Airbyte:
 - [официальное API](https://reference.airbyte.com/reference/getting-started), в котором, однако часть функций отсутствует
@@ -36,14 +36,14 @@
 
 [How DAGs work](How%20DAGs%20work.md)
 ```dataview
-table status as "Status", assignee as "Assignee", due as "Due" from "etlCraft/etlCraft Documentation/Desctiption of DAGs"
+table status as "Status", assignee as "Assignee", due as "Due" from "dataCraft Core/dataCraft Core Documentation/Desctiption of DAGs"
 ```
 
 Интеграция с dataCraft
 
-## `apache_airflow_providers_etlcraft_dags`
+## `apache_airflow_providers_datacraft_dags`
 ### Описание
-Все DAG’и проекта etlCraft имеют общую структуру для того, чтобы пользователю легче было построить собственную логику на основе имеющихся “строительных блоков”. 
+Все DAG’и проекта **dataCraft Core** имеют общую структуру для того, чтобы пользователю легче было построить собственную логику на основе имеющихся “строительных блоков”. 
 ### Параметры запуска
 Во всех DAG’ах есть [параметр](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/params.html) `namespace`, который определяет:
 - какие конфиги будут использованы (см. [[Configs]])
@@ -64,21 +64,21 @@ table status as "Status", assignee as "Assignee", due as "Due" from "etlCraft/et
 В среде с установленным Airflow выполнить:
 
 ```bash
-pip install apache_airflow_etlcraft_dags_provider
+pip install apache_airflow_datacraft_dags_provider
 ```
 
-Данная команда установит оба пакета. Если нужен только функционал, связанных с Airbyte, то нужно установить пакет `apache_airflow_etlcraft_dags_provider`
+Данная команда установит оба пакета. Если нужен только функционал, связанных с Airbyte, то нужно установить пакет `apache_airflow_datacraft_dags_provider`
 ### Использование
 В Airflow создать DAG со следующим содержимым:
 
 ```python
-from apache_airflow_providers_etlcraft import DagBuilder
+from apache_airflow_providers_datacraft import DagBuilder
 DagBuilder.create_dags() # Создаем все DAGи с параметрами по умолчанию
 ```
 
 Пример с кастомизацией:
 ```python
-from apache_airflow_providers_etlcraft import DagBuilder
+from apache_airflow_providers_datacraft import DagBuilder
 dag = DagBuilder.prepare_dag("generate_models")
 dag.schedule_interval = "@weekly" # Изменяем расписание запуска на 1 раз в неделю
 def delete_normalize(prepared_tasks):
@@ -86,11 +86,11 @@ def delete_normalize(prepared_tasks):
 
 dag.add_prepare_hook(delete_normalize) # Удаляем задачи, связанные со слоем normalize
 ```
-## `apache_airflow_providers_etlcraft_defaults`
+## `apache_airflow_providers_datacraft_defaults`
 ### Описание
-Позволяет получать значения конфигов в тех случаях, когда пользователь не задал никаких значений. Например, при первоначальной настройке Airbyte требуется установить [[Airbyte Connector|коннекторы]]. За это отвечает DAG [[install_connectors]], для которого требуется указать пути к образам коннекторов и их документации. Если пользователь этого не сделал, можно взять список коннекторов по умолчанию, который лежит в файле `connectors.yaml` данного пакета. Его содержимое в виде словаря можно получить с помощью функции `get_etlcraft_defaults`.
+Позволяет получать значения конфигов в тех случаях, когда пользователь не задал никаких значений. Например, при первоначальной настройке Airbyte требуется установить [[Airbyte Connector|коннекторы]]. За это отвечает DAG [[install_connectors]], для которого требуется указать пути к образам коннекторов и их документации. Если пользователь этого не сделал, можно взять список коннекторов по умолчанию, который лежит в файле `connectors.yaml` данного пакета. Его содержимое в виде словаря можно получить с помощью функции `get_datacraft_defaults`.
 ### Несколько версий конфигов
-Для обратной совместимости пакет предусматривает хранение старых версий конфигов. Они имеют такое название, но с суффиксом версии, например `connectors_v1.1.yaml`. Этот суффикс передается при вызове `get_etlcraft_defaults`.
+Для обратной совместимости пакет предусматривает хранение старых версий конфигов. Они имеют такое название, но с суффиксом версии, например `connectors_v1.1.yaml`. Этот суффикс передается при вызове `get_datacraft_defaults`.
 ### Шаблонизация
 Иногда конфиг по умолчанию зависит от переменной, например, названия проекта. В этом случае в пакете этот конфиг содержится в виде шаблона [Jinja](https://jinja.palletsprojects.com/en/3.1.x/), например:
 ```yaml
@@ -102,13 +102,13 @@ entities:
   - AccountId
 ...
 ```
-Переменные для подстановки в шаблон передаются как аргумент в `get_etlcraft_defaults` в виде словаря, например `{"feature_has_metrika": true}`.
+Переменные для подстановки в шаблон передаются как аргумент в `get_datacraft_defaults` в виде словаря, например `{"feature_has_metrika": true}`.
 ### Использование
 ```python
-from apache_airflow_providers_etlcraft_defaults import get_etlcraft_defaults
-get_etlcraft_defaults('connectors', 'yaml', '')
+from apache_airflow_providers_datacraft_defaults import get_datacraft_defaults
+get_datacraft_defaults('connectors', 'yaml', '')
 ```
-Функция `get_etlcraft_defaults` принимает три аргумента:
+Функция `get_datacraft_defaults` принимает три аргумента:
 - `config_name` — название конфига, значение по умолчанию для которого  нужно найти
 - `format` — формат, `json` или `yaml`
 - `suffix` — суффикс для выбора нужной версии (по умолчанию `""`)

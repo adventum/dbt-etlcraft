@@ -61,7 +61,7 @@
 {#- отбираем те из них, которые существуют -#}
 {%- set registry_existing_tables = [] -%}
 {%- for table_ in registry_possible_tables -%}
-    {%- set table_exists = etlcraft.clickhouse__check_table_exists(source_table=table_, database=this.schema) -%}
+    {%- set table_exists = datacraft.clickhouse__check_table_exists(source_table=table_, database=this.schema) -%}
     {%- if table_exists == 1 -%} 
     {%- do registry_existing_tables.append(table_) -%}
     {%- endif -%} 

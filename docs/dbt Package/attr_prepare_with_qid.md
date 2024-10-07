@@ -47,5 +47,5 @@ SORT doc_status
 
 -- depends_on: {{ ref('graph_qid') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```

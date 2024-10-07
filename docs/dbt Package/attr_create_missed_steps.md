@@ -51,5 +51,5 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('attr_myfirstfunnel_calculate_period_number') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```

@@ -21,7 +21,7 @@
 {%- set stream_name = 'yandex_metrika_stream' -%} {# но может быть и иное название стрима, например, data_visits #}
 {# set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_' ~ stream_name ~ '$' #}
 {%- set table_pattern = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_[^_]+_'  -%}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
+{%- set relations = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern) -%}  
 {%- if not relations -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -32,7 +32,7 @@
 {%- endif -%}
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
-  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% set min_max_date_dict = datacraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
   {% endif %}
@@ -61,17 +61,17 @@ SELECT
     'web' AS osName,
     ymsregionCity AS cityName,
     lower(ymsregionCity) AS cityCode,
-    assumeNotNull(coalesce({{ etlcraft.get_adsourcedirty('ymsUTMSource', 'ymsUTMMedium') }}, 
-    multiIf(ymslastTrafficSource = 'ad', {{ etlcraft.get_adsourcedirty('ymslastAdvEngine', 'ymslastTrafficSource') }},  
-    ymslastTrafficSource = 'organic', {{ etlcraft.get_adsourcedirty('ymslastSearchEngine', 'ymslastTrafficSource') }},  
-    {{ etlcraft.get_adsourcedirty('ymslastReferalSource', 'ymslastTrafficSource') }}), '')) AS adSourceDirty, 
+    assumeNotNull(coalesce({{ datacraft.get_adsourcedirty('ymsUTMSource', 'ymsUTMMedium') }}, 
+    multiIf(ymslastTrafficSource = 'ad', {{ datacraft.get_adsourcedirty('ymslastAdvEngine', 'ymslastTrafficSource') }},  
+    ymslastTrafficSource = 'organic', {{ datacraft.get_adsourcedirty('ymslastSearchEngine', 'ymslastTrafficSource') }},  
+    {{ datacraft.get_adsourcedirty('ymslastReferalSource', 'ymslastTrafficSource') }}), '')) AS adSourceDirty, 
     ymsUTMSource AS utmSource,
     ymsUTMMedium AS utmMedium,
     ymsUTMCampaign AS utmCampaign,
     ymsUTMTerm AS utmTerm,
     ymsUTMContent AS utmContent,
     ymspurchaseID AS transactionId,
-    {{ etlcraft.get_utmhash('__', ['ymsUTMCampaign', 'ymsUTMContent']) }} AS utmHash,
+    {{ datacraft.get_utmhash('__', ['ymsUTMCampaign', 'ymsUTMContent']) }} AS utmHash,
     1 AS sessions,
     if(countSubstrings(ymsgoalsID, '131126368')>0,1,0) AS addToCartSessions, 
     if(countSubstrings(ymsgoalsID, '229829884')>0,1,0) AS cartViewSessions, 

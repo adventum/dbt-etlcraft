@@ -185,7 +185,7 @@ SELECT *,
     {% if datetime_field -%} {# если поле datetime_field из метадаты есть #}
     THEN toDateTime({{datetime_field}}) {# то приводим его к формату даты #}
     {% else -%} {# если такого поля в метадате нет #}
-    THEN toDateTime({{ etlcraft.zero_date() }}) {# то приводим дефолтное поле к формату даты через свой макрос, либо просто меняем эту строку на THEN null #}
+    THEN toDateTime({{ datacraft.zero_date() }}) {# то приводим дефолтное поле к формату даты через свой макрос, либо просто меняем эту строку на THEN null #}
     {% endif -%}{%- endif -%} {% endfor -%}
     END) AS __datetime
 FROM (
@@ -193,12 +193,12 @@ FROM (
 SELECT *, 
 {% for link in links_list %}
 {#- добавляем хэши для отобранных линков -#}
-    {{ etlcraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
+    {{ datacraft.link_hash(link, metadata) }}{% if not loop.last %},{% endif -%}  {# ставим запятые везде, кроме последнего элемента цикла #}
 {% endfor %}
 {% if final_entities_list and links_list %},{%- endif -%} {# если есть сущности, ставим перед их началом запятую #}
 {% for entity in final_entities_list %}
 {#- добавляем хэши для отобранных сущностей -#}
-    {{ etlcraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
+    {{ datacraft.entity_hash(entity, metadata) }}{% if not loop.last %},{% endif -%} {# ставим запятые везде, кроме последнего элемента цикла #}
 {% endfor -%}
 FROM {{ ref(table_pattern) }} 
 WHERE 

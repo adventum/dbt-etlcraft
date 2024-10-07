@@ -3,7 +3,7 @@ import yaml
 import json
 from jinja2 import Environment, FileSystemLoader
 
-def get_etlcraft_defaults(config_name: str, format: str, suffix: str="", template_variables: dict={}) -> dict:
+def get_datacraft_defaults(config_name: str, format: str, suffix: str="", template_variables: dict={}) -> dict:
     filename = f"{config_name}{suffix or ''}.{format}"
     directory_path = pathlib.Path(__file__).parent
     filepath =  directory_path / filename

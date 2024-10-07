@@ -33,13 +33,13 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 ## Аргументы
 
@@ -161,7 +161,7 @@ SELECT *,
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 
 ## Примечания

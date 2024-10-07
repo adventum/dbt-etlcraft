@@ -43,7 +43,7 @@ SORT doc_status
 - banners
 - campaigns
 
-Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к etlcraft).
+Для каждого стрима макрос ищет `relations` при помощи вспомогательного макроса [[get_relations_by_re]], затем создаёт таблицу-источник при помощи вспомогательного макроса `dbt_utils.union_relations`. (Этот макрос из пакета dbt_utils, он не относится к datacraft).
 
 При помощи дополнительного макроса [[get_min_max_date]] в макросе задаются переменные 
 `date_from` и `date_to`, которые участвуют в отборе данных.
@@ -67,5 +67,5 @@ SORT doc_status
 
 -- depends_on: {{ ref('incremental_mt_registry_default_campaigns') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```

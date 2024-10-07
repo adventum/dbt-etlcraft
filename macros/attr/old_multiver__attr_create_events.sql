@@ -14,7 +14,7 @@
 }}
 
 
-{%- set metadata = fromyaml(etlcraft.metadata()) -%}
+{%- set metadata = fromyaml(datacraft.metadata()) -%}
 {%- set funnels = metadata['funnels'] -%}
 
 

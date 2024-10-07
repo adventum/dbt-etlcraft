@@ -19,7 +19,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 ## Functionality
 
 ```sql
-{{ etlcraft.normalize_name(name) }}
+{{ datacraft.normalize_name(name) }}
 ```
 
 This macro takes a `name` as an argument and returns a version of it that can be used as a column name. The normalization process includes the following steps:
@@ -32,7 +32,7 @@ This macro takes a `name` as an argument and returns a version of it that can be
 
 ```sql
 -- Normalize a column name
-{{ etlcraft.normalize_name('My Column Name') }}
+{{ datacraft.normalize_name('My Column Name') }}
 ```
 Output:
 ```sql

@@ -1,5 +1,5 @@
 {%- macro zero_date() -%}
-    {{ return(adapter.dispatch('zero_date', 'etlcraft')()) }}
+    {{ return(adapter.dispatch('zero_date', 'datacraft')()) }}
 {%- endmacro %}
 
 {#- этот макрос нужен, чтобы для разных типов баз данных сгенерировать дефолтное поле с датой -#}

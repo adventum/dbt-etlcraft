@@ -7,13 +7,13 @@
 {# 
     Настройка материализации данных.
     order_by=('node_id_left') определяет порядок сортировки данных по идентификатору узла слева.
-    pre_hook="{{ etlcraft.calc_graph() }}" указывает на необходимость выполнения предварительного хука etlcraft.calc_graph() перед выполнением запроса.
+    pre_hook="{{ datacraft.calc_graph() }}" указывает на необходимость выполнения предварительного хука datacraft.calc_graph() перед выполнением запроса.
 #}
 {{
     config(
         materialized='table',
         order_by=('node_id_left'),
-        pre_hook="{{ etlcraft.calc_graph() }}"
+        pre_hook="{{ datacraft.calc_graph() }}"
     )
 }}
 

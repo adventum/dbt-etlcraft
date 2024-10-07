@@ -24,7 +24,7 @@ The dataset macro is used to create an SQL query that retrieves data from the ma
     FROM {{ ref('master') }}
     {% if table_prefixes is not none %}
     WHERE
-        ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
+        ({{ datacraft.like_query_cycle(table_prefixes,'__table_name') }})
     {% endif %}
 {% endmacro %}
 ```
@@ -58,7 +58,7 @@ This macro creates an SQL query that retrieves all columns from the master table
     FROM {{ ref('master') }}
     {% if table_prefixes is not none %}
     WHERE
-        ({{ etlcraft.like_query_cycle(table_prefixes,'__table_name') }})
+        ({{ datacraft.like_query_cycle(table_prefixes,'__table_name') }})
     {% endif %}
 
 {% endmacro %}

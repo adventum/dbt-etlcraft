@@ -22,7 +22,7 @@
 
 {%- set stream_name_banners_statistics = 'banners_statistics' -%}
 {%- set table_pattern_banners_statistics = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_banners_statistics ~ '$' -%}
-{%- set relations_banners_statistics = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners_statistics) -%}   
+{%- set relations_banners_statistics = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners_statistics) -%}   
 {%- if not relations_banners_statistics -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_banners_statistics ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -34,7 +34,7 @@
 
 {%- set stream_name_banners = 'banners' -%}
 {%- set table_pattern_banners = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_banners ~ '$' -%}
-{%- set relations_banners = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners) -%}   
+{%- set relations_banners = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_banners) -%}   
 {%- if not relations_banners -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_banners ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -46,7 +46,7 @@
 
 {%- set stream_name_campaigns = 'campaigns' -%}
 {%- set table_pattern_campaigns = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_campaigns ~ '$' -%}
-{%- set relations_campaigns = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_campaigns) -%}   
+{%- set relations_campaigns = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_campaigns) -%}   
 {%- if not relations_campaigns -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_campaigns ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -57,7 +57,7 @@
 {%- endif -%}
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
-  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% set min_max_date_dict = datacraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
   {% endif %}
@@ -101,7 +101,7 @@ SELECT
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_campaign=([^&]*)') AS utmCampaign,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_term=([^&]*)') AS utmTerm,
     extract(JSON_VALUE(replaceAll(banners.urls, '''', '"'), '$.primary.url'), 'utm_content=([^&]*)') AS utmContent,
-    {{ etlcraft.get_utmhash('__', fields=['utmContent', 'utmCampaign', 'adCampaignName']) }} AS utmHash,
+    {{ datacraft.get_utmhash('__', fields=['utmContent', 'utmCampaign', 'adCampaignName']) }} AS utmHash,
     JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.title_25.text') AS adTitle1,
     --'' AS adTitle2,
     assumeNotNull(coalesce(nullif(JSON_VALUE(replaceAll(banners.textblocks, '''', '"'), '$.text_90.text'), ''),

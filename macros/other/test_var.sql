@@ -37,7 +37,7 @@
     '2023-12-03' as __datetime
 {% endset %}
 
-{% set min_max_date = etlcraft.get_min_max_date('incremental','testsourcetypename','testtemplatename',source_query) %}
+{% set min_max_date = datacraft.get_min_max_date('incremental','testsourcetypename','testtemplatename',source_query) %}
 {% set date_from = min_max_date.get('date_from')[0] ~'' %}
 {% set date_to = min_max_date.get('date_to')[0] ~''  %}
 

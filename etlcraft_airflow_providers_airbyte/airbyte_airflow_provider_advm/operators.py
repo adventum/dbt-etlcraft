@@ -15,7 +15,7 @@ from airbyte_airflow_provider_advm.utils import (
     first_level_date_from_field_names,
     first_level_date_to_field_names,
     lookup_fields_paths_mapping,
-    etlcraft_variable,
+    datacraft_variable,
 )
 from airbyte_api.models import (
     CheckConnectionForUpdateRequest,
@@ -266,7 +266,7 @@ class CollectConfigsOperator(BaseOperator):
         self,
         *,
         config_names: Optional[list[str]] = None,
-        namespace: Optional[str] = "etlcraft",
+        namespace: Optional[str] = "datacraft",
         entire_datacraft_variable: Optional[bool] = True,
         **kwargs,
     ) -> None:
@@ -280,9 +280,9 @@ class CollectConfigsOperator(BaseOperator):
         format_key = f"format_for_config_{config_name}"
         path_key = f"path_for_config_{config_name}"
 
-        source = etlcraft_variable(source_key, self.namespace, default_value="file")
-        file_format = etlcraft_variable(format_key, self.namespace, default_value="yaml")
-        path = etlcraft_variable(path_key, self.namespace, default_value=f"configs/{config_name}")
+        source = datacraft_variable(source_key, self.namespace, default_value="file")
+        file_format = datacraft_variable(format_key, self.namespace, default_value="yaml")
+        path = datacraft_variable(path_key, self.namespace, default_value=f"configs/{config_name}")
 
         if source == "file" and not path.endswith(('.json', '.yml', '.yaml')):
             extension = ".json" if file_format == "json" else ".yml"
@@ -295,7 +295,7 @@ class CollectConfigsOperator(BaseOperator):
                 else:
                     config = yaml.safe_load(file)
         elif source == "datacraft_variable":
-            json_datacraft_variable = etlcraft_variable(config_name, self.namespace)
+            json_datacraft_variable = datacraft_variable(config_name, self.namespace)
             if type(json_datacraft_variable) is str:
                 json_datacraft_variable = json.loads(json_datacraft_variable)
 
@@ -304,7 +304,7 @@ class CollectConfigsOperator(BaseOperator):
             else:
                 config = json_datacraft_variable.get(path, {})
         elif source == "other_variable":
-            other_variable_name = etlcraft_variable(f"value_for_config_{config_name}")
+            other_variable_name = datacraft_variable(f"value_for_config_{config_name}")
             config = Variable.get(path, default_var=other_variable_name)
             if file_format == "json":
                 config = json.loads(config)

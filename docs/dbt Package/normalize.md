@@ -33,7 +33,7 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.normalize() }}
+{{ datacraft.normalize() }}
 ```
 ## Аргументы
 
@@ -117,7 +117,7 @@ SORT doc_status
 
 Содержимое файла:
 ```sql
-{{ etlcraft.normalize(
+{{ datacraft.normalize(
 fields=['__clientName','__productName','appmetrica_device_id','city',
 'deeplink_url_parameters','event_receive_datetime','google_aid',
 'ios_ifa','os_name','profile_id','publisher_name']
