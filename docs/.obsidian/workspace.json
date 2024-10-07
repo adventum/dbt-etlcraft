@@ -196,8 +196,9 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "0af5e166ee603c0c",
+  "active": "d90d340f8abc6a01",
   "lastOpenFiles": [
+    "dataCraftCore",
     "Tasks/Заменить в конфиге connectors name на slug.md",
     "Tasks/README.md",
     "README.md",
@@ -225,7 +226,6 @@
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
     "Airflow Providers/Configs/dimensions.md",
-    "Terms/Pipeline.md",
     "Terms/attachments/airbyte_stream_example.jpg",
     "Terms/attachments/list_of_connectors_example.jpg",
     "Terms/attachments/airbyte_new_destination_example_2.jpg",
