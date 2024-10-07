@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Pipeline.md",
+                "file": "Terms/Stream.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Pipeline.md",
+                "file": "Terms/Stream.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Pipeline.md",
+                "file": "Terms/Stream.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Pipeline.md"
+                "file": "Terms/Stream.md"
               }
             }
           }
@@ -197,9 +197,11 @@
   },
   "active": "d546b0b75fae7160",
   "lastOpenFiles": [
+    "Terms/airbyte_stream_example.jpg",
+    "Terms/Source.md",
+    "Terms/Pipeline.md",
     "dbt Package/README.md",
     "dbt Package/normalize.md",
-    "Terms/Pipeline.md",
     "Terms/Model.md",
     "dbt Package/join.md",
     "dbt Package/full.md",
@@ -216,7 +218,6 @@
     "Terms/airbyte_new_destination_example_2.jpg",
     "Terms/airbyte_new_destination_example_1.jpg",
     "краткое название источника.md",
-    "Terms/Source.md",
     "Terms/Stream.md",
     "Terms/Slug.md",
     "Airflow Providers/Configs/connectors.md",
@@ -225,7 +226,6 @@
     "Airbyte Connectors/profitbase.md",
     "Terms.md",
     "Terms/Airbyte Workspace.md",
-    "DAG.md",
     "Airbyte Connectors",
     "Terms/airbyte_new_source_example_2.jpg",
     "Terms/airbyte_new_source_example_1.jpg",

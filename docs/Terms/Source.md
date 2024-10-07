@@ -13,20 +13,19 @@ doc_status: in progress
 Краткое название источников используется 
 - при создании [[Airbyte Connection]], 
 - в конфигах [[presets]], [[datasources]], [[Airflow Providers/Configs/connectors|connectors]]
-- при наименовании моделей в **dataCraft Core**
+- при наименовании [[Model|моделей]] в **dataCraft Core**
 
-|                               |                                |                                    |
-| ----------------------------- | ------------------------------ | ---------------------------------- |
-| **Полное название источника** | **Краткое название источника** | **Название аккаунта**              |
-| Adjust                        | adjust                         | id приложения                      |
-| AppsFlyer                     | appsflyer                      | id приложения                      |
-| AppMetrica                    | appmetrica                     | id приложения                      |
-| myTarget                      | mt                             | id кабинета                        |
-| UtmCraft                      | utmcraft                       | -                                  |
-| VK Реклама                    | vkads                          | id кабинета                        |
-| Яндекс Директ                 | yd                             | логин                              |
-| Яндекс Метрика                | ym                             | id счётчика                        |
-| Яндекс Диск                   | ydisk                          | название папки                     |
-| Google Sheets                 | sheets                         | название страницы                  |
-| Calltouch                     | calltouch                      | site id                            |
-| Яндекс ПромоСтраницы          | promopages                     | id из ссылки на рекламные кампании |
+| **Полное название источника** | **Краткое название источника** | **Название аккаунта**          |
+| --------------------------------- | ---------------------------------- | ---------------------------------- |
+| Adjust                            | adjust                             | id приложения                      |
+| AppsFlyer                         | appsflyer                          | id приложения                      |
+| AppMetrica                        | appmetrica                         | id приложения                      |
+| myTarget                          | mt                                 | id кабинета                        |
+| UtmCraft                          | utmcraft                           | -                                  |
+| VK Реклама                        | vkads                              | id кабинета                        |
+| Яндекс Директ                     | yd                                 | логин                              |
+| Яндекс Метрика                    | ym                                 | id счётчика                        |
+| Яндекс Диск                       | ydisk                              | название папки                     |
+| Google Sheets                     | sheets                             | название страницы                  |
+| Calltouch                         | calltouch                          | site id                            |
+| Яндекс ПромоСтраницы              | promopages                         | id из ссылки на рекламные кампании |
