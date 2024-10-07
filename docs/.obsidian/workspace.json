@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Terms/Model.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Terms/Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,9 +151,9 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Terms/Model.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md"
+                "file": "Terms/Model.md"
               }
             }
           }
@@ -197,22 +197,25 @@
   },
   "active": "d546b0b75fae7160",
   "lastOpenFiles": [
-    "Terms/Name (config).md",
+    "Terms/Stream.md",
+    "Terms/Source.md",
+    "Terms/Slug.md",
+    "Airflow Providers/Configs/connectors.md",
+    "Terms/Preset.md",
+    "Terms/Pipeline.md",
+    "dbt Package/full.md",
+    "docs_status.md",
     "Airflow Providers/Configs/dimensions.md",
+    "Terms/Name (config).md",
     "Airflow Providers/Configs/event_segments.md",
     "Airflow Providers/Configs/attributions.md",
     "Airflow Providers/Configs/datasources.md",
-    "docs_status.md",
     "Terms/Шаблон.md",
-    "Terms/Source.md",
-    "Terms/Stream.md",
     "Terms/airbyte_stream_example.jpg",
-    "Terms/Pipeline.md",
     "dbt Package/README.md",
     "dbt Package/normalize.md",
     "Terms/Model.md",
     "dbt Package/join.md",
-    "dbt Package/full.md",
     "Terms/Link.md",
     "Terms/Entity.md",
     "Terms/Airbyte Connection.md",
@@ -224,9 +227,6 @@
     "Connectors.md",
     "Terms/airbyte_new_destination_example_2.jpg",
     "Terms/airbyte_new_destination_example_1.jpg",
-    "краткое название источника.md",
-    "Terms/Slug.md",
-    "Airflow Providers/Configs/connectors.md",
     "Airbyte Connectors",
     "Terms/airbyte_new_source_example_2.jpg",
     "Terms/airbyte_new_source_example_1.jpg",
