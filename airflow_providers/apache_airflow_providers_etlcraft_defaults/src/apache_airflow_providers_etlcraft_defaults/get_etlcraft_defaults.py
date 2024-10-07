@@ -10,7 +10,7 @@ def get_datacraft_defaults(config_name: str, format: str, suffix: str="", templa
     if not (filepath.exists() and filepath.is_file()):
         filepath = pathlib.Path(__file__).parent / f"{filename}.j2"
         if not (filepath.exists() and filepath.is_file()):
-            raise EtlcraftDefaultsError(f"config not found ({str(filepath)})")
+            raise datacraftDefaultsError(f"config not found ({str(filepath)})")
         template_loader = FileSystemLoader(searchpath=directory_path)
         jinja_env = Environment(loader=template_loader)
         template = jinja_env.get_template(str(filepath))
@@ -22,12 +22,12 @@ def get_datacraft_defaults(config_name: str, format: str, suffix: str="", templa
             return yaml.safe_load(file_content)
         case 'json':
             return json.loads(file_content)
-    raise EtlcraftDefaultsError(f"unknown format ({format})")        
+    raise datacraftDefaultsError(f"unknown format ({format})")        
 
-class EtlcraftDefaultsError(Exception):
+class datacraftDefaultsError(Exception):
     def __init__(self, message: str):
         super().__init__(message)
         self.message = message
 
     def __str__(self):
-        return f"EtlcraftDefaultsError: {self.message}"
+        return f"datacraftDefaultsError: {self.message}"
