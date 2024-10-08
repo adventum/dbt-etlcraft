@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Source.md",
+                "file": "Terms/Airbyte Destination.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Source.md",
+                "file": "Terms/Airbyte Destination.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Source.md",
+                "file": "Terms/Airbyte Destination.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Source.md"
+                "file": "Terms/Airbyte Destination.md"
               }
             }
           }
@@ -197,17 +197,22 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
-    "Airflow Providers/Configs/connectors.md",
+    "Terms/Template.md",
+    "Terms/Airbyte Destination.md",
+    "Terms/Airbyte Connection.md",
+    "README.md",
+    "dbt Package/normalize.md",
     "Terms/Airbyte Connector.md",
+    "Terms/Source.md",
+    "Terms/Airbyte Workspace.md",
+    "docs_status.md",
+    "Airflow Providers/Configs/connectors.md",
     "Terms/Airbyte Source.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
-    "Terms/Airbyte Connection.md",
-    "Terms/Source.md",
     "Terms.md",
     "Tasks/README.md",
     "dataCraftCore",
     "Tasks/Заменить в конфиге connectors name на slug.md",
-    "README.md",
     "Airflow Providers/DAGs/generate_models.md",
     "Tasks/Turn the create_models_file function into a statement.md",
     "Airflow Providers/DAGs/template_configs.md",
@@ -218,13 +223,8 @@
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
     "dbt Package/graph.md",
-    "docs_status.md",
     "Connectors.md",
     "dbt Package/combine.md",
-    "Terms/Model.md",
-    "dbt Package/README.md",
-    "dbt Package/attr.md",
-    "dbt Package/join.md",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
     "Terms/attachments/airbyte_stream_example.jpg",
