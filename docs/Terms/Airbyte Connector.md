@@ -20,3 +20,4 @@ doc_status: ready (нужно ревью)
 ![[list_of_connectors_example.jpg]]
 
 В **dataCraft Core** добавление новых и обновление существующих коннекторов автоматизировано и осуществляется DAG’ом [[install_connectors]] на основе конфига [[Airflow Providers/Configs/connectors|connectors]].
+

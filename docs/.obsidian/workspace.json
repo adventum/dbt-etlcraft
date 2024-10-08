@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Airbyte Source.md",
+                "file": "Terms/Source.md",
                 "mode": "source",
                 "source": false
               }
@@ -61,14 +61,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tasks/README.md",
+                "file": "Terms/Airbyte Connection.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -97,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "etlcraft",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -114,12 +114,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 224.5
+    "width": 268.5
   },
   "right": {
     "id": "22ccde28bd1633ce",
@@ -135,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tasks/README.md",
+                "file": "Terms/Source.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tasks/README.md",
+                "file": "Terms/Source.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -175,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tasks/README.md"
+                "file": "Terms/Source.md"
               }
             }
           }
@@ -196,11 +195,18 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "d90d340f8abc6a01",
+  "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/connectors.md",
+    "Terms/Airbyte Connector.md",
+    "Terms/Airbyte Source.md",
+    "Terms/attachments/airbyte_source_name_example.jpg",
+    "Terms/Airbyte Connection.md",
+    "Terms/Source.md",
+    "Terms.md",
+    "Tasks/README.md",
     "dataCraftCore",
     "Tasks/Заменить в конфиге connectors name на slug.md",
-    "Tasks/README.md",
     "README.md",
     "Airflow Providers/DAGs/generate_models.md",
     "Tasks/Turn the create_models_file function into a statement.md",
@@ -212,20 +218,15 @@
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
     "dbt Package/graph.md",
-    "Terms/Source.md",
     "docs_status.md",
     "Connectors.md",
-    "Terms/Airbyte Connection.md",
     "dbt Package/combine.md",
     "Terms/Model.md",
     "dbt Package/README.md",
     "dbt Package/attr.md",
     "dbt Package/join.md",
-    "dbt Package/incremental.md",
-    "dbt Package/normalize.md",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
-    "Airflow Providers/Configs/dimensions.md",
     "Terms/attachments/airbyte_stream_example.jpg",
     "Terms/attachments/list_of_connectors_example.jpg",
     "Terms/attachments/airbyte_new_destination_example_2.jpg",
@@ -235,14 +236,12 @@
     "Terms/attachments/airbyte_new_source_example_1.jpg",
     "Terms/attachments/airbyte_workspace_exampleJPG.jpg",
     "Terms/attachments/select_sreams_airbyte_example 1.jpg",
-    "Terms/attachments/select_sreams_airbyte_example.jpg",
     "dbt Package/Pavel's additional macros and docs",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
     "HowTos",
     "Tasks",
-    "Airflow Providers/DAGs",
-    "Airflow Providers/Configs"
+    "Airflow Providers/DAGs"
   ]
 }
