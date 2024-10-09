@@ -2,7 +2,7 @@
 term_name: Имя или name в конфигах
 description: Название на русском
 type: term
-doc_status: empty
+doc_status: ready (нужно ревью)
 ---
 В методологии **dataCraft Core** используется три уровня идентификации объектов:
 * [[Slug]]

@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Name (config).md",
+                "file": "Terms/Id.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Name (config).md",
+                "file": "Terms/Id.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Name (config).md",
+                "file": "Terms/Id.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Name (config).md"
+                "file": "Terms/Id.md"
               }
             }
           }
@@ -197,15 +197,17 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
-    "Airflow Providers/Configs/dimensions.md",
+    "Airflow Providers/Configs/datasources.md",
+    "Terms/Id.md",
+    "README.md",
     "Terms/Name (config).md",
+    "Terms/Slug.md",
+    "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
     "Airflow Providers/DAGs.md",
     "Airflow Providers/How DAGs work.md",
-    "README.md",
     "Connectors.md",
-    "Terms/Slug.md",
     "Airflow Providers/Configs/attributions.md",
     "Airflow Providers/Configs/event_segments.md",
     "Terms/Stream.md",
@@ -223,8 +225,6 @@
     "Terms/attachments/airbyte_source_name_example.jpg",
     "Tasks/README.md",
     "dataCraftCore",
-    "Tasks/Заменить в конфиге connectors name на slug.md",
-    "Airflow Providers/DAGs/generate_models.md",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
     "Terms/attachments/airbyte_stream_example.jpg",
