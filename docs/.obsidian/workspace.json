@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Id.md",
+                "file": "Terms/Slug.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Id.md",
+                "file": "Terms/Slug.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Id.md",
+                "file": "Terms/Slug.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Id.md"
+                "file": "Terms/Slug.md"
               }
             }
           }
@@ -197,11 +197,12 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
-    "Airflow Providers/Configs/datasources.md",
     "Terms/Id.md",
-    "README.md",
-    "Terms/Name (config).md",
     "Terms/Slug.md",
+    "Terms/Name (config).md",
+    "Terms/Model.md",
+    "Airflow Providers/Configs/datasources.md",
+    "README.md",
     "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
@@ -223,7 +224,6 @@
     "Airflow Providers/Configs/connectors.md",
     "Terms/Airbyte Source.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
-    "Tasks/README.md",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
