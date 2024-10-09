@@ -1,5 +1,5 @@
 ---
-term_name: стрим
+term_name: Стрим
 description: Группа связанных записей, которая в Airbyte загружается из источника.
 type: term
 doc_status: ready (нужно ревью)

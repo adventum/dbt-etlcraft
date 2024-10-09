@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Airbyte Destination.md",
+                "file": "Terms/Name (config).md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "slug",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Airbyte Destination.md",
+                "file": "Terms/Name (config).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Airbyte Destination.md",
+                "file": "Terms/Name (config).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Airbyte Destination.md"
+                "file": "Terms/Name (config).md"
               }
             }
           }
@@ -197,34 +197,34 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/dimensions.md",
+    "Terms/Name (config).md",
+    "Airflow Providers/Configs.md",
+    "Airflow Providers.md",
+    "Airflow Providers/DAGs.md",
+    "Airflow Providers/How DAGs work.md",
+    "README.md",
+    "Connectors.md",
+    "Terms/Slug.md",
+    "Airflow Providers/Configs/attributions.md",
+    "Airflow Providers/Configs/event_segments.md",
+    "Terms/Stream.md",
+    "Terms.md",
+    "docs_status.md",
     "Terms/Template.md",
     "Terms/Airbyte Destination.md",
     "Terms/Airbyte Connection.md",
-    "README.md",
     "dbt Package/normalize.md",
     "Terms/Airbyte Connector.md",
     "Terms/Source.md",
     "Terms/Airbyte Workspace.md",
-    "docs_status.md",
     "Airflow Providers/Configs/connectors.md",
     "Terms/Airbyte Source.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
-    "Terms.md",
     "Tasks/README.md",
     "dataCraftCore",
     "Tasks/Заменить в конфиге connectors name на slug.md",
     "Airflow Providers/DAGs/generate_models.md",
-    "Tasks/Turn the create_models_file function into a statement.md",
-    "Airflow Providers/DAGs/template_configs.md",
-    "Airflow Providers/Configs/metadata.md",
-    "Airflow Providers/How DAGs work.md",
-    "Airflow Providers/Configs/events.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/Configs.md",
-    "Airflow Providers.md",
-    "dbt Package/graph.md",
-    "Connectors.md",
-    "dbt Package/combine.md",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
     "Terms/attachments/airbyte_stream_example.jpg",

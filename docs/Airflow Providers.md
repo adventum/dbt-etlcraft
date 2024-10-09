@@ -36,7 +36,8 @@
 
 [How DAGs work](How%20DAGs%20work.md)
 ```dataview
-table status as "Status", assignee as "Assignee", due as "Due" from "dataCraft Core/dataCraft Core Documentation/Desctiption of DAGs"
+TABLE description AS "Рещаемая задача" FROM "Airflow Providers/DAGs"
+WHERE file.name != "README"
 ```
 
 Интеграция с dataCraft
