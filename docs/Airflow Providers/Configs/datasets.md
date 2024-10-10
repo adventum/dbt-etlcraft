@@ -3,13 +3,12 @@ description: Наборы данных, на каждый из которых н
 config_default_type: "`datacraft_variable`"
 config_default_format: "`json`"
 type: config
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
 # Описание
 
 Данный конфиг формируется/обновляется при добавлении/изменении наборов данных в **dataCraft** в разделе **Данные**:
-#task тут добавить скрин из датакрафта 
-
+![[add_datasets_dataCraft_example.jpg]]
 
 Конфиг содержит следующую информацию:
 - `slug` - идентификатор набора данных, например `cost_table`

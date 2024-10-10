@@ -198,7 +198,10 @@
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
     "Terms/Id.md",
+    "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/datasets.md",
+    "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
+    "Airflow Providers/Configs/attachments",
     "dbt Package/README.md",
     "Airflow Providers/Configs/datasources.md",
     "Airflow Providers/Configs/dimensions.md",
@@ -222,7 +225,6 @@
     "Terms/Airbyte Connection.md",
     "dbt Package/normalize.md",
     "Terms/Airbyte Connector.md",
-    "Terms/Source.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
@@ -234,14 +236,11 @@
     "Airbyte Connectors",
     "Terms/attachments/airbyte_new_source_example_2.jpg",
     "Terms/attachments/airbyte_new_source_example_1.jpg",
-    "Terms/attachments/airbyte_workspace_exampleJPG.jpg",
-    "Terms/attachments/select_sreams_airbyte_example 1.jpg",
     "dbt Package/Pavel's additional macros and docs",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
     "HowTos",
-    "Tasks",
-    "Airflow Providers/DAGs"
+    "Tasks"
   ]
 }
