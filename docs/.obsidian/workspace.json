@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Configs/datasets.md",
+                "file": "Airflow Providers/Configs/dimensions.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Configs/datasets.md",
+                "file": "Airflow Providers/Configs/dimensions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Configs/datasets.md",
+                "file": "Airflow Providers/Configs/dimensions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Configs/datasets.md"
+                "file": "Airflow Providers/Configs/dimensions.md"
               }
             }
           }
@@ -197,9 +197,9 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/datasets.md",
     "Terms/Id.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
-    "Airflow Providers/Configs/datasets.md",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",
     "dbt Package/README.md",
