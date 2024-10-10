@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Configs/event_segments.md",
+                "file": "Terms/Slug.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Configs/event_segments.md",
+                "file": "Terms/Slug.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Configs/event_segments.md",
+                "file": "Terms/Slug.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Configs/event_segments.md"
+                "file": "Terms/Slug.md"
               }
             }
           }
@@ -197,7 +197,9 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/event_segments.md",
     "Terms/Slug.md",
+    "Airflow Providers/Configs/attributions.md",
     "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs/datasets.md",
     "Terms/Id.md",
@@ -215,8 +217,6 @@
     "Airflow Providers/DAGs.md",
     "Airflow Providers/How DAGs work.md",
     "Connectors.md",
-    "Airflow Providers/Configs/attributions.md",
-    "Airflow Providers/Configs/event_segments.md",
     "Terms/Stream.md",
     "Terms.md",
     "docs_status.md",

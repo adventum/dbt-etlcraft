@@ -34,10 +34,10 @@ doc_status: ready (нужно ревью)
       "description": "описание 1",
       "model_type": "last_click",
       "priorities": [
-        "event_segment_1",
-        "event_segment_2",
-        "event_segment_3",
-        "event_segment_4"
+        "eventsegment1",
+        "eventsegment2",
+        "eventsegment3",
+        "eventsegment4"
       ],
       "attributable_parameters": [
         "utmSource",
