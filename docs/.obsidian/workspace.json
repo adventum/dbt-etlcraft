@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Airflow Providers/Configs/event_segments.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Airflow Providers/Configs/event_segments.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md",
+                "file": "Airflow Providers/Configs/event_segments.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Airflow Providers/Configs/dimensions.md"
+                "file": "Airflow Providers/Configs/event_segments.md"
               }
             }
           }
@@ -197,6 +197,8 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Terms/Slug.md",
+    "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs/datasets.md",
     "Terms/Id.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
@@ -204,9 +206,7 @@
     "Airflow Providers/Configs/attachments",
     "dbt Package/README.md",
     "Airflow Providers/Configs/datasources.md",
-    "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs/connectors.md",
-    "Terms/Slug.md",
     "Terms/Name (config).md",
     "Terms/Model.md",
     "README.md",

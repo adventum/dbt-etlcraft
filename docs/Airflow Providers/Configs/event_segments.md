@@ -11,7 +11,7 @@ doc_status: ready (нужно ревью)
 При задании модели атрибуции в интерфейсе **dataCraft** (см. [[attributions]]), в том случае если был выбран тип “Last click”, также указываются `priorities`. Этот раздел содержит список названий правил, по которым будут присваивается приоритеты событиям в данной модели атрибуции. 
 
 В конфиге `event_segments`, в свою очередь, приводятся сами правила (формулы). Структура у конфига следующая:
-- `slug` - идентификатор правила, например: `event_segment_1` 
+- `slug` - идентификатор правила, например: `eventsegment1` 
 - `formula`  - правило, по которому событиям присваивается приоритет, например: `LENGTH (adSourceDirty) < 2`
 - `description` - описание правила
 
@@ -21,22 +21,22 @@ doc_status: ready (нужно ревью)
 # Пример
 
 ```yaml
-event_segment_1:
+eventsegment1:
   formula: LENGTH (adSourceDirty) < 2
   description: тут какое-то описание
-event_segment_2:
+eventsegment2:
   formula: match(adSourceDirty, 'Органическая установка')
   description:
-event_segment_3:
+eventsegment3:
   formula: __priority = 4 and not __if_missed = 1
   description:
-event_segment_4:
+eventsegment4:
   formula: __priority = 3 and not __if_missed = 1
   description:
-event_segment_5:
+eventsegment5:
   formula: __priority = 2 and not __if_missed = 1
   description:
-event_segment_6:
+eventsegment6:
   fromula: __priority = 1 and not __if_missed = 1
   description:
 ```
