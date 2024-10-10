@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Slug.md",
+                "file": "Terms/DAG.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/Slug.md",
+                "file": "Terms/DAG.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Slug.md",
+                "file": "Terms/DAG.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/Slug.md"
+                "file": "Terms/DAG.md"
               }
             }
           }
@@ -197,9 +197,14 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
-    "Airflow Providers/Configs/event_segments.md",
-    "Terms/Slug.md",
+    "Airflow Providers/DAGs.md",
+    "Airflow Providers/How DAGs work.md",
+    "Terms/DAG.md",
+    "Airflow Providers/Airbyte Operators.md",
+    "README.md",
     "Airflow Providers/Configs/attributions.md",
+    "Terms/Slug.md",
+    "Airflow Providers/Configs/event_segments.md",
     "Airflow Providers/Configs/dimensions.md",
     "Airflow Providers/Configs/datasets.md",
     "Terms/Id.md",
@@ -211,11 +216,8 @@
     "Airflow Providers/Configs/connectors.md",
     "Terms/Name (config).md",
     "Terms/Model.md",
-    "README.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/How DAGs work.md",
     "Connectors.md",
     "Terms/Stream.md",
     "Terms.md",
@@ -224,7 +226,6 @@
     "Terms/Airbyte Destination.md",
     "Terms/Airbyte Connection.md",
     "dbt Package/normalize.md",
-    "Terms/Airbyte Connector.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
