@@ -195,10 +195,12 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "d25176eb34e78d23",
+  "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
     "Terms/Pipeline.md",
     "HowTos/How to create a config for presets.md",
+    "Terms/Link.md",
+    "Airflow Providers/Configs/presets.md",
     "Terms/Stream.md",
     "Terms/Entity.md",
     "HowTos/attachments/airbyte_creat_presets_instruction_step5.jpg",
@@ -230,8 +232,6 @@
     "Airflow Providers/Configs/connectors.md",
     "Terms/Name (config).md",
     "Terms/Model.md",
-    "Airflow Providers/Configs.md",
-    "Airflow Providers.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
