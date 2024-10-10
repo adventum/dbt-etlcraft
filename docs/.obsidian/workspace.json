@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/DAG.md",
+                "file": "HowTos/How to create a config for presets.md",
                 "mode": "source",
                 "source": false
               }
@@ -118,7 +118,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 269.5
   },
   "right": {
     "id": "22ccde28bd1633ce",
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terms/DAG.md",
+                "file": "HowTos/How to create a config for presets.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/DAG.md",
+                "file": "HowTos/How to create a config for presets.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terms/DAG.md"
+                "file": "HowTos/How to create a config for presets.md"
               }
             }
           }
@@ -195,17 +195,26 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "51ba7b4766f3159e",
+  "active": "d25176eb34e78d23",
   "lastOpenFiles": [
+    "Terms/Pipeline.md",
+    "HowTos/How to create a config for presets.md",
+    "Terms/Stream.md",
+    "Terms/Entity.md",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step5.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step3.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step4.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step2.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step1.jpg",
+    "HowTos/attachments",
+    "Terms/DAG.md",
     "Airflow Providers/DAGs.md",
     "Airflow Providers/DAGs/sync_data.md",
     "Airflow Providers/DAGs/generate_models.md",
     "Airflow Providers/DAGs/install_connectors.md",
-    "HowTos/How to create a config for presets.md",
     "README.md",
     "docs_status.md",
     "Airflow Providers/Airbyte Operators.md",
-    "Terms/DAG.md",
     "Airflow Providers/How DAGs work.md",
     "Airflow Providers/Configs/attributions.md",
     "Terms/Slug.md",
@@ -223,25 +232,16 @@
     "Terms/Model.md",
     "Airflow Providers/Configs.md",
     "Airflow Providers.md",
-    "Connectors.md",
-    "Terms/Stream.md",
-    "Terms.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
     "Terms/attachments/airbyte_stream_example.jpg",
-    "Terms/attachments/list_of_connectors_example.jpg",
-    "Terms/attachments/airbyte_new_destination_example_2.jpg",
-    "Terms/attachments/airbyte_new_destination_example_1.jpg",
     "Airbyte Connectors",
-    "Terms/attachments/airbyte_new_source_example_2.jpg",
-    "Terms/attachments/airbyte_new_source_example_1.jpg",
     "dbt Package/Pavel's additional macros and docs",
     "dbt Package/english_version",
     "dbt Package",
     "Terms",
-    "HowTos",
-    "Tasks"
+    "HowTos"
   ]
 }
