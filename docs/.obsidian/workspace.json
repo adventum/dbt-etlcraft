@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HowTos/How to create a config for presets.md",
+                "file": "Terms/DAG.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "HowTos/How to create a config for presets.md",
+                "file": "Terms/DAG.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "HowTos/How to create a config for presets.md",
+                "file": "Terms/DAG.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "HowTos/How to create a config for presets.md"
+                "file": "Terms/DAG.md"
               }
             }
           }
@@ -197,12 +197,16 @@
   },
   "active": "51ba7b4766f3159e",
   "lastOpenFiles": [
+    "Airflow Providers/DAGs.md",
+    "Airflow Providers/DAGs/sync_data.md",
+    "Airflow Providers/DAGs/generate_models.md",
+    "Airflow Providers/DAGs/install_connectors.md",
+    "HowTos/How to create a config for presets.md",
+    "README.md",
     "docs_status.md",
     "Airflow Providers/Airbyte Operators.md",
     "Terms/DAG.md",
-    "Airflow Providers/DAGs.md",
     "Airflow Providers/How DAGs work.md",
-    "README.md",
     "Airflow Providers/Configs/attributions.md",
     "Terms/Slug.md",
     "Airflow Providers/Configs/event_segments.md",
@@ -222,10 +226,6 @@
     "Connectors.md",
     "Terms/Stream.md",
     "Terms.md",
-    "Terms/Template.md",
-    "Terms/Airbyte Destination.md",
-    "Terms/Airbyte Connection.md",
-    "dbt Package/normalize.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
