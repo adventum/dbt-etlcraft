@@ -18,6 +18,11 @@ table type as "Тип", doc_status as "Статус документации"  f
 table type as "Тип", doc_status as "Статус документации"  from "Terms" 
 ```
 
+# Статус по коннекторам 
+```dataview
+table type as "Тип", doc_status as "Статус документации", status as "Статус разработки"  from "Airbyte Connectors" 
+```
+
 # Статус по операторам
 ```dataview
 table type as "Тип", doc_status as "Статус документации", status as "Статус разработки"  from "Airflow Providers/Airbyte Operators" 
