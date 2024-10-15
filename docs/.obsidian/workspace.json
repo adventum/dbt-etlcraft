@@ -37,38 +37,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs_status.md",
+                "file": "dbt Package/README.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "98a353f738f7e000",
+            "id": "95b54c780f11a384",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d90d340f8abc6a01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Terms/Airbyte Connection.md",
+                "file": "Methodology.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -134,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs_status.md",
+                "file": "Methodology.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs_status.md",
+                "file": "Methodology.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -174,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs_status.md"
+                "file": "Methodology.md"
               }
             }
           }
@@ -195,8 +183,11 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "51ba7b4766f3159e",
+  "active": "95b54c780f11a384",
   "lastOpenFiles": [
+    "dbt Package/README.md",
+    "Methodology.md",
+    "docs_status.md",
     "HowTos/How to create a config for presets.md",
     "Terms/Pipeline.md",
     "Terms/Link.md",
@@ -215,7 +206,6 @@
     "Airflow Providers/DAGs/generate_models.md",
     "Airflow Providers/DAGs/install_connectors.md",
     "README.md",
-    "docs_status.md",
     "Airflow Providers/Airbyte Operators.md",
     "Airflow Providers/How DAGs work.md",
     "Airflow Providers/Configs/attributions.md",
@@ -227,11 +217,9 @@
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",
-    "dbt Package/README.md",
     "Airflow Providers/Configs/datasources.md",
     "Airflow Providers/Configs/connectors.md",
     "Terms/Name (config).md",
-    "Terms/Model.md",
     "Terms/attachments/airbyte_source_name_example.jpg",
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
