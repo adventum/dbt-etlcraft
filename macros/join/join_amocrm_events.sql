@@ -268,12 +268,12 @@ from {{ source_table_pipelines }}
 )
 
 {#- теперь делаем join записанных ранее CTE -#}
-, final_join AS ( select
-eventCreatedAtDateTime AS __date, --__datetime,
-* --count(*) 
+, final_join as ( select
+toDate(eventCreatedAtDateTime) as __date, 
+*
 from events as e
-left join leads as l USING(leadId, systemAccountId) 
-left join pipelines as p USING(statusId, pipelineId, systemAccountId) 
+left join leads as l using(leadId, systemAccountId) 
+left join pipelines as p using(statusId, pipelineId, systemAccountId) 
 left join contacts as c using(contactId, systemAccountId) 
 )
 
