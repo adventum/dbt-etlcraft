@@ -25,7 +25,7 @@
 {#- для каждого стрима собираем инкрементал-таблицы и создаём свой source_table_<...> -#}
 {#- стрим events -#}
 {%- set table_pattern_events = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'events' ~ '$' -%}
-{%- set relations_events = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
+{%- set relations_events = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_events) -%}   
 {%- if not relations_events -%} 
     {{ exceptions.raise_compiler_error('No relations_events.
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_events"') }}
@@ -38,7 +38,7 @@
 
 {#- стрим leads -#}
 {%- set table_pattern_leads = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'leads' ~ '$' -%}
-{%- set relations_leads = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_leads) -%}   
+{%- set relations_leads = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_leads) -%}   
 {%- if not relations_leads -%} 
     {{ exceptions.raise_compiler_error('No relations_leads. 
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_leads"') }}
@@ -51,7 +51,7 @@
 
 {#- стрим contacts -#}
 {%- set table_pattern_contacts = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'contacts' ~ '$' -%}
-{%- set relations_contacts = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_contacts) -%}   
+{%- set relations_contacts = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_contacts) -%}   
 {%- if not relations_contacts -%} 
     {{ exceptions.raise_compiler_error('No relations_contacts. 
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name}_{template_name}_contacts"') }}
@@ -64,7 +64,7 @@
 
 {#- стрим pipelines -#}
 {%- set table_pattern_pipelines = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ 'pipelines' ~ '$' -%}
-{%- set relations_pipelines = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_pipelines) -%}   
+{%- set relations_pipelines = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_pipelines) -%}   
 {%- if not relations_pipelines -%} 
     {{ exceptions.raise_compiler_error('No relations_pipelines. 
     No data follows the expected pattern: "incremental_{sourcetype_name}_{pipeline_name_registry}_{template_name}_pipelines"') }}
@@ -268,14 +268,15 @@ from {{ source_table_pipelines }}
 )
 
 {#- теперь делаем join записанных ранее CTE -#}
-, final_join AS (
-eventCreatedAtDateTime AS __datetime,
+, final_join AS ( select
+eventCreatedAtDateTime AS __date, --__datetime,
 * --count(*) 
 from events as e
 left join leads as l USING(leadId, systemAccountId) 
 left join pipelines as p USING(statusId, pipelineId, systemAccountId) 
 left join contacts as c using(contactId, systemAccountId) 
 )
+
 SELECT *
 FROM final_join
 {% if limit0 %}

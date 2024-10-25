@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Pipeline.md",
+                "file": "Methodology.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Pipeline"
+              "title": "Methodology"
             }
           }
         ],
@@ -169,12 +169,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Terms/Pipeline.md",
+                "file": "Methodology.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из Pipeline"
+              "title": "Исходящие ссылки из Methodology"
             }
           },
           {
@@ -221,6 +221,7 @@
   },
   "active": "cb611bea9a219ebb",
   "lastOpenFiles": [
+    "Terms/Pipeline.md",
     "dbt Package/incremental.md",
     "dbt Package/join_appmetrica_events.md",
     "dbt Package/join_appsflyer_events.md",
@@ -233,7 +234,6 @@
     "dbt Package/README.md",
     "docs_status.md",
     "HowTos/How to create a config for presets.md",
-    "Terms/Pipeline.md",
     "Terms/Link.md",
     "Airflow Providers/Configs/presets.md",
     "Terms/Stream.md",
