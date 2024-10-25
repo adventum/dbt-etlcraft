@@ -34,7 +34,7 @@
 {%- set stream_name_parts = model_name_parts[4:] -%}
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {#- было: set table_pattern = '_airbyte_raw_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -#}
-{%- set table_pattern = '[^_]+' ~ '_[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
+{%- set table_pattern = '[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
 
 {%- if pipeline_name in ('registry', 'periodstat') -%}
 {%- set disable_incremental_datetime_field=true -%}

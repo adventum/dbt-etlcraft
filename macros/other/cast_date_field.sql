@@ -3,10 +3,10 @@
 {%- endmacro %}
 
 {% macro clickhouse__cast_date_field(f) -%}
-  toDate({{ f }}, 'UTC')
+  toDate(toDateTime({{ f }}, 'UTC'))
 {%- endmacro %}
 
 
 {% macro postgres__cast_date_field(f) -%}
-  toDate({{ f }}, 'UTC')
+  toDate({{ f }}, 'UTC') 
 {%- endmacro %}
