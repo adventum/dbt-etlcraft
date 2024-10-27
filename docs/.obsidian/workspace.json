@@ -193,8 +193,9 @@
   },
   "active": "cb611bea9a219ebb",
   "lastOpenFiles": [
-    "dbt Package/incremental.md",
+    "Terms/Link.md",
     "Methodology.md",
+    "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "Terms.md",
     "attachments/example_of_work_for_graph_step.jpg",
@@ -210,7 +211,6 @@
     "dbt Package/README.md",
     "docs_status.md",
     "HowTos/How to create a config for presets.md",
-    "Terms/Link.md",
     "Airflow Providers/Configs/presets.md",
     "Terms/Stream.md",
     "Terms/Entity.md",
