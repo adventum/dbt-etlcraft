@@ -221,6 +221,9 @@
   },
   "active": "cb611bea9a219ebb",
   "lastOpenFiles": [
+    "attachments/example_of_work_for_graph_step.jpg",
+    "attachments/getting_hash_at_hash_step.png",
+    "attachments",
     "Terms/Pipeline.md",
     "dbt Package/incremental.md",
     "dbt Package/join_appmetrica_events.md",
@@ -252,7 +255,6 @@
     "README.md",
     "Airflow Providers/Airbyte Operators.md",
     "Airflow Providers/How DAGs work.md",
-    "Airflow Providers/Configs/attributions.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",
@@ -260,12 +262,10 @@
     "dataCraftCore",
     "Terms/attachments/Pasted image 20241002151156.png",
     "Terms/attachments",
-    "Terms/attachments/airbyte_stream_example.jpg",
     "Airbyte Connectors",
     "dbt Package/Pavel's additional macros and docs",
     "dbt Package/english_version",
     "dbt Package",
-    "Terms",
-    "HowTos"
+    "Terms"
   ]
 }
