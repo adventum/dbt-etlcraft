@@ -35,7 +35,7 @@ Normalize или нормализация - первый слой обработ
 Обычно сырые данные из Airbyte передаются в хранилище в формате JSON. Пример данных:
 `{"Date":"2024-03-18","CampaignId":"11102222","CampaignName":"кампания Х","CampaignType":"TEXT_CAMPAIGN","Cost":"13210260000","Impressions":"1750","Clicks":"158"}`
 
-На этапе normalize происходит преобразование в более удобный формат - данные извлекаются и распределяются по столбцам, формируется таблица с привычной для пользователей структурой.
+На этапе `normalize` происходит преобразование в более удобный формат - данные извлекаются и распределяются по столбцам, формируется таблица с привычной для пользователей структурой.
 
 ### Принцип работы
 На этом этапе только извлекаем данные из JSON, никаких специальных преобразований не производится.
@@ -48,7 +48,7 @@ Normalize или нормализация - первый слой обработ
 ##### Правило наименования
 Название файлов модели на этом этапе должно состоять из пяти частей: `normalize_{название источника данных}_{название пайплайна}_{название шаблона}_{название стрима}`
 
-Ознакомится подробнее с тем, что такое пайплайн, шаблон и стрим в рамках нашей методологии, можно в разделе [Термины и определения](https://github.com/adventum/dbt-etlcraft/wiki/2.-%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B-%D0%B8-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F).
+Ознакомится подробнее с тем, что такое пайплайн, шаблон и стрим в рамках нашей методологии, можно в разделе [[Terms]].
 ##### Правило создания
 Создаётся один файл на каждую уникальную комбинацию источника данных, шаблона и стрима.
 
@@ -56,30 +56,37 @@ Normalize или нормализация - первый слой обработ
 ```
 SELECT
 -- извлекаем данные из JSON:
-JSONExtractString(_airbyte_data, 'Date') AS __date, 
-JSONExtractString(_airbyte_data, 'CampaignId') AS CampaignId, 
-JSONExtractString(_airbyte_data, 'CampaignName') AS CampaignName, 
-JSONExtractString(_airbyte_data, 'CampaignType') AS CampaignType, 
-JSONExtractString(_airbyte_data, 'Clicks') AS Clicks, 
-JSONExtractString(_airbyte_data, 'Cost') AS Cost, 
-JSONExtractString(_airbyte_data, 'Date') AS Date, 
-JSONExtractString(_airbyte_data, 'Impressions') AS Impressions,
--- столбец с названием таблицы:
-toLowCardinality(__table_name) AS __table_name,
--- столбец с датой выгрузки данных:
-toDateTime32(_airbyte_emitted_at) AS __emitted_at, 
--- когда была проведена нормализация:
-NOW() as __normalized_at
+	JSONExtractString(_airbyte_data, 'event_receive_datetime') AS __date, 
+	JSONExtractString(_airbyte_data, '__clientName') AS __clientName, 
+	JSONExtractString(_airbyte_data, '__productName') AS __productName, 
+	JSONExtractString(_airbyte_data, 'appmetrica_device_id') AS appmetrica_device_id, 
+	JSONExtractString(_airbyte_data, 'city') AS city, 
+	JSONExtractString(_airbyte_data, 'deeplink_url_parameters') AS deeplink_url_parameters, 
+	JSONExtractString(_airbyte_data, 'event_receive_datetime') AS event_receive_datetime, 
+	JSONExtractString(_airbyte_data, 'google_aid') AS google_aid, 
+	JSONExtractString(_airbyte_data, 'ios_ifa') AS ios_ifa, 
+	JSONExtractString(_airbyte_data, 'os_name') AS os_name, 
+	JSONExtractString(_airbyte_data, 'profile_id') AS profile_id, 
+	JSONExtractString(_airbyte_data, 'publisher_name') AS publisher_name,
+-- добавляем технические столбцы:
+	toLowCardinality(_dbt_source_relation) AS __table_name, -- столбец с названием таблицы, содержащей сырые данные 
+	toDateTime32(substring(toString(_airbyte_extracted_at), 1, 19)) AS __emitted_at, -- столбец с датой выгрузки данных
+	NOW() AS __normalized_at -- когда была проведена нормализация
 -- данные берём из таблицы, которую Airbyte передал в хранилище данных:
-FROM (
-      SELECT *,
-             'test._airbyte_raw_yd_datestat_default_testaccount_custom_report' as __table_name,
-      FROM test._airbyte_raw_yd_datestat_default_testaccount_custom_report   
-      )
+FROM ((
+	SELECT 
+		toLowCardinality(
+			'datacraft_clientname_raw__stream_appmetrica_default_accountid_deeplinks'
+						) AS _dbt_source_relation,
+		toString("_airbyte_raw_id") AS _airbyte_raw_id,
+		toString("_airbyte_data") AS _airbyte_data,
+		toString("_airbyte_extracted_at") AS _airbyte_extracted_at
+	FROM airbyte_internal.datacraft_clientname_raw__stream_appmetrica_default_accountid_deeplinks
+	))
 ```
 
 ### Правила материализации
-В dbt есть такое понятие как [материализация](https://github.com/adventum/dbt-etlcraft/wiki/2.-%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B-%D0%B8-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F#%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) (materialization) - то в каком виде будут сохраняться результаты запроса. В данном случае мы не указываем какой-то специальный тип материализации и данные по умолчанию сохраняются как `view` (представление).
+В dbt есть такое понятие как [материализация](https://docs.getdbt.com/docs/build/materializations) (materialization) - то в каком виде будут сохраняться результаты запроса. В данном случае мы не указываем какой-то специальный тип материализации и данные по умолчанию сохраняются как `view` (представление).
 
 ### Автоматизация
 **Статус**
@@ -89,57 +96,57 @@ FROM (
 ```
 {{ datacraft.normalize() }}
 ```
-
+[[dbt Package/normalize|Подробнее про макрос normalize]].
 
 ---
 ## II. Incremental
 ---
 Incremental или инкрементальный слой обработки данных - второй шаг в рамках нашей методологии.
 ### Зачем нужен
-На нём происходит обновление данных путем полной перезаписи либо постепенное обновление данных путем добавления новых данных к существующим. Это позволяет эффективно обрабатывать большие объемы информации и уменьшить нагрузку на систему при обновлении данных. Вид обновления данных: частичное или полное - зависит от вида пайплайна. Для пайплайнов, где данные группируются по дате или по пользователю, предпочтительна частичное обновление данных, например, для имеющихся данных с меткой времени, идет дозапись данных на текущую дату. Для пайплайнов, где данные группируются по периоду или по справочнику, подходит полная замена данных.
+Обновление данных может выполняться двумя способами: полной перезаписью или добавлением новых данных к уже существующим. Это позволяет эффективно обрабатывать большие объёмы информации и снизить нагрузку на систему при обновлении. Выбор между полным и частичным обновлением зависит от типа [[Pipeline|пайплайна]]. Для пайплайнов, где данные группируются по дате и/или пользователю/событию, предпочтительнее частичное обновление —  добавление новых данных к существующим. Для пайплайнов, где данные группируются по периоду (например, медиаплны) или представляют собой справочники, подходит полная замена данных.
 
 ### Зависимости
-Поскольку это второй этап обработки данных, то он зависит только от таблиц нормализации, полученных на первом шаге Normalize.
+Поскольку это второй этап обработки данных, то он зависит только от таблиц нормализации, полученных на первом шаге [[#I. Normalize|normalize]].
 
 ### Файл модели
 
 ##### Правило наименования
-Название файлов модели на этом этапе должно состоять из четырёх частей: `incremental_{название источника данных}_{пайплайн}_{название шаблона}_{название стрима}`
+Название файлов модели на этом этапе должно состоять из четырёх частей: `incremental_{название источника данных}_{название пайплайна}_{название шаблона}_{название стрима}`
 ##### Правило создания
 Создаётся один файл, соответственно каждому файлу нормализации.
 
 ### Пример SQL запроса
 Для полной замены данных:
 ```
-{{ config( materialized='table', schema='advinternal' ) }}
+{{ config(
+        materialized='table',
+        order_by=('__table_name'),
+        on_schema_change='fail'
+	    ) 
+}}
 
-SELECT * FROM {{ ref('normalize_alytics_project_goals') }}
+SELECT * FROM {{ ref('normalize_appmetrica_registry_default_profiles') }}
 ```
 
 Для дозаписи или частичного обновления данных:
 ```
-{{ config( materialized='incremental', 
-           order_by='concat(date, \'_\', _table_name)', 
-           schema='advinternal', 
-           pre_hook={ 'sql': '{% if is_incremental() %}
-                `ALTER TABLE {{ this }}`
-                `DELETE WHERE concat(date, \'_\', _table_name) in (`
-                    `select` `concat(date, \'_\', _table_name)`
-                    `from {{ ref(\'normalize_alytics_project_stat\') }} `
-                `)`
-                `{% endif %}'`
-    `}`
-`)`
+{{ config(
+        materialized='incremental',
+        order_by=('__date', '__table_name'),
+        incremental_strategy='delete+insert',
+        unique_key=['__date', '__table_name'],
+        on_schema_change='fail'
+	    ) 
 }}
 
-SELECT * FROM {{ ref('normalize_alytics_project_stat') }}
+SELECT * FROM {{ ref('normalize_appmetrica_events_default_installations') }}
 ```
 
 ### Правила материализации
-Тип материализации зависит типа [пайплайна](https://github.com/adventum/dbt-etlcraft/wiki/2.-%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B-%D0%B8-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F#%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD). В нашей методологии мы определили 4 вида пайплайнов: Events, DateStat, PeriodStat, Registry.
+Тип материализации зависит типа [[Pipeline|пайплайна]]. В **dataCraft Core** выделяем 4 вида пайплайнов: Events, Datestat, Periodstat, Registry.
 
-- Для Events и DateStat задаём инкрементальный тип материализации (`materialized='incremental'`). Инкрементальные модели позволяют dbt вставлять или обновлять записи в таблице с момента последнего запуска этой модели, без необходимости полной перезаписи таблицы.
-- Для пайплайнов PeriodStat и Registry задаётся `{{ config( materialized='table' ) }}. В таком случае при каждом запуске модели таблица полностью перезаписывается.
+- Для Events и Datestat задаём инкрементальный тип материализации (`materialized='incremental'`). Инкрементальные модели позволяют dbt вставлять или обновлять записи в таблице с момента последнего запуска этой модели, без необходимости полной перезаписи таблицы.
+- Для пайплайнов Periodstat и Registry задаётся `materialized='table`. В таком случае при каждом запуске модели таблица полностью перезаписывается.
 
 ### Автоматизация
 **Статус**
@@ -149,7 +156,7 @@ SELECT * FROM {{ ref('normalize_alytics_project_stat') }}
 ```
 {{ datacraft.incremental() }}
 ```
-
+[[dbt Package/incremental|Подробнее про макрос incremental]].
 
 ---
 ## III. Join
