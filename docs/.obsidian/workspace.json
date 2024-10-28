@@ -55,40 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/hash.md",
+                "file": "dbt Package/graph_edge.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hash"
-            }
-          },
-          {
-            "id": "ce6b9ba50925761c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/link.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "link"
-            }
-          },
-          {
-            "id": "6da3c3f2eb148451",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/link_hash.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "link_hash"
+              "title": "graph_edge"
             }
           }
         ],
@@ -148,7 +120,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 269.5
+    "width": 200
   },
   "right": {
     "id": "22ccde28bd1633ce",
@@ -235,10 +207,18 @@
   },
   "active": "f3755b1002854902",
   "lastOpenFiles": [
+    "dbt Package/full.md",
+    "Methodology.md",
+    "dbt Package/calc_graph.md",
+    "dbt Package/graph_edge.md",
+    "dbt Package/graph.md",
+    "dbt Package/graph_unique.md",
+    "dbt Package/graph_lookup.md",
+    "dbt Package/graph_tuples.md",
+    "dbt Package/get_adsourcedirty.md",
+    "dbt Package/hash.md",
     "dbt Package/link.md",
     "Terms/Link.md",
-    "Methodology.md",
-    "dbt Package/hash.md",
     "Terms/Entity.md",
     "dbt Package/link_hash.md",
     "Airflow Providers/Configs/metadata.md",
@@ -256,20 +236,12 @@
     "dbt Package/join_appsflyer_events.md",
     "dbt Package/join_ym_events.md",
     "dbt Package/join_yd_datestat.md",
-    "dbt Package/join_mt_datestat.md",
-    "docs_status.md",
-    "HowTos/How to create a config for presets.md",
-    "Airflow Providers/Configs/presets.md",
-    "Terms/Stream.md",
     "HowTos/attachments/airbyte_creat_presets_instruction_step5.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step3.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step4.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step2.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step1.jpg",
     "HowTos/attachments",
-    "Terms/DAG.md",
-    "Airflow Providers/DAGs.md",
-    "Airflow Providers/DAGs/sync_data.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",

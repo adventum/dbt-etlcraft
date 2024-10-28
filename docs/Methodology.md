@@ -598,11 +598,11 @@ LEFT JOIN link_registry as t2 USING(utmHashHash)
 ---
 ## VIII. Graph
 ---
-Graph или слой графовой склейки.
+`Graph` или слой графовой склейки.
 ### Зачем нужен
 На слое Link мы очистили данные от явных дубликатов, но проблема дублирования может возникать и на более высоком уровне. Данные могут иметь аккуратные однотипные идентификаторы, но при этом одному и тому же реальному объекту может соответствовать несколько бизнес-ключей. Рассмотрим пример с данными из CRM-системы. Может получится так, что на одного и того же клиента заведено две (или более) карточки. Такое может произойти, если, например, у клиента несколько номеров телефона. Обычно, если в компанию поступает звонок от клиента с неизвестного номера, у него спрашивают, обращался ли он ранее. Если он говорит, что обращался, в имеющуюся карточку добавляют новый номер. Если нет, то создают новую карточку. Клиент не обязан отвечать правду и помнить свои прошлые обращения. Возникает дублирование данных по одному и тому же клиенту.
 
-Слой Graph нужен для того, чтобы объединить все данные по одному пользователю/объекту, у которого есть различные идентификаторы, как, например, в примере с разными номерам телефона, но нет фиксированного `id`.
+Слой `Graph` нужен для того, чтобы объединить все данные по одному пользователю/объекту, у которого есть различные идентификаторы, как, например, в примере с разными номерам телефона, но нет фиксированного `id`.
 
 ### Принцип работы
 Для объединения всех данных по одному объекту используется графовая склейка. Граф - это множество вершин (узлов, node) и ребер (взаимосвязей, edge). Если вернуться к примеру с номерами телефонов и карточками в CRM-системе, карточки и номера телефонов будут является вершинами (узлами), а связи между ними - рёбрами.
@@ -611,49 +611,45 @@ Graph или слой графовой склейки.
 1. Находим все группы вершин, связанные между собой с помощью ребер. То есть в одну такую группу входят все вершины, между которыми можно перемещаться, проходя по одному или нескольким ребрам. Такие группы называются **свя́зными компонентами** графа.
 2. Все вершины одной связной компоненты считаем относящимися к одному и тому же объекту. Если в группе находятся несколько идентификаторов объекта — они являются дублями.
 
-Реализация графовой склейки в нашей методологии разбита на 6 подэтапов. Каждый подэтап реализуется с помощью отдельного макроса:
-1. `graph_tuples`: задача этого макроса составить на основе данных из link-таблицы и метадаты таблицу соответствия из двух колонок. В первой колонке `hash` содержится кортеж (tuple) из трех элементов:
-    - название линка (колонка `__link`) (например, AppInstallStat)
+Реализация графовой склейки в **dataCraft Core** разбита на 6 подэтапов. Каждый подэтап реализуется с помощью отдельного макроса:
+1. `graph_tuples`: задача этого макроса составить на основе данных из link-таблицы и `metadata.sql` таблицу соответствия из двух колонок. В первой колонке `hash` содержится кортеж (`tuple`) из трех элементов:
+    - название линка (колонка `__link`) (например, `AppInstallStat`)
     - дата и время
     - главный хэш (`__id`)
     Во второй колонке `node_left`- данные по которым можно идентифицировать пользователя. Эта колонка также является кортежем из трёх элементов:
-    - название колонки, например `crmUserHash` (в файле `metadata.sql` сущности, по которым можно идентифицировать пользователя, имеют метку `glue: yes`)
+    - название колонки, например: `crmUserHash` (в файле `metadata.sql` сущности, по которым можно идентифицировать пользователя, имеют метку `glue: yes`)
     - дата и время (если есть, либо нулевая дата: `toDateTime(0)`)
-    - собственно содержание строки (сам хэш crmUserHash)
+    - собственно содержание строки (сам хэш `crmUserHash`)
     
-    Рассмотрим суть этой таблицы на примере: для AppInstallStat главный хэш рассчитается по
-    - Account
-    - AppMetricaDevice
-    - MobileAdsId
-    - CrmUser
-    - OsName
-    - City
-    - AdSource
-    - UtmParams
-    - UtmHash
+    Рассмотрим суть этой таблицы на примере: для `AppInstallStat` главный хэш рассчитается по
+    - `Account`
+    - `AppMetricaDevice`
+    - `MobileAdsId`
+    - `CrmUser`
+    - `OsName`
+    - `City`
+    - `AdSource`
+    - `UtmParams`
+    - `UtmHash`
     
-	Может быть, например, так, что у одного CrmUser несколько AppMetricaDevice, например три, тогда для этого пользователя будет три разных главных хэша `__id`. В этом случае в колонке `node_left` будет три строчки с одинаковым содержанием и им будет соответствовать три строчки в колонке `hash` c разными кортежами.
+	Может быть, например, так, что у одного `CrmUser` несколько `AppMetricaDevice`, например три, тогда для этого пользователя будет три разных главных хэша `__id`. В этом случае в колонке `node_left` будет три строчки с одинаковым содержанием и им будет соответствовать три строчки в колонке `hash` c разными кортежами.
     
     В `matadata.sql` мы описываем модель склейки - какие колонки нужны для неё. В таблице, которую получаем с помощью этого макроса, содержатся все возможные комбинации между содержимым этих колонок.
 
-2. `graph_lookup`: этот макрос формирует список уникальных `hash` и `node_left` и присваивает каждому номер `key_number`. Необходимо для экономии памяти, так как содержимое колонок таблицы подслоя graph_tuples занимает довольно большой объём. То есть создаётся своего рада справочник. Далее, вместо `hash` и `node_left`, будем использовать их номера в качестве идентификатора. Уникальные значения `hash` и `node_left` записываются в колонку `kay_hash'.
+2. `graph_lookup`: этот макрос формирует список уникальных `hash` и `node_left` и присваивает каждому номер -  `key_number`. Необходимо для экономии памяти, так как содержимое колонок таблицы подслоя `graph_tuples` занимает довольно большой объём. То есть создаётся своего рада справочник. Далее, вместо `hash` и `node_left`, будем использовать их номера в качестве идентификатора. Уникальные значения `hash` и `node_left` записываются в колонку `kay_hash`.
 
-3. `graph_unique`: содержит те же данные, что и подслой `graph_lookup`. Отличие - порядок сортировки. В `graph_lookup` в таблицу записываем данные отсортированные по возрастанию `key_number`, а в `graph_unique` - по `kay_hash' в алфавитном порядке. Необходимо для удобства дальнейшей обработки.
+3. `graph_unique`: содержит те же данные, что и подслой `graph_lookup`. Отличие - порядок сортировки. В `graph_lookup` в таблицу записываем данные отсортированные по возрастанию `key_number`, а в `graph_unique` - по `kay_hash` в алфавитном порядке. Необходимо для удобства дальнейшей обработки.
 
 4. `graph_edge`: заменяем в таблице `graph_tuples` кортежи (таплы) на `key_number` с помощью джойнов. Переименовываем колонки: `hash` и `node_left` называем `node_id_right` и `node_id_left` соответственно. Плюс добавляем дополнительные колонки:
     - `group_id` (дублирует колонку `node_id_left`)
     - `has_changed` - содержит единицу, служебное поле
-    
 	Эти две колонки будут нужны для работы алгоритма графовой склейки. Также после выполнения основного запроса, с помощью `post_hook`, меняем местами содержимое колонок `node_id_right` и `node_id_left`.
 
 5. `graph_glue`: с помощью этого макроса и дополнительного `calc_graph` реализуется склейка. Представляет собой цикл, в котором последовательно джойним таблицу, которую получили на подэтапе `graph_eage`, саму с собой сначала используя в качестве ключа `node_id_left`, а затем `node_id_right`. Как это происходит:
-    5.1 Сначала группируем данные из `graph_eage` по `node_id_left` и вычисляем минимальный id группы: `min(group_id) as min_group_id`. (помним, что мы поменяли местами содержимое столбцов `node_id_left` и `node_id_right` на прошлом шаге, а столбец `group_id` содержит значения исходного `node_id_left`).
-    
-    5.2 Затем производим джойн таблицы, которую получили на шаге 5.1 с таблицей `graph_eage` по `node_id_left`.
-    
-    5.3 Повторяем тоже самое для `node_id_right`
-    
-    Повторяем эти действия в цикле до тех пор, пока все значения в столбце `has_changed` не станут равны нулю или цикл выполнится 14 раз (ограничение, которое устанавливаем самостоятельно. Опытным путём было установлено, что 14 итераций достаточно, чтобы найти все связи между узлами графа. Необходимость устанавливать определённое количество итераций для цикла обусловлено тем, что в dbt нельзя делать бесконечные циклы). Важно отметить, что после каждой итерации данные в таблице `graph_eage` обновляются.
+    - *5.1* Сначала группируем данные из `graph_eage` по `node_id_left` и вычисляем минимальный id группы: `min(group_id) as min_group_id`. (помним, что мы поменяли местами содержимое столбцов `node_id_left` и `node_id_right` на прошлом шаге, а столбец `group_id` содержит значения исходного `node_id_left`).
+    - *5.2* Затем производим джойн таблицы, которую получили на шаге 5.1 с таблицей `graph_eage` по `node_id_left`.
+    - *5.3* Повторяем тоже самое для `node_id_right`
+	Повторяем эти действия в цикле до тех пор, пока все значения в столбце `has_changed` не станут равны нулю или цикл выполнится 14 раз (ограничение, которое устанавливаем самостоятельно. Опытным путём было установлено, что 14 итераций достаточно, чтобы найти все связи между узлами графа. Необходимость устанавливать определённое количество итераций для цикла обусловлено тем, что в dbt нельзя делать бесконечные циклы). Важно отметить, что после каждой итерации данные в таблице `graph_eage` обновляются.
     
     В итоге все идентификаторы, которые относятся к одному пользователю получают один `group_id`.
     
@@ -661,35 +657,35 @@ Graph или слой графовой склейки.
 	![[example_of_work_for_graph_step.jpg]]
 	[Источник](https://benjaminsky.medium.com/complex-deduplication-in-bigquery-a3c5e78dec2b)
 
-	После срабатывания макроса `calc_glue`, с помощью макроса `graph_glue` получаем уникальный идентификатор пользователя `qid`. Для этого группируем таблицу 'graph_edge' по `node_id_left` и отбираем `max(group_id) as qid`.
+	После срабатывания макроса `calc_glue`, с помощью макроса `graph_glue` получаем уникальный идентификатор пользователя `qid`. Для этого группируем таблицу `graph_edge` по `node_id_left` и отбираем `min(group_id) as qid`.
 
 6. `graph_qid`: с помощью этого макроса формируем таблицу-справочник, в которой каждому уникальному ключу, состоящему из `(__link, __datetime, __id)`, соответствует уникальный идентификатор пользователя `qid` из ранее созданной таблицы `graph_glue`. Эту таблицу получаем путём объединения таблицы `graph_glue` с таблицей `graph_lookup`.
 
 Последовательное выполнение этих макросов позволяет пошагово преобразовать исходные данные в графовую структуру и вычислить идентификаторы групп для каждого узла.
 
 ### Зависимости
-Подэтап `graph_tuples` зависит от таблиц, полученных на слое Link. Какие именно link-таблицы используются указывается в описании моделей графовой склейки `glue_models` в `metadata.sql`. Далее, каждая последующая модель зависит от результата выполнения предыдущей модели слоя.
+Подэтап `graph_tuples` зависит от таблиц, полученных на слое `Link`. Какие именно link-таблицы используются указывается в описании моделей графовой склейки `glue_models` в `metadata.sql`. Далее, каждая последующая модель зависит от результата выполнения предыдущей модели слоя.
 
 ### Файл модели
-Для слоя Graph создаётся 7 моделей, которые выполняются последовательно.
+Для слоя `Graph` создаётся 6 моделей, которые выполняются последовательно.
 ##### Правило наименования
 Название моделей соответствует названиям макросав, которые их формируют:
-- graph_tuples.sql
-- graph_lookup.sql
-- graph_unique.sql
-- graph_edge.sql
-- graph_glue.sql и calc_graph.sql
-- graph_qid.sql
+- `graph_tuples.sql`
+- `graph_lookup.sql`
+- `graph_unique.sql`
+- `graph_edge.sql`
+- `graph_glue.sql`
+- `graph_qid.sql`
 #### Правило создания
 Создаётся по одному файлу модели на каждый подэтап слоя.
 
 ### Примеры SQL запроса
 (без макросов)
 1. `graph_tuples`
-```
+```sql
 {{ config(
-           materialized='table',
-           on_schema_change='fail'
+        materialized='table',
+        on_schema_change='fail'
         ) 
 }}
 select
@@ -712,7 +708,7 @@ union all
 И так для всех сущностей, помеченных в `metadate.sql` меткой `glue: yes`
 
 2. `graph_lookup`
-```
+```sql
 {{
     config(
         materialized='table',
@@ -730,7 +726,7 @@ select *, row_number() over() as key_number from all_keys
 ```
 
 3. `graph_unique`
-```
+```sql
 {{
     config(
         materialized='table',
@@ -742,7 +738,7 @@ select * from {{ ref('graph_lookup') }}
 ```
 
 4. `graph_edge`
-```
+```sql
 {{
     config(
         materialized='table',  
@@ -759,7 +755,8 @@ select * from {{ ref('graph_lookup') }}
 }}
 
 with join_left as (
-    select key_number as node_id_left, node_left
+    select key_number as node_id_left, 
+		   node_left
     from {{ ref('graph_tuples') }} x
     join {{ ref('graph_unique') }} y on x.hash = y.key_hash
 )
@@ -772,9 +769,8 @@ from join_left x
 join {{ ref(graph_unique) }} y on x.node_left = y.key_hash
 ```
 
-5. `graph_glue` и `calc_glue`
-	5.1 `graph_glue`
-```
+5. `graph_glue`
+```sql
 {{
     config(
         materialized='table',
@@ -785,85 +781,87 @@ join {{ ref(graph_unique) }} y on x.node_left = y.key_hash
 
 select 
     node_id_left,
-    max(group_id) as qid
+    min(group_id) as qid
 from {{ ref('graph_edge') }}
 group by node_id_left
-```
+````
+	
+    Код макроса  `datacraft.calc_graph()` выглядит следующим образом:
+```sql
+{% macro calc_graph() %}
+    {# Запрос для обновления правой таблицы #}
+    {% set right_query %}
+        create or replace table {{ target.schema }}.graph_right engine=Log() as
+        with
+        min_group_id as (
+            select
+                node_id_left,
+                min(group_id) as min_group_id
+            from {{ target.schema }}.graph_edge
+            group by node_id_left
+        )
 
-	5.2 Код макроса  `datacraft.calc_graph()` выглядит следующим образом:
-```
-{# Запрос для обновления правой таблицы #}
-{% set right_query %}
-	create or replace table {{ target.schema }}.graph_right engine=Log() as
-	with
-	min_group_id as (
-		select
-			node_id_left,
-			min(group_id) as min_group_id
-		from {{ target.schema }}.graph_edge
-		group by node_id_left
-	)
+        select
+            node_id_left,
+            node_id_right,
+            min_group_id as group_id,
+            min_group_id != e.group_id as has_changed
+        from {{ target.schema }}.graph_edge e
+        join min_group_id r on r.node_id_left = e.node_id_left
+    {% endset %}
 
-	select
-		node_id_left,
-		node_id_right,
-		min_group_id as group_id,
-		min_group_id != e.group_id as has_changed
-	from {{ target.schema }}.graph_edge e
-	join min_group_id r on r.node_id_left = e.node_id_left
-{% endset %}
+    {# Запрос для обновления левой таблицы #}
+    {% set left_query %}
+        create or replace table {{ target.schema }}.graph_edge engine=Log() as
+        with
+        min_group_id as (
+            select
+                node_id_right,
+                min(group_id) as min_group_id
+            from {{ target.schema }}.graph_right
+            group by node_id_right
+        )
 
-{# Запрос для обновления левой таблицы #}
-{% set left_query %}
-	create or replace table {{ target.schema }}.graph_edge engine=Log() as
-	with
-	min_group_id as (
-		select
-			node_id_right,
-			min(group_id) as min_group_id
-		from {{ target.schema }}.graph_right
-		group by node_id_right
-	)
+        select
+            node_id_left,
+            node_id_right,
+            min_group_id as group_id,
+            min_group_id != e.group_id as has_changed
+        from {{ target.schema }}.graph_right e
+        join min_group_id r on r.node_id_right = e.node_id_right
+    {% endset %}
 
-	select
-		node_id_left,
-		node_id_right,
-		min_group_id as group_id,
-		min_group_id != e.group_id as has_changed
-	from {{ target.schema }}.graph_right e
-	join min_group_id r on r.node_id_right = e.node_id_right
-{% endset %}
+    {# Запрос для проверки наличия изменений #}
+    {% set check_changed %}
+        select 
+            max(has_changed) 
+        from {{ target.schema }}.graph_edge
+    {% endset %}
 
-{# Запрос для проверки наличия изменений #}
-{% set check_changed %}
-	select 
-		max(has_changed) 
-	from {{ target.schema }}.graph_edge
-{% endset %}
+    {# Если необходимо выполнить запросы #}
+    {% if execute %}
+        {% set ns = namespace(check_change=1) %}
+        {% for i in range(0, 14) %}
+            {{ log("Running iteration " ~ i) }}
+            {{ check_change }}
 
-{# Если необходимо выполнить запросы #}
-{% if execute %}
-	{% set ns = namespace(check_change=1) %}
-	{% for i in range(0, 14) %}
-		{{ log("Running iteration " ~ i) }}
-		{{ check_change }}
-
-		{# Проверяем, были ли изменения #}
-		{% if ns.check_change == 1 %}
-			{# Обновляем правую таблицу #}
-			{% do run_query(right_query) %}
-			{# Обновляем левую таблицу #}
-			{% do run_query(left_query) %}
-			{# Проверяем наличие изменений в данных #}
-			{% set ns.check_change = run_query(check_changed).rows[0][0] %}
-			{{ log('VALUE: ' ~ ns.check_change) }}
-		{% endif %}
-	{% endfor %}
-{% endif %}
+            {# Проверяем, были ли изменения #}
+            {% if ns.check_change == 1 %}
+                {# Обновляем правую таблицу #}
+                {% do run_query(right_query) %}
+                {# Обновляем левую таблицу #}
+                {% do run_query(left_query) %}
+                {# Проверяем наличие изменений в данных #}
+                {% set ns.check_change = run_query(check_changed).rows[0][0] %}
+                {{ log('VALUE: ' ~ ns.check_change) }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
 ```
 
 6. `graph_qid`
-```
+```sql
 {{
     config(
         materialized='table', 
@@ -882,7 +880,7 @@ join {{ ref('graph_lookup') }} on key_number = node_id_left
 ```
 
 ### Правила материализации
-Для всех пайплайнов данные материализуются как таблица - `materialized='table'`.
+Для всех пайплайнов и на всех подшага данные материализуются как таблица - `materialized='table'`.
 
 ### Автоматизация
 **Статус**
@@ -894,8 +892,8 @@ join {{ ref('graph_lookup') }} on key_number = node_id_left
 3. `datacraft.graph_unique()`
 4. `datacraft.graph_edge()`
 5. `datacraft.graph_glue()` + `datacraft.calc_glue()`
-6. `datacraft.graph_qid()`
-
+6. `datacraft.graph_qid()` + `datacraft.calc_glue()`
+[[graph|Подробнее про макросы слоя Graph]].
 
 ---
 ## IX. Attribution
