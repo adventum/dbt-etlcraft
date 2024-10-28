@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Terms/Link.md",
+                "file": "dbt Package/link.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Link"
+              "title": "link"
             }
           },
           {
@@ -235,9 +235,10 @@
   },
   "active": "f3755b1002854902",
   "lastOpenFiles": [
-    "dbt Package/hash.md",
-    "Methodology.md",
+    "dbt Package/link.md",
     "Terms/Link.md",
+    "Methodology.md",
+    "dbt Package/hash.md",
     "Terms/Entity.md",
     "dbt Package/link_hash.md",
     "Airflow Providers/Configs/metadata.md",
@@ -269,7 +270,6 @@
     "Terms/DAG.md",
     "Airflow Providers/DAGs.md",
     "Airflow Providers/DAGs/sync_data.md",
-    "Airflow Providers/DAGs/generate_models.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",
