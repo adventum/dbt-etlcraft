@@ -36,7 +36,7 @@
             }
           },
           {
-            "id": "cb611bea9a219ebb",
+            "id": "f3755b1002854902",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,17 +50,45 @@
             }
           },
           {
+            "id": "cb611bea9a219ebb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/hash.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "hash"
+            }
+          },
+          {
+            "id": "ce6b9ba50925761c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Terms/Link.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Link"
+            }
+          },
+          {
             "id": "6da3c3f2eb148451",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/combine.md",
+                "file": "dbt Package/link_hash.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "combine"
+              "title": "link_hash"
             }
           }
         ],
@@ -205,14 +233,17 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "cb611bea9a219ebb",
+  "active": "f3755b1002854902",
   "lastOpenFiles": [
-    "dbt Package/join.md",
-    "Methodology.md",
-    "dbt Package/combine.md",
-    "dbt Package/README.md",
     "dbt Package/hash.md",
+    "Methodology.md",
     "Terms/Link.md",
+    "Terms/Entity.md",
+    "dbt Package/link_hash.md",
+    "Airflow Providers/Configs/metadata.md",
+    "dbt Package/combine.md",
+    "dbt Package/join.md",
+    "dbt Package/README.md",
     "dbt Package/incremental.md",
     "dbt Package/normalize.md",
     "Terms.md",
@@ -229,7 +260,6 @@
     "HowTos/How to create a config for presets.md",
     "Airflow Providers/Configs/presets.md",
     "Terms/Stream.md",
-    "Terms/Entity.md",
     "HowTos/attachments/airbyte_creat_presets_instruction_step5.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step3.jpg",
     "HowTos/attachments/airbyte_creat_presets_instruction_step4.jpg",
@@ -240,8 +270,6 @@
     "Airflow Providers/DAGs.md",
     "Airflow Providers/DAGs/sync_data.md",
     "Airflow Providers/DAGs/generate_models.md",
-    "Airflow Providers/DAGs/install_connectors.md",
-    "README.md",
     "Terms/attachments/add_datasource_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
     "Airflow Providers/Configs/attachments",
