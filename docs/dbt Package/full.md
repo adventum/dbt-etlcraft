@@ -4,6 +4,7 @@ step: 5_full
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "08"
 ---
 # macro `full`
 
@@ -32,7 +33,7 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
@@ -44,7 +45,7 @@ SORT doc_status
 
 -- depends_on: {{ ref('link_registry_utmhashregistry') }}
 
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 ## Аргументы
 
@@ -135,7 +136,7 @@ SELECT * FROM {{ ref('link_datestat') }}
 ```
 Затем задаются два списка - для колонок с числовыми и нечисловыми типами данных.
 
-Далее макрос при помощи вспомогательного макроса [[get_columns_in_relation]] берёт все колонки, проверяет у каждой тип данных, и распределяет их по этим двум спискам.
+Далее макрос при помощи вспомогательного макроса `get_columns_in_relation` берёт все колонки, проверяет у каждой тип данных, и распределяет их по этим двум спискам.
 
 Для этого пайплайна макрос не сразу создаёт `t0`, а сначала делает подготовительный шаг - `unnest_dates`. 
 
@@ -247,7 +248,7 @@ FROM unnest_dates
 
 -- depends_on: {{ ref('link_registry_utmhashregistry') }}
 
-{{ etlcraft.full() }}
+{{ datacraft.full() }}
 ```
 
 ## Примечания

@@ -33,7 +33,7 @@ For example, `join_appmetrica_events`.
 A macro is called inside this file:
 
 ```sql
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
 ```sql
@@ -47,7 +47,7 @@ Above the macro call, the data dependency will be specified in the file via `—
 
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 Technically  `join` macro is a traffic controller. Since the data in different sources is organized differently, each source will have its own kind of macro `join`, inside which the main work with the data takes place.
 
@@ -109,7 +109,7 @@ File Contents:
 
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
 
-{{ etlcraft.join() }}
+{{ datacraft.join() }}
 ```
 ## Notes
 

@@ -18,7 +18,7 @@ macros:
 
       - name: incremental_datetime_formula
         type: formula
-        description: "Формула поиска инкрементального поля с датой - здесь можно указать формулу напрямую. По умолчанию будет происхожить поиск через макрос etlcraft.get_from_default_dict. По умолчанию =none"
+        description: "Формула поиска инкрементального поля с датой - здесь можно указать формулу напрямую. По умолчанию будет происхожить поиск через макрос datacraft.get_from_default_dict. По умолчанию =none"
 
       - name: disable_incremental_datetime_field
         type: boolean
@@ -26,7 +26,7 @@ macros:
 
       - name: defaults_dict
         type: dictionary from internal macro
-        description: "Это словарь дефолтных значений, он задаётся в макросе etlcraft.etlcraft_defaults(). Участвует при поиске инкрементальных формулы и поля - icnremental_datetime_formula, incremental_datetime_field - при работе других макросов. По умолчанию defaults_dict=etlcraft.etlcraft_defaults()"
+        description: "Это словарь дефолтных значений, он задаётся в макросе datacraft.datacraft_defaults(). Участвует при поиске инкрементальных формулы и поля - icnremental_datetime_formula, incremental_datetime_field - при работе других макросов. По умолчанию defaults_dict=datacraft.datacraft_defaults()"
 
       - name: schema_pattern
         type: schema's name
@@ -34,11 +34,11 @@ macros:
 
       - name: source_table
         type: table's name
-        description: "В этом аргументе можно напрямую указать название таблицы с сырыми данными. Если этот аргумент не задан, поиск будет происходить при помощи макроса etlcraft.get_relations_by_re. По умолчанию =none"
+        description: "В этом аргументе можно напрямую указать название таблицы с сырыми данными. Если этот аргумент не задан, поиск будет происходить при помощи макроса datacraft.get_relations_by_re. По умолчанию =none"
 
       - name: override_target_model_name
         type: model's name
-        description: "Этот аргумент позволяет указать другое название модели (иначе this.name). Например, вы хотите создать кастомную модель с названием, не соответсвующим канонам использования etlcraft, скажем, my_test_model. Но такая модель по умолчанию не сработает - и вы можете написать в этом аргументе значение названия модели по канонам, например, такой подход используется в модели normalize_appmetrica_events_default_screen_view. По умолчанию=none."
+        description: "Этот аргумент позволяет указать другое название модели (иначе this.name). Например, вы хотите создать кастомную модель с названием, не соответсвующим канонам использования datacraft, скажем, my_test_model. Но такая модель по умолчанию не сработает - и вы можете написать в этом аргументе значение названия модели по канонам, например, такой подход используется в модели normalize_appmetrica_events_default_screen_view. По умолчанию=none."
 
       - name: debug_column_names
         type: list of column names

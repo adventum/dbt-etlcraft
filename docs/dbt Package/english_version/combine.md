@@ -33,7 +33,7 @@ For example, `combine_events`.
 A macro is called inside this file:
 
 ```sql
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
 ```sql
@@ -41,7 +41,7 @@ Above the macro call, the data dependency will be specified in the file via `—
 
 -- depends_on: {{ ref('join_ym_events') }}
 
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 ## Arguments
 
@@ -128,7 +128,7 @@ File Contents:
 
 -- depends_on: {{ ref('join_ym_events') }}
 
-{{ etlcraft.combine() }}
+{{ datacraft.combine() }}
 ```
 ## Notes
 

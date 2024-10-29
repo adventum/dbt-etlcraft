@@ -4,6 +4,7 @@ step: 1_silos
 sub_step: 2_incremental
 doc_status: ready
 language: rus
+main_number: "02"
 ---
 # macro `incremental`
 
@@ -32,13 +33,13 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 С этого шага и далее над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
 -- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
 
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 ## Аргументы
 
@@ -118,7 +119,7 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('normalize_appmetrica_events_default_deeplinks') }}
 
-{{ etlcraft.incremental() }}
+{{ datacraft.incremental() }}
 ```
 ## Примечания
 

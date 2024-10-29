@@ -3,5 +3,23 @@ category: auxiliary
 step: 1_silos
 sub_step: 2_incremental
 in_main_macro: incremental
-doc_status: empty_template
+doc_status: ready
 ---
+
+# macro `check_table_empty`
+
+## Описание
+
+Этот макрос проверяет, является ли искомая таблица пустой, или в ней есть данные.
+
+## Аргументы
+
+Этот макрос принимает следующие аргументы:
+```sql
+database,source_table
+```
+## Функциональность
+
+Макрос создаёт и затем выполняет простой тестовый запрос к таблице. 
+
+Если данные в таблице есть, макрос возвращает 1, если нет - возвращает 0.

@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'etlcraft_integration_tests'
+name: 'datacraft_integration_tests'
 version: '1.0.0'
 config-version: 2
 
@@ -27,7 +27,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: ['etlcraft', 'dbt_utils']
+    search_order: ['datacraft', 'dbt_utils']
 
 name: integration_tests
 

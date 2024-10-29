@@ -32,7 +32,7 @@
 {%- endif -%}
 
 {#- здесь перечислены параметры, которые д.б. такими же в каждом виде макроса join -#}
-{{ etlcraft[macro_name](sourcetype_name,pipeline_name,date_from,date_to,params,limit0=none)}}
+{{ datacraft[macro_name](sourcetype_name,pipeline_name,date_from,date_to,params,limit0=none)}}
 
 {% endmacro %}
 

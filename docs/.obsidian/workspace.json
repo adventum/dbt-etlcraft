@@ -1,0 +1,257 @@
+{
+  "main": {
+    "id": "68c88a7e8c016512",
+    "type": "split",
+    "children": [
+      {
+        "id": "c9918bca5f91376c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6518e554b30313f5",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "f47d9ac1e66d025f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "Граф"
+            }
+          },
+          {
+            "id": "2c51370e2ea3f4f2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Methodology.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Methodology"
+            }
+          },
+          {
+            "id": "cb611bea9a219ebb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dbt Package/create_dataset.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "create_dataset"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "34a35c969ea6a2fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b380b3610a4a670",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d25176eb34e78d23",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "0af5e166ee603c0c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "slug",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "398433271c398b5a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "22ccde28bd1633ce",
+    "type": "split",
+    "children": [
+      {
+        "id": "c181ba4e9dec9e80",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "abb023612fd6404f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "dbt Package/normalize.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для normalize"
+            }
+          },
+          {
+            "id": "21a9b687cc5b0c6e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Methodology.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Methodology"
+            }
+          },
+          {
+            "id": "ae9f54ec66113030",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "ddd6ee1661efaf43",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "dbt Package/normalize.md"
+              },
+              "icon": "lucide-list",
+              "title": "Структура normalize"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
+    }
+  },
+  "active": "2c51370e2ea3f4f2",
+  "lastOpenFiles": [
+    "dbt Package/create_dataset.md",
+    "dbt Package/attr.md",
+    "Methodology.md",
+    "dbt Package/attr_add_row_number.md",
+    "dbt Package/graph_edge.md",
+    "Airflow Providers/Configs/attributions.md",
+    "[.md",
+    "заранее.md",
+    "dbt Package/full.md",
+    "dbt Package/calc_graph.md",
+    "dbt Package/graph.md",
+    "dbt Package/graph_unique.md",
+    "dbt Package/graph_lookup.md",
+    "dbt Package/graph_tuples.md",
+    "dbt Package/get_adsourcedirty.md",
+    "dbt Package/hash.md",
+    "dbt Package/link.md",
+    "Terms/Link.md",
+    "Terms/Entity.md",
+    "dbt Package/link_hash.md",
+    "Airflow Providers/Configs/metadata.md",
+    "dbt Package/combine.md",
+    "dbt Package/join.md",
+    "dbt Package/README.md",
+    "dbt Package/incremental.md",
+    "dbt Package/normalize.md",
+    "attachments/example_of_work_for_graph_step.jpg",
+    "attachments/getting_hash_at_hash_step.png",
+    "attachments",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step5.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step3.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step4.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step2.jpg",
+    "HowTos/attachments/airbyte_creat_presets_instruction_step1.jpg",
+    "HowTos/attachments",
+    "Terms/attachments/add_datasource_dataCraft_example.jpg",
+    "Airflow Providers/Configs/attachments/add_datasets_dataCraft_example.jpg",
+    "Airflow Providers/Configs/attachments",
+    "Terms/attachments/airbyte_source_name_example.jpg",
+    "dataCraftCore",
+    "Terms/attachments",
+    "Airbyte Connectors",
+    "dbt Package/Pavel's additional macros and docs",
+    "dbt Package/english_version",
+    "dbt Package",
+    "Terms"
+  ]
+}

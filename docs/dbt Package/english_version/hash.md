@@ -34,13 +34,13 @@ For example, `hash_events`.
 A macro is called inside this file:
 
 ```sql
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 Above the macro call, the data dependency will be specified in the file via `—depends_on`. That is, the entire contents of the file looks, for example, like this:
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 ## Arguments
 
@@ -164,7 +164,7 @@ File Contents:
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 ## Notes
 

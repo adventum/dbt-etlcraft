@@ -4,6 +4,7 @@ step: 6_attribution
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "09"
 ---
 # macro `attr`
 
@@ -41,7 +42,7 @@ SORT sub_step, doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
@@ -49,7 +50,7 @@ SORT sub_step, doc_status
 
 -- depends_on: {{ ref('graph_qid') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```
 ## Аргументы
 
@@ -92,7 +93,7 @@ SORT sub_step, doc_status
 
 -- depends_on: {{ ref('graph_qid') }}
 
-{{ etlcraft.attr() }}
+{{ datacraft.attr() }}
 ```
 
 ## Примечания

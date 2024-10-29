@@ -30,7 +30,7 @@
     'test_col3'as name
 {% endset %}
 
-{% set relations_dict = etlcraft.get_relations_dict('incremental','testsourcetypename','testtemplatename',source_query) %}
+{% set relations_dict = datacraft.get_relations_dict('incremental','testsourcetypename','testtemplatename',source_query) %}
 
 {% if "incremental_testsourcetypename_testtemplatename" not in relations_dict %} 
 SELECT 'Unknown key'

@@ -3,7 +3,7 @@ api_version: Официальное API
 description: 
 type: operator
 doc_status: ready
-status: не готово
+status: ready (нужен тест?)
 ---
 ## Описание
 Возвращает информацию по имеющимся [[Airbyte Workspace]], позволяет осуществлять поиск по имени вместо ID.

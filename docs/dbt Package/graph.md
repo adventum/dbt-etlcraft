@@ -4,6 +4,7 @@ step: 4_graph
 sub_step: 
 doc_status: ready
 language: rus
+main_number: "07"
 ---
 # macro `graph`
 
@@ -38,13 +39,13 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.graph() }}
+{{ datacraft.graph() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
 -- depends_on: {{ ref('link_events') }}
 
-{{ etlcraft.graph() }}
+{{ datacraft.graph() }}
 ```
 ## Аргументы
 
@@ -82,7 +83,7 @@ SORT doc_status
 ```sql
 -- depends_on: {{ ref('link_events') }}
 
-{{ etlcraft.graph() }}
+{{ datacraft.graph() }}
 ```
 
 ## Примечания

@@ -6,6 +6,6 @@ docs/.obsidian/graph.json
 docs/.obsidian/workspace.json
 docs/.obsidian/hotkeys.json
 .vscode/
-airflow_providers/apache_airflow_providers_etlcraft_dags/dist
-airflow_providers/apache_airflow_providers_etlcraft_airbyte/dist
+airflow_providers/apache_airflow_providers_datacraft_dags/dist
+airflow_providers/apache_airflow_providers_datacraft_airbyte/dist
 .venv

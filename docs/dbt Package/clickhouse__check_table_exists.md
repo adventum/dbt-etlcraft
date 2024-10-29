@@ -1,30 +1,24 @@
 ---
 category: auxiliary
 step: 5_full
-sub_step: 
 in_main_macro: full
-doc_status: empty_template
-language: rus
+doc_status: ready
 ---
 # macro `clickhouse__check_table_exists`
 
 ## Описание
 
-## Применение
+Макрос проверяет, существует ли заданная в аргументе таблица.
 
 ## Аргументы
 
 Этот макрос принимает следующие аргументы:
-
+```sql
+source_table,database
+```
 ## Функциональность
 
-## Пример
+Макрос создаёт и затем выполняет простой тестовый запрос к `system.tables`. 
 
-Файл в формате sql в папке models. Название файла `[NAME]`
+Если таблица есть, макрос возвращает 1, если нет - возвращает 0.
 
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
-
-## Примечания

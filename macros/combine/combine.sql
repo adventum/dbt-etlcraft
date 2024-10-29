@@ -32,7 +32,7 @@
 {%- endif -%}
 
 {#- находим все таблицы, которые соответствут паттерну -#}
-{%- set relations = etlcraft.get_relations_by_re(schema_pattern=target.schema, 
+{%- set relations = datacraft.get_relations_by_re(schema_pattern=target.schema, 
                                                               table_pattern=table_pattern) -%} 
 
 {#- если что-то не так - выдаём ошибку                                                                  
@@ -43,7 +43,7 @@
 {#- собираем одинаковые таблицы, которые будут проходить по этому макросу  - здесь union all найденных таблиц -#}
 
 {#- делаем это через кастомный макрос, чтобы null заменить на '' или 0  -#} 
-{%- set source_table = '(' ~ etlcraft.custom_union_relations(relations) ~ ')' -%}
+{%- set source_table = '(' ~ datacraft.custom_union_relations(relations) ~ ')' -%}
 
 {#- задаём по возможности инкрементальность -#}
 {%- if pipeline_name in ('datestat', 'events') -%}

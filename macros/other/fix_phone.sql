@@ -24,20 +24,20 @@ replaceRegexpAll(
 {#- если после предобработки длина значения равна 10 цифрам -#}
 {#- то мы оставляем такое значение с предобработкой + к началу добавляем цифру 7 -#}
 CASE  
-WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 10 
-THEN concat('7', {{etlcraft.fix_phone_decimal(field_name)}})
+WHEN length({{datacraft.fix_phone_decimal(field_name)}}) = 10 
+THEN concat('7', {{datacraft.fix_phone_decimal(field_name)}})
 
 {#- если после предобработки длина значения равна 11 цифрам  и начинается с цифры 7 -#}
 {#- то мы оставляем такое значение с предобработкой и больше ничего с ним не делаем -#}
-WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 11 
-AND startsWith({{etlcraft.fix_phone_decimal(field_name)}},'7')
-THEN {{etlcraft.fix_phone_decimal(field_name)}}
+WHEN length({{datacraft.fix_phone_decimal(field_name)}}) = 11 
+AND startsWith({{datacraft.fix_phone_decimal(field_name)}},'7')
+THEN {{datacraft.fix_phone_decimal(field_name)}}
 
 {#- если после предобработки длина значения равна 11 цифрам  и начинается с цифры 8 -#}
 {#- то мы оставляем такое значение с предобработкой + заменяем начальную цифру 8 на 7 -#}
-WHEN length({{etlcraft.fix_phone_decimal(field_name)}}) = 11 
-AND startsWith({{etlcraft.fix_phone_decimal(field_name)}},'8')
-THEN replaceOne({{etlcraft.fix_phone_decimal(field_name)}}, '8', '7')
+WHEN length({{datacraft.fix_phone_decimal(field_name)}}) = 11 
+AND startsWith({{datacraft.fix_phone_decimal(field_name)}},'8')
+THEN replaceOne({{datacraft.fix_phone_decimal(field_name)}}, '8', '7')
 
 {#- в остальных случаях вместо значения будет пустота -#}
 ELSE '' 

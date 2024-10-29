@@ -23,7 +23,7 @@
 
 {%- set stream_name_custom_report = 'custom_report' -%}
 {%- set table_pattern_custom_report = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_custom_report ~ '$' -%}
-{%- set relations_custom_report = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_custom_report) -%}   
+{%- set relations_custom_report = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_custom_report) -%}   
 {%- if not relations_custom_report -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_custom_report ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -35,7 +35,7 @@
 
 {%- set stream_name_custom_report_smart = 'custom_report_smart' -%}
 {%- set table_pattern_custom_report_smart = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_datestat ~  '_[^_]+_' ~ stream_name_custom_report_smart ~ '$' -%}
-{%- set relations_custom_report_smart = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_custom_report_smart) -%}   
+{%- set relations_custom_report_smart = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_custom_report_smart) -%}   
 {%- if not relations_custom_report_smart -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_custom_report_smart ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -47,7 +47,7 @@
 
 {%- set stream_name_ads = 'ads' -%}
 {%- set table_pattern_ads = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name_registry ~  '_[^_]+_' ~ stream_name_ads ~ '$' -%}
-{%- set relations_ads = etlcraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ads) -%}   
+{%- set relations_ads = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_ads) -%}   
 {%- if not relations_ads -%} 
     {{ exceptions.raise_compiler_error('No relations were found matching the pattern "' ~ table_pattern_ads ~ '". 
     Please ensure that your source data follows the expected structure.') }}
@@ -58,7 +58,7 @@
 {%- endif -%}
 
 {#- получаем список date_from:xxx[0], date_to:yyy[0] из union всех normalize таблиц -#}
-  {% set min_max_date_dict = etlcraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
+  {% set min_max_date_dict = datacraft.get_min_max_date('normalize',sourcetype_name) %}                                                             
   {% if not min_max_date_dict %} 
       {{ exceptions.raise_compiler_error('No min_max_date_dict') }} 
   {% endif %}

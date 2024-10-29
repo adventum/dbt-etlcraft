@@ -1,16 +1,16 @@
-# Etlcraft: A DBT Package for Organizing Data Pipelines
+# dataCraft Core: A DBT Package for Organizing Data Pipelines
 
 ## Overview
 
-Etlcraft is a comprehensive dbt package that's primarily designed for Airbyte data sources, but its versatile design allows for use with various other data sources as well. The primary objective of Etlcraft is to simplify and streamline the creation and structuring of dbt models, making your data pipeline management more efficient.
+dataCraft Core is a comprehensive dbt package that's primarily designed for Airbyte data sources, but its versatile design allows for use with various other data sources as well. The primary objective of dataCraft Core is to simplify and streamline the creation and structuring of dbt models, making your data pipeline management more efficient.
 
-Etlcraft's functionality is organized into a series of stages in your data pipeline. As of now, the first stage, Normalization, is fully operational, with placeholders set up for the subsequent stages. 
+dataCraft Core's functionality is organized into a series of stages in your data pipeline. As of now, the first stage, Normalization, is fully operational, with placeholders set up for the subsequent stages. 
 
 ## Stage 1: Normalization
 
-Normalization is a critical step in preparing your raw data for further processing and analysis. Etlcraft leverages Airbyte's raw data (usually containing a single JSON data column) and transforms it into a more consumable format with neatly arranged columns.
+Normalization is a critical step in preparing your raw data for further processing and analysis. dataCraft Core leverages Airbyte's raw data (usually containing a single JSON data column) and transforms it into a more consumable format with neatly arranged columns.
 
-With Etlcraft, you'll create a dbt model for each unique combination of:
+With dataCraft Core, you'll create a dbt model for each unique combination of:
 
 - `Source Type`: The origin of your data. For example, this could be an ad platform like Yandex Direct or MyTarget.
 - `Template`: A set of Airbyte connections yielding the same set of columns. For instance, you might have several Yandex Direct connections to different accounts, but each one produces the same field list.
@@ -26,4 +26,4 @@ The `normalize()` macro will generate SQL that unifies all relevant Airbyte tabl
 
 ## Following Stages
 
-Etlcraft's pipeline is designed to cover numerous steps to ensure your data is processed and analyzed optimally. The following stages will be implemented later.
+dataCraft Core's pipeline is designed to cover numerous steps to ensure your data is processed and analyzed optimally. The following stages will be implemented later.

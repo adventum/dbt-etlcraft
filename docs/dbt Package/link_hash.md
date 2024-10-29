@@ -3,27 +3,24 @@ category: auxiliary
 step: 2_staging
 sub_step: 3_hash
 in_main_macro: hash
-doc_status: empty_template
+doc_status: ready
 ---
-# macro `[link_hash]`
+# macro `link_hash`
 
 ## Описание
 
-## Применение
+Этот макрос создаёт хэш-поле линка (`link`).
 
 ## Аргументы
 
 Этот макрос принимает следующие аргументы:
-
+```sql
+link_name, metadata_dict
+```
 ## Функциональность
 
-## Пример
+Макрос обращается к `metadata`, и получает сущности и их ключи.
 
-Файл в формате sql в папке models. Название файла `[NAME]`
+После ряда обработок макрос создаёт хэш-поле при помощи `hex(MD5(...))`. Создаваемое поле будет называться как имя заданного линка с окончанием `Hash`.
 
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
 
-## Примечания

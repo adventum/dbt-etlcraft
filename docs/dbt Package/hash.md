@@ -4,6 +4,7 @@ step: 2_staging
 sub_step: 3_hash
 doc_status: ready
 language: rus
+main_number: "05"
 ---
 # macro `hash`
 
@@ -32,13 +33,13 @@ SORT doc_status
 Внутри этого файла вызывается макрос:
 
 ```sql
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 Над вызовом макроса в файле будет указана зависимость данных через `—depends_on`. То есть целиком содержимое файла выглядит, например, вот так:
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 ## Аргументы
 
@@ -160,7 +161,7 @@ SELECT *,
 ```sql
 -- depends_on: {{ ref('combine_events') }}
 
-{{ etlcraft.hash() }}
+{{ datacraft.hash() }}
 ```
 
 ## Примечания

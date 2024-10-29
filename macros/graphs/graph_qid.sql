@@ -7,13 +7,13 @@
 {# 
     Настройка материализации данных.
     order_by=('__datetime', '__link', '__id') определяет порядок сортировки данных по дате, ссылке и идентификатору.
-    pre_hook="{{ etlcraft.calc_graph() }}" указывает на необходимость выполнения предварительного хука etlcraft.calc_graph() перед выполнением запроса.
+    pre_hook="{{ datacraft.calc_graph() }}" указывает на необходимость выполнения предварительного хука datacraft.calc_graph() перед выполнением запроса.
 #}
 {{
     config(
         materialized='table', 
         order_by=('__datetime', '__link', '__id'), 
-        pre_hook="{{ etlcraft.calc_graph() }}"  
+        pre_hook="{{ datacraft.calc_graph() }}"  
     )
 }}
 

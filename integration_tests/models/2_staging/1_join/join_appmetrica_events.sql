@@ -3,4 +3,4 @@
 -- depends_on: {{ ref('incremental_appmetrica_events_default_installations') }}
 -- depends_on: {{ ref('incremental_appmetrica_events_default_screen_view') }}
 -- depends_on: {{ ref('incremental_appmetrica_events_default_sessions_starts') }}
-{{ etlcraft.join() }}
+{{ datacraft.join() }}

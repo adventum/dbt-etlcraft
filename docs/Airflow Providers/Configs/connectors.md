@@ -3,24 +3,26 @@ description: Коннекторы (докер-образы), которые ну
 config_default_type: "`templated_file`"
 config_default_format: "`yaml`"
 type: config
-doc_status: in progress
+doc_status: ready (нужно ревью)
 ---
-
-
-Описание: Коннекторы (докер-образы), которые нужно подключить в Airbyte
-Тип по умолчанию: templated_file
-Формат по умолчанию: yaml
-
 # Описание
 
-Словарь состоит из двух частей: `source_definitions` и `destination_definitions`. В обоих разделах одинаковая структура:
+Словарь состоит из двух частей: 
+- `source_definitions`  - определение коннекторов для источников данных
+- и `destination_definitions` - определение коннекторов для мест назначения. 
 
-- `slug`  — идентификатор коннектора, его сокращенное название, взятое из [[Configs#Список конфигов]]
+В обоих разделах одинаковая структура:
+
+- `slug`  — идентификатор, 
+	- соответствующий [[Source|краткому названию источника данных]] для `source_definitions`, взятое из [[Connectors]] 
+	- и для `destination_definitions` соответствующий названию базы данных, куда коннектором будут выгружаться данные
     
     [[Add slug validation check to connector creation DAG]]
     
 - `image` — название Docker-образа на DockerHub
-- `documentation`  — ссылка на этот Notion (раздел “[[Configs#Список конфигов]]”), где даны инструкции, как подключить коннектор в Aibyte
+- `documentation`  — ссылка на раздел “[[Connectors]]”, где даны инструкции, как подключить коннектор в Aibyte
+
+Данные из этого конфига используются для добавления в Airbyte нужных коннекторов. Это осуществляется с помощью DAG’a [[install_connectors]].
 
 [[Заменить в конфиге connectors name на slug]]
 
@@ -28,14 +30,14 @@ doc_status: in progress
 
 ```yaml
 source_definitions:
-  - name: sheets
+  - slug: sheets
     image: adventum/source-google-sheets:1.0.0
     documentation: example.com
-  - name: ydisk
+  - slug: ydisk
     image: adventum/source-yandex-disk:0.2.0
     documentation: example.com
 destination_definitions:
-  - name: clickhouse
+  - slug: clickhouse
     image: airbyte/destination-clickhouse:1.0.0
     documentation: example.com
 ```
