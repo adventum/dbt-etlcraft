@@ -11,13 +11,14 @@ Metaconfig = namedtuple("Metaconfig", "source format path")
 Source = Enum('Source', 'datacraft_variable templated_file file other_variable')
 Format = Enum('Format', 'json yaml')
 
-def get_configs(namespace: str, config_names=[]) -> dict:    
+def get_configs(namespace: str, config_names=None) -> dict:    
     default_metaconfigs = get_single_config('metaconfigs', get_metaconfig(namespace, 'metaconfigs'))
     base = get_single_config('base', get_metaconfig(namespace, 'base', default_metaconfigs))    
     for base_var in base.keys():
         overriden_val = process_single_config(namespace, f"base_{base_var}", default_metaconfigs, base)
         if overriden_val:
-            base[base_var] = overriden_val    
+            base[base_var] = overriden_val
+    config_names = config_names or default_metaconfigs.keys()  
     if 'base' in config_names:
         config_names.remove('base')
     if 'metaconfigs' in config_names:
