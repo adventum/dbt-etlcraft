@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs_status.md",
+                "file": "Terms/Direct integration.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "docs_status"
+              "title": "Direct integration"
             }
           },
           {
@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/create_dataset.md",
+                "file": "Airflow Providers/Configs/presets.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "create_dataset"
+              "title": "presets"
             }
           }
         ],
@@ -155,12 +155,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs_status.md",
+                "file": "Terms/Direct integration.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из docs_status"
+              "title": "Исходящие ссылки из Direct integration"
             }
           },
           {
@@ -207,14 +207,18 @@
   },
   "active": "2c51370e2ea3f4f2",
   "lastOpenFiles": [
+    "Airflow Providers/Configs/presets.md",
     "Terms/Direct integration.md",
+    "dbt Package/create_dataset.md",
+    "Terms/Airbyte Connector.md",
+    "Terms/Entity.md",
+    "Terms/DAG.md",
+    "Airflow Providers/Configs/attributions.md",
     "docs_status.md",
     "Methodology.md",
-    "dbt Package/create_dataset.md",
     "dbt Package/attr.md",
     "dbt Package/attr_add_row_number.md",
     "dbt Package/graph_edge.md",
-    "Airflow Providers/Configs/attributions.md",
     "[.md",
     "заранее.md",
     "dbt Package/full.md",
@@ -227,12 +231,8 @@
     "dbt Package/hash.md",
     "dbt Package/link.md",
     "Terms/Link.md",
-    "Terms/Entity.md",
     "dbt Package/link_hash.md",
     "Airflow Providers/Configs/metadata.md",
-    "dbt Package/combine.md",
-    "dbt Package/join.md",
-    "dbt Package/README.md",
     "attachments/example_of_work_for_graph_step.jpg",
     "attachments/getting_hash_at_hash_step.png",
     "attachments",
