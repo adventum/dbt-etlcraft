@@ -198,21 +198,21 @@ last_name as lastName, --Фамилия контакта
 -- custom_fields_values - Массив, содержащий информацию по значениям дополнительных полей, заданных для данного контакта
 -- для телефона и email получаем вот так, так как может быть указано несколько значений: 
 --ТЕЛЕФОН
-toString(arrayMap(x -> JSONExtractString(x, 'value'), 
+arrayMap(x -> JSONExtractString(x, 'value'), 
 	JSONExtractArrayRaw(JSONExtractString(
-		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values')))) AS phoneNumbers,
+		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS phoneNumbers,
 --code: Доступные значения для поля Телефон: WORK – рабочий, WORKDD – рабочий прямой, MOB – мобильный, FAX – факс, HOME – домашний, OTHER – другой.
-toString(arrayMap(x -> JSONExtractString(x, 'enum_code'),
+arrayMap(x -> JSONExtractString(x, 'enum_code'),
 	JSONExtractArrayRaw(JSONExtractString(
-		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values')))) AS phoneCodes,
+		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS phoneCodes,
 --EMAIL
-toString(arrayMap(x -> JSONExtractString(x, 'value'), 
+arrayMap(x -> JSONExtractString(x, 'value'), 
 	JSONExtractArrayRaw(JSONExtractString(
-		arrayFilter(x -> x LIKE '%EMAIL%', JSONExtractArrayRaw(custom_fields_values))[1],'values')))) AS email,
+		arrayFilter(x -> x LIKE '%EMAIL%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS email,
 --code: Доступные значение для поля Email: WORK – рабочий, PRIV – личный, OTHER – другой.
-toString(arrayMap(x -> JSONExtractString(x, 'enum_code'), 
+arrayMap(x -> JSONExtractString(x, 'enum_code'), 
 	JSONExtractArrayRaw(JSONExtractString(
-		arrayFilter(x -> x LIKE '%EMAIL%', JSONExtractArrayRaw(custom_fields_values))[1],'values')))) AS emailCodes,
+		arrayFilter(x -> x LIKE '%EMAIL%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS emailCodes,
 -- для пола и возраста чуть-чуть подругому, так как не может быть два значения (по логике)
 --Пол
 JSONExtractString(JSONExtractArrayRaw(arrayFilter(x -> x LIKE '%Пол%', JSONExtractArrayRaw(custom_fields_values))[1], 'values')[1], 'value') as gender,

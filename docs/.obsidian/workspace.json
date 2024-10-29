@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Methodology.md",
+                "file": "docs_status.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Methodology"
+              "title": "docs_status"
             }
           },
           {
@@ -155,12 +155,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Methodology.md",
+                "file": "docs_status.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из Methodology"
+              "title": "Исходящие ссылки из docs_status"
             }
           },
           {
@@ -207,9 +207,11 @@
   },
   "active": "2c51370e2ea3f4f2",
   "lastOpenFiles": [
+    "Terms/Direct integration.md",
+    "docs_status.md",
+    "Methodology.md",
     "dbt Package/create_dataset.md",
     "dbt Package/attr.md",
-    "Methodology.md",
     "dbt Package/attr_add_row_number.md",
     "dbt Package/graph_edge.md",
     "Airflow Providers/Configs/attributions.md",
@@ -231,8 +233,6 @@
     "dbt Package/combine.md",
     "dbt Package/join.md",
     "dbt Package/README.md",
-    "dbt Package/incremental.md",
-    "dbt Package/normalize.md",
     "attachments/example_of_work_for_graph_step.jpg",
     "attachments/getting_hash_at_hash_step.png",
     "attachments",
