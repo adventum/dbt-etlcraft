@@ -200,7 +200,7 @@ last_name as lastName, --Фамилия контакта
 --ТЕЛЕФОН
 arrayMap(x -> JSONExtractString(x, 'value'), 
 	JSONExtractArrayRaw(JSONExtractString(
-		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS phoneNumbers,
+		arrayFilter(x -> x LIKE '%PHONE%', JSONExtractArrayRaw(custom_fields_values))[1],'values'))) AS userPhoneNumber,
 --code: Доступные значения для поля Телефон: WORK – рабочий, WORKDD – рабочий прямой, MOB – мобильный, FAX – факс, HOME – домашний, OTHER – другой.
 arrayMap(x -> JSONExtractString(x, 'enum_code'),
 	JSONExtractArrayRaw(JSONExtractString(
