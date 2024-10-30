@@ -80,6 +80,7 @@
 {#- стрим events - Список событий – набор информации о происходящих действиях в аккаунте. -#}
 with events as (
 select  --__date, --дата, берётся из created_at на normalize
+splitByChar('_', __table_name)[7] AS accountName,
 id as eventId, --ID события
 type as eventType, --Тип события 
 entity_id as entityId, --ID сущности события
