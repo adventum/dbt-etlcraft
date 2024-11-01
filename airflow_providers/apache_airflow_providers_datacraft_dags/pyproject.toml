@@ -17,10 +17,13 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+    "apache-airflow>=2.9.3, <3.0",
+    "apache_airflow_providers_datacraft_defaults @ file:../apache_airflow_providers_datacraft_defaults",
+]
+
 [project.urls]
 Homepage = "https://github.com/adventum/dbt-datacraft"
 
-dependencies = [
-    "apache-airflow>=2.9.3, <3.0",
-    "apache_airflow_providers_datacraft_defaults"
-]
+[tool.hatch.metadata]
+allow-direct-references = true

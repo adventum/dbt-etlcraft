@@ -2,8 +2,8 @@ from apache_airflow_providers_datacraft_dags import get_configs
 from datetime import datetime
 
 
-import requests
 from airflow.decorators import dag, task
+
 
 class DagBuilder:
     def create_dags(self):
@@ -12,5 +12,7 @@ class DagBuilder:
             @task(task_id="hello", retries=2)
             def hello_task():
                 print(get_configs())
+
             hello_task()
+
         hello_hello()

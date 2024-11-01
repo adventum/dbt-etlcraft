@@ -1,9 +1,6 @@
 import shutil
 from pathlib import Path
-import json
-import yaml
 
-import apache_airflow_providers_datacraft as datacraft
 
 from datetime import datetime
 
@@ -12,7 +9,9 @@ from airflow.models import DAG
 
 from airflow.operators.python_operator import PythonOperator
 
-from airflow_providers.apache_airflow_providers_datacraft_dags.src.apache_airflow_providers_datacraft_dags.exceptions import datacraftConfigError
+from airflow_providers.apache_airflow_providers_datacraft_dags.src.apache_airflow_providers_datacraft_dags.exceptions import (
+    datacraftConfigError,
+)
 
 
 """В панеле администратора должна быть переменная dbt_project_directory, в которой будет путь до 
@@ -46,7 +45,7 @@ default_value_mapping = {
     "base": {
         "type": "templated_file",
         "format": "yaml",
-    }
+    },
 }
 
 
@@ -59,7 +58,9 @@ def ensure_templated_configs_directory(base_path: str):
         templated_configs_path.mkdir(parents=True, exist_ok=True)
 
 
-def check_file(config_name: str, file_format: str, base_path: str = "", metaconfig_path: str = ""):
+def check_file(
+    config_name: str, file_format: str, base_path: str = "", metaconfig_path: str = ""
+):
     # Определение всех возможных расширений для проверки
     extensions_to_check = ["json"] if file_format == "json" else ["yml", "yaml"]
 
@@ -73,13 +74,15 @@ def check_file(config_name: str, file_format: str, base_path: str = "", metaconf
     else:
         # Пример templated_file_path если есть base_path, но нет metaconfig_path
         # /path_to_datacraft/templated_configs/connectors.yml
-        templated_file_path = (f"{base_path}{'/' if base_path else ''}"
-                               f"templated_files/{config_name}"
-                               f"{'/' if metaconfig_path else ''}{metaconfig_path}.{file_format}")
+        templated_file_path = (
+            f"{base_path}{'/' if base_path else ''}"
+            f"templated_files/{config_name}"
+            f"{'/' if metaconfig_path else ''}{metaconfig_path}.{file_format}"
+        )
         return templated_file_path, False
 
 
-def prepare(config_names: list[str], namespace: str) -> list[dict[any: any]]:
+def prepare(config_names: list[str], namespace: str) -> list[dict[any:any]]:
     configs_map: list = []
 
     dbt_directory_variable = Variable.get("dbt_project_directory", "")
@@ -94,17 +97,19 @@ def prepare(config_names: list[str], namespace: str) -> list[dict[any: any]]:
         source: str = Variable.get(
             source_key,
             default_var=default_value_mapping.get(config_name).get("type")
-            if config_name in default_value_mapping.keys() else {}
+            if config_name in default_value_mapping.keys()
+            else {},
         )
         file_format: str = Variable.get(
             format_key,
             default_var=default_value_mapping.get(config_name).get("format")
-            if config_name in default_value_mapping.keys() else {}
+            if config_name in default_value_mapping.keys()
+            else {},
         )
         path: str = Variable.get(path_key, default_var="")
 
         # Формирование конфига. Он наполняется во время выполнения кода ниже
-        config_map: dict[str: any] = {
+        config_map: dict[str:any] = {
             "name": config_name,
         }
 
@@ -115,7 +120,9 @@ def prepare(config_names: list[str], namespace: str) -> list[dict[any: any]]:
             config_map["format"] = file_format
 
         elif source == "datacraft_variable":
-            raise datacraftConfigError(f"You can not use datacraft_variable. It is not supported")
+            raise datacraftConfigError(
+                "You can not use datacraft_variable. It is not supported"
+            )
 
         elif source == "templated_file":
             file, symlink = check_file(config_name, file_format, dbt_directory_variable)
@@ -141,10 +148,10 @@ def prepare(config_names: list[str], namespace: str) -> list[dict[any: any]]:
 
 
 def process_config_file(config: dict, base_path: str, macros_path: str):
-    config_name = config['name']
-    file_format = config['format']
-    source = config['source']
-    symlink = config.get('symlink', False)
+    config_name = config["name"]
+    file_format = config["format"]
+    source = config["source"]
+    symlink = config.get("symlink", False)
 
     # Путь к файлу для выполнения действий
     path = f"{base_path}{'/' if base_path else ''}templated_files/{config_name}.{file_format}"
@@ -156,24 +163,24 @@ def process_config_file(config: dict, base_path: str, macros_path: str):
 
     # Выполнение действий в зависимости от source
     if source == "airflow_variable":
-        value = Variable.get(config['variable_name'])
-        with open(target_file_path, 'w') as file:
+        value = Variable.get(config["variable_name"])
+        with open(target_file_path, "w") as file:
             file.write(value)
 
     elif source == "file":
-        file_path = Path(config['file_path'])
+        file_path = Path(config["file_path"])
         if symlink:
             target_file_path.symlink_to(file_path)
         else:
             shutil.copy(file_path, target_file_path)
 
     # Чтение содержимого целевого файла
-    with open(target_file_path, 'r') as target_file:
+    with open(target_file_path, "r") as target_file:
         file_content = target_file.read()
 
     # Создание SQL макроса
     macro_file_path = Path(macros_path) / f"{config_name}.sql"
-    with open(macro_file_path, 'w') as file:
+    with open(macro_file_path, "w") as file:
         file.write(f"""
             {{% macro {config_name}_data() %}}
             {{
@@ -205,41 +212,40 @@ def generate_tasks(config_names: list[str], namespace: str, **kwargs):
             task_id=f"process_{config['name']}",
             python_callable=process_config_file,
             op_kwargs={
-                'config': config,
-                'base_path': dbt_directory_variable,
-                'macros_path': macros_path
-            }
+                "config": config,
+                "base_path": dbt_directory_variable,
+                "macros_path": macros_path,
+            },
         )
         task.execute(context=kwargs)
 
 
 # Определение DAG
 params = {
-    "config_names": ['connectors', 'other_variable', 'presets'],
-    "namespace": "datacraft"
+    "config_names": ["connectors", "other_variable", "presets"],
+    "namespace": "datacraft",
 }
 
 default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
+    "owner": "airflow",
+    "depends_on_past": False,
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 1,
 }
 
 with DAG(
-        'template_configs_dag',
-        default_args=default_args,
-        description='DAG для обработки конфигурационных файлов и создания SQL макросов',
-        schedule_interval=None,
-        start_date=datetime(2024, 9, 4),
-        catchup=False,
-        params=params
+    "template_configs_dag",
+    default_args=default_args,
+    description="DAG для обработки конфигурационных файлов и создания SQL макросов",
+    schedule_interval=None,
+    start_date=datetime(2024, 9, 4),
+    catchup=False,
+    params=params,
 ) as dag:
-
     generate_tasks_operator = PythonOperator(
-        task_id='generate_tasks',
+        task_id="generate_tasks",
         python_callable=generate_tasks,
         op_kwargs=params,
-        provide_context=True
+        provide_context=True,
     )

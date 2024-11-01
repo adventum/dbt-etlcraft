@@ -3,10 +3,13 @@ import yaml
 import json
 from jinja2 import Environment, FileSystemLoader
 
-def get_datacraft_defaults(config_name: str, format: str, suffix: str="", template_variables: dict={}) -> dict:
+
+def get_datacraft_defaults(
+    config_name: str, format: str, suffix: str = "", template_variables: dict = {}
+) -> dict:
     filename = f"{config_name}{suffix or ''}.{format}"
     directory_path = pathlib.Path(__file__).parent
-    filepath =  directory_path / filename
+    filepath = directory_path / filename
     if not (filepath.exists() and filepath.is_file()):
         filepath = pathlib.Path(__file__).parent / f"{filename}.j2"
         if not (filepath.exists() and filepath.is_file()):
@@ -18,11 +21,12 @@ def get_datacraft_defaults(config_name: str, format: str, suffix: str="", templa
     else:
         file_content = filepath.read_text()
     match format:
-        case 'yaml':
+        case "yaml":
             return yaml.safe_load(file_content)
-        case 'json':
+        case "json":
             return json.loads(file_content)
-    raise datacraftDefaultsError(f"unknown format ({format})")        
+    raise datacraftDefaultsError(f"unknown format ({format})")
+
 
 class datacraftDefaultsError(Exception):
     def __init__(self, message: str):
