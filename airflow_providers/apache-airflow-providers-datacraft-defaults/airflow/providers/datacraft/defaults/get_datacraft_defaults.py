@@ -13,7 +13,7 @@ def get_datacraft_defaults(
     if not (filepath.exists() and filepath.is_file()):
         filepath = pathlib.Path(__file__).parent / f"{filename}.j2"
         if not (filepath.exists() and filepath.is_file()):
-            raise datacraftDefaultsError(f"config not found ({str(filepath)})")
+            raise DatacraftDefaultsError(f"config not found ({str(filepath)})")
         template_loader = FileSystemLoader(searchpath=directory_path)
         jinja_env = Environment(loader=template_loader)
         template = jinja_env.get_template(str(filepath))
@@ -25,13 +25,13 @@ def get_datacraft_defaults(
             return yaml.safe_load(file_content)
         case "json":
             return json.loads(file_content)
-    raise datacraftDefaultsError(f"unknown format ({format})")
+    raise DatacraftDefaultsError(f"unknown format ({format})")
 
 
-class datacraftDefaultsError(Exception):
+class DatacraftDefaultsError(Exception):
     def __init__(self, message: str):
         super().__init__(message)
         self.message = message
 
     def __str__(self):
-        return f"datacraftDefaultsError: {self.message}"
+        return f"DatacraftDefaultsError: {self.message}"

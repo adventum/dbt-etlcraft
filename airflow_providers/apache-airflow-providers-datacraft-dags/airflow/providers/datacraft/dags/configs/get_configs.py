@@ -1,8 +1,8 @@
 import yaml
 import json
 from collections import namedtuple
-from apache_airflow_providers_etlcraft_dags.exceptions import EtlcraftConfigError
-from apache_airflow_providers_etlcraft_defaults import get_etlcraft_defaults
+from airflow.providers.datacraft.dags.exceptions import DatacraftConfigError
+from airflow.providers.datacraft.defaults.get_datacraft_defaults import get_datacraft_defaults
 from airflow.models import Variable
 import pathlib
 from enum import Enum
@@ -54,13 +54,13 @@ def get_default_path(source):
             return f"configs/{source}"
         case Source.other_variable:
             return source
-    raise EtlcraftConfigError(f"unknown source: {source}")
+    raise DatacraftConfigError(f"unknown source: {source}")
 
 
 def get_metaconfig(namespace: str, config_name: str, defaults: None) -> Metaconfig:
     if not defaults:
         if config_name != "metaconfigs":
-            raise EtlcraftConfigError(
+            raise DatacraftConfigError(
                 "get_metaconfig is called without defaults. It is possible only for metaconfigs itself"
             )
         else:
@@ -76,7 +76,7 @@ def get_metaconfig(namespace: str, config_name: str, defaults: None) -> Metaconf
     if source is None or format is None:
         if config_name.startswith("base_"):
             return None
-        raise EtlcraftConfigError(
+        raise DatacraftConfigError(
             f"source or format not found for config {config_name} (namespace {namespace})"
         )
     source = Source[source]
@@ -92,13 +92,13 @@ def parse_by_format(text, format):
             return yaml.safe_load(text)
         case Format.json:
             return json.loads(text)
-    raise EtlcraftConfigError(f"unknown format ({format})")
+    raise DatacraftConfigError(f"unknown format ({format})")
 
 
 def get_single_config(config_name: str, metaconfig: Metaconfig, base_config=None):
     if not base_config:
         if config_name not in ("metaconfigs", "base"):
-            raise EtlcraftConfigError(
+            raise DatacraftConfigError(
                 "get_single_config is called without base_config. It is possible only for metaconfigs or base"
             )
         else:
@@ -107,7 +107,7 @@ def get_single_config(config_name: str, metaconfig: Metaconfig, base_config=None
         case Source.file:
             filepath = pathlib.Path(metaconfig.path)
             if not (filepath.exists() and filepath.is_file()):
-                raise EtlcraftConfigError(f"file not found ({str(filepath)})")
+                raise DatacraftConfigError(f"file not found ({str(filepath)})")
             content = filepath.read_text()
             return parse_by_format(content, metaconfig.format)
         case Source.templated_file:
@@ -126,7 +126,7 @@ def get_single_config(config_name: str, metaconfig: Metaconfig, base_config=None
             var = parse_by_format(Variable.get(datacraft_variable), metaconfig.format)
             ret = var.get(config_name)
             if ret is None:
-                raise EtlcraftConfigError(
+                raise DatacraftConfigError(
                     f"key {config_name} not found in dataCraft variable {datacraft_variable}"
                 )
             return ret

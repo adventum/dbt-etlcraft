@@ -1,5 +1,5 @@
 # Исключение, если искомый конфиг не был найден
-class datacraftConfigError(Exception):
+class DatacraftConfigError(Exception):
     """Кастомное исключение для ошибок конфигурации etlCraft."""
 
     def __init__(self, message: str):

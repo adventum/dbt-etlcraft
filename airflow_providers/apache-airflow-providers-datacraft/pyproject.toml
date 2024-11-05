@@ -22,6 +22,8 @@ dependencies = [
     "Jinja2",
     "PyYAML",
     "airbyte_api",
+    "pytest",
+    "pytest_mock",
 #    "apache_airflow_providers_datacraft_defaults @ file:../apache_airflow_providers_datacraft_defaults",
 #    "apache_airflow_providers_datacraft_airbyte @ file:../apache_airflow_providers_datacraft_airbyte",
 #    "apache_airflow_providers_datacraft_dags @ file:../apache_airflow_providers_datacraft_dags",

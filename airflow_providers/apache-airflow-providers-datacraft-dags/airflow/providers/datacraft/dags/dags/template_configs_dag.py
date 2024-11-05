@@ -9,9 +9,7 @@ from airflow.models import DAG
 
 from airflow.operators.python_operator import PythonOperator
 
-from airflow_providers.apache_airflow_providers_datacraft_dags.src.apache_airflow_providers_datacraft_dags.exceptions import (
-    datacraftConfigError,
-)
+from airflow.providers.datacraft.dags.exceptions import DatacraftConfigError
 
 
 """В панеле администратора должна быть переменная dbt_project_directory, в которой будет путь до 
@@ -120,7 +118,7 @@ def prepare(config_names: list[str], namespace: str) -> list[dict[any:any]]:
             config_map["format"] = file_format
 
         elif source == "datacraft_variable":
-            raise datacraftConfigError(
+            raise DatacraftConfigError(
                 "You can not use datacraft_variable. It is not supported"
             )
 
