@@ -26,17 +26,6 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/adventum/dbt-datacraft"
 
-#[tool.hatch.envs.test]
-#dependencies = [
-#    "pytest",
-#    "SQLAlchemy",
-#    "psycopg2-binary"
-#]
-
-#scripts = [
-#    "pytest tests"
-#]
-
 [tool.hatch.metadata]
 allow-direct-references = true
 

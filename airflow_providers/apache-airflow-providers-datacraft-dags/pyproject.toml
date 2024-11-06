@@ -19,7 +19,6 @@ classifiers = [
 
 dependencies = [
     "apache-airflow>=2.9.3, <3.0",
-    # "apache_airflow_providers_datacraft_defaults @ file:../apache_airflow_providers_datacraft_defaults",
 ]
 
 [project.urls]

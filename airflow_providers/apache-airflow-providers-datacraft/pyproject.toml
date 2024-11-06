@@ -24,9 +24,6 @@ dependencies = [
     "airbyte_api",
     "pytest",
     "pytest_mock",
-#    "apache_airflow_providers_datacraft_defaults @ file:../apache_airflow_providers_datacraft_defaults",
-#    "apache_airflow_providers_datacraft_airbyte @ file:../apache_airflow_providers_datacraft_airbyte",
-#    "apache_airflow_providers_datacraft_dags @ file:../apache_airflow_providers_datacraft_dags",
 ]
 
 [project.optional-dependencies]
@@ -39,8 +36,6 @@ with-datacraft-subpackages = [
 [project.urls]
 Homepage = "https://github.com/adventum/dbt-datacraft"
 
-# [project.metadata]
-# airflow-provider = {package_name = "apache_airflow_providers_datacraft_airbyte"}
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -48,20 +43,10 @@ allow-direct-references = true
 [tool.hatch.envs.dev]
 dependencies = [
     "pytest",
-#    "SQLAlchemy",
-#    "psycopg2-binary"
 ]
 
 [project.entry-points."apache_airflow_provider"]
 provider_info = "airflow.providers.datacraft.get_provider_info:get_provider_info"
 
 [tool.hatch.build.targets.wheel]
-# packages = ["src/apache_airflow_providers_datacraft"]
-
-#packages = [
-#    "src/apache_airflow_providers_datacraft_airbyte",
-#    "src/apache_airflow_providers_datacraft_dags",
-#    "src/apache_airflow_providers_datacraft_defaults"
-#]
-
 packages = ["airflow"]

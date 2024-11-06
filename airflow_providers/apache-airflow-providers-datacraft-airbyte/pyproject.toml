@@ -25,23 +25,11 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/adventum/dbt-datacraft"
 
-# [project.metadata]
-# airflow-provider = {package_name = "apache_airflow_providers_datacraft_airbyte"}
-
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build]
 editable = true
-
-#
-#[tool.hatch.envs.dev]
-#
-#[project.entry-points."apache_airflow_provider"]
-#provider_info = "apache_airflow_providers_datacraft_airbyte.provider:get_provider_info"
-#
-#[tool.hatch.build.targets.wheel]
-#packages = ["src/apache_airflow_providers_datacraft_airbyte"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["airflow"]
