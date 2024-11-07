@@ -1,12 +1,8 @@
 import requests
 
 from airflow.models import Variable
-from etlcraft_tests.providers.unit_tests.fixtures.airflow_variables import get_airflow_variables
 from pytest_mock import MockerFixture
 
-from etlcraft_tests.providers.unit_tests.utils.init_db import setup_db
-
-init_airflow_test_db = setup_db
 
 variables_for_mock = {
     "from_datacraft": {"leo": "pard"},
@@ -23,25 +19,6 @@ def test_healcheck():
     result = requests.get(url)
 
     assert result.status_code == 200
-
-
-# Этот тест можно удалить,
-# он пробует достать переменные из запущенного инстанса airflow
-# def test_get_variables():
-#     url = "http://localhost:8081/api/v1/variables"
-#     result = requests.get(
-#         url,
-#         auth=("airflow", "airflow")
-#     )
-#
-#     variables = result.json()["variables"]
-#     variables_names = []
-#     for variable in variables:
-#         for key, value in variable.items():
-#             variables_names.append(value)
-#
-#     assert "from_moscow" not in variables_names
-#     assert "from_datacraft" in variables_names
 
 
 def test_get_variables_from_airflow_components(

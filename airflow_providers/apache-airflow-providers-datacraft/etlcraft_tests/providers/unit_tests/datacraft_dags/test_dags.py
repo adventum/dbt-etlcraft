@@ -2,9 +2,6 @@ from airflow.decorators import dag
 
 from pendulum import datetime
 from airflow.operators.empty import EmptyOperator
-from etlcraft_tests.providers.unit_tests.utils.init_db import setup_db
-
-init_airflow_test_db = setup_db
 
 
 def test_run_dag():

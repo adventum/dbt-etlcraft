@@ -10,6 +10,7 @@
 
 Предварительно рекомендуется установить пакетный менеджер - pip install hatch и обновить версию pip - `python -m pip install --upgrade pip`
 
+
 **Способы установки:**
 1. Быстрая установка, если не обязательно чтобы пакеты были в editable(development) режиме, то находясь в папке `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft` нужно выполнить команду `pip install .[with-datacraft-subpackages]` - это установит все 4 пакета
 
@@ -31,29 +32,8 @@
 
 В `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft/etlcraft_tests/providers/unit_tests/fixtures/airflow_variables.py` есть функция, с помощью которой можно получить словарь с переменными airflow для тестирования
 
-Также, для DAGs, Operators, требуется временная база данных, чтобы встроить в файл с тестом подключение к тестовой базе данных, нужно использовать функцию `setup_db` из  `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft/etlcraft_tests/providers/unit_tests/utils/init_db.py`
+Если при запуске тестов в первый раз появляется ошибка, `TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'`  То запускаем тесты еще раз, эта ошибка из-за отсутствия записей при прогоне тестов впервые.
+При последующих запусках этой ошибки не будет
 
-Для удобства ее достаточно просто вызвать в файле с тестом и она будет работать во время выполнения всех тестов, например:
-test_dags.py:
-______________________________________________________________
-`from airflow.decorators import dag`  
-  
-`from pendulum import datetime`  
-`from airflow.operators.empty import EmptyOperator`  
-==`from etlcraft_tests.providers.unit_tests.utils.init_db import setup_db`==  
-  
-==`init_airflow_test_db = setup_db`==  
-  
-  
-`def test_run_dag():`  
-    `@dag(`  
-        `start_date=datetime(2024, 1, 1),`  
-        `catchup=False,`  
-    `)`  
-    `def test_dag():`  
-        `first_task = EmptyOperator(task_id="first_task")`  
-  
-    `dag_object = test_dag()`  
-    `dag_object.test()`
-
+В `etlcraft_tests/providers/conftest.py` находится код инициализирующий базу данных для тестов, также в этом файле прописываются фикстуры, если нужно их использовать напрямую в тестах, без импорта
 ________________________________________________________________________

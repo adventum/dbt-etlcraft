@@ -24,6 +24,7 @@ dependencies = [
     "airbyte_api",
     "pytest",
     "pytest_mock",
+    "docker"
 ]
 
 [project.optional-dependencies]
@@ -40,9 +41,13 @@ Homepage = "https://github.com/adventum/dbt-datacraft"
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.hatch.envs.dev]
+[tool.hatch.envs.default]
 dependencies = [
     "pytest",
+    "psycopg2"
+]
+commands = [
+    "pip install --upgrade pip"
 ]
 
 [project.entry-points."apache_airflow_provider"]
