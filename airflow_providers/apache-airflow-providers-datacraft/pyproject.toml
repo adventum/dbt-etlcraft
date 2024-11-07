@@ -44,10 +44,11 @@ allow-direct-references = true
 [tool.hatch.envs.default]
 dependencies = [
     "pytest",
-    "psycopg2"
+    "psycopg2-binary"
 ]
 commands = [
-    "pip install --upgrade pip"
+    "pip install --upgrade pip",
+    "pip install apache-airflow-providers-celery",
 ]
 
 [project.entry-points."apache_airflow_provider"]

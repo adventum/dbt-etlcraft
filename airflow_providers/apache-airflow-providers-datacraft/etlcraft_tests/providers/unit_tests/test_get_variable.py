@@ -14,13 +14,6 @@ def test_run():
     assert 1 != 0
 
 
-def test_healcheck():
-    url = "http://localhost:8081/api/v1/health"
-    result = requests.get(url)
-
-    assert result.status_code == 200
-
-
 def test_get_variables_from_airflow_components(
     mocker: MockerFixture
 ):
