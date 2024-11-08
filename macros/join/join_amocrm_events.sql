@@ -135,6 +135,7 @@ toDateTime(updated_at) as leadUpdateddAtDate, -- Дата изменения с�
 toDateTimeOrZero(closest_task_at) as leadClosestTaskAt, --Дата ближайшей задачи к выполнению, передается в Unix Timestamp
 is_deleted as leadIsDeleted, -- Удалена ли сделка
 -- custom_fields_values - Массив, содержащий информацию по значениям дополнительных полей, заданных для данной сделки (уточнить какие ещё данные тут могут быть нужны)
+JSONExtractArrayRaw(custom_fields_values) as customFieldsValuesArrayLeads, --также тянем целиком, на финальном шаге извлечём всё что нужно по справочнику
 --UTM_CONTENT 
 JSONExtractString(JSONExtractArrayRaw(arrayFilter(x -> x LIKE '%UTM_CONTENT%', 
 JSONExtractArrayRaw(custom_fields_values))[1], 'values')[1], 'value') as utmContent,

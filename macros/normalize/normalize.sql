@@ -75,6 +75,9 @@
     {%- set incremental_datetime_field = datacraft.find_incremental_datetime_field(fields, override_target_model_name or this.name, defaults_dict=defaults_dict) or '' -%}
 {%- endif -%}
 
+{#- получаем название поля, которое будет являться доп.ключём при инкрементализации, помимо __date и __table_name, необходимо только для некторых источников -#}
+{%- set incremental_id = datacraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'streams', stream_name, 'incremental_id'], default_return=none) -%}
+
 {%- set column_list = [] -%}
 
 {#- для каждого столбца в полученном наборе -#}
@@ -100,6 +103,13 @@
     {%- endif -%}    
     {%- set column_list = [column_value ~ " AS __date"] + column_list -%}
 {%- endif -%}
+
+{#- обработка incremental_id, если оно задано -#}
+{%- if incremental_id -%}
+    {%- set column_value = datacraft.json_extract_string('_airbyte_data', incremental_id) if not debug_column_names else "'incremental_id'" -%}
+    {%- do column_list.append(column_value ~ " AS incremental_id") -%}
+{%- endif -%}
+
 {#- условие для пустого итогового списка -#}
 {%- if column_list | length == 0 -%}
     {{ exceptions.raise_compiler_error('Normalize returned empty column list') }}
