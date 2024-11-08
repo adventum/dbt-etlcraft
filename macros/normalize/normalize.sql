@@ -107,7 +107,7 @@
 {#- обработка incremental_id, если оно задано -#}
 {%- if incremental_id -%}
     {%- set column_value = datacraft.json_extract_string('_airbyte_data', incremental_id) if not debug_column_names else "'incremental_id'" -%}
-    {%- do column_list.append(column_value ~ " AS incremental_id") -%}
+    {%- do column_list.append(column_value ~ " AS __incremental_id") -%}
 {%- endif -%}
 
 {#- условие для пустого итогового списка -#}

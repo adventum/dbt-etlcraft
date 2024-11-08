@@ -8,16 +8,11 @@ language: eng
 # macro `incremental`
 
 ## List of auxiliary macros
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "incremental")
-SORT doc_status
-```
+| Name                                | Category  | In Main Macro          | Doc Status |
+| ----------------------------------- | --------- | ---------------------- | ---------- |
+| [[check_table_empty]]               | auxiliary | incremental            | ready      |
+| [[cast_date_field]]                 | auxiliary | incremental            | ready      |
+| [[find_incremental_datetime_field]] | auxiliary | normalize, incremental | ready      |
 
 ## Summary
 

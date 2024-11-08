@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_add_row_number`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_add_row_number")
-SORT doc_status
-```
+Без вспомогательных макросов.
 ## Описание
 
 Это третий шаг макроса `attr`. Этот макрос добавляет номер строки к данным для атрибуции. Это нужно для последующего анализа и обработки данных.

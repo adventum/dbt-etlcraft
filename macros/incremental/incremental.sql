@@ -62,7 +62,7 @@ SELECT *
     {%- endfor -%}
     
     {#- Определяем уникальный ключ -#}
-    {%- set unique_key = ['__date', '__table_name'] + (['incremental_id'] if 'incremental_id' in fields else []) -%}
+    {%- set unique_key = ['__date', '__table_name'] + (['__incremental_id'] if '__incremental_id' in fields else []) -%}
     {#- Логируем значение unique_key для проверки -#}
     {{ log("Сформированный unique_key: " ~ unique_key, info=True) }}
     

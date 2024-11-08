@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_join_to_attr_prepare_with_qid`
 
-## ## Список используемых вспомогательных макросов
+##  Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_join_to_attr_prepare_with_qid")
-SORT doc_status
-```
+Без вспомогательных макросов.
 ## Описание
 
 Это седьмой шаг макроса `attr`. Этот макрос присоединяет данные из различных этапов атрибуции для последующего анализа.

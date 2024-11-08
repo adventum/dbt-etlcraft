@@ -4,95 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "c9918bca5f91376c",
+        "id": "b00b02c99be758e7",
         "type": "tabs",
         "children": [
           {
-            "id": "6518e554b30313f5",
+            "id": "b2d747cd878308cd",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dbt Package/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "f47d9ac1e66d025f",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "pinned": true,
-              "icon": "lucide-git-fork",
-              "title": "Граф"
-            }
-          },
-          {
-            "id": "2c51370e2ea3f4f2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Methodology.md",
-                "mode": "source",
-                "source": false
-              },
               "icon": "lucide-file",
-              "title": "Methodology"
-            }
-          },
-          {
-            "id": "643b454e85e738e9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs/events.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "events"
-            }
-          },
-          {
-            "id": "cb611bea9a219ebb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs/datasources.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "datasources"
-            }
-          },
-          {
-            "id": "df0c5e8bab5fde4a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Airflow Providers/Configs/datasets.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "datasets"
+              "title": "Новая вкладка"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -123,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "slug",
+                "query": "readme",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -183,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Methodology.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из Methodology"
+              "title": "Исходящие ссылки"
             }
           },
           {
@@ -234,12 +158,12 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "2c51370e2ea3f4f2",
+  "active": "b2d747cd878308cd",
   "lastOpenFiles": [
+    "dbt Package/Pavel's additional macros and docs/README.md",
     "Terms.md",
     "Methodology.md",
-    "docs_status.md",
-    "Connectors.md",
+    "index.md",
     "Airflow Providers.md",
     "Terms/Stream.md",
     "Terms/Source.md",
@@ -255,13 +179,14 @@
     "Terms/Airbyte Destination.md",
     "Terms/Airbyte Connector.md",
     "Terms/Airbyte Connection.md",
-    "Templates/Term template.md",
-    "Templates/Task Template.md",
-    "Templates/DAG Template.md",
-    "Templates/Airbyte Operator Template.md",
-    "Tasks/Turn the create_models_file function into a statement.md",
-    "Tasks/README.md",
-    "Tasks/Check the documentation to find out what {{% raw %}} and {{%endraw%}} are..md",
+    "HowTos/Quick start.md",
+    "HowTos/How to create a config for presets.md",
+    "dbt Package/zero_date.md",
+    "dbt Package/normalize_name.md",
+    "dbt Package/normalize.md",
+    "dbt Package/link_hash.md",
+    "dbt Package/link.md",
+    "dbt Package/README.html",
     "attachments/example_of_work_for_graph_step.jpg",
     "attachments/getting_hash_at_hash_step.png",
     "attachments",
@@ -280,7 +205,6 @@
     "Airbyte Connectors",
     "dbt Package/Pavel's additional macros and docs",
     "dbt Package/english_version",
-    "dbt Package",
-    "Terms"
+    "dbt Package"
   ]
 }

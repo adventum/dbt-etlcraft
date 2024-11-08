@@ -7,17 +7,13 @@ doc_status: ready
 ---
 # macro `join_yd_datestat_smart`
 
-## ## Список используемых вспомогательных макросов
+##  Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "join_yd_datestat_smart")
-SORT doc_status
-```
+| Name                    | Category  | In Sub-Main Macro                                                                                                                                                                                                                                           | Doc Status |
+| ----------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| [[get_min_max_date]]    | auxiliary | join_mt_datestat, join_yd_datestat, join_yd_datestat_smart, join_ym_events                                                                                                                                                                                  | ready      |
+| [[get_relations_by_re]] | auxiliary | join_appmetrica_events, join_appmetrica_registry_appprofilematching, join_appsflyer_events, join_mt_datestat, join_sheets_periodstat, join_vkads_datestat, join_utmcraft_registry_utmhashregistry, join_yd_datestat, join_yd_datestat_smart, join_ym_events | ready      |
+
 ## Описание
 
 Этот подвид макроса `join` предназначен для работы с данными источника `yd` (они относятся к пайплайну `datestat`) - отдельная версия именно для данных, где есть smart.
@@ -48,16 +44,5 @@ SORT doc_status
 Для этой таблицы задаётся её линк (это будет использоваться на будущих шагах):
 - `toLowCardinality('AdCostStat') AS __link`
 
-#task по факту линк не задан. Спросить У Валерии, почему так - может, он мешался или ошибки были? по идее надо линк добавить, как у обычной версии - то есть в макросе join_yd_datestat
 
 Если аргумент `limit0` активирован, то в конце SQL-запроса будет добавлено `LIMIT 0`.
-
-## Пример
-
-Файл в формате sql в папке models. Название файла `[NAME]`
-
-Содержимое файла:
-```sql
-SOMETHING INSIDE
-```
-#task  спросить у Валерии, как именно это используется (как называется файл, какие данные в depends_on и как макрос join понимает, куда распределить - в проекте два макроса - join_yd_datestat и join_yd_datestat_smart - или один?) . В тестовых данных примера нет.

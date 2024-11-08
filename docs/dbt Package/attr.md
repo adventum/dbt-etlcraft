@@ -9,16 +9,17 @@ main_number: "09"
 # macro `attr`
 
 ## Список используемых вспомогательных макросов
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "attr")
-SORT sub_step, doc_status
-```
+| Name                                   | Category | In Main Macro | Doc Status |
+| -------------------------------------- | -------- | ------------- | ---------- |
+| [[attr_prepare_with_qid]]              | sub_main | attr          | ready      |
+| [[attr_create_events]]                 | sub_main | attr          | ready      |
+| [[attr_add_row_number]]                | sub_main | attr          | ready      |
+| [[attr_find_new_period]]               | sub_main | attr          | ready      |
+| [[attr_calculate_period_number]]       | sub_main | attr          | ready      |
+| [[attr_create_missed_steps]]           | sub_main | attr          | ready      |
+| [[attr_join_to_attr_prepare_with_qid]] | sub_main | attr          | ready      |
+| [[attr_model]]                         | sub_main | attr          | ready      |
+| [[attr_final_table]]                   | sub_main | attr          | ready      |
 
 ## Описание
 
@@ -35,7 +36,7 @@ SORT sub_step, doc_status
 ## Применение
 
 Имя dbt-модели (=имя файла в формате sql в папке models) должно соответствовать шаблону:
-`attr_{название_воронки}_{название_шага}`.
+`attr_{название_модели атрибуции}_{название_шага}`.
 
 Например, `attr_myfirstfunnel_prepare_with_qid`.
 

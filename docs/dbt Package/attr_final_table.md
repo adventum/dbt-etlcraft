@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_final_table`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_final_table")
-SORT doc_status
-```
+Без вспомогательных макросов.
 ## Описание
 
 Это девятый шаг макроса `attr`. Этот макрос формирует окончательную таблицу с атрибуционными данными. Он включает в себя данные из предыдущих этапов и устанавливает порядок сортировки по времени.

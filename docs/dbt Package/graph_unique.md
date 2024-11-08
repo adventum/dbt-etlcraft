@@ -7,17 +7,10 @@ doc_status: ready
 ---
 # macro `graph_unique`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "graph_unique")
-SORT doc_status
-```
+Без вспомогательных макросов.
+
 ## Описание
 
 Это третий шаг макроса `graph`. Макрос `graph_unique` основывается на результатах `graph_lookup`, формируя таблицу, в которой каждому уникальному ключу соответствует только один узел.

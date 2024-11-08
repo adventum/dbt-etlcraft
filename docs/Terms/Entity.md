@@ -12,7 +12,7 @@ doc_status: ready (нужно ревью)
 1) чтобы уникально идентифицировать сущность `UtmParams` - "UTM параметры", необходима комбинация сразу нескольких полей: `utmSource`, `utmMedium`, `utmCampaign`, `utmTerm` и `utmContent`,
 2) а чтобы описать сущность `Account` ("Аккаунт") достаточно одного поля - `accountName`
 
-Описание сущностей приводится в конфиге [[metadata]] и используется при обработке данных на этапе [[dbt Package/hash|hash]] (подробнее см. [[dbt Package/README|dbt Package]] и [[entity_hash]]).
+Описание сущностей приводится в конфиге [[metadata]] и используется при обработке данных на этапе [[dbt Package/hash|hash]] (подробнее см. [[ОБЗОР|dbt Package]] и [[entity_hash]]).
 
 **Пример раздела entities в [[metadata]]**:
 ```

@@ -8,16 +8,18 @@ language: eng
 # macro `join`
 
 ## List of auxiliary macros
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "join")
-SORT doc_status
-```
+| Name                                            | Category | In Main Macro | Doc Status |
+| ----------------------------------------------- | -------- | ------------- | ---------- |
+| [[join_appmetrica_events]]                      | sub_main | join          | ready      |
+| [[join_mt_datestat]]                            | sub_main | join          | ready      |
+| [[join_utmcraft_registry_utmhashregistry]]      | sub_main | join          | ready      |
+| [[join_appsflyer_events]]                       | sub_main | join          | ready      |
+| [[join_sheets_periodstat]]                      | sub_main | join          | ready      |
+| [[join_vkads_datestat]]                         | sub_main | join          | ready      |
+| [[join_appmetrica_registry_appprofilematching]] | sub_main | join          | ready      |
+| [[join_yd_datestat]]                            | sub_main | join          | ready      |
+| [[join_yd_datestat_smart]]                      | sub_main | join          | ready      |
+| [[join_ym_events]]                              | sub_main | join          | ready      |
 
 ## Summary
 

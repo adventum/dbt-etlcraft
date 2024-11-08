@@ -45,4 +45,4 @@ doc_status: ready (нужно ревью)
      }
 ```
 
-Далее, при формировании файлов [[Model|моделей]] для слоя `dataset` (см. [[dbt Package/README|dbt Package]]) DAG’ом [[generate_models]], с помощью `id` из конфига [[datasources]] извлекаются нужные данные для датасета.  
+Далее, при формировании файлов [[Model|моделей]] для слоя `dataset` (см. [[ОБЗОР|dbt Package]]) DAG’ом [[generate_models]], с помощью `id` из конфига [[datasources]] извлекаются нужные данные для датасета.  

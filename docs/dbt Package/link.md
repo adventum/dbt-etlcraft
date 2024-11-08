@@ -7,17 +7,9 @@ main_number: "06"
 ---
 # macro `link`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "link")
-SORT doc_status
-```
+Без вспомогательных макросов.
 
 ## Описание
 

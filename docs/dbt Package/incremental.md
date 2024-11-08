@@ -10,15 +10,11 @@ main_number: "02"
 
 ## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "incremental")
-SORT doc_status
-```
+| Name                                | Category  | In Main Macro          | Doc Status |
+| ----------------------------------- | --------- | ---------------------- | ---------- |
+| [[cast_date_field]]                 | auxiliary | incremental            | ready      |
+| [[check_table_empty]]               | auxiliary | incremental            | ready      |
+| [[find_incremental_datetime_field]] | auxiliary | normalize, incremental | ready      |
 
 ## Описание
 

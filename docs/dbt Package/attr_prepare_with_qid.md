@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_prepare_with_qid`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_prepare_with_qid")
-SORT doc_status
-```
+Без вспомогательных макросов.
 ## Описание
 
 Это первый шаг макроса `attr`. Этот макрос подготавливает данные с уникальными идентификаторами узлов, необходимыми для атрибуции. Он использует данные из других источников и создает таблицу с уникальными идентификаторами узлов для каждого события.

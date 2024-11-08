@@ -9,15 +9,18 @@ main_number: "01"
 # macro `normalize`
 ## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "normalize")
-SORT doc_status
-```
+| Name                                | Category  | In Main Macro          | Doc Status |
+| ----------------------------------- | --------- | ---------------------- | ---------- |
+| [[get_from_default_dict]]           | auxiliary | normalize              | ready      |
+| [[normalize_name]]                  | auxiliary | normalize              | ready      |
+| [[json_extract_string]]             | auxiliary | normalize              | ready      |
+| [[custom_union_relations_source]]   | auxiliary | normalize              | ready      |
+| [[find_incremental_datetime_field]] | auxiliary | normalize, incremental | ready      |
+| [[get_from_default_dict]]           | auxiliary | normalize              | ready      |
+| [[get_relations_by_re]]             | auxiliary | normalize, combine     | ready      |
+| [[json_extract_string]]             | auxiliary | normalize              | ready      |
+| [[normalize_name]]                  | auxiliary | normalize              | ready      |
+
 
 ## Описание
 

@@ -7,17 +7,12 @@ doc_status: ready
 ---
 # macro `join_sheets_periodstat`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "join_sheets_periodstat")
-SORT doc_status
-```
+| Name                    | Category  | In Sub-Main Macro                                                                                                                                                                                                                                           | Doc Status |
+| ----------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| [[get_relations_by_re]] | auxiliary | join_appmetrica_events, join_appmetrica_registry_appprofilematching, join_appsflyer_events, join_mt_datestat, join_sheets_periodstat, join_vkads_datestat, join_utmcraft_registry_utmhashregistry, join_yd_datestat, join_yd_datestat_smart, join_ym_events | ready      |
+
 ## Описание
 
 Этот подвид макроса `join` предназначен для работы с данными источника `sheets`, которые относятся к пайплайну `periodstat`.
