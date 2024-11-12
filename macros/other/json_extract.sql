@@ -3,5 +3,5 @@
 {%- endmacro %}
 
 {% macro clickhouse__json_extract_string(field_name, key) -%}
-    JSONExtractString({{ field_name }}, '{{ key }}')
+    ifNull(JSONExtractString({{ field_name }}, '{{ key }}'), '')
 {%- endmacro %}
