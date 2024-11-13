@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt Package/normalize.md",
+                "file": "dbt Package/join.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "normalize"
+              "title": "join"
             }
           }
         ]
@@ -112,12 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dbt Package/normalize.md",
+                "file": "dbt Package/join.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из normalize"
+              "title": "Исходящие ссылки из join"
             }
           },
           {
@@ -165,6 +165,7 @@
   },
   "active": "b2d747cd878308cd",
   "lastOpenFiles": [
+    "dbt Package/normalize.md",
     "dbt Package/Pavel's additional macros and docs/README.md",
     "Terms.md",
     "Methodology.md",
@@ -188,7 +189,6 @@
     "HowTos/How to create a config for presets.md",
     "dbt Package/zero_date.md",
     "dbt Package/normalize_name.md",
-    "dbt Package/normalize.md",
     "dbt Package/link_hash.md",
     "dbt Package/link.md",
     "dbt Package/README.html",
