@@ -137,7 +137,7 @@ select  --__date, --дата, берётся из created_at на NORMALIZE (н�
     toLowCardinality(splitByChar('_', __table_name)[7]) AS accountName,
     id as leadId, -- ID сделки
     name as leadName, -- Название сделки
-    toFloat64OrZero(price) as price, -- Бюджет сделки (в старой версии это поле назыалось sale)
+    toFloat64OrNull(price) as price, -- Бюджет сделки (в старой версии это поле назыалось sale)
     responsible_user_id as leadResponsibleUserId, -- ID пользователя, ответственного за сделку
     group_id as leadGroupId, -- ID группы, в которой состоит ответственны пользователь за сделку
     status_id as leadLastStatusId, -- ID статуса, в который добавляется сделка, по-умолчанию – первый этап главной воронки (соответствует id в _embedded[statuses] в стриме pipelines)
@@ -173,7 +173,7 @@ select  --__date, --дата, берётся из created_at на NORMALIZE (н�
     --
     toInt64OrNull(score) as leadScore, -- Скоринг сделки
     account_id as systemAccountId, -- ID аккаунта, в котором находится сделка
-    toFloat64OrZero(labor_cost) as leadLaborCost, -- Тип поля "стоимость труда" показывает сколько времени было затрачено на работу со сделкой. Время исчисления в секундах
+    toFloat64OrNull(labor_cost) as leadLaborCost, -- Тип поля "стоимость труда" показывает сколько времени было затрачено на работу со сделкой. Время исчисления в секундах
     is_price_modified_by_robot as isPriceModifiedByRobot, -- Изменен ли в последний раз бюджет сделки роботом
     -- _embedded - Данные вложенных сущностей. Нужны только данные по loss_reason (на всякий случай оставила ещё companyId) 
     -- _embedded[loss_reason] - Причина отказа сделки
@@ -412,12 +412,12 @@ select
     '' as statusId,
     '' as pipelineId,
     '' as pipelineName,
-    0 as pipelineSort,
+    null as pipelineSort,
     '' as pipelineIsMain,
     '' as pipelineIsUnsortedOn,
     '' as pipelineIsArchive,
     '' as statusName,
-    0 as statusSort,
+    null as statusSort,
     '' as statusIsEditable,
     '' as statusType,
     '' as crmSystemLinkForStatus,
@@ -425,7 +425,7 @@ select
     -- Поля сделок
     '' AS leadId,
     '' AS leadName,
-    0.0 AS price,
+    null AS price,
     '' AS leadResponsibleUserId,
     '' AS leadGroupId,
     '' AS leadLastStatusId,
@@ -445,8 +445,8 @@ select
     '' AS utmMedium,
     '' AS utmTerm,
     '' AS utmCampaign,
-    0 AS leadScore,
-    0.0 AS leadLaborCost,
+    null AS leadScore,
+    null AS leadLaborCost,
     '' AS isPriceModifiedByRobot,
     '' AS leadCompanyId,
     '' AS crmSystemLinkForLeads,
