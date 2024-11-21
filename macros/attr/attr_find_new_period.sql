@@ -1,8 +1,9 @@
 {%- macro attr_find_new_period(
   params = none,
-  funnel_name=none,
+  model_name=none,
   limit0=none,
-  metadata=project_metadata()
+  attributions=attribution_models(),
+  events_description=events()
   ) -%}
 
 {# 
@@ -18,18 +19,23 @@
     )
 }}
 
-{# 
-    Извлечение метаданных и шагов воронки для формирования списка шагов и их порядкового номера.
-#}
+{# Извлечение шагов воронки для формирования списка шагов и их порядкового номера.
+Из funnel_steps пото также будем полчать timeout. #}
 
-{%- set funnels = metadata['funnels'] -%}
-{%- set step_name_list = funnels[funnel_name].steps -%}
-{%- set counter = [] -%}
-{%- set steps = metadata['steps'] -%}
+{% set funnel_steps = attributions[model_name]['funnel_steps'] %}
+{% set step_name_list = [] %}
+{% for step in funnel_steps %}
+  {% do step_name_list.append(step['slug']) %}
+{% endfor %}
 
 {%- for step_name in step_name_list -%}
     {%- do counter.append(loop.index) -%}
 {% endfor %}
+
+{# {{log("counter:"~counter, true)}} #} 
+
+{# Извлечение данных с описанием шагов. Отсюда получаем данные по линкам #}
+{% set steps =  events_description %}
 
 {# 
     Подготовка нового периода.
@@ -39,7 +45,7 @@ with prep_new_period as (
     select
         *,
         max(case when __priority in {{counter}} then __datetime else null end) over (partition by qid order by __rn rows between unbounded preceding and 1 preceding) as prep_new_period
-    from {{ ref('attr_' ~funnel_name~ '_add_row_number') }}
+    from {{ ref('attr_' ~model_name~ '_add_row_number') }}
 )
 
 {# 
@@ -57,15 +63,17 @@ select
     __rn,
     __step,
     CASE
-    {% for step_name in step_name_list %}
-        {%- set counter = loop.index -%}
-        {% for step_info in steps[step_name] %}
-            WHEN __link = '{{step_info.link}}' and toDate(__datetime) - toDate(prep_new_period) < 
-            {% if 'period' in step_info %} {{step_info.period}} {% else %} 90 {% endif %} THEN false
+    {% for step in funnel_steps %}
+        {% set slug = step['slug'] %}
+        {% set timeout = step['timeout'] %}
+        {% set step_links = events_description[slug] %}  {# Получаем список шагов для текущего slug из events_description #}
+
+        {% for step_info in step_links %}
+            WHEN __link = '{{ step_info.link }}' AND toDate(__datetime) - toDate(prep_new_period) < {{ timeout }} THEN false
         {% endfor %}
-    {%- endfor -%}
+    {% endfor %}
     ELSE true
-    END as __is_new_period
+END as __is_new_period
  from prep_new_period   
 {% if limit0 %}
 LIMIT 0

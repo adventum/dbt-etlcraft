@@ -1,6 +1,6 @@
 {%- macro attr_create_missed_steps(
   params = none,
-  funnel_name=none,
+  model_name=none,
   limit0=none
   ) -%}
 
@@ -30,7 +30,7 @@ with calc_max_priority as (
         __period_number,
         __step,
         max(__priority) over(partition by qid, __period_number) as max_priority
-    from {{ ref('attr_' ~ funnel_name ~ '_calculate_period_number') }}
+    from {{ ref('attr_' ~ model_name ~ '_calculate_period_number') }}
 ),
 
 {# 
