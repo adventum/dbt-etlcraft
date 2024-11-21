@@ -27,12 +27,12 @@
 {% for step in funnel_steps %}
   {% do step_name_list.append(step['slug']) %}
 {% endfor %}
+{{log("step_name_list:"~step_name_list, true)}}
 
+{%- set counter = [] -%}
 {%- for step_name in step_name_list -%}
     {%- do counter.append(loop.index) -%}
 {% endfor %}
-
-{# {{log("counter:"~counter, true)}} #} 
 
 {# Извлечение данных с описанием шагов. Отсюда получаем данные по линкам #}
 {% set steps =  events_description %}
