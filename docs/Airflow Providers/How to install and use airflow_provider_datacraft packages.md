@@ -37,3 +37,13 @@
 
 В `etlcraft_tests/providers/conftest.py` находится код инициализирующий базу данных для тестов, также в этом файле прописываются фикстуры, если нужно их использовать напрямую в тестах, без импорта
 ________________________________________________________________________
+
+UPD : Я еще раз протестил установку в development режиме, и все-таки я пока не нашел способа, чтобы библиотека работала в editable режиме, как я понял, из-за большой вложенности структуры установленных библиотек airflow и специфичности установки кастомного провайдера в editable-mode (Устанавливаются не файлы пакета, а лишь ссылка на директорию в формате .pth)
+
+Поэтому есть другой способ обновлять пакеты после изменения в них: 
+1. (Например) Есть уже установленные 4 пакета: datacraft, datacraft-airbyte, datacraft-dags, datacraft-defaults
+2. Внесли какие-то изменения в исходные пакеты
+3. Устанавливаем снова библиотеку с внесенными изменениями - 
+   `pip install --no-cache-dir .[with-datacraft-subpackages]` в директории `airflow_providers/apache-airflow-providers-datacraft`
+
+Удалить все библиотеки можно с помощью комманды:   `pip uninstall apache-airflow-providers-datacraft apache-airflow-providers-datacraft-airbyte apache-airflow-providers-datacraft-dags apache-airflow-providers-datacraft-defaults`

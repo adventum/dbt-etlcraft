@@ -10,7 +10,7 @@ def test_run_dag():
         catchup=False,
     )
     def test_dag():
-        first_task = EmptyOperator(task_id="first_task")
+        EmptyOperator(task_id="first_task")
 
     dag_object = test_dag()
     dag_object.test()
@@ -22,7 +22,7 @@ def test_run_dag2():
         catchup=False,
     )
     def test_dag():
-        first_task2 = EmptyOperator(task_id="first_task2")
+        EmptyOperator(task_id="first_task2")
 
     dag_object = test_dag()
     dag_object.test()

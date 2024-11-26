@@ -1,4 +1,3 @@
-import requests
 
 from airflow.models import Variable
 from pytest_mock import MockerFixture
@@ -37,6 +36,6 @@ def test_get_variables_from_fixture(
 ):
     variables: dict[str, any] = get_airflow_variables
 
-    assert variables.get("from_datacraft") == "Data from Datacraft"
-    assert variables.get("format_for_config_yaml") == "yaml"
+    assert variables.get("from_datacraft") == {'datasources': 'Data from Datacraft'}
+    assert variables.get("format_for_yaml") == "yaml"
     assert not variables.get("format_for_config_hypertext")
