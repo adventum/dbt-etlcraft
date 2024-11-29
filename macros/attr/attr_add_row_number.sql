@@ -1,6 +1,6 @@
 {%- macro attr_add_row_number(
   params = none,
-  funnel_name=none,
+  model_name=none,
   limit0=none
   ) -%}
 
@@ -23,7 +23,7 @@
 select
     *,
     row_number() over (partition by qid order by __datetime, __priority, __id) AS __rn
-from {{ ref('attr_' ~ funnel_name ~ '_create_events') }}
+from {{ ref('attr_' ~ model_name ~ '_create_events') }}
 {% if limit0 %}
 LIMIT 0
 {%- endif -%}

@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_create_missed_steps`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_create_missed_steps")
-SORT doc_status
-```
+Без вспомогательных макросов.
 ## Описание
 
 Это шестой шаг макроса `attr`. В этом макросе создаются отсутствующие шаги в атрибуции. Он обрабатывает случаи, когда некоторые шаги воронки не были зарегистрированы.

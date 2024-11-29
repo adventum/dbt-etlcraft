@@ -1,4 +1,6 @@
 [
   "obsidian-smart-typography",
-  "dataview"
+  "dataview",
+  "webpage-html-export",
+  "obsidian-pandoc"
 ]

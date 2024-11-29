@@ -9,16 +9,9 @@ doc_status: ready
 
 ##  Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "join_appmetrica_events")
-SORT doc_status
-```
-
+| Name                    | Category  | In Sub-Main Macro                                                                                                                                                                                                                                           | Doc Status |
+| ----------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| [[get_relations_by_re]] | auxiliary | join_appmetrica_events, join_appmetrica_registry_appprofilematching, join_appsflyer_events, join_mt_datestat, join_sheets_periodstat, join_vkads_datestat, join_utmcraft_registry_utmhashregistry, join_yd_datestat, join_yd_datestat_smart, join_ym_events | ready      |
 
 ## Описание
 
@@ -34,8 +27,11 @@ SORT doc_status
     date_from,
     date_to,
     params,
-    limit0=none
-    ```
+    limit0=none,
+    use_screen_view=false
+```
+
+Аргумент `use_screen_view=false` необходим для того, чтобы исключить из макроса части кода, связанные с обработкой стрима `screen_view`. По умолчанию `false`. Это необходимо, так как данный стрим не всегда присутствует в выгрузке.
 ## Функциональность
 
 Макрос объединяет данные разных стримов, относящихся к источнику `appmetrica` и к пайплайну `events`.
@@ -48,7 +44,7 @@ SORT doc_status
 1. `deeplinks` 
 2. `events`
 3. `install`
-4. `screen_view`
+4. `screen_view` (обарбатывается только если `use_screen_view=true` )
 5. `sessions_starts`
 
 Для каждого стрима задаётся его линк (это будет использоваться на будущих шагах). Вот какие это значения - перечисление в соответствии с порядком стримов:

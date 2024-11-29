@@ -8,15 +8,18 @@ language: eng
 # macro `normalize`
 ## List of auxiliary macros
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "normalize")
-SORT doc_status
-```
+| Name                                                                         | Category  | In Main Macro          | Doc Status |
+| ---------------------------------------------------------------------------- | --------- | ---------------------- | ---------- |
+| [[custom_union_relations_source]]                                            | auxiliary | normalize              | ready      |
+| [[dbt Package/english_version/get_from_default_dict\|get_from_default_dict]] | auxiliary | normalize              | ready      |
+| [[json_extract_string]]                                                      | auxiliary | normalize              | ready      |
+| [[normalize_name]]                                                           | auxiliary | normalize              | ready      |
+| [[find_incremental_datetime_field]]                                          | auxiliary | normalize, incremental | ready      |
+| [[get_relations_by_re]]                                                      | auxiliary | normalize, combine     | ready      |
+| [[get_from_default_dict]]                                                    | auxiliary | normalize              | ready      |
+| [[dbt Package/english_version/normalize_name\|normalize_name]]               | auxiliary | normalize              | ready      |
+| [[dbt Package/english_version/json_extract_string\|json_extract_string]]     | auxiliary | normalize              | ready      |
+
 
 ## Summary
 

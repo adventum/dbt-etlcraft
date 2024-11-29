@@ -10,15 +10,15 @@ main_number: "07"
 
 ## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "graph")
-SORT doc_status
-```
+| Name             | Category  | In Main Macro | Doc Status |
+| ---------------- | --------- | ------------- | ---------- |
+| [[calc_graph]]   | auxiliary | graph         | ready      |
+| [[graph_lookup]] | sub_main  | graph         | ready      |
+| [[graph_qid]]    | sub_main  | graph         | ready      |
+| [[graph_glue]]   | sub_main  | graph         | ready      |
+| [[graph_edge]]   | sub_main  | graph         | ready      |
+| [[graph_tuples]] | sub_main  | graph         | ready      |
+| [[graph_unique]] | sub_main  | graph         | ready      |
 
 ## Описание
 

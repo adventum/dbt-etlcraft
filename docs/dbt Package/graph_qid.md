@@ -7,17 +7,11 @@ doc_status: ready
 ---
 # macro `graph_qid`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
+| Name           | Category  | In Sub-Main Macro     | Doc Status |
+| -------------- | --------- | --------------------- | ---------- |
+| [[calc_graph]] | auxiliary | graph_glue, graph_qid | ready      |
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "graph_qid")
-SORT doc_status
-```
 ## Описание
 
 Это шестой шаг макроса `graph`. Это завершающий этап, в ходе которого `graph_qid` использует данные из предыдущих макросов для формирования итоговой таблицы, где каждому уникальному ключу соответствует идентификатор группы (`qid`).

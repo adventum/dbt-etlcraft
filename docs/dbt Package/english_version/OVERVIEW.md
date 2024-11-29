@@ -60,31 +60,19 @@ The Dbt Package contains 10 basic data processing steps. Each step is one of the
 ## Details by macro category:
 
 ## main 
-
-```dataview
-TABLE 
-doc_status AS "Doc Status",
-category AS "Category", 
-step AS "Step", 
-sub_step AS "Substep",
-in_main_macro AS "In Main Macro"
-FROM "dbt Package"
-WHERE (file.name!="README" AND file.name!="TEMPLATE MAIN eng") 
-AND (category="main") AND language="eng"
-SORT step, sub_step, category DESC, doc_status 
-```
+| Name                                                     | Doc Status | Category | Step      | Substep       | In Main Macro |
+| -------------------------------------------------------- | ---------- | -------- | --------- | ------------- | ------------- |
+| [[dbt Package/english_version/normalize\|normalize]]     | ready      | main     | 1_silos   | 1_normalize   | -             |
+| [[dbt Package/english_version/incremental\|incremental]] | ready      | main     | 1_silos   | 2_incremental | -             |
+| [[dbt Package/english_version/join\|join]]               | ready      | main     | 2_staging | 1_join        | -             |
+| [[dbt Package/english_version/combine\|combine]]         | ready      | main     | 2_staging | 2_combine     | -             |
+| [[dbt Package/english_version/hash\|hash]]               | ready      | main     | 2_staging | 3_hash        | -             |
 
 ## auxiliary 
 
-```dataview
-TABLE 
-doc_status AS "Doc Status",
-category AS "Category", 
-step AS "Step", 
-sub_step AS "Substep",
-in_main_macro AS "In Main Macro"
-FROM "dbt Package"
-WHERE (file.name!="README" ) 
-AND (category="auxiliary") AND language="eng"
-SORT step, sub_step, category DESC, doc_status 
-```
+| Name                                                                         | Doc Status | Category  | Step    | Substep     | In Main Macro |
+| ---------------------------------------------------------------------------- | ---------- | --------- | ------- | ----------- | ------------- |
+| [[dbt Package/english_version/get_from_default_dict\|get_from_default_dict]] | ready      | auxiliary | 1_silos | 1_normalize | normalize     |
+| [[dbt Package/english_version/normalize_name\|normalize_name]]               | ready      | auxiliary | 1_silos | 1_normalize | normalize     |
+| [[dbt Package/english_version/json_extract_string\|json_extract_string]]     | ready      | auxiliary | 1_silos | 1_normalize | normalize     |
+

@@ -10,15 +10,9 @@ main_number: "10"
 
 ## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "create_dataset")
-SORT doc_status
-```
+| Name                       | Category  | In Main Macro           | Doc Status |
+| -------------------------- | --------- | ----------------------- | ---------- |
+| [[custom_union_relations]] | auxiliary | combine, create_dataset | ready      |
 
 ## Описание
 
@@ -49,41 +43,25 @@ SORT doc_status
     conditions =
 
     [{
-
     'pipeline':'datestat',
-
     'source': 'yd',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     },
 
     {
-
     'pipeline': 'events',
-
     'source': 'appmetrica',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     },
 
     {
-
     'pipeline':'events',
-
     'source': 'ym',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     }
-
      ]
 
 ) }}
@@ -109,11 +87,8 @@ SORT doc_status
 ```sql
 {
     'pipeline':'datestat',
-
     'source': 'yd',
-
     'account': 'accountid',
-
     'preset': 'default'
 }
 ```
@@ -243,39 +218,25 @@ FROM final_query
     [{
 
     'pipeline':'datestat',
-
     'source': 'yd',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     },
 
     {
-
     'pipeline': 'events',
-
     'source': 'appmetrica',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     },
 
     {
 
     'pipeline':'events',
-
     'source': 'ym',
-
     'account': 'accountid',
-
     'preset': 'default'
-
     }
-
      ]
 
 ) }}

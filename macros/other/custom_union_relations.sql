@@ -68,8 +68,25 @@ SELECT
 {%- for col_name in ordered_column_names -%}
 {%- set col = column_superset[col_name] %}
 {%- set col_type = column_override.get(col.column, col.data_type) if col_name in relation_columns[relation] else col.data_type %}
-{%- set col_expr = adapter.quote(col_name) if col_name in relation_columns[relation] else ("''" if 'String' in col_type else "0") %}
-        to{{ col_type.split('(')[0] }}({{ col_expr }}) as {{ col.name }} {% if not loop.last %},{% endif -%}
+
+{# {{ log("Тип данных столбца " ~ col_name ~ ": " ~ col_type, info=true) }} #}
+
+{# старая версия, не учитывала тип данных array
+ {%- set col_expr = adapter.quote(col_name) if col_name in relation_columns[relation] else ("''" if 'String' in col_type else "0") %}
+         to{{ col_type.split('(')[0] }}({{ col_expr }}) as {{ col.name }} {% if not loop.last %},{% endif -%} 
+#}
+
+{#- новая версия: -#}
+    {%- set col_expr = datacraft.union_column_expression(col_type, col_name) %}
+    
+    {# {{ log("Выражение для столбца " ~ col_name ~ ": " ~ col_expr, info=true) }} #}
+    
+    {%- if 'array' in col_type | lower -%}
+        {{ col_expr }} as {{ col.name }} {% if not loop.last %},{% endif %}
+    {%- else -%}
+        to{{ col_type.split('(')[0] }}({{ col_expr }}) as {{ col.name }} {% if not loop.last %},{% endif %}
+    {%- endif -%}
+    
 {%- endfor %}
 FROM {{ relation }}
 )

@@ -34,7 +34,11 @@
 {%- set stream_name_parts = model_name_parts[4:] -%}
 {%- set stream_name = '_'.join(stream_name_parts) -%}
 {#- было: set table_pattern = '_airbyte_raw_' ~ sourcetype_name ~ '_' ~ pipeline_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -#}
-{%- set table_pattern = '[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
+{#- {%- set table_pattern = '[^_]+_' ~ 'raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%} -#}
+{%- set table_pattern = '[^_]+(?:_[^_]+)*_raw__stream_' ~ sourcetype_name ~ '_' ~ template_name ~ '_[^_]+_' ~ stream_name ~ '$' -%}
+{#- [^_]+(?:_[^_]+)*_ — эта часть паттерна позволяет указать одно или несколько слов, разделённых подчеркиванием, перед raw__stream_.
+[^_]+ — обозначает одно слово перед подчеркиванием.
+(?:_[^_]+)* — обозначает ноль или более дополнительных слов, также разделённых подчеркиванием. -#} 
 
 {%- if pipeline_name in ('registry', 'periodstat') -%}
 {%- set disable_incremental_datetime_field=true -%}
@@ -75,6 +79,9 @@
     {%- set incremental_datetime_field = datacraft.find_incremental_datetime_field(fields, override_target_model_name or this.name, defaults_dict=defaults_dict) or '' -%}
 {%- endif -%}
 
+{#- получаем название поля, которое будет являться доп.ключём при инкрементализации, помимо __date и __table_name, необходимо только для некторых источников -#}
+{%- set incremental_id = datacraft.get_from_default_dict(defaults_dict, ['sourcetypes', sourcetype_name, 'streams', stream_name, 'incremental_id'], default_return=none) -%}
+
 {%- set column_list = [] -%}
 
 {#- для каждого столбца в полученном наборе -#}
@@ -100,6 +107,13 @@
     {%- endif -%}    
     {%- set column_list = [column_value ~ " AS __date"] + column_list -%}
 {%- endif -%}
+
+{#- обработка incremental_id, если оно задано -#}
+{%- if incremental_id -%}
+    {%- set column_value = datacraft.json_extract_string('_airbyte_data', incremental_id) if not debug_column_names else "'incremental_id'" -%}
+    {%- do column_list.append(column_value ~ " AS __incremental_id") -%}
+{%- endif -%}
+
 {#- условие для пустого итогового списка -#}
 {%- if column_list | length == 0 -%}
     {{ exceptions.raise_compiler_error('Normalize returned empty column list') }}

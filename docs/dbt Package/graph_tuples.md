@@ -7,17 +7,10 @@ doc_status: ready
 ---
 # macro `graph_tuples`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "graph_tuples")
-SORT doc_status
-```
+Без вспомогательных макросов.
+
 ## Описание
 
 Это первый шаг макроса `graph`. Он предназначен для выполнения операций по склейке данных в графовую структуру. Он берет данные, преобразует их и готовит для дальнейшей обработки.

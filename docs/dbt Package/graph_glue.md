@@ -7,17 +7,11 @@ doc_status: ready
 ---
 # macro `graph_glue`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
+| Name           | Category  | In Sub-Main Macro     | Doc Status |
+| -------------- | --------- | --------------------- | ---------- |
+| [[calc_graph]] | auxiliary | graph_glue, graph_qid | ready      |
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "graph_glue")
-SORT doc_status
-```
 ## Описание
 
 Это пятый шаг макроса `graph`. После завершения `graph_edge`, `graph_glue` использует результаты этого макроса для объединения данных, связанных с узлами графа, и вычисления максимальных значений групповых идентификаторов для каждого узла.

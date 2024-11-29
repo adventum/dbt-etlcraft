@@ -9,16 +9,9 @@ main_number: "08"
 # macro `full`
 
 ## Список используемых вспомогательных макросов
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "full")
-SORT doc_status
-```
+| Name                               | Category  | In Main Macro | Doc Status |
+| ---------------------------------- | --------- | ------------- | ---------- |
+| [[clickhouse__check_table_exists]] | auxiliary | full          | ready      |
 
 ## Описание
 

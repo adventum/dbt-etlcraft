@@ -32,13 +32,18 @@
 
 [Configs](Configs.md)
 
-#task Заменить README на понятные описания в ссылке
 
 [How DAGs work](How%20DAGs%20work.md)
-```dataview
-TABLE description AS "Рещаемая задача" FROM "Airflow Providers/DAGs"
-WHERE file.name != "README"
-```
+
+**Список DAG’ов:**
+
+| Название               | Рещаемая задача                                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [[create_connections]] | Создаёт Airbyte Connection                                                                                                       |
+| [[install_connectors]] | Устанавливает коннекторы в Airbyte на основе данных из конфига connectors.                                                       |
+| [[generate_models]]    | Создает файлы моделей dbt, заполненные содержимым по умолчанию, т.е. вызовом макросов по каждому шагу методологии dataCraft Core |
+| [[template_configs]]   | DAG используется для генерации конфигов типа `templated_file`                                                                    |
+| [[sync_data]]          | Синхронизирует соединения в Airbyte и запускает модели dbt                                                                       |
 
 Интеграция с dataCraft
 

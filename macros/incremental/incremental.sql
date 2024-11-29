@@ -51,11 +51,26 @@ SELECT *
 {#- If IDF exists, create an incremental model -#}
 {#- если инкрементальное поле с датой установлено: ниже - то, что будет в модели -#}
 {%- else -%}
+    {#- Проверяем, есть ли поле incremental_id в таблице предыдущего шага -#}
+    {%- set previous_relation = adapter.get_relation(database=target.database, schema=target.schema, identifier=table_pattern) -%}
+    {%- set previous_columns = adapter.get_columns_in_relation(previous_relation) -%}
+    
+    {#- Создаём список полей, извлекая имена колонок из previous_columns -#}
+    {%- set fields = [] -%}
+    {%- for col in previous_columns -%}
+        {%- do fields.append(col.name) -%}
+    {%- endfor -%}
+    
+    {#- Определяем уникальный ключ -#}
+    {%- set unique_key = ['__date', '__table_name'] + (['__incremental_id'] if '__incremental_id' in fields else []) -%}
+    {#- Логируем значение unique_key для проверки -#}
+    {{ log("Сформированный unique_key: " ~ unique_key, info=True) }}
+    
     {{ config(
         materialized='incremental',
         order_by=('__date', '__table_name'),
         incremental_strategy='delete+insert',
-        unique_key=['__date', '__table_name'],
+        unique_key=unique_key,
         on_schema_change='fail'
     ) }}
 

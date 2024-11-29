@@ -5,7 +5,8 @@
     date_from,
     date_to,
     params,
-    limit0=none
+    limit0=none,
+    use_screen_view=false
     ) -%}
 
 {{ config(
@@ -57,6 +58,8 @@
         Macro dbt_utils.union_relations fetches no data from relations_install') }}
   {%- endif -%}
 
+{#- этот стрим есть не всегда, поэтому для него добавляем аргумент в макрос и только если он true, будет выполняться эта часть кода -#}
+{%- if use_screen_view %}
 {%- set table_pattern_screen_view = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'screen_view' ~ '$' -%}
 {%- set relations_screen_view = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_screen_view) -%}   
   {%- if not relations_screen_view -%} 
@@ -68,6 +71,7 @@
         {{ exceptions.raise_compiler_error('No source_table_screen_view.
         Macro dbt_utils.union_relations fetches no data from relations_screen_view') }}
   {%- endif -%}
+{% endif %}
 
 {%- set table_pattern_sessions_starts = 'incremental_' ~ sourcetype_name ~ '_' ~ pipeline_name ~  '_[^_]+_' ~ 'sessions_starts' ~ '$' -%}
 {%- set relations_sessions_starts = datacraft.get_relations_by_re(schema_pattern=target.schema, table_pattern=table_pattern_sessions_starts) -%}   
@@ -88,8 +92,9 @@ WITH join_appmetrica_events_deeplinks AS (
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_receive_datetime) AS event_datetime,
-    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
+    {#- toDateTime(event_receive_datetime) AS event_datetime, -#}
+    toDateTime(event_datetime) AS eventDateTime,
+    toLowCardinality(splitByChar('_', __table_name)[7]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
@@ -133,7 +138,7 @@ FROM {{ source_table_deeplinks }}
 , union_events AS (
 SELECT
     __emitted_at,
-    splitByChar('_', __table_name)[8] AS accountName,
+    toLowCardinality(splitByChar('_', __table_name)[7]) AS accountName,
     toLowCardinality(__table_name) AS __table_name,
     city AS cityName,
     event_name AS eventName,
@@ -146,15 +151,16 @@ SELECT
     profile_id AS crmUserId,
     JSONExtractString(event_json, 'coupon') AS promoCode,    
     toDate(__date) AS __date, 
-    toDateTime(event_receive_datetime) AS event_datetime, 
-    0 AS screen_view
+    {#- toDateTime(event_receive_datetime) AS event_datetime, -#}
+    toDateTime(event_datetime) AS eventDateTime,
+    0 AS screenView
 FROM {{ source_table_events }}
 )
 , join_appmetrica_events_prepare AS (
 SELECT 
     __date,
     toLowCardinality(__table_name) AS __table_name,
-    event_datetime,
+    eventDateTime,
     toLowCardinality(accountName) AS accountName,
     appmetricaDeviceId,
     mobileAdsId,
@@ -230,8 +236,9 @@ WHERE __rn IN (SELECT __rn FROM min_event) AND
 SELECT
     toDateTime(__date) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(install_receive_datetime) AS event_datetime, 
-    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
+    {#- toDateTime(install_receive_datetime) AS event_datetime, -#}
+    toDateTime(install_datetime) AS eventDateTime,
+    toLowCardinality(splitByChar('_', __table_name)[7]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     assumeNotNull(COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id, '')) AS mobileAdsId,
     profile_id AS crmUserId,
@@ -272,11 +279,13 @@ FROM {{ source_table_install }}
 )
 
 {#- четвёртый стрим - screen_view -#}
+{%- if use_screen_view %}
 , join_appmetrica_events_screen_view AS (
 SELECT
     toDateTime(date_add(hour, 23, date_add(minute, 59, toDateTime(__date)))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(event_receive_datetime) AS event_datetime, 
+    {#- toDateTime(event_receive_datetime) AS event_datetime, -#}
+    toDateTime(event_datetime) AS eventDateTime, 
     accountName,
     appmetricaDeviceId,
     mobileAdsId,
@@ -316,14 +325,16 @@ SELECT
     toLowCardinality('AppEventStat') AS __link 
 FROM {{ source_table_screen_view }}
 )
+{% endif %}
 
 {#- пятый стрим - sessions_starts -#}
 , join_appmetrica_events_sessions_starts AS (
 SELECT
     toDateTime(date_add(minute, 1, toDateTime(__date))) AS __date, 
     toLowCardinality(__table_name) AS __table_name,
-    toDateTime(session_start_receive_datetime) AS event_datetime, 
-    toLowCardinality(splitByChar('_', __table_name)[8]) AS accountName,
+    {#- toDateTime(session_start_receive_datetime) AS event_datetime, -#}
+    toDateTime(session_start_datetime) AS eventDateTime, 
+    toLowCardinality(splitByChar('_', __table_name)[7]) AS accountName,
     appmetrica_device_id AS appmetricaDeviceId,
     COALESCE(nullIf(google_aid, ''), nullIf(ios_ifa, ''), appmetrica_device_id) AS mobileAdsId,
     profile_id AS crmUserId,
@@ -373,9 +384,13 @@ FROM join_appmetrica_events_events
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_install
+
+{% if use_screen_view %}
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_screen_view
+{% endif %}
+
 UNION ALL
 SELECT * 
 FROM join_appmetrica_events_sessions_starts

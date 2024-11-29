@@ -8,17 +8,10 @@ language: eng
 # macro `combine`
 
 ## List of auxiliary macros
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "combine")
-SORT doc_status
-```
-
+| Name                       | Category  | In Main Macro           | Doc Status |
+| -------------------------- | --------- | ----------------------- | ---------- |
+| [[custom_union_relations]] | auxiliary | combine, create_dataset | ready      |
+| [[get_relations_by_re]]    | auxiliary | normalize, combine      | ready      |
 
 ## Summary
 

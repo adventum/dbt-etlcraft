@@ -9,15 +9,18 @@ main_number: "01"
 # macro `normalize`
 ## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "normalize")
-SORT doc_status
-```
+| Name                                | Category  | In Main Macro          | Doc Status |
+| ----------------------------------- | --------- | ---------------------- | ---------- |
+| [[get_from_default_dict]]           | auxiliary | normalize              | ready      |
+| [[normalize_name]]                  | auxiliary | normalize              | ready      |
+| [[json_extract_string]]             | auxiliary | normalize              | ready      |
+| [[custom_union_relations_source]]   | auxiliary | normalize              | ready      |
+| [[find_incremental_datetime_field]] | auxiliary | normalize, incremental | ready      |
+| [[get_from_default_dict]]           | auxiliary | normalize              | ready      |
+| [[get_relations_by_re]]             | auxiliary | normalize, combine     | ready      |
+| [[json_extract_string]]             | auxiliary | normalize              | ready      |
+| [[normalize_name]]                  | auxiliary | normalize              | ready      |
+
 
 ## Описание
 
@@ -59,7 +62,7 @@ SORT doc_status
 
 Первым делом в макросе задаются части имени - либо из передаваемого аргумента (`override_target_model_name`), либо из имени файла (`this.name`). При использовании аргумента `override_target_model_name` макрос работает так, как если бы находился в модели с именем, равным значению `override_target_model_name`.
 
-.Длинное название, полученное тем или иным способом, разбивается на части по знаку нижнего подчёркивания. Например, название `normalize_appmetrica_events_default_deeplinks` разобьётся на 5 частей.
+Длинное название, полученное тем или иным способом, разбивается на части по знаку нижнего подчёркивания. Например, название `normalize_appmetrica_events_default_deeplinks` разобьётся на 5 частей.
 
 Если имя модели не соответствует шаблону (не начинается с `normalize_`, или в нём не хватает частей) - макрос не идёт дальше и на этом шаге уже выводит для пользователя ошибку с кратким описанием проблемы.
 
@@ -87,7 +90,7 @@ SORT doc_status
                                                                  
 После того, как нужные “сырые” данные найдены, макрос собирает воедино все найденные таблицы через `UNION ALL`. Для этого используется макрос [[custom_union_relations_source]], внутрь которого передаются ранее найденные `relations`.
 
-Далее для тех данных, у которых не указано отсутствие инкрементального поля с датой (то есть аргументы `incremental_datetime_formula` и `disable_incremental_datetime_field` оставлены как по умолчанию - `none`), происходит формулы для поля с датой - `incremental_datetime_formula`. Для поиска используется макрос [[dbt Package/get_from_default_dict]], внутрь которого передаётся аргумент `defaults_dict`. Этот аргумент задан по умолчанию как результат вызова ещё одного макроса - `fieldconfig()`. Таким образом, по умолчанию весь происходит автоматически, пользователю ничего не нужно делать. Но при этом у пользователя есть возможность при необходимости воздействовать на поведение макроса.
+Далее для тех данных, у которых не указано отсутствие инкрементального поля с датой (то есть аргументы `incremental_datetime_formula` и `disable_incremental_datetime_field` оставлены как по умолчанию - `none`), происходит формулы для поля с датой - `incremental_datetime_formula`. Для поиска используется макрос [[dbt Package/get_from_default_dict]], внутрь которого передаётся аргумент `defaults_dict`. Этот аргумент задан по умолчанию как результат вызова ещё одного макроса - `fieldconfig()`. Таким образом, по умолчанию весь процесс происходит автоматически, пользователю ничего не нужно делать. Но при этом у пользователя есть возможность при необходимости воздействовать на поведение макроса.
   
 Также макросом устанавливается `incremental_datetime_field` при помощи макроса [[find_incremental_datetime_field]].
 

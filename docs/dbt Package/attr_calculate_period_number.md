@@ -7,17 +7,9 @@ doc_status: ready
 ---
 # macro `attr_calculate_period_number`
 
-## ## Список используемых вспомогательных макросов
+## Список используемых вспомогательных макросов
 
-```dataview
-TABLE 
-category AS "Category", 
-in_sub_main_macro AS "In Sub-Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_sub_main_macro, "attr_calculate_period_number")
-SORT doc_status
-```
+Без вспомогательных макросов. 
 ## Описание
 
 Это пятый шаг макроса `attr`.  Этот макрос вычисляет номер периода для каждого события в атрибуции. Это важно для последующего анализа данных и определения их временного распределения.

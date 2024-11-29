@@ -8,17 +8,11 @@ language: eng
 # macro `hash`
 
 ## List of auxiliary macros
-
-```dataview
-TABLE 
-category AS "Category", 
-in_main_macro AS "In Main Macro",
-doc_status AS "Doc Status"
-FROM "dbt Package"
-WHERE file.name != "README" AND contains(in_main_macro, "hash")
-SORT doc_status
-```
-
+| Name            | Category  | In Main Macro | Doc Status |
+| --------------- | --------- | ------------- | ---------- |
+| [[entity_hash]] | auxiliary | hash          | ready      |
+| [[link_hash]]   | auxiliary | hash          | ready      |
+| [[zero_date]]   | auxiliary | hash          | ready      |
 
 ## Summary
 
