@@ -28,9 +28,13 @@
 **Запуск тестов:**
 Сами тесты находятся в директории `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft/etlcraft_tests/providers`
 
-Для их запуска выполняется команда `hatch env run pytest etlcraft_tests` в директории `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft`
+Для их запуска выполняется команда `hatch env run pytest etlcraft_tests/providers в директории `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft`
 
-В `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft/etlcraft_tests/providers/unit_tests/fixtures/airflow_variables.py` есть функция, с помощью которой можно получить словарь с переменными airflow для тестирования
+Также, есть тесты для операторов airbyte, но чтобы они работали - нужно заменить `host`, `port`, `login`, `password`, `get_workspace_id` в conftest.py. И запустить команду `hatch env run pytest etlcraft_tests/providers --run-airbyte-tests
+Без флага `--run-airbyte-tests` тесты на операторы airbyte будут автоматически пропускаться
+==Airbyte Tests может оставить ненужные объекты в airbyte==
+
+В `dbt-etlcraft/airflow_providers/apache-airflow-providers-datacraft/etlcraft_tests/providers/conftest.py` есть функция, с помощью которой можно получить словарь с переменными airflow для тестирования
 
 Если при запуске тестов в первый раз появляется ошибка, `TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'`  То запускаем тесты еще раз, эта ошибка из-за отсутствия записей при прогоне тестов впервые.
 При последующих запусках этой ошибки не будет

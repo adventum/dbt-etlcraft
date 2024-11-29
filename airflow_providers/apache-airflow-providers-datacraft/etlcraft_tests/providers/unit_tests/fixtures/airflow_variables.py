@@ -15,6 +15,6 @@ def get_airflow_variables(request):
         "source_for_config_other_variable": "other_variable",
         "source_for_config_datacraft_variable": "datacraft_variable",
         "source_for_config_file": "file",
-        "path_for_config": "some_path/"
+        "path_for_config": "some_path/",
     }
     return variables

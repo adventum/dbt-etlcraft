@@ -84,7 +84,9 @@ def test_run_get_configs_in_dag(
 
 # @pytest.mark.parametrize("config_name", ["metaconfigs", "not_metaconfigs"])
 def test_get_defaults_metaconfig(
-    mocker: MockerFixture, get_airflow_variables: dict[str, any], config_name: str = "metaconfigs"
+    mocker: MockerFixture,
+    get_airflow_variables: dict[str, any],
+    config_name: str = "metaconfigs",
 ):
     """Тест на получение метаконфига как template_file,
     из пакета apache-airflow-providers-datacraft-defaults"""
@@ -110,12 +112,17 @@ def test_get_defaults_metaconfig(
     )
 
     defaults_metaconfigs: dict = get_single_config(
-        config_name="metaconfigs",
-        metaconfig=metaconfig
+        config_name="metaconfigs", metaconfig=metaconfig
     )
 
     required_keys = [
-        "connectors", "presets", "datasources", "metadata", "events", "attributions", "base"
+        "connectors",
+        "presets",
+        "datasources",
+        "metadata",
+        "events",
+        "attributions",
+        "base",
     ]
 
     assert defaults_metaconfigs is not None
@@ -124,7 +131,9 @@ def test_get_defaults_metaconfig(
 
 
 def test_get_base_config(
-    mocker: MockerFixture, get_airflow_variables: dict[str, any], namespace: str = "etlcraft"
+    mocker: MockerFixture,
+    get_airflow_variables: dict[str, any],
+    namespace: str = "etlcraft",
 ):
     """Тест на получение конфига base"""
 
@@ -177,7 +186,7 @@ def test_parse_by_format(
     source: str,
     source_format: str,
     mocker: MockerFixture,
-    get_airflow_variables: dict[str, any]
+    get_airflow_variables: dict[str, any],
 ):
     """Тест на проверку получения данных по формату"""
 
@@ -203,19 +212,13 @@ def test_parse_by_format(
     if source == "templated_file" and source_format == "json":
         path = "../apache-airflow-providers-datacraft-defaults/airflow/providers/datacraft/defaults/presets.json"
         filepath = pathlib.Path(path)
-        result = parse_by_format(
-            text=filepath.read_text(),
-            format=source_format
-        )
+        result = parse_by_format(text=filepath.read_text(), format=source_format)
         assert result
         assert "source_presets" in result.keys()
 
     if source == "file" and source_format == "yaml":
         path = "../apache-airflow-providers-datacraft-defaults/airflow/providers/datacraft/defaults/metadata.yaml"
         filepath = pathlib.Path(path)
-        result = parse_by_format(
-            text=filepath.read_text(),
-            format=source_format
-        )
+        result = parse_by_format(text=filepath.read_text(), format=source_format)
         assert result
         assert "entities" in result.keys()
