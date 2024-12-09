@@ -45,4 +45,4 @@ class JobSyncConfigTypeEnum(StrEnum):
     sync = "sync"
     reset_connection = "reset_connection"
     refresh = "refresh"
-    clear = "clear"
+    # clear = "clear"

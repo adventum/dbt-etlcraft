@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 from .enums import (
@@ -30,7 +32,7 @@ class SourceDefinitionSpec(BaseSourceDefinition):
 class WorkspaceSpec(Model):
     workspaceId: str
     name: str
-    slug: str
+    slug: str | None = None
 
 
 class ScheduleSpec(Model):
@@ -49,6 +51,8 @@ class ConnectionSpec(Model):
     namespaceDefinition: NamespaceDefinitionEnum | None = None
     namespaceFormat: str | None = None
     prefix: str | None = None
+    syncCatalog: dict | None = None
+    # TODO syncCatalog schema
 
 
 class BaseDestinationDefinition(Model):
@@ -88,6 +92,36 @@ class AirbyteAttemptSpec(Model):
     attempt: dict[any, any]
 
 
+class StatsSpec(Model):
+    recordsEmitted: int | str | None = None
+    bytesEmitted: int | str | None = None
+    stateMessagesEmitted: int | str | None = None
+    bytesCommitted: int | str | None = None
+    recordsCommitted: int | str | None = None
+    estimatedRecords: int | str | None = None
+    estimatedBytes: int | str | None = None
+
+
+class StreamStatsSpec(Model):
+    streamName: str
+    streamNamespace: str | None = None
+    stats: StatsSpec
+
+
+class AirbyteAttemptsSpec(Model):
+    """Using in JobListSpec"""
+
+    id: int | str
+    status: JobStatusEnum
+    createdAt: int | str
+    updatedAt: int | str
+    endedAt: int | str | None = None
+    bytesSynced: int | str | None = None
+    recordsSynced: int | str | None = None
+    totalStats: Optional[dict[str, int]]
+    streamStats: Optional[list[StreamStatsSpec]]
+
+
 class JobSyncSpec(Model):
     id: str | int
     configType: JobSyncConfigTypeEnum
@@ -96,4 +130,17 @@ class JobSyncSpec(Model):
     updatedAt: str | int
     startedAt: str | int
     status: JobStatusEnum
-    attempts: [AirbyteAttemptSpec]
+    attempts: list[AirbyteAttemptSpec]
+
+
+class JobListSpec(Model):
+    id: int | str
+    jobType: JobSyncConfigTypeEnum  # In fact it is configType in Api docs
+    status: JobStatusEnum
+    configId: str
+    attempts: list[AirbyteAttemptsSpec]
+
+
+class TriggerSyncResponseSpec(Model):
+    job: dict
+    attempts: list[dict]

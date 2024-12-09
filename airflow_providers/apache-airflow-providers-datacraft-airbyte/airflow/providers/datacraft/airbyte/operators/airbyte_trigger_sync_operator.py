@@ -1,13 +1,12 @@
 from ..models import (
     JobSyncSpec,
     WorkspaceSpec,
+    TriggerSyncResponseSpec,
 )
 from .airbyte_general_operator import (
     AirByteGeneralOperator,
 )
 from airflow.utils.context import Context
-
-from ..utils import get_workspace
 
 
 class AirbyteTriggerSyncOperator(AirByteGeneralOperator):
@@ -27,12 +26,12 @@ class AirbyteTriggerSyncOperator(AirByteGeneralOperator):
         connection_id: str | None = None,
         **kwargs,
     ):
-        self._workspace_id = get_workspace(workspace_id, workspace_name, workspaces)
+        # self._workspace_id = get_workspace(workspace_id, workspace_name, workspaces)
         super().__init__(
             airbyte_conn_id=airbyte_conn_id,
             endpoint="connections/sync",
             request_params={
-                "workspaceId": self._workspace_id,
+                # "workspaceId": self._workspace_id,
                 "connectionId": connection_id,
             },
             use_legacy=True,
@@ -41,5 +40,5 @@ class AirbyteTriggerSyncOperator(AirByteGeneralOperator):
 
     def execute(self, context: Context) -> JobSyncSpec | None:
         resp: dict[str, any] = super().execute(context)
-        res: JobSyncSpec = JobSyncSpec.model_validate(resp)
+        res: TriggerSyncResponseSpec = TriggerSyncResponseSpec.model_validate(resp)
         return res

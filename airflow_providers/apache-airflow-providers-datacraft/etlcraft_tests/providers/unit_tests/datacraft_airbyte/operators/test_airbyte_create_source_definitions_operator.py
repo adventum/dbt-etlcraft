@@ -13,11 +13,12 @@ from pendulum import datetime
 def test_create_source_definition(
     airbyte_conn: Connection,
     get_workspace_id: str,
+    clear_test_objects,
 ):
     source_definition_configuration = {
-        "name": "Test Google Sheets Connector v1",
-        "dockerRepository": "adventum/source-google-sheets",
-        "dockerImageTag": "1.0.1",
+        "name": "TEST TG_STAT V1 FOR TESTS",
+        "dockerRepository": "adventum/source-tg-stat",
+        "dockerImageTag": "0.0.3",
         "documentationUrl": "",
     }
 

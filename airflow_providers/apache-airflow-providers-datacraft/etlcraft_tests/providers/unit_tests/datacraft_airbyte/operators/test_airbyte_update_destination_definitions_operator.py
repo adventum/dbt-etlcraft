@@ -16,6 +16,7 @@ from pendulum import datetime
 def test_update_destination_definition(
     airbyte_conn: Connection,
     get_workspace_id: str,
+    clear_test_objects,
 ):
     """
     В тесте сначала создаем destination_definition, а потом изменяем его.
@@ -54,7 +55,6 @@ def test_update_destination_definition(
     assert create_result.destinationDefinitionId
 
     update_destination_definition_configuration = {
-        "destinationDefinitionId": create_result.destinationDefinitionId,
         "name": "Test Clickhouse Destination v1 Updated",
         "dockerRepository": "airbyte/destination-postgres",
         "dockerImageTag": "2.4.0",
@@ -72,6 +72,7 @@ def test_update_destination_definition(
                 task_id=task_id_update,
                 airbyte_conn_id=airbyte_conn,
                 workspace_id=get_workspace_id,
+                destination_definition_id=create_result.destinationDefinitionId,
                 destination_definition_configuration=update_destination_definition_configuration,
             )
         )

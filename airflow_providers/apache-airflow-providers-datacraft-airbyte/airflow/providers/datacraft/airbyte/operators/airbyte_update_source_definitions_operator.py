@@ -1,4 +1,5 @@
 from ..models import (
+    BaseSourceDefinition,
     SourceDefinitionSpec,
     WorkspaceSpec,
 )
@@ -15,7 +16,8 @@ class AirbyteUpdateSourceDefinitionsOperator(AirByteGeneralOperator):
     Update AirByte source definition
     :param airbyte_conn_id: Required. Airbyte connection id
     :param workspace_id: AirByte workspace id.
-    :param source_definition: Airbyte source definition params
+    :param source_definition_id: Source definition id to update
+    :param source_definition_configuration: Airbyte source definition params
     :param source:
     """
 
@@ -25,7 +27,8 @@ class AirbyteUpdateSourceDefinitionsOperator(AirByteGeneralOperator):
         workspace_id: str | None = None,
         workspace_name: str | None = None,
         workspaces: list[WorkspaceSpec] | None = None,
-        source_definition_configuration: SourceDefinitionSpec | None = None,
+        source_definition_id: str | None = None,
+        source_definition_configuration: BaseSourceDefinition | None = None,
         **kwargs,
     ):
         self._workspace_id = get_workspace(workspace_id, workspace_name, workspaces)
@@ -34,6 +37,7 @@ class AirbyteUpdateSourceDefinitionsOperator(AirByteGeneralOperator):
             endpoint="source_definitions/update",
             request_params={
                 "workspaceId": self._workspace_id,
+                "sourceDefinitionId": source_definition_id,
                 **source_definition_configuration,
             },
             use_legacy=True,

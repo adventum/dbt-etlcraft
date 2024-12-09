@@ -7,6 +7,15 @@ from airflow.models import Connection
 from airflow.utils import db
 from airflow.utils.session import provide_session
 
+from .object_deleters import (
+    sources_deleter,
+    source_definitions_deleter,
+    destinations_deleter,
+    destination_definitions_deleter,
+    connections_deleter,
+    collect_airbyte_objects,
+)
+
 
 @pytest.fixture(scope="session", autouse=True)
 def setup_db():
@@ -39,6 +48,11 @@ def setup_db():
     settings.SQL_ALCHEMY_CONN = (
         "postgresql+psycopg2://airflow:airflow@localhost:5438/airflow_test"
     )
+
+    # Очищаем бд до тестов
+    db.resetdb()
+
+    # Инициализируем бд для тестов
     db.initdb()
 
     yield
@@ -95,7 +109,7 @@ def airbyte_conn():
 #     db.resetdb()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def get_workspace_id(request):
     """
     Эта фикстура нужна для получения id workspace для тестирования компонентов airbyte, например для операторов
@@ -138,7 +152,7 @@ def get_airflow_variables(request):
         "path_for_etlcraft_metaconfigs": "../apache-airflow-providers-datacraft-defaults/airflow/providers/datacraft/defaults/metaconfigs.json",
         "source_for_etlcraft_base": "templated_file",
         "format_for_etlcraft_base": "json",
-        "path_for_etlcraft_base": "../apache-airflow-providers-datacraft-defaults/airflow/providers/datacraft/defaults/base_example_for_tests.json",
+        "path_for_etlcraft_base": "../apache-airflow-providers-datacraft-defaults/airflow/providers/datacraft/defaults/files_for_tests/base_example_for_tests.json",
         "source_for_etlcraft_base_datasources": "other_variable",
         "format_for_etlcraft_base_datasources": "json",
         "path_for_etlcraft_base_datasources": "base_datasources",
@@ -181,3 +195,57 @@ def pytest_collection_modifyitems(config, items):
     for item in items:
         if "airbyte_test" in item.keywords:
             item.add_marker(skip_airbyte_test)
+
+
+@pytest.fixture(scope="session")
+def clear_test_objects(get_workspace_id, airbyte_conn):
+    """
+    Эта фикстура собирает существующие объекты airbyte:
+    sourceDefinitions, destinationDefinitions, sources, destinations, connections до тестов,
+    чтобы в последствии не удалить нужные
+
+    Затем, вновь собираются все объекты после окончания теста,
+    и сравниваются списки до и после, и новые удаляются
+
+    Возможная проблема - в окно выполнения тестов, если будет создан объект,
+    например через UI airbyte, то и он удалится
+    """
+    print("Setup: собираем объекты перед тестами")
+    objects_before_test: dict[str, list[str]] = collect_airbyte_objects(
+        get_workspace_id, airbyte_conn
+    )
+
+    yield
+
+    print("Teardown: собираем объекты после тестов")
+    objects_after_test: dict[str, list[str]] = collect_airbyte_objects(
+        get_workspace_id, airbyte_conn
+    )
+
+    # Формируем листы с объектами, которые нужно удалить после тестов
+    source_definitions_to_delete: list[str] = list(
+        set(objects_after_test["source_definitions"])
+        - set(objects_before_test["source_definitions"])
+    )
+    destination_definitions_to_delete: list[str] = list(
+        set(objects_after_test["destination_definitions"])
+        - set(objects_before_test["destination_definitions"])
+    )
+    sources_to_delete: list[str] = list(
+        set(objects_after_test["sources"]) - set(objects_before_test["sources"])
+    )
+    destinations_to_delete: list[str] = list(
+        set(objects_after_test["destinations"])
+        - set(objects_before_test["destinations"])
+    )
+    connections_to_delete: list[str] = list(
+        set(objects_after_test["connections"]) - set(objects_before_test["connections"])
+    )
+
+    # Удаление объектов
+    print("Cleaning: удаляем новые объекты")
+    source_definitions_deleter(source_definitions_to_delete, airbyte_conn)
+    destination_definitions_deleter(destination_definitions_to_delete, airbyte_conn)
+    sources_deleter(sources_to_delete, airbyte_conn)
+    destinations_deleter(destinations_to_delete, airbyte_conn)
+    connections_deleter(connections_to_delete, airbyte_conn)

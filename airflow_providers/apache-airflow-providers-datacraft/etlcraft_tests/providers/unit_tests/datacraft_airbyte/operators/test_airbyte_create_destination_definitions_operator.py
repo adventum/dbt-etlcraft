@@ -5,6 +5,7 @@ from airflow.models import Connection
 from airflow.providers.datacraft.airbyte.operators.airbyte_create_destination_definitions_operator import (
     AirbyteCreateDestinationDefinitionsOperator,
 )
+
 from airflow.providers.datacraft.airbyte.models import DestinationDefinitionSpec
 from pendulum import datetime
 
@@ -13,6 +14,7 @@ from pendulum import datetime
 def test_create_destination_definition(
     airbyte_conn: Connection,
     get_workspace_id: str,
+    clear_test_objects,
 ):
     destination_definition_configuration = {
         "name": "Test Clickhouse Destination v1",
@@ -60,5 +62,3 @@ def test_create_destination_definition(
         result.documentationUrl
         == destination_definition_configuration["documentationUrl"]
     )
-
-    # assert 0 == 1

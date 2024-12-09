@@ -16,6 +16,7 @@ from pendulum import datetime
 def test_update_source_definition(
     airbyte_conn: Connection,
     get_workspace_id: str,
+    clear_test_objects,
 ):
     """
     В тесте сначала создаем source_definition, а потом изменяем его.
@@ -23,9 +24,9 @@ def test_update_source_definition(
     """
 
     create_source_definition_configuration = {
-        "name": "Test Google Sheets Connector v1",
-        "dockerRepository": "adventum/source-google-sheets",
-        "dockerImageTag": "1.0.1",
+        "name": "TEST TG_STAT V1 FOR TESTS",
+        "dockerRepository": "adventum/source-tg-stat",
+        "dockerImageTag": "0.0.3",
         "documentationUrl": "",
     }
     task_id_create: str = "create_source_definition"
@@ -54,10 +55,9 @@ def test_update_source_definition(
     assert create_result.sourceDefinitionId
 
     update_source_definition_configuration = {
-        "sourceDefinitionId": create_result.sourceDefinitionId,
-        "name": "Test Google Sheets Connector v1",
-        "dockerRepository": "adventum/source-google-sheets",
-        "dockerImageTag": "1.0.0",
+        "name": "TEST TG_STAT V1 FOR TESTS",
+        "dockerRepository": "adventum/source-tg-stat",
+        "dockerImageTag": "0.0.2",
         "documentationUrl": "",
     }
     task_id_update: str = "update_source_definition"
@@ -72,6 +72,7 @@ def test_update_source_definition(
                 task_id=task_id_update,
                 airbyte_conn_id=airbyte_conn,
                 workspace_id=get_workspace_id,
+                source_definition_id=create_result.sourceDefinitionId,
                 source_definition_configuration=update_source_definition_configuration,
             )
         )

@@ -26,7 +26,6 @@ class AirbyteCreateSourceOperator(AirByteGeneralOperator):
         workspace_id: str | None = None,
         workspace_name: str | None = None,
         workspaces: list[WorkspaceSpec] | None = None,
-        # source_definition_configuration: SourceDefinitionSpec | None = None,
         source_definition_id: str | None = None,
         connection_configuration: dict[str, any] | None = None,
         name: str | None = None,

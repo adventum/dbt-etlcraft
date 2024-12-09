@@ -16,7 +16,8 @@ def get_datacraft_defaults(
             raise DatacraftDefaultsError(f"config not found ({str(filepath)})")
         template_loader = FileSystemLoader(searchpath=directory_path)
         jinja_env = Environment(loader=template_loader)
-        template = jinja_env.get_template(str(filepath))
+        # template = jinja_env.get_template(str(filepath))
+        template = jinja_env.get_template(f"{filename}.j2")
         file_content = template.render(**template_variables)
     else:
         file_content = filepath.read_text()

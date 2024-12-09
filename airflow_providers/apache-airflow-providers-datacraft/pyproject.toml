@@ -24,7 +24,8 @@ dependencies = [
     "airbyte_api",
     "pytest",
     "pytest_mock",
-    "docker"
+    "docker",
+    "psycopg2-binary",
 ]
 
 [project.optional-dependencies]
