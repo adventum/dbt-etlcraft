@@ -1,17 +1,15 @@
 {%- macro attr_join_to_attr_prepare_with_qid(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none,
-  attributions=attribution_models(),
-  events_description=events(),
-  segments=event_segments()
+  metadata=project_metadata()
   ) -%}
 
 {# 
     Извлечение метаданных для определения типов моделей и их приоритетов.
 #}
 
-{# {%- set funnels = metadata['funnels'] -%}
+{%- set funnels = metadata['funnels'] -%}
 {%- set attribution_models = metadata['attribution_models'] -%}
 {%- set model_list = funnels[funnel_name].models -%}
 {%- set step_name_list = funnels[funnel_name].steps -%}

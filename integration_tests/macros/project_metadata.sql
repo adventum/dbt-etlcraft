@@ -1,4 +1,4 @@
-{% macro project_metadata() %}
+{%- macro project_metadata() -%}
 {% set metadata_dict %}
 entities:
   Account:
@@ -313,5 +313,5 @@ datasets:
     accounts:
     - testaccount
 {% endset %}
-  {{ return(fromyaml(metadata_dict)) }}    
-{% endmacro %}
+{{ return(fromyaml(metadata_dict)) }}    
+{%- endmacro -%}

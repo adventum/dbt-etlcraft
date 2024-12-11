@@ -1,6 +1,6 @@
 {%- macro attr_add_row_number(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none
   ) -%}
 

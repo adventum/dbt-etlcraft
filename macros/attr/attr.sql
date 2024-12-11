@@ -9,6 +9,6 @@
 {%- set stage_name = model_name_parts[2:] -%}
 {%- set stage_name = 'attr_' ~ '_'.join(stage_name) -%}
 
-{{ datacraft[stage_name](params,model_name)}}
+{{ etlcraft[stage_name](params,funnel_name)}}
 
 {% endmacro %}

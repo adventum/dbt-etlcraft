@@ -1,9 +1,8 @@
 {%- macro attr_create_events(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none,
-  attributions=attribution_models(),
-  events_description=events() 
+  metadata=project_metadata()
   ) -%}
 
 {# 
@@ -22,20 +21,9 @@
     Извлечение метаданных и шагов воронки для формирования событий.
 #}
 
-
-{# проверяем, что "читает" содержимое макроса attribution_models#}
-{% set test_output = attribution_models() %}
-{{ log("test_output:"~test_output, info=True) }}
-
-{% set funnel_steps = attributions[model_name]['funnel_steps'] %}
-{% set step_name_list = [] %}
-{% for step in funnel_steps %}
-  {% do step_name_list.append(step['slug']) %}
-{% endfor %}
-{{log("step_name_list:"~step_name_list, true)}}
-
-{% set steps =  events_description %}
-{{log("steps:"~steps, true)}}
+{%- set funnels = metadata['funnels'] -%}
+{%- set step_name_list = funnels[funnel_name].steps -%}
+{%- set steps = metadata['steps'] -%}
 
 {# 
     Формирование событий с учетом приоритета шагов воронки.

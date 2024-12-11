@@ -1,6 +1,6 @@
 {%- macro attr_prepare_with_qid(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none
   ) -%}
 

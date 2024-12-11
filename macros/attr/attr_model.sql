@@ -1,10 +1,14 @@
 {%- macro attr_model(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none,
-  attributions=attribution_models()
+  metadata=project_metadata()
   ) -%}
 
+
+{%- set funnels = metadata['funnels'] -%}
+{%- set attribution_models = metadata['attribution_models'] -%}
+{%- set model_list = funnels[funnel_name].models -%}
 
 {% set model_type = attributions[model_name]['model_type'] %}
 {{ log("model_type:"~model_type, true) }}

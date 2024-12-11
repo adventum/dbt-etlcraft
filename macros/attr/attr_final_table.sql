@@ -1,6 +1,6 @@
 {%- macro attr_final_table(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none
   ) -%}
 

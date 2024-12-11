@@ -1,6 +1,6 @@
 {%- macro attr_create_missed_steps(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none
   ) -%}
 

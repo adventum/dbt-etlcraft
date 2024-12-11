@@ -8,7 +8,7 @@
 {%- set stage_name = (override_target_model_name or this.name) -%}
 
 
-{{ datacraft[stage_name](params,stage_name)}}
+{{ etlcraft[stage_name](params,stage_name)}}
 
 
 {% endmacro %}

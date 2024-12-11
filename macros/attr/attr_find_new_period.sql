@@ -1,9 +1,8 @@
 {%- macro attr_find_new_period(
   params = none,
-  model_name=none,
+  funnel_name=none,
   limit0=none,
-  attributions=attribution_models(),
-  events_description=events()
+  metadata=project_metadata()
   ) -%}
 
 {# 
@@ -19,15 +18,14 @@
     )
 }}
 
-{# Извлечение шагов воронки для формирования списка шагов и их порядкового номера.
-Из funnel_steps пото также будем полчать timeout. #}
+{# 
+    Извлечение метаданных и шагов воронки для формирования списка шагов и их порядкового номера.
+#}
 
-{% set funnel_steps = attributions[model_name]['funnel_steps'] %}
-{% set step_name_list = [] %}
-{% for step in funnel_steps %}
-  {% do step_name_list.append(step['slug']) %}
-{% endfor %}
-{{log("step_name_list:"~step_name_list, true)}}
+{%- set funnels = metadata['funnels'] -%}
+{%- set step_name_list = funnels[funnel_name].steps -%}
+{%- set counter = [] -%}
+{%- set steps = metadata['steps'] -%}
 
 {%- set counter = [] -%}
 {%- for step_name in step_name_list -%}

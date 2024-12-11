@@ -1,7 +1,6 @@
 {%- macro create_dataset(
   funnel = none,
   conditions = none,
-  override_target_metadata=none,
   override_target_model_name=none,
   limit0=none
   ) -%}
